@@ -2,10 +2,44 @@ import numpy as np
 from abc import ABC, abstractmethod, abstractproperty
 from Signal_processing_utils import *
 from Speech_Data_util import Sentence_word_phone_parser
-from prototypes.InputDataStructures import Gaze_Scene_Info
+from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info
 import os
 
-class Base_Saliency_List(ABC):
+class Base_Static_Saliency_List(ABC):
+    """
+    abstract method for defining saliency map, which wiill be used to determine probability of look at points
+    over time
+    """
+
+    @abstractmethod
+    def __init__(self, scene_info, audio: np.array, script: Sentence_word_phone_parser, sr=44100):
+        pass
+
+    @abstractmethod
+    def compute_salience(self):
+        """
+        compute saliency map. update self.map
+        :return: Nothing
+        """
+        pass
+
+    @abstractmethod
+    def evaluate(self, time):
+        """
+        Evaluate the method at the desired time
+        :param time:
+        :return:
+        """
+        pass
+
+    @abstractmethod
+    def evaluate_all(self):
+        """
+        obtain a 2D array of shape (time, number of scene objects)
+        :return:
+        """
+        pass
+class Base_Dynamic_Saliency_List(ABC):
     """
     abstract method for defining saliency map, which wiill be used to determine probability of look at points
     over time

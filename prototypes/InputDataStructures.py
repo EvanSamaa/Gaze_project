@@ -2,7 +2,7 @@ import json
 from typing import Dict, List
 import numpy as np
 
-class Gaze_Scene_Info:
+class Dietic_Conversation_Gaze_Scene_Info:
     # speaker info
     speaker_position: np.array = np.zeros((3, ))
     speaker_face_direction: np.array = np.zeros((3,))
@@ -17,24 +17,39 @@ class Gaze_Scene_Info:
     object_pos: Dict[str, np.array]
     object_type: Dict[str, int]
     object_interest: Dict[str, float]
+    object_distance_to_listener: Dict[str, float]
 
     # image based variables
     def __init__(self, scene_data_path):
         with open(scene_data_path) as f:
             scene_data = json.load(f)
-        print(scene_data.keys())
+        # print(scene_data.keys())
         self_dict = scene_data["self_pos"]
-        print(self_dict.keys())
+        # print(self_dict.keys())
         self.speaker_position = np.array(self_dict["pos"])
         self.speaker_frame_pos = np.array(self_dict["pos"])
+        self.speaker_face_direction = np.array(self_dict["calibration_dir_local"])
         v_ref_world = np.array(self_dict["calibration_dir_world"])
         v_ref_local = np.array(self_dict["calibration_dir_local"])
         self.local_to_world = self.rotation_matrix_from_vectors(v_ref_local, v_ref_world - self.speaker_position)
         self.world_to_local = np.linalg.inv(self.local_to_world)
-        self.object_type, self.object_pos, self.object_interest =  scene_data["object_type"], scene_data["object_pos"], scene_data["object_interestingness"]
+        self.object_type, self.object_pos, self.object_interest = scene_data["object_type"], scene_data["object_pos"], scene_data["object_interestingness"]
+        self.object_distance_to_listener = {}
         for key in self.object_pos:
             self.object_pos[key] = np.array(self.object_pos[key])
             self.scene_object_id.append(key)
+        for i in range(0, len(self.object_type)):
+            obj_id = self.scene_object_id[i]
+            if self.object_type[obj_id] == 1:
+                listener_direction_l = self.transform_world_to_local(self.object_pos[obj_id])
+                listener_direction_l = 1 / np.linalg.norm(listener_direction_l) * listener_direction_l
+                break
+        for i in range(0, len(self.scene_object_id)):
+            obj_id = self.scene_object_id[i]
+            obj_direction_l = self.transform_world_to_local(self.object_pos[obj_id])
+            obj_direction_l = 1 / np.linalg.norm(obj_direction_l) * obj_direction_l
+            self.object_distance_to_listener[obj_id] = obj_direction_l.dot(listener_direction_l)
+
     def rotation_matrix_from_vectors(self, vec1, vec2):
         """ Find the rotation matrix that aligns vec1 to vec2
         :param vec1: A 3d "source" vector
