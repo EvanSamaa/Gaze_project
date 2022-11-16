@@ -17,6 +17,8 @@ def obtain_items_of_interest(manual_select):
     # get position of the character and the look at point
     head_position = pm.xform("eyeStare_zero",q=True,t=True,ws=True)
     look_at_point_position = pm.xform("eyeStare_world",q=True,t=True,ws=True)
+    print(look_at_point_position)
+    print(head_position )
     head_direction =  [0, 0, 0]
     magnitude = 0
     for i in range(0, 3):
@@ -24,16 +26,15 @@ def obtain_items_of_interest(manual_select):
         magnitude = magnitude + head_direction[i] * head_direction[i]
     # normalize it to magnitude of 1
     magnitude = math.sqrt(magnitude)
+    for_camera_head_position = [0, 0, 0]
     for i in range(0, 3):
         head_direction[i] = head_direction[i] / magnitude
-        head_position[i] = head_position[i] + 20 * head_direction[i]
-    
+        for_camera_head_position [i] = head_position[i] + 20 * head_direction[i]
     # create a camera
     cameraName = cmds.camera()
     cameraShape = cameraName[1]
-    print(head_position)
     # set camera location and look at point
-    cmds.viewPlace(cameraShape, eye=head_position, la=look_at_point_position)
+    cmds.viewPlace(cameraShape, eye=for_camera_head_position , la=look_at_point_position)
     # look through the camera
     current_panel = cmds.getPanel(wf = True)
     cmds.setAttr(cameraShape+".focalLength", 3);
@@ -54,29 +55,35 @@ def obtain_items_of_interest(manual_select):
             out_position_list.append(item_position)
             out_selected_item_names_list.append(item)
     cmds.select(out_selected_item_names_list)
-    # output the position of items
+    # output the world space position of items
     output_json_item_position = {}
-    for i in range(0, len(item_names)):
-        output_json_item_position[item_names[i]] = item_positions[i]
+    for i in range(0, len(out_selected_item_names_list)):
+        output_json_item_position[out_selected_item_names_list[i]] = out_position_list[i]
     # output the category of items
     output_json_item_type = {}
-    for i in range(0, len(item_names)):
+    for i in range(0, len(out_selected_item_names_list)):
         try:
-            output_json_item_type[item_names[i]] = cmds.getAttr(item_names[i]+".Object_type")
+            output_json_item_type[out_selected_item_names_list[i]] = cmds.getAttr(item_names[i]+".Object_type")
         except:
-            output_json_item_type[item_names[i]] = 0
+            output_json_item_type[out_selected_item_names_list[i]] = 0
     # output the interestingness of the item:
     output_json_item_interesting_ness = {}
-    for i in range(0, len(item_names)):
+    for i in range(0, len(out_selected_item_names_list)):
         try:
-            output_json_item_interesting_ness[item_names[i]] = cmds.getAttr(item_names[i]+".Interestingness")
+            output_json_item_interesting_ness[out_selected_item_names_list[i]] = cmds.getAttr(item_names[i]+".Interestingness")
         except:
-            output_json_item_interesting_ness[item_names[i]] = 0.0
+            output_json_item_interesting_ness[out_selected_item_names_list[i]] = 0.0
     # output the position of the head
+    
+    calibration_dir_local = []
+    for i in range(0, 3):
+        calibration_dir_local.append(look_at_point_position[i] - head_position[i])
     output_json_self = {
         "pos": pm.xform("eyeStare_zero",q=True,t=True,ws=True),
-        "dir": head_direction
+        "calibration_dir_local": calibration_dir_local,
+        "calibration_dir_world": look_at_point_position        
     }
+    
     output_json = {
         "self_pos":output_json_self, 
         "object_pos":output_json_item_position,
