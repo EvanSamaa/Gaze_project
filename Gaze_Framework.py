@@ -14,9 +14,9 @@ if __name__ == '__main__':
     scene_data_path = "data\look_at_points\simplest_scene.json"
 
     input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/CNN"
-    input_folder = "C:/Users/evan1/Documents/neckMovement/data/neck_rotation_values/news_anchor_1"
+    # input_folder = "C:/Users/evan1/Documents/neckMovement/data/neck_rotation_values/news_anchor_1"
     input_file_name = "cnn_borderOneGuy"
-    input_file_name = "audio"
+    # input_file_name = "audio"
     # get scene data
     scene_data_path = "data\look_at_points\simplest_scene.json"
     scene = Dietic_Conversation_Gaze_Scene_Info(scene_data_path)

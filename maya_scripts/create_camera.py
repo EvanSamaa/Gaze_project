@@ -70,9 +70,10 @@ def obtain_items_of_interest(manual_select):
     output_json_item_interesting_ness = {}
     for i in range(0, len(out_selected_item_names_list)):
         try:
-            output_json_item_interesting_ness[out_selected_item_names_list[i]] = cmds.getAttr(item_names[i]+".Interestingness")
+            output_json_item_interesting_ness[out_selected_item_names_list[i]] = cmds.getAttr(item_names[i]+".interestingness")
+            print output_json_item_interesting_ness[out_selected_item_names_list[i]]
         except:
-            output_json_item_interesting_ness[out_selected_item_names_list[i]] = 0.0
+            output_json_item_interesting_ness[out_selected_item_names_list[i]] = 0.00000001
     # output the position of the head
     
     calibration_dir_local = []
