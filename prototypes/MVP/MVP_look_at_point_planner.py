@@ -3,7 +3,7 @@ from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info
 import numpy as np
 from Speech_Data_util import Sentence_word_phone_parser
 from prototypes.MVP.MVP_static_saliency_list import ObjectBasedFixSaliency
-
+from matplotlib import pyplot as plt
 class HabituationBasedPlanner():
     def __init__(self, saliency_list: ObjectBasedFixSaliency, audio: np.array, script: Sentence_word_phone_parser, scene_info: Dietic_Conversation_Gaze_Scene_Info):
         self.saliency_list = saliency_list
@@ -36,9 +36,11 @@ class HabituationBasedPlanner():
             if (obj_type == 1):
                 self.mhab[i] /= float(self.saliency_list._number_of_objects)
                 self.mrest[i] *= float(self.saliency_list._number_of_objects)
+                pass
             else:
                 self.mhab[i] /= self.saliency_list.evaluate_all()[0, i]
                 self.mrest[i] *= self.saliency_list.evaluate_all()[0, i]
+                pass
 
 
     def compute_habituation(self, dt):
@@ -56,15 +58,23 @@ class HabituationBasedPlanner():
         self.t += dt
         self.current_look_at_target = np.argmax(new_habituation * self.saliency_list.evaluate(self.t))
         self.current_look_at_position = self.scene_info.object_pos[self.scene_info.scene_object_id[self.current_look_at_target]]
+        self.current_habituation = new_habituation
         return self.current_look_at_target
     def compute(self):
         output = []
         prev_time = 0
+        hab = []
         for i in range(0, len(self.script.word_list)):
             dt = self.script.word_intervals[i][0] - prev_time
             output.append(self.compute_habituation(dt))
+            hab.append(np.expand_dims(self.current_habituation * self.saliency_list.evaluate(self.t), axis=0))
             prev_time = self.script.word_intervals[i][0]
+        hab = np.concatenate(hab, axis = 0)
         print(output)
+        plt.plot(hab)
+        plt.show()
+
+
 
 
 

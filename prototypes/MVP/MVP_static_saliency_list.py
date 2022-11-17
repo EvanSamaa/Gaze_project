@@ -26,7 +26,7 @@ class ObjectBasedFixSaliency(Base_Static_Saliency_List):
             if self.scene_info.object_type == 1:
                 self.map[0, i] = self.scene_info.object_interest[obj_id]
             else:
-                self.map[0, i] = self.scene_info.object_interest[obj_id] * self.scene_info.object_distance_to_listener[obj_id] * self.scene_info.object_distance_to_listener[obj_id]
+                self.map[0, i] = self.scene_info.object_interest[obj_id] * self.scene_info.object_distance_to_listener[obj_id]
         # continue setting salience for all objects
         for i in range(1, self._numb_of_frames):
             self.map[i] = self.map[0]
