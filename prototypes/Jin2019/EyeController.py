@@ -136,7 +136,6 @@ def handle_gaze_direction(old_gaze, previous_head_frame, new_gaze, new_time,
 
     return gaze_key_frames, head_keyframes, previous_head_frame
 
-
 def generate_neck_eye_curve_v2p3(time_arr, pos_arr, tags_arr):
 
     prev_gaze_angle = np.array([0.0, 0.0])

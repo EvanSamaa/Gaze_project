@@ -96,8 +96,10 @@ class Heuristic_decomposition_azimuth:
                             [25, 0.75], [50, 1], [90, 0.6]]
         self.sym_pts_high = [[-90, 0.6], [-50, 1], [-25, 0.9], [-10, 0.5], [0, 0], [10, 0.5],
         [25, 0.9], [50, 1], [90, 0.6]]
+
     def get_y(self, p1, p2, x):
         return (x - p1[0]) / (p2[0] - p1[0]) * (p2[1] - p1[1]) + p1[1]
+
     def decompose(self, alpha, neck_enthusiasm):
         # alpha is a single float point value, should be the degree of angle at the azimuth plane
 
@@ -129,6 +131,7 @@ class Heuristic_decomposition_azimuth:
         neck_alpha = alpha * ratio
         eye_alpha = alpha - neck_alpha
         return eye_alpha, neck_alpha
+
     def decompose_sequence(self, alpha_list):
         EIH_arr = []
         head_arr = []
@@ -163,3 +166,20 @@ class Heuristic_decomposition_elevation:
             EIH_arr.append(current_break_down[0])
             head_arr.append(current_break_down[1])
         return EIH_arr, head_arr
+class Heuristic_eye_velocity:
+    def __init__(self, p1=None, p2=None, p3=None, p4=None):
+        # here the percentage the is the percentage of neck contribution
+        self.p0 = [0, 220]
+        self.p1 = [20, 400]
+        self.p2 = [40, 200]
+
+    def get_y(self, p1, p2, x):
+        return (x - p1[0])/(p2[0] - p1[0]) * (p2[1] - p1[1]) + p1[1]
+    def decompose(self, angle_displacement, prev=None):
+        # alpha is a single float point value, should be the degree of angle at the azimuth plane
+        if angle_displacement < self.p1[0]:
+            return self.get_y(self.p0, self.p1, angle_displacement)
+        elif angle_displacement < self.p2[0]:
+            return self.get_y(self.p1, self.p2, angle_displacement)
+        else:
+            return 200

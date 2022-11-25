@@ -63,7 +63,7 @@ def obtain_items_of_interest(manual_select):
     output_json_item_type = {}
     for i in range(0, len(out_selected_item_names_list)):
         try:
-            output_json_item_type[out_selected_item_names_list[i]] = cmds.getAttr(item_names[i]+".Object_type")
+            output_json_item_type[out_selected_item_names_list[i]] = cmds.getAttr(item_names[i]+".Object_Type")
         except:
             output_json_item_type[out_selected_item_names_list[i]] = 0
     # output the interestingness of the item:
@@ -71,27 +71,24 @@ def obtain_items_of_interest(manual_select):
     for i in range(0, len(out_selected_item_names_list)):
         try:
             output_json_item_interesting_ness[out_selected_item_names_list[i]] = cmds.getAttr(item_names[i]+".interestingness")
-            print output_json_item_interesting_ness[out_selected_item_names_list[i]]
         except:
             output_json_item_interesting_ness[out_selected_item_names_list[i]] = 0.00000001
     # output the position of the head
     
-    calibration_dir_local = []
-    for i in range(0, 3):
-        calibration_dir_local.append(look_at_point_position[i] - head_position[i])
+    calibration_dir_local = [0, 0, 100]
     output_json_self = {
         "pos": pm.xform("eyeStare_zero",q=True,t=True,ws=True),
         "calibration_dir_local": calibration_dir_local,
         "calibration_dir_world": look_at_point_position        
-    }
-    
+    }       
     output_json = {
         "self_pos":output_json_self, 
         "object_pos":output_json_item_position,
         "object_type": output_json_item_type,
         "object_interestingness": output_json_item_interesting_ness
     }
-    with open("C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/simplest_scene.json", "w") as f:
+    # with open("C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/simplest_scene.json", "w") as f:
+    with open("C:/Users/evan1/Documents/Gaze_project/data/look_at_points/simplest_scene.json", "w") as f:
         json.dump(output_json, f) 
 
     return out_selected_item_names_list, out_position_list
