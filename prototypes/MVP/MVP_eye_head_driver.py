@@ -1,5 +1,5 @@
 import numpy as np
-from prototypes.Jin2019.EyeHeadDecomposition import Heuristic_decomposition_azimuth, Heuristic_decomposition_elevation, Heuristic_eye_velocity
+from prototypes.Jin2019.EyeHeadDecomposition import Heuristic_decomposition_azimuth, Heuristic_decomposition_elevation, Heuristic_eye_velocity, Heuristic_eye_velocity_simple
 from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info
 from Geometry_Util import rotation_angles_frome_positions, directions_from_rotation_angles
 from Speech_Data_util import Sentence_word_phone_parser
@@ -9,14 +9,13 @@ class HeuristicGazeMotionGenerator():
     def __init__(self, scene:Dietic_Conversation_Gaze_Scene_Info, sementic_script: Sentence_word_phone_parser):
         self.azimuth_decomp = Heuristic_decomposition_azimuth()
         self.elevation_decomp = Heuristic_decomposition_elevation()
-        self.velocity_decomp = Heuristic_eye_velocity()
+        self.velocity_decomp = Heuristic_eye_velocity_simple()
         self.scene = scene
         self.head_x = ImpluseSpineCurveModel()
         self.head_y = ImpluseSpineCurveModel()
         self.gaze_x = ImpluseSpineCurveModel()
         self.gaze_y = ImpluseSpineCurveModel()
         self.sementic_script = sementic_script
-
 
     def handle_saccade(self, start_frame, prev_saccade_frame, end_frame, saccade_factor=0.05, avg_saccade_interval=0.5):
         output_list = []
@@ -119,7 +118,7 @@ class HeuristicGazeMotionGenerator():
         gaze_key_frames.append([eye_end, float(new_gaze[0]), float(new_gaze[1])])
 
         return gaze_key_frames, head_keyframes, previous_head_frame
-    def handle_gaze_shift(self, old_gaze, old_head, new_gaze, new_head, interval, parameters):
+    def handle_gaze_shift_legacy(self, old_gaze, old_head, new_gaze, new_head, interval, parameters):
         # unpack parameters
         reaction_time_factor = parameters[0]
         head_contribution_factor = parameters[1]
@@ -191,10 +190,8 @@ class HeuristicGazeMotionGenerator():
                       float(new_head_angle_ele)]
         self.update_ImpulseCurveModel(gaze_t, gaze_x, gaze_y, neck_t, neck_x, neck_y)
 
-        # print(neck_t, neck_x)
-        # print(gaze_t, gaze_x)
         return new_gaze, new_head_angle, stable_gaze
-    def simple_generate_neck_eye_curve(self, time_arr, pos_arr):
+    def generate_neck_eye_curve(self, time_arr, pos_arr):
 
         head_delay_factor = 0.5
         head_speed_factor = 0.1
@@ -246,14 +243,13 @@ class HeuristicGazeMotionGenerator():
             # get the neck angle component
 
             interval_i = gaze_intervals_time[i]
-            neck_contribution = (interval_i[1] - interval_i[0]) / 1.0  # the longer, the more neck contribution
+            neck_contribution = (interval_i[1] - interval_i[0]) / 4.0  # the longer, the more neck contribution
             neck_contribution = min(neck_contribution, 1)
             # now we've gotten the head angles
             new_eye_angle_az, new_head_angle_az = self.azimuth_decomp.decompose(angle[0], neck_contribution)
-            new_eye_angle_ele, new_head_angle_ele = self.elevation_decomp.decompose(angle[1])
-
+            new_eye_angle_ele, new_head_angle_ele = self.elevation_decomp.decompose(angle[1], neck_contribution)
             if i > 0:
-                old_head = np.array([raw_neck_key_frames[i-1][0][1], raw_neck_key_frames[i-1][0][0]])
+                old_head = np.array([raw_neck_key_frames[-1][0][1], raw_neck_key_frames[-1][0][0]])
             else:
                 old_head = rotation_angles_frome_positions(np.expand_dims(self.scene.speaker_face_direction, axis=0))[0]
 
@@ -263,8 +259,19 @@ class HeuristicGazeMotionGenerator():
             head_travel_time = delta_head / head_speed
             head_travel_times.append(head_travel_time)
             t_look = t - eye_travel_time + 0.05 * head_delay_factor + head_travel_time
-            raw_neck_key_frames_i.append([t_look, new_head_angle_az, new_head_angle_ele])
-            raw_neck_key_frames.append(raw_neck_key_frames_i)
+            
+
+            # prevent the neck from moving too much
+            too_clinch = False
+            for j in range(len(raw_neck_key_frames)-1, -1, -1):
+                if raw_neck_key_frames[j][0][0] >= t_look:
+                    too_clinch = True
+                    break
+            if too_clinch:
+                continue
+            else:
+                raw_neck_key_frames_i.append([t_look, new_head_angle_az, new_head_angle_ele])
+                raw_neck_key_frames.append(raw_neck_key_frames_i)
         for i in range(0, len(raw_gaze_key_frames)):
             if i == 0:
                 zero_look = rotation_angles_frome_positions(np.expand_dims(self.scene.speaker_face_direction, axis=0))[0]
@@ -277,6 +284,14 @@ class HeuristicGazeMotionGenerator():
                 delta_gaze = np.linalg.norm(angles[i - 1] - angles[i])
                 gaze_speed = self.velocity_decomp.decompose(delta_gaze)
                 eye_travel_time = delta_gaze / gaze_speed
+                # prevent anticipation frame from being added if the current gaze shift timing is too close to the previous
+                too_close = False
+                for j in range(i-1, -1, -1):
+                    if raw_gaze_key_frames[i][0][0] - eye_travel_time < raw_gaze_key_frames[j][-1][0]:
+                        too_close = True
+                        break
+                if too_close:
+                    continue
                 if (raw_gaze_key_frames[i][0][0] - raw_gaze_key_frames[i-1][-1][0] >= eye_travel_time):
                     # if the current gaze angle transition warrents a transition
                     raw_gaze_key_frames[i] = [[raw_gaze_key_frames[i][0][0] - eye_travel_time,
@@ -306,6 +321,14 @@ class HeuristicGazeMotionGenerator():
                 delta_head = np.linalg.norm(angle - prev_angle)
                 head_speed = min((2 + (head_speed_factor) * 4) * delta_head + 20, 300)
                 head_travel_time = delta_head / head_speed
+                # prevent anticipation frame from being added if the current gaze shift timing is too close to the previous
+                too_close = False
+                for j in range(i - 1, -1, -1):
+                    if raw_neck_key_frames[i][0][0] - head_travel_time < raw_neck_key_frames[j][-1][0]:
+                        too_close = True
+                        break
+                if too_close:
+                    continue
                 if (raw_neck_key_frames[i][0][0] - raw_neck_key_frames[i - 1][-1][0] >= head_travel_time):
                     # if the current gaze angle transition warrents a transition
                     raw_neck_key_frames[i] = [[raw_neck_key_frames[i][0][0] - head_travel_time,
@@ -313,7 +336,6 @@ class HeuristicGazeMotionGenerator():
                     raw_neck_key_frames[i-1] = raw_neck_key_frames[i-1] + [
                         [float(raw_neck_key_frames[i][0][0] - head_travel_time),
                          prev_angle[0], prev_angle[1]]]
-
             if i == len(raw_gaze_key_frames) - 1:
                 raw_gaze_key_frames[i] = raw_gaze_key_frames[i] + [[float(raw_gaze_key_frames[i][-1][0] + 10),
                                                                     angles[i][0], angles[i][1]]]
@@ -340,8 +362,7 @@ class HeuristicGazeMotionGenerator():
                 for k in range(0, len(raw_neck_key_frames[i][j])):
                     raw_neck_key_frames[i][j][k] = float(raw_neck_key_frames[i][j][k])
         return raw_gaze_key_frames, raw_neck_key_frames, []
-
-    def generate_neck_eye_curve(self, time_arr, pos_arr):
+    def generate_neck_eye_curve_legacy(self, time_arr, pos_arr):
         return self.simple_generate_neck_eye_curve(time_arr, pos_arr)
         gaze_intervals = []
         gaze_interval_arr = []

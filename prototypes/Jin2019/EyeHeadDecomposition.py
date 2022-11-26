@@ -90,8 +90,8 @@ class Heuristic_decomposition_azimuth:
         # assym = 2: more neck contribution at negative angle (left)
         self.assym = assym
         # here the percentage the is the percentage of neck contribution
-        self.sym_pts_low = [[-90, 0.6], [-50, 0.25], [-25, 0.1], [-10, 0.1], [0, 0], [10, 0.1],
-        [25, 0.1], [50, 0.25], [90, 0.6]]
+        self.sym_pts_low = [[-90, 0.3], [-50, 0.1], [-25, 0.05], [-10, 0.05], [0, 0], [10, 0.05],
+        [25, 0.05], [50, 0.1], [90, 0.3]]
         self.sym_pts_mid = [[-90, 0.6], [-50, 1], [-25, 0.75], [-10, 0.4], [0, 0], [10, 0.4],
                             [25, 0.75], [50, 1], [90, 0.6]]
         self.sym_pts_high = [[-90, 0.6], [-50, 1], [-25, 0.9], [-10, 0.5], [0, 0], [10, 0.5],
@@ -148,10 +148,10 @@ class Heuristic_decomposition_elevation:
         self.p1 = [0, 0]
     def get_y(self, p1, p2, x):
         return (x - p1[0])/(p2[0] - p1[0]) * (p2[1] - p1[1]) + p1[1]
-    def decompose(self, alpha, prev=None):
+    def decompose(self, alpha, neck_contribution):
         # alpha is a single float point value, should be the degree of angle at the azimuth plane
         ab_alpha = abs(alpha)
-        neck_alpha = 0.25 * ab_alpha
+        neck_alpha = 0.25 * ab_alpha * neck_contribution
         eye_alpha = ab_alpha - neck_alpha
         if alpha >= 0:
             return eye_alpha, neck_alpha
@@ -183,3 +183,12 @@ class Heuristic_eye_velocity:
             return self.get_y(self.p1, self.p2, angle_displacement)
         else:
             return 200
+
+class Heuristic_eye_velocity_simple:
+    def __init__(self):
+        # here the percentage the is the percentage of neck contribution
+        # by Coordination of the Eyes and Head during Visual Orienting
+        self.travel_time_per_deg = 1.4 / 1000
+    def decompose(self, angle_displacement, prev=None):
+        # alpha is a single float point value, should be the degree of angle at the azimuth plane
+        return 1 / self.travel_time_per_deg

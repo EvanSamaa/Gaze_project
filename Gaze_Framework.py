@@ -16,9 +16,9 @@ if __name__ == '__main__':
     scene_data_path = "data\look_at_points\simplest_scene.json"
 
     input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/CNN"
-    input_folder = "C:/Users/evan1/Documents/neckMovement/data/neck_rotation_values/Merchant_Intro"
+    # input_folder = "C:/Users/evan1/Documents/neckMovement/data/neck_rotation_values/Merchant_Intro"
     input_file_name = "cnn_borderOneGuy"
-    input_file_name = "audio"
+    # input_file_name = "audio"
     # get scene data
     scene_data_path = "data\look_at_points\simplest_scene.json"
     scene = Dietic_Conversation_Gaze_Scene_Info(scene_data_path)
@@ -44,15 +44,17 @@ if __name__ == '__main__':
     # planner = HabituationBasedPlanner(base_saliency, audio, sementic_script, scene, 0.7)
     # compute the gaze targets and times
     output_times, output_targets = planner.compute()
-    print(output_targets)
     #get the output_targets_positions from the scene
+    print(output_targets)
     output_target_positions = []
     for i in range(0, len(output_targets)):
         output_target_positions.append(scene.transform_world_to_local(scene.object_pos[output_targets[i]]))
     # get animation curves
     motion_generator = HeuristicGazeMotionGenerator(scene, sementic_script)
     ek, hk, micro_saccade = motion_generator.generate_neck_eye_curve(output_times, output_target_positions)
-    out_location = "C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl"
+    # out_location = "C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl"
+    out_location = "C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/prototype2p2.pkl"
+
     out = [ek, hk, micro_saccade]
     pickle.dump(out, open(out_location, 'wb'), protocol=2)
 
