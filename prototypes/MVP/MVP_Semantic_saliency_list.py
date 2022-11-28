@@ -22,7 +22,9 @@ class PauseBasedSaliency(Base_Static_Saliency_List):
         self.map_interp = None
     def compute_salience(self):
         # set the salience of the conversation partner to 1 by default
-
+        for i in range(0, self._numb_of_frames):
+            pass
+            
 
 
 

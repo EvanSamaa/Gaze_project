@@ -9,15 +9,16 @@ from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info
 from prototypes.MVP.MVP_static_saliency_list import ObjectBasedFixSaliency
 from prototypes.MVP.MVP_look_at_point_planner import HabituationBasedPlanner, RandomPlanner, PartnerHabituationPlanner
 from prototypes.MVP.MVP_eye_head_driver import HeuristicGazeMotionGenerator
+from prototypes.EyeCatch.Saccade_model import *
 import pickle
 if __name__ == '__main__':
 
     # inputs
     scene_data_path = "data\look_at_points\simplest_scene.json"
 
-    input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/CNN"
+    input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
     # input_folder = "C:/Users/evan1/Documents/neckMovement/data/neck_rotation_values/Merchant_Intro"
-    input_file_name = "cnn_borderOneGuy"
+    input_file_name = "audio"
     # input_file_name = "audio"
     # get scene data
     scene_data_path = "data\look_at_points\simplest_scene.json"
@@ -45,12 +46,15 @@ if __name__ == '__main__':
     # compute the gaze targets and times
     output_times, output_targets = planner.compute()
     #get the output_targets_positions from the scene
-    print(output_targets)
     output_target_positions = []
     for i in range(0, len(output_targets)):
         output_target_positions.append(scene.transform_world_to_local(scene.object_pos[output_targets[i]]))
     # get animation curves
+
+
     motion_generator = HeuristicGazeMotionGenerator(scene, sementic_script)
+
+
     ek, hk, micro_saccade = motion_generator.generate_neck_eye_curve(output_times, output_target_positions)
     # out_location = "C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl"
     out_location = "C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/prototype2p2.pkl"
