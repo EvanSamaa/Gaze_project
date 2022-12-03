@@ -144,8 +144,8 @@ class Heuristic_decomposition_azimuth:
 class Heuristic_decomposition_elevation:
     def __init__(self, p1=None, p2=None, p3=None, p4=None):
         # here the percentage the is the percentage of neck contribution
-        self.p0 = [90, 0.25]
-        self.p1 = [0, 0]
+        self.p0 = [90, 0.5]
+        self.p1 = [0, 0.1]
     def get_y(self, p1, p2, x):
         return (x - p1[0])/(p2[0] - p1[0]) * (p2[1] - p1[1]) + p1[1]
     def decompose(self, alpha, neck_contribution):
@@ -154,8 +154,12 @@ class Heuristic_decomposition_elevation:
         neck_alpha = 0.25 * ab_alpha * neck_contribution
         eye_alpha = ab_alpha - neck_alpha
         if alpha >= 0:
+            neck_alpha = 0.25 * ab_alpha * neck_contribution
+            eye_alpha = ab_alpha - neck_alpha
             return eye_alpha, neck_alpha
         else:
+            neck_alpha = 0.6 * ab_alpha * neck_contribution
+            eye_alpha = ab_alpha - neck_alpha
             return -eye_alpha, -neck_alpha
     def decompose_sequence(self, alpha_list):
         EIH_arr = []
