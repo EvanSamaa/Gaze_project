@@ -12,7 +12,7 @@ class InternalModelExact:
     def estimate_target_pose(self, index):
         return self.scene.object_pos[index]
     def get_base_pose(self):
-        return self.scene.speaker_face_direction
+        return self.scene.speaker_face_direction_local
 class SacccadeGenerator:
     def interpolate_goal(self, t):
         if t < self.target_times[0]:

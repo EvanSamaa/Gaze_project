@@ -4,8 +4,8 @@ import numpy as np
 
 class Dietic_Conversation_Gaze_Scene_Info:
     # speaker info
-    speaker_position: np.array = np.zeros((3, ))
-    speaker_face_direction: np.array = np.zeros((3,))
+    speaker_position_world: np.array = np.zeros((3,))
+    speaker_face_direction_local: np.array = np.zeros((3,))
 
     # transformations
     world_to_local: np.array = np.zeros((3, 3))
@@ -22,12 +22,12 @@ class Dietic_Conversation_Gaze_Scene_Info:
         # print(scene_data.keys())
         self_dict = scene_data["self_pos"]
         # print(self_dict.keys())
-        self.speaker_position = np.array(self_dict["pos"])
+        self.speaker_position_world = np.array(self_dict["pos"])
         self.speaker_frame_pos = np.array(self_dict["pos"])
-        self.speaker_face_direction = np.array(self_dict["calibration_dir_local"])
+        self.speaker_face_direction_local = np.array(self_dict["calibration_dir_local"])
         v_ref_world = np.array(self_dict["calibration_dir_world"])
         v_ref_local = np.array(self_dict["calibration_dir_local"])
-        self.local_to_world = self.rotation_matrix_from_vectors(v_ref_local, v_ref_world - self.speaker_position)
+        self.local_to_world = self.rotation_matrix_from_vectors(v_ref_local, v_ref_world - self.speaker_position_world)
         self.world_to_local = np.linalg.inv(self.local_to_world)
         temp_object_type, temp_object_pos, temp_object_interest = scene_data["object_type"], scene_data["object_pos"], scene_data["object_interestingness"]
         self.scene_object_id = list(temp_object_pos.keys())
@@ -52,7 +52,6 @@ class Dietic_Conversation_Gaze_Scene_Info:
             obj_direction_l = self.transform_world_to_local(self.object_pos[i])
             obj_direction_l = 1 / np.linalg.norm(obj_direction_l) * obj_direction_l
             self.object_distance_to_listener[i] = obj_direction_l.dot(listener_direction_l)
-
     def rotation_matrix_from_vectors(self, vec1, vec2):
         """ Find the rotation matrix that aligns vec1 to vec2
         :param vec1: A 3d "source" vector
@@ -71,9 +70,11 @@ class Dietic_Conversation_Gaze_Scene_Info:
         kmat = np.array([[0, -v[2], v[1]], [v[2], 0, -v[0]], [-v[1], v[0], 0]])
         rotation_matrix = np.eye(3) + kmat + kmat.dot(kmat) * ((1 - c) / (s ** 2))
         return rotation_matrix
+    def get_wondering_points(self):
+        wondering_angles = [""]
     def transform_world_to_local(self, pos_world):
-        p = pos_world - self.speaker_position
+        p = pos_world - self.speaker_position_world
         return self.world_to_local @ p
     def transform_local_to_world(self, pos_local):
-        p = self.local_to_world @ pos_local + self.speaker_position
+        p = self.local_to_world @ pos_local + self.speaker_position_world
         return p

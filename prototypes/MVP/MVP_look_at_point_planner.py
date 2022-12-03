@@ -16,7 +16,7 @@ class HabituationBasedPlanner():
 
         self.t = 0
         self.current_look_at_target = 0
-        self.current_look_at_position = self.scene_info.speaker_face_direction
+        self.current_look_at_position = self.scene_info.speaker_face_direction_local
         ############################################################
         ############## habituation related parameters ##############
         ############################################################
@@ -99,7 +99,7 @@ class PartnerHabituationPlanner():
         # state variables
         self.t = 0
         self.current_look_at_target = 0
-        self.current_look_at_position = self.scene_info.speaker_face_direction
+        self.current_look_at_position = self.scene_info.speaker_face_direction_local
 
         ############################################################
         ################### SCENE related things ###################
@@ -186,7 +186,7 @@ class RandomPlanner():
 
         self.t = 0
         self.current_look_at_target = 0
-        self.current_look_at_position = self.scene_info.speaker_face_direction
+        self.current_look_at_position = self.scene_info.speaker_face_direction_local
         ############################################################
         ############## habituation related parameters ##############
         ############################################################

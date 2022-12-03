@@ -235,7 +235,7 @@ class HeuristicGazeMotionGenerator():
             if i > 0:
                 prev_angle = np.array([raw_gaze_key_frames[i-1][0][1], raw_gaze_key_frames[i-1][0][2]])
             else:
-                prev_angle = rotation_angles_frome_positions(np.expand_dims(self.scene.speaker_face_direction, axis=0))[0]
+                prev_angle = rotation_angles_frome_positions(np.expand_dims(self.scene.speaker_face_direction_local, axis=0))[0]
             delta_gaze = np.linalg.norm(prev_angle - angles[i])
             gaze_speed = self.velocity_decomp.decompose(delta_gaze)
             # this time is kind of important
@@ -251,7 +251,7 @@ class HeuristicGazeMotionGenerator():
             if i > 0:
                 old_head = np.array([raw_neck_key_frames[-1][0][1], raw_neck_key_frames[-1][0][0]])
             else:
-                old_head = rotation_angles_frome_positions(np.expand_dims(self.scene.speaker_face_direction, axis=0))[0]
+                old_head = rotation_angles_frome_positions(np.expand_dims(self.scene.speaker_face_direction_local, axis=0))[0]
 
             new_head_angle = np.array([new_head_angle_az, new_head_angle_ele])
             delta_head = np.linalg.norm(new_head_angle - old_head)
@@ -274,7 +274,7 @@ class HeuristicGazeMotionGenerator():
                 raw_neck_key_frames.append(raw_neck_key_frames_i)
         for i in range(0, len(raw_gaze_key_frames)):
             if i == 0:
-                zero_look = rotation_angles_frome_positions(np.expand_dims(self.scene.speaker_face_direction, axis=0))[0]
+                zero_look = rotation_angles_frome_positions(np.expand_dims(self.scene.speaker_face_direction_local, axis=0))[0]
                 delta_gaze = np.linalg.norm(zero_look - angles[i])
                 gaze_speed = self.velocity_decomp.decompose(delta_gaze)
                 eye_travel_time = delta_gaze / gaze_speed
@@ -309,7 +309,7 @@ class HeuristicGazeMotionGenerator():
         for i in range(0, len(raw_neck_key_frames)):
             angle = np.array([raw_neck_key_frames[i][0][1], raw_neck_key_frames[i][0][2]])
             if i == 0:
-                zero_look = rotation_angles_frome_positions(np.expand_dims(self.scene.speaker_face_direction, axis=0))[
+                zero_look = rotation_angles_frome_positions(np.expand_dims(self.scene.speaker_face_direction_local, axis=0))[
                     0]
                 delta_head = np.linalg.norm(new_head_angle - zero_look)
                 head_speed = min((2 + (head_speed_factor) * 4) * delta_head + 20, 300)

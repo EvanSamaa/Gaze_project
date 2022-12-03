@@ -10,6 +10,8 @@ from prototypes.MVP.MVP_static_saliency_list import ObjectBasedFixSaliency
 from prototypes.MVP.MVP_look_at_point_planner import HabituationBasedPlanner, RandomPlanner, PartnerHabituationPlanner
 from prototypes.MVP.MVP_eye_head_driver import HeuristicGazeMotionGenerator
 from prototypes.EyeCatch.Saccade_model_modified import *
+from prototypes.Gaze_aversion_prior.Heuristic_model import *
+from prototypes.MVP.MVP_Aversion_saliency_list import *
 import pickle
 if __name__ == '__main__':
 
@@ -28,18 +30,31 @@ if __name__ == '__main__':
     audio_location = os.path.join(input_folder, input_file_name + ".wav")
     script_location = os.path.join(input_folder, input_file_name + ".txt")
     praatscript_location = os.path.join(input_folder, input_file_name + "_PraatOutput.txt")
-
     audio, sr = librosa.load(audio_location, sr=44100)
     # intensity = intensity_from_signal(audio)
     # pitch = pitch_from_signal(audio)
 
     # get alignment related things
     sementic_script = Sentence_word_phone_parser(praatscript_location, script_location)
+    # =============================================================================================
+    # =================================== get the saliency maps ===================================
+    # =============================================================================================
+
+    # get aversion probability:
+    compute_aversion_prob = ComputeAversionProbability(sementic_script, audio)
+    aversion_probability_t, aversion_probability_p = compute_aversion_prob.compute()
+    # compute aversion saliency map based on aversion probability
+    aversion_saliency = AversionSignalDrivenSaliency(scene, audio, sementic_script)
+    aversion_saliency.compute_salience(aversion_probability_t, aversion_probability_t)
 
     # get static saliency maps
     base_saliency = ObjectBasedFixSaliency(scene, audio, sementic_script)
     base_saliency.compute_salience()
-    # base_saliency.plot()
+
+    # =============================================================================================
+    # ========================== plan scan path based on the saliency maps ========================
+    # =============================================================================================
+
     # get view_target planner
     planner = PartnerHabituationPlanner(base_saliency, audio, sementic_script, scene, 0.8)
     # planner = HabituationBasedPlanner(base_saliency, audio, sementic_script, scene, 0.7)

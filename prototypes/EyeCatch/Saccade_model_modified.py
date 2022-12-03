@@ -12,7 +12,7 @@ class InternalModelExact:
     def estimate_target_pose(self, index):
         return self.scene.object_pos[index]
     def get_base_pose(self):
-        return self.scene.speaker_face_direction
+        return self.scene.speaker_face_direction_local
     def estimate_listener_pose(self):
         for i in range(0, len(self.scene.object_type)):
             if self.scene.object_type[i] == 5:
