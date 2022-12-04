@@ -7,11 +7,12 @@ from Signal_processing_utils import intensity_from_signal, pitch_from_signal
 from Speech_Data_util import Sentence_word_phone_parser
 from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info
 from prototypes.MVP.MVP_static_saliency_list import ObjectBasedFixSaliency
+from prototypes.MVP.MVP_Aversion_saliency_list import *
 from prototypes.MVP.MVP_look_at_point_planner import HabituationBasedPlanner, RandomPlanner, PartnerHabituationPlanner
 from prototypes.MVP.MVP_eye_head_driver import HeuristicGazeMotionGenerator
 from prototypes.EyeCatch.Saccade_model_modified import *
 from prototypes.Gaze_aversion_prior.Heuristic_model import *
-from prototypes.MVP.MVP_Aversion_saliency_list import *
+from prototypes.Boccignone2020.Gaze_target_planner import *
 import pickle
 if __name__ == '__main__':
 
@@ -45,7 +46,7 @@ if __name__ == '__main__':
     aversion_probability_t, aversion_probability_p = compute_aversion_prob.compute()
     # compute aversion saliency map based on aversion probability
     aversion_saliency = AversionSignalDrivenSaliency(scene, audio, sementic_script)
-    aversion_saliency.compute_salience(aversion_probability_t, aversion_probability_t)
+    aversion_saliency.compute_salience(aversion_probability_t, aversion_probability_p)
 
     # get static saliency maps
     base_saliency = ObjectBasedFixSaliency(scene, audio, sementic_script)
@@ -54,6 +55,9 @@ if __name__ == '__main__':
     # =============================================================================================
     # ========================== plan scan path based on the saliency maps ========================
     # =============================================================================================
+
+    planner = Scavenger_based_planner([base_saliency, aversion_saliency])
+    output_times, output_targets = planner.compute(scene.object_type.argmax())
 
     # get view_target planner
     planner = PartnerHabituationPlanner(base_saliency, audio, sementic_script, scene, 0.8)

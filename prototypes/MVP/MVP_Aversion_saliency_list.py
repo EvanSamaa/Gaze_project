@@ -11,7 +11,7 @@ from matplotlib.patches import Circle
 class AversionSignalDrivenSaliency(Base_Static_Saliency_List):
     def __init__(self, scene_info: Dietic_Conversation_Gaze_Scene_Info, audio: np.array, script: Sentence_word_phone_parser, sr=44100):
         self.scene_info: Dietic_Conversation_Gaze_Scene_Info = scene_info
-        self._number_of_objects = len(scene_info.object_pos)
+        self._number_of_objects = scene_info.object_pos.shape[0] + scene_info.get_wondering_points().shape[0]
         self._sr = sr
         self._dt = 0.02 # 100 hz
         self._audio_start = 0
@@ -26,11 +26,16 @@ class AversionSignalDrivenSaliency(Base_Static_Saliency_List):
         # continue setting salience for all objects
         for j in range(0, self._numb_of_frames):
             for i in range(0, self._number_of_objects):
-                if self.scene_info.object_type[i] == 5:
-                    self.map[j, i] = interpolate1D(aversion_prob_time, aversion_prob_val, float(j) * self._dt)
+                if i < self.scene_info.object_pos.shape[0]:
+                    self.map[j, i] = 0
+                    if self.scene_info.object_type[i] == 5:
+                        self.map[j, i] = 1 - interpolate1D(aversion_prob_time, aversion_prob_val, float(j) * self._dt)
                 else:
-                    self.map[j, i] = 1 - interpolate1D(aversion_prob_time, aversion_prob_val, float(j) * self._dt)
-                self.map[i] = self.map[0]
+                    if interpolate1D(aversion_prob_time, aversion_prob_val, float(j) * self._dt) < 0.3:
+                        self.map[j, i] = 0
+                    else:
+                        self.map[j, i] = 0.5
+
 
     def evaluate_all(self):
         if self.evaluated:
@@ -51,6 +56,10 @@ class AversionSignalDrivenSaliency(Base_Static_Saliency_List):
             self.map_interp = interp1d(x, self.map, axis=0, fill_value="extrapolate")
             self.evaluated = True
             return self.map_interp(t)
+    def get_object_positions(self):
+        object_positions = self.scene_info.object_pos
+        abstract_positions = self.scene_info.get_wondering_points()
+        return np.concatenate([object_positions, abstract_positions], axis=0)
 
     def plot(self):
         resolution = 5

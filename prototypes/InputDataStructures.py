@@ -1,7 +1,7 @@
 import json
 from typing import Dict, List
 import numpy as np
-
+from Geometry_Util import rotation_angles_frome_positions, directions_from_rotation_angles
 class Dietic_Conversation_Gaze_Scene_Info:
     # speaker info
     speaker_position_world: np.array = np.zeros((3,))
@@ -70,8 +70,25 @@ class Dietic_Conversation_Gaze_Scene_Info:
         kmat = np.array([[0, -v[2], v[1]], [v[2], 0, -v[0]], [-v[1], v[0], 0]])
         rotation_matrix = np.eye(3) + kmat + kmat.dot(kmat) * ((1 - c) / (s ** 2))
         return rotation_matrix
-    def get_wondering_points(self):
-        wondering_angles = [""]
+    def get_wondering_points(self, neutral_gaze_spot_local=np.array([0, 0, 100])):
+        """
+        get all the looking positions in local frame
+        :param neutral_gaze_spot_local: the default gaze position
+        :return: a [6, 3] array of all the positions to wonder
+        """
+        wondering_angles = [[22, 15], [-22, 15], [-40, -40], [40, -40], [0, -40], [0, 15]]
+        out_positions = []
+        out_angles = []
+        neutral_gaze_angle = rotation_angles_frome_positions(neutral_gaze_spot_local)
+
+        for angle in wondering_angles:
+            new_angle = np.zeros((1, 2))
+            new_angle[0, 0] = neutral_gaze_angle[0] + angle[0]
+            new_angle[0, 1] = neutral_gaze_angle[1] + angle[1]
+            out_angles.append(new_angle)
+        out_angles = np.concatenate(out_angles, axis=0)
+        out_positions = directions_from_rotation_angles(out_angles, np.linalg.norm(neutral_gaze_spot_local))
+        return out_positions
     def transform_world_to_local(self, pos_world):
         p = pos_world - self.speaker_position_world
         return self.world_to_local @ p
