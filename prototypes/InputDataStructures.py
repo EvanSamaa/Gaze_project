@@ -43,6 +43,7 @@ class Dietic_Conversation_Gaze_Scene_Info:
         self.object_interest = np.array(self.object_interest)
         self.object_type = np.array(self.object_type)
         self.object_distance_to_listener = np.zeros(self.object_interest.shape)
+
         for i in range(0, self.object_type.shape[0]):
             if self.object_type[i] == 5:
                 listener_direction_l = self.transform_world_to_local(self.object_pos[i])
@@ -76,11 +77,10 @@ class Dietic_Conversation_Gaze_Scene_Info:
         :param neutral_gaze_spot_local: the default gaze position
         :return: a [6, 3] array of all the positions to wonder
         """
-        wondering_angles = [[22, 15], [-22, 15], [-40, -40], [40, -40], [0, -40], [0, 15]]
+        wondering_angles = [[22, 20], [-22, 20], [-22, -20], [22, -20]]
         out_positions = []
         out_angles = []
         neutral_gaze_angle = rotation_angles_frome_positions(neutral_gaze_spot_local)
-
         for angle in wondering_angles:
             new_angle = np.zeros((1, 2))
             new_angle[0, 0] = neutral_gaze_angle[0] + angle[0]

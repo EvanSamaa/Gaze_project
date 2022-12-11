@@ -33,11 +33,16 @@ class GMM_Decomposition:
 
     @classmethod
     def fromfile(cls, model_path: str):
+        print(model_path)
         temp_gmm_dict: dict = {}
         metadata: dict = json.load(open(model_path + "/metadata.json"))
         for key in metadata.keys():
             filepath = metadata[key]
-            temp_gmm_dict[int(float(key))] = pkl.load(open(filepath, "rb"))
+            try:
+                temp_gmm_dict[int(float(key))] = pkl.load(open(filepath, "rb"))
+            except:
+                filepath = "C:/Users/evan1/Documents/Gaze_project/prototypes/Jin2019/model/" + filepath[54:]
+                temp_gmm_dict[int(float(key))] = pkl.load(open(filepath, "rb"))
         return cls(temp_gmm_dict)
     def save_model(self, model_path: str):
         try:

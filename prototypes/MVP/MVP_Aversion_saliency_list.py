@@ -9,11 +9,11 @@ from matplotlib import pyplot as plt
 from matplotlib.patches import Circle
 
 class AversionSignalDrivenSaliency(Base_Static_Saliency_List):
-    def __init__(self, scene_info: Dietic_Conversation_Gaze_Scene_Info, audio: np.array, script: Sentence_word_phone_parser, sr=44100):
+    def __init__(self, scene_info: Dietic_Conversation_Gaze_Scene_Info, audio: np.array, script: Sentence_word_phone_parser, sr=44100, dt=0.02):
         self.scene_info: Dietic_Conversation_Gaze_Scene_Info = scene_info
         self._number_of_objects = scene_info.object_pos.shape[0] + scene_info.get_wondering_points().shape[0]
         self._sr = sr
-        self._dt = 0.02 # 100 hz
+        self._dt = dt # 100 hz
         self._audio_start = 0
         self._audio_end = float(audio.shape[0]) / float(self._sr)
         self._numb_of_frames = int(np.ceil((self._audio_end) / self._dt)) # total number of frames
@@ -34,7 +34,7 @@ class AversionSignalDrivenSaliency(Base_Static_Saliency_List):
                     if interpolate1D(aversion_prob_time, aversion_prob_val, float(j) * self._dt) < 0.3:
                         self.map[j, i] = 0
                     else:
-                        self.map[j, i] = 0.5
+                        self.map[j, i] = 0.8
 
 
     def evaluate_all(self):

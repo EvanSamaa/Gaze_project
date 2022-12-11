@@ -4,7 +4,7 @@ from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info
 from Geometry_Util import rotation_angles_frome_positions, rotation_axis_angle_from_vector, \
     rotation_matrix_from_axis_angle, rotation_matrix_from_vectors
 from Signal_processing_utils import dx_dt
-from prototypes.Optimization_based_head_eye_seperator.Baseline_optimization import *
+from prototypes.Optimization_based_head_eye_seperator.Baseline_optimization import optimize_for_head_gaze_breakdown
 # class InternalModelCenterBias:
 class InternalModelExact:
     def __init__(self, scene: Dietic_Conversation_Gaze_Scene_Info):
@@ -77,7 +77,7 @@ class SacccadeGenerator:
                 print("I wanna eat korean fried chicken")
         gaze_intervals_pos = np.concatenate(gaze_intervals_pos, axis=0)
         return gaze_intervals_time, gaze_intervals_pos
-    def __init__(self, target_times, target_positions, target_index, internal_model):
+    def __init__(self, target_times, target_positions, target_index, internal_model, dt=0.02):
         # gaze state variables:
         self.gaze_current_goal_position = internal_model.get_base_pose()
         self.head_current_goal_position = internal_model.get_base_pose()
@@ -85,7 +85,7 @@ class SacccadeGenerator:
         self.head_most_recent_index = 0
 
         # meta parameters:
-        self.simulation_dt = 0.02
+        self.simulation_dt = dt
         self.submovement_dt = 0.200
         self.movement_threshold = 2000  # use to detect intervals with no gaze shift. In which micro saccade are generated
 
@@ -103,7 +103,7 @@ class SacccadeGenerator:
 
         # Initialize aray to store the state history (positions) i.e. the animation curve
         end_t = self.target_times[-1] + 10.0
-        end_t = int(np.round(end_t / self.simulation_dt))
+        end_t = int(np.ceil(end_t / self.simulation_dt))
         self.gaze_positions = internal_model.get_base_pose().astype(np.float32)
         self.gaze_positions = np.expand_dims(self.gaze_positions, axis=0)
         self.gaze_positions = np.tile(self.gaze_positions, [end_t, 1])
@@ -124,7 +124,10 @@ class SacccadeGenerator:
         t0 = int(t0 / dt)
         tf = int(tf / dt)
         t = np.arange(t0, tf, 1)
-        v = 30 / np.power(tf - t0, 5) * ((t - t0) ** 2) * ((t - tf) ** 2)
+        if t.shape[0] != 1:
+            v = 30 / np.power(tf - t0, 5) * ((t - t0) ** 2) * ((t - tf) ** 2)
+        else:
+            v = np.array([1])
         return v
     def add_gaze_submovement(self, t0, t1, p0, p1):
         # if there is nothing to do, do nothing
@@ -142,6 +145,7 @@ class SacccadeGenerator:
         starting_frame = int(t0 / self.simulation_dt)
         ending_frame = int(t1 / self.simulation_dt)
         # update current gaze_goal position
+        # print(p1 - p0, submovement.sum(axis=0), t0, t1)
         self.gaze_current_goal_position = p1
         return submovement, [starting_frame, ending_frame]
     def add_head_submovement(self, t0, t1, p0_not_normalized, p1_not_normalized):
@@ -224,7 +228,7 @@ class SacccadeGenerator:
         gaze_submovements_indexes = []  # use to store the index of each submovement
         head_submovements = []  # use to store a list of existing submovements
         head_submovements_indexes = []  # use to store the index of each submovement
-        while round(self.t) < end_t:
+        while self.t < end_t - self.simulation_dt/2:
             t_index = int(np.round(self.t / self.simulation_dt))
             # use to store the gaze and head submovements that have expired
             expired_gaze = []
@@ -308,7 +312,6 @@ class SacccadeGenerator:
             end = stable_windows[i][1]
             micro_saccade_list, prev_saccade = self.handle_microsaccade(start, prev_saccade, end)
             self.micro_saccade_kf.append(micro_saccade_list)
-
         return self.prepare_output()
 
     def prepare_output(self):

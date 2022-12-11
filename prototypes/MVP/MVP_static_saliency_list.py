@@ -7,11 +7,11 @@ from Speech_Data_util import Sentence_word_phone_parser
 from matplotlib import pyplot as plt
 from matplotlib.patches import Circle
 class ObjectBasedFixSaliency(Base_Static_Saliency_List):
-    def __init__(self, scene_info: Dietic_Conversation_Gaze_Scene_Info, audio: np.array, script: Sentence_word_phone_parser, sr=44100):
+    def __init__(self, scene_info: Dietic_Conversation_Gaze_Scene_Info, audio: np.array, script: Sentence_word_phone_parser, sr=44100, dt=0.02):
         self.scene_info: Dietic_Conversation_Gaze_Scene_Info = scene_info
         self._number_of_objects = len(scene_info.object_pos)
         self._sr = 44100
-        self._dt = 0.02 # 100 hz
+        self._dt = dt # 100 hz
         self._audio_start = 0
         self._audio_end = float(audio.shape[0]) / float(self._sr)
         self._numb_of_frames = int(np.ceil((self._audio_end) / self._dt)) # total number of frames
