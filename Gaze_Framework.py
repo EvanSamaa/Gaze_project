@@ -20,8 +20,8 @@ if __name__ == '__main__':
     np.random.seed(0)
     # inputs
     scene_data_path = "data\look_at_points\simplest_scene.json"
-    # input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
-    input_folder = "C:/Users/evan1/Documents/neckMovement/data/neck_rotation_values/Sarah"
+    input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
+    # input_folder = "C:/Users/evan1/Documents/neckMovement/data/neck_rotation_values/Sarah"
     # input_file_name = "audio"
     input_file_name = "audio"
     # get scene data
@@ -82,8 +82,8 @@ if __name__ == '__main__':
 
     # motion_generator = HeuristicGazeMotionGenerator(scene, sementic_script)
     # ek, hk, micro_saccade = motion_generator.generate_neck_eye_curve(output_times, output_target_positions)
-    out_location = "C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl"
-    # out_location = "C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/prototype2p2.pkl"
+    # out_location = "C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl"
+    out_location = "C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/prototype2p2.pkl"
 
     out = [ek, hk, micro_saccade, output]
     pickle.dump(out, open(out_location, 'wb'), protocol=2)

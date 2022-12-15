@@ -2,6 +2,7 @@ from prototypes.MVP.MVP_static_saliency_list import ObjectBasedFixSaliency
 from prototypes.MVP.MVP_Aversion_saliency_list import AversionSignalDrivenSaliency
 from Geometry_Util import rotation_angles_frome_positions
 import numpy as np
+from matplotlib import pyplot as plt
 class Scavenger_based_planner:
     def __init__(self, saliency_maps):
         # hyper-parameters
@@ -31,7 +32,9 @@ class Scavenger_based_planner:
                 extension = np.zeros((arr.shape[0], object_count-arr.shape[1]))
                 arr = np.concatenate([arr, extension], axis=1)
             self.saliency_maps_arrs.append(arr)
+        # get the position of objects
         self.object_positions = saliency_maps[max_id].get_object_positions()
+        # turn them into rotation angles
         self.object_positions = rotation_angles_frome_positions(self.object_positions) / 180 * np.pi
         # ========================================= state variables ==========================================
         self.current_look_at = 0
@@ -53,13 +56,13 @@ class Scavenger_based_planner:
         values = np.zeros(self.saliency_maps_arrs[0].shape)
         for map_arr in self.saliency_maps_arrs:
             values += map_arr
-
         # initialize the first look at point with the user speficied initial target
         current_look_at = initial_target
         time_within_patch = 0
         # add the first target to the output list
         output_target.append(current_look_at)
         output_t.append(0)
+        temp_arr = 0
         for i in range(0, self.saliency_maps_arrs[0].shape[0]):
             ##############################################################################################
             ############################### decide whether to switch patch ###############################
@@ -92,7 +95,10 @@ class Scavenger_based_planner:
 
             ########################### sample from bernoulli distribution to determine wheter to switch patch #####################
             # if the sampling determine that there is a patch switch
-            rv = np.random.binomial(1, p_stay)
+            if p_stay <= 0.7:
+                rv = np.random.binomial(1, p_stay)
+            else:
+                rv = 1
             if rv == 0 and time_within_patch >= self.min_saccade_time:
                 # TODO: make the new patch randomly sampled instead of deterministic
                 new_patch = np.argmax(rho * not_looked_at_mask)

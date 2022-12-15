@@ -33,7 +33,6 @@ class GMM_Decomposition:
 
     @classmethod
     def fromfile(cls, model_path: str):
-        print(model_path)
         temp_gmm_dict: dict = {}
         metadata: dict = json.load(open(model_path + "/metadata.json"))
         for key in metadata.keys():
