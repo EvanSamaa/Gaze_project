@@ -22,6 +22,26 @@ class AversionSignalDrivenSaliency(Base_Static_Saliency_List):
         self.evaluated = False
         self.map = np.zeros((int(self._numb_of_frames), self._number_of_objects))
         self.map_interp = None
+    def evaluate_all(self):
+        if self.evaluated:
+            return self.map
+        else:
+            self.compute_salience()
+            x = np.arange(0, self._numb_of_frames) * self._dt
+            self.map_interp = interp1d(x, self.map, axis=0, fill_value="extrapolate")
+            self.evaluated = True
+            return self.map
+
+
+    def evaluate(self, t):
+        if self.evaluated:
+            return self.map_interp(t)
+        else:
+            self.compute_salience()
+            x = np.arange(0, self._numb_of_frames) * self._dt
+            self.map_interp = interp1d(x, self.map, axis=0, fill_value="extrapolate")
+            self.evaluated = True
+            return self.map_interp(t)
     def compute_salience(self, aversion_prob_time, aversion_prob_val):
         # continue setting salience for all objects
         for j in range(0, self._numb_of_frames):
@@ -34,28 +54,7 @@ class AversionSignalDrivenSaliency(Base_Static_Saliency_List):
                     if interpolate1D(aversion_prob_time, aversion_prob_val, float(j) * self._dt) < 0.3:
                         self.map[j, i] = 0
                     else:
-                        self.map[j, i] = 0.8
-
-
-    def evaluate_all(self):
-        if self.evaluated:
-            return self.map
-        else:
-            self.compute_salience()
-            x = np.arange(0, self._numb_of_frames) * self._dt
-            self.map_interp = interp1d(x, self.map, axis=0, fill_value="extrapolate")
-            self.evaluated = True
-            return self.map
-        return super(ObjectBasedFixSaliency, self).evaluate_all()
-    def evaluate(self, t):
-        if self.evaluated:
-            return self.map_interp(t)
-        else:
-            self.compute_salience()
-            x = np.arange(0, self._numb_of_frames) * self._dt
-            self.map_interp = interp1d(x, self.map, axis=0, fill_value="extrapolate")
-            self.evaluated = True
-            return self.map_interp(t)
+                        self.map[j, i] = 0.5
     def get_object_positions(self):
         object_positions = self.scene_info.object_pos
         abstract_positions = self.scene_info.get_wondering_points()

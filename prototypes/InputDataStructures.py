@@ -10,7 +10,7 @@ class Dietic_Conversation_Gaze_Scene_Info:
     # transformations
     world_to_local: np.array = np.zeros((3, 3))
     local_to_world: np.array = np.zeros((3, 3))
-    speaker_frame_pos: np.array = np.zeros((3, ))
+    speaker_frame_pos: np.array = np.zeros((3, )) # position of the speaker head in world coord
 
     # the positions are normalized direction with resprect to the position of the head
     scene_object_id: List[str] = []
@@ -43,7 +43,6 @@ class Dietic_Conversation_Gaze_Scene_Info:
         self.object_interest = np.array(self.object_interest)
         self.object_type = np.array(self.object_type)
         self.object_distance_to_listener = np.zeros(self.object_interest.shape)
-
         for i in range(0, self.object_type.shape[0]):
             if self.object_type[i] == 5:
                 listener_direction_l = self.transform_world_to_local(self.object_pos[i])
@@ -77,7 +76,7 @@ class Dietic_Conversation_Gaze_Scene_Info:
         :param neutral_gaze_spot_local: the default gaze position
         :return: a [6, 3] array of all the positions to wonder
         """
-        wondering_angles = [[22, 20], [-22, 20], [-22, -20], [22, -20]]
+        wondering_angles = [[22, 10], [-22, 10], [-22, -10], [22, -10]]
         out_positions = []
         out_angles = []
         neutral_gaze_angle = rotation_angles_frome_positions(neutral_gaze_spot_local)
@@ -95,3 +94,9 @@ class Dietic_Conversation_Gaze_Scene_Info:
     def transform_local_to_world(self, pos_local):
         p = self.local_to_world @ pos_local + self.speaker_position_world
         return p
+    def get_conversation_partner_id(self):
+        partners = []
+        for i in range(0, self.object_type.shape[0]):
+            if self.object_type[i] == 5:
+                partners.append(i)
+        return partners

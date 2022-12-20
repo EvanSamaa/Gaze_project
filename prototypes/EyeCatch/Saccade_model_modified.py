@@ -30,6 +30,16 @@ class SacccadeGenerator:
                 if self.target_times[i] <= t and self.target_times[i + 1] > t:
                     return self.target_positions[i]
         print("Error")
+    def interpolate_gaze_goal_index(self, t):
+        if t < self.target_times[0]:
+            return self.target_index[0]
+        elif t >= self.target_times[-1]:
+            return self.target_index[-1]
+        else:
+            for i in range(0, len(self.target_times) - 1):
+                if self.target_times[i] <= t and self.target_times[i + 1] > t:
+                    return self.target_index[i]
+        print("Error")
     def interpolate_head_goal(self, t):
         if t < self.target_gaze_intervals_time[0][0]:
             return self.target_positions_head[0]
@@ -121,13 +131,15 @@ class SacccadeGenerator:
         duration = 20 + diff * 1.33
         return duration / 1000
     def gaze_velocity_profile(self, t0: float, tf: float, dt: float):
-        t0 = int(t0 / dt)
-        tf = int(tf / dt)
+        t0 = int(round(t0 / dt))
+        tf = int(round(tf / dt))
         t = np.arange(t0, tf, 1)
         if t.shape[0] != 1:
             v = 30 / np.power(tf - t0, 5) * ((t - t0) ** 2) * ((t - tf) ** 2)
         else:
             v = np.array([1])
+        v = v / v.sum()
+
         return v
     def add_gaze_submovement(self, t0, t1, p0, p1):
         # if there is nothing to do, do nothing
@@ -142,8 +154,8 @@ class SacccadeGenerator:
         submovement_direction = np.tile(submovement_direction, [submovement_speed.shape[0], 1])
         submovement = submovement_speed * submovement_direction
         # get the starting and ending frame of the submovmeent
-        starting_frame = int(t0 / self.simulation_dt)
-        ending_frame = int(t1 / self.simulation_dt)
+        starting_frame = int(round(t0 / self.simulation_dt))
+        ending_frame = int(round(t1 / self.simulation_dt))
         # update current gaze_goal position
         # print(p1 - p0, submovement.sum(axis=0), t0, t1)
         self.gaze_current_goal_position = p1
@@ -184,8 +196,8 @@ class SacccadeGenerator:
         submovement = submovement_speed * submovement_direction
 
         # find the starting and ending frame of the movement
-        starting_frame = int(t0 / self.simulation_dt)
-        ending_frame = int(t1 / self.simulation_dt)
+        starting_frame = int(round(t0 / self.simulation_dt))
+        ending_frame = int(round(t1 / self.simulation_dt))
         # return the submovement and everything
         return submovement, [starting_frame, ending_frame]
     def handle_microsaccade(self, start_frame, prev_saccade_frame, end_frame, saccade_factor=0.05,
@@ -262,7 +274,6 @@ class SacccadeGenerator:
                     gaze_submovements.append(gaze_submovement)
                     gaze_submovements_indexes.append(gaze_submovement_range)
                     self.gaze_positions[t_index] += gaze_submovement[0]
-
                 # obtain head shift duration
                 head_movement_duration = .4
                 # add the head movement
@@ -283,6 +294,7 @@ class SacccadeGenerator:
             for i in range(len(expired_gaze) - 1, -1, -1):
                 gaze_submovements.pop(expired_gaze[i])
                 gaze_submovements_indexes.pop(expired_gaze[i])
+
 
             # accumulate time
             self.t += self.simulation_dt

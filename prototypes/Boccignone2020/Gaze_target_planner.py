@@ -4,7 +4,7 @@ from Geometry_Util import rotation_angles_frome_positions
 import numpy as np
 from matplotlib import pyplot as plt
 class Scavenger_based_planner:
-    def __init__(self, saliency_maps):
+    def __init__(self, saliency_maps, scene_info):
         # hyper-parameters
         self.smoothing_constant = 0.2
         self.kappa = 1 # this is the distance factor (i.e. cost of migration)
