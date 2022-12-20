@@ -122,6 +122,6 @@ def load_gaze():
                 t=t[i] * fps)
             else:
                 cmds.setKeyframe("jNeck_ctl.jNeck_{}Rotate".format(dims[k]), v=-(v[i]),
-                                 t=t[i] * mel.eval('float $fps = `currentTimeUnitToFPS`'))
+                                 t=t[i] * fps)
     
 load_gaze()

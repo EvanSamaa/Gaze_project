@@ -56,15 +56,15 @@ def optimize_for_head_gaze_breakdown(gaze_intervals, list_of_gaze_positions, lis
         neck_angle_ele = cp.Variable(1)
         neck_angle_azi = cp.Variable(1)
         # optimize for neck angle azi
-        objective = cp.Minimize(min(gaze_time, 1) * (neck_angle_azi - prior_head_angles[i, 0]) ** 2
-                                + (neck_angle_azi - listener_angle[0])**2
-                                + (neck_angle_azi - center_bias_head_angles[i, 0]) ** 2)
+        # objective = cp.Minimize(min(gaze_time, 1) * (neck_angle_azi - prior_head_angles[i, 0]) ** 2
+        #                         + (neck_angle_azi - listener_angle[0])**2)
+        objective = cp.Minimize(min(gaze_time, 1) * (neck_angle_azi - prior_head_angles[i, 0]) ** 2)
         problem = cp.Problem(objective, [])
         opt = problem.solve()
         # optimize for neck angle elevation
-        objective = cp.Minimize(min(gaze_time, 1) * (neck_angle_ele - prior_head_angles[i, 1]) ** 2
-                                + (neck_angle_ele - listener_angle[1])**2
-                                + (neck_angle_ele - center_bias_head_angles[i, 1]) ** 2)
+        # objective = cp.Minimize(min(gaze_time, 1) * (neck_angle_ele - prior_head_angles[i, 1]) ** 2
+        #                         + (neck_angle_ele - listener_angle[1])**2)
+        objective = cp.Minimize(min(gaze_time, 1) * (neck_angle_ele - prior_head_angles[i, 1]) ** 2)
         problem = cp.Problem(objective, [])
         opt = problem.solve()
         solved_angles.append(np.array([[neck_angle_azi.value[0], neck_angle_ele.value[0]]]))
