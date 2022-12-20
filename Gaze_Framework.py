@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import os, sys
 import librosa
-from Signal_processing_utils import intensity_from_signal, pitch_from_signal
+from Signal_processing_utils import intensity_from_signal, pitch_from_signal, sparse_key_smoothing
 from Speech_Data_util import Sentence_word_phone_parser
 from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info
 from prototypes.MVP.MVP_static_saliency_list import ObjectBasedFixSaliency
@@ -56,8 +56,8 @@ if __name__ == '__main__':
     # =============================================================================================
     # ========================== plan scan path based on the saliency maps ========================
     # =============================================================================================
-    # planner = Scavenger_based_planner([base_saliency, aversion_saliency])
-    planner = Scavenger_planner_with_nest([base_saliency, aversion_saliency], scene)
+    planner = Scavenger_based_planner([base_saliency, aversion_saliency], scene)
+    # planner = Scavenger_planner_with_nest([base_saliency, aversion_saliency], scene)
     output_times, output_targets = planner.compute(scene.object_type.argmax())
     # get view_target planner
     # planner = PartnerHabituationPlanner(base_saliency, audio, sementic_script, scene, 0.8)
@@ -94,7 +94,6 @@ if __name__ == '__main__':
     # ek, hk, micro_saccade = motion_generator.generate_neck_eye_curve(output_times, output_target_positions)
     # out_location = "C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl"
     out_location = "C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/prototype2p2.pkl"
-
     out = [ek, hk, micro_saccade, jali_neck_output]
     pickle.dump(out, open(out_location, 'wb'), protocol=2)
 

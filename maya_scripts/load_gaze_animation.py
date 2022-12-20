@@ -2,6 +2,24 @@ import pickle as pkl
 import math
 def create_neck_blend_node():
     try:
+        cmds.cutKey("jNeck_ctl.jNeck_xRotate")
+        cmds.cutKey("jNeck_ctl.jNeck_yRotate")
+        cmds.cutKey("jNeck_ctl.jNeck_zRotate")
+    except:
+        pass
+    try:        
+        cmds.delete("jSync1_Vanilla_B1")
+    except:
+        pass
+    try:
+        cmds.delete("jSync1_Vanilla_B2")
+    except:
+        pass
+    try:
+        cmds.delete("jSync1_Vanilla_B3")
+    except:
+        pass
+    try:
         cmds.delete("xneck_pairBlend")
     except:
         pass

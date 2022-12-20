@@ -2,7 +2,7 @@
 import math
 import json
 import random
-
+from Signal_processing_utils import sparse_key_smoothing
 import librosa
 import parselmouth
 
@@ -1174,7 +1174,9 @@ class NeckCurve:
         impulse_xt, impulse_x = impulse_curve_set.recompute_all_points()
         sentence_level_xt, sentence_level_x = sentence_curve_set.recompute_all_points()
         out_xt, out_x = sentence_curve_set.sum_with_other_tiers([impulse_curve_set, jitter_curve_set])
+        out_x = sparse_key_smoothing(out_xt, out_x)
         out_zt, out_z = sentence_curve_set_z.recompute_all_points(mean=True)
+        out_z = sparse_key_smoothing(out_zt, out_z)
         out_yt, out_y = impulse_curve_set_y.recompute_all_points(mean=True)
         output = [out_xt, out_x, out_yt, out_y, out_zt, out_z]
         outputAsyncToFile(self.out_path, output)
