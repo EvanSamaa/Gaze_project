@@ -20,13 +20,15 @@ import pickle
 if __name__ == '__main__':
     np.random.seed(0)
     # inputs
-    scene_data_path = "data\look_at_points\simplest_scene.json"
-    input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
+    scene_data_path = "data/look_at_points/simplest_scene.json"
+    # input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
+    input_folder = "/Volumes/EVAN_DISK/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
     # input_folder = "C:/Users/evan1/Documents/neckMovement/data/neck_rotation_values/Sarah"
+
     # input_file_name = "audio"
     input_file_name = "audio"
     # get scene data
-    scene_data_path = "data\look_at_points\simplest_scene.json"
+    scene_data_path = "data/look_at_points/simplest_scene.json"
     scene = Dietic_Conversation_Gaze_Scene_Info(scene_data_path)
 
     # get audio+script+alignment data
@@ -94,6 +96,7 @@ if __name__ == '__main__':
     # ek, hk, micro_saccade = motion_generator.generate_neck_eye_curve(output_times, output_target_positions)
     # out_location = "C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl"
     out_location = "C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/prototype2p2.pkl"
+    out_location = "data/out"
     out = [ek, hk, micro_saccade, jali_neck_output]
     pickle.dump(out, open(out_location, 'wb'), protocol=2)
 
