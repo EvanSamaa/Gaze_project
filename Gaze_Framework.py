@@ -17,6 +17,7 @@ from prototypes.Boccignone2020.Gaze_target_planner import Scavenger_based_planne
 from prototypes.Boccignone2020.Improved_gaze_target_planner import Scavenger_planner_with_nest
 from prototypes.JaliNeck.JaliNeck import NeckCurve
 import pickle
+import math
 if __name__ == '__main__':
     np.random.seed(0)
     # inputs
@@ -49,14 +50,13 @@ if __name__ == '__main__':
     # compute aversion saliency map based on aversion probability
     aversion_saliency = AversionSignalDrivenSaliency(scene, audio, sementic_script, dt=0.02)
     aversion_saliency.compute_salience(aversion_probability_t, aversion_probability_p)
-
     # get static saliency maps
     base_saliency = ObjectBasedFixSaliency(scene, audio, sementic_script)
     base_saliency.compute_salience()
     # =============================================================================================
     # ========================== plan scan path based on the saliency maps ========================
     # =============================================================================================
-    planner = Scavenger_based_planner([base_saliency, aversion_saliency], scene)
+    planner = Scavenger_planner_with_nest([base_saliency, aversion_saliency], scene)
     # planner = Scavenger_planner_with_nest([base_saliency, aversion_saliency], scene)
     output_times, output_targets = planner.compute(scene.object_type.argmax())
     # get view_target planner
@@ -64,13 +64,12 @@ if __name__ == '__main__':
     # planner = HabituationBasedPlanner(base_saliency, audio, sementic_script, scene, 0.7)
     # compute the gaze targets and times
     # output_times, output_targets = planner.compute()
-    print(output_targets)
     #get the output_targets_positions from the scene
     output_target_positions = []
     wondering_positions = scene.get_wondering_points()
     for i in range(0, len(output_targets)):
         if output_targets[i] < scene.object_pos.shape[0]:
-            # the real scene objects have physical location in world coordinate space
+            # the real scene objects have physical location in world coor dinate space
             output_target_positions.append(scene.transform_world_to_local(scene.object_pos[output_targets[i]]))
         else:
             # the virtual look-at directions (i.e. pondering locations)are in local coordinate space
@@ -89,12 +88,15 @@ if __name__ == '__main__':
     # distance_with_goal = arr - partner
     # plt.plot(distance_with_goal)
     # plt.show()
-
+    blend_weight = []
+    for i in range(1, len(hk[0])-1):
+        velocity = math.sqrt((hk[0][i][1]-hk[0][i-1][1])**2 + (hk[0][i-1][2]-hk[0][i][2])**2)
+        blend_weight.append([hk[0][i][0], 1 - min(1, velocity/0.75)])
     # motion_generator = HeuristicGazeMotionGenerator(scene, sementic_script)
     # ek, hk, micro_saccade = motion_generator.generate_neck_eye_curve(output_times, output_target_positions)
     # out_location = "C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl"
     out_location = "C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/prototype2p2.pkl"
-    out = [ek, hk, micro_saccade, jali_neck_output]
+    out = [ek, hk, micro_saccade, jali_neck_output, blend_weight]
     pickle.dump(out, open(out_location, 'wb'), protocol=2)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

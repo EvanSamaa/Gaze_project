@@ -7,15 +7,17 @@ class Scavenger_planner_with_nest:
     def __init__(self, saliency_maps, scene_info):
         # hyper-parameters
         self.smoothing_constant = 0.2
-        self.kappa = 2 # this is the distance factor (i.e. cost of migration)
-        self.phi = .2 # this is the consumption efficiency i.e. how long it takes to consume all resources within a patch
+        self.kappa = 1.3333333 # this is the distance factor (i.e. cost of migration), this is from the paper
+        self.kappa = 2.2 # this is the distance factor (i.e. cost of migration)
+        self.momentum_weight = 2
+        self.phi = .5 # this is the consumption efficiency i.e. how long it takes to consume all resources within a patch
         self.beta = 20 # this is use to generate the probability of the bernoulli variable that determines staying vs
         self.min_saccade_time = 0.2 # this specified how closely two nearby saccade can be with one another.
 
-        self.nest_consumption_time = 8 # the amount of time to consume food at the nest
+        self.nest_consumption_rate = 0.5 # the amount of time to consume food at the nest
         # TODO: this tao should also be time varying (Using this for the basis to implement reactive gaze (to the
         # listener's gaze))
-        self.predation_risk_tao = 0.3 # the constant for exponential distribution for predation
+        self.predation_risk_tao = 0.5 # the constant for exponential distribution for predation
         # get the dt
         self.dt = saliency_maps[0]._dt
         # ====================================== Storing saliency maps ======================================
@@ -46,15 +48,15 @@ class Scavenger_planner_with_nest:
         # get the conversation partner's id
         self.conversation_partner_id = saliency_maps[0].scene_info.get_conversation_partner_id()[0]
         # ========================================= state variables ==========================================
-        self.current_look_at = 0
+        self.current_look_at = self.conversation_partner_id
         # index for the nest, of which the gaze will gravitate towards
         self.nest_index = self.conversation_partner_id
         # momentum stores the current gaze_direction from the conversation-partner
         self.momentum = np.array([0, 0])
     def compute(self, initial_target):
         # variable to store the output values
-        output_t = []
-        output_target = []
+        output_t = [0]
+        output_target = [self.nest_index]
         # step 1: obtain smoothed saliency map
         for i in range(0, len(self.saliency_maps_arrs)):
             map_i = self.saliency_maps_arrs[i]
@@ -75,8 +77,6 @@ class Scavenger_planner_with_nest:
         # add the first target to the output list
         output_target.append(self.current_look_at)
         output_t.append(0)
-        temp_arr = 0
-
         for i in range(0, self.saliency_maps_arrs[0].shape[0]):
             ##############################################################################################
             ############################### decide whether to switch patch ###############################
@@ -94,21 +94,28 @@ class Scavenger_planner_with_nest:
             distance_to_nest = np.tile(self.object_positions[self.nest_index:self.nest_index + 1], [self.object_positions.shape[0], 1])
             distance_to_nest = (distance_to_nest - self.object_positions)
             distance_to_nest = np.sqrt(np.square(distance_to_nest).sum(axis=1))
-
             # updates 5 times a second
             if (float(i) * self.dt / 0.1).is_integer() and i > 0:
                 # if we are currently in the nest
-                if self.current_look_at == self.nest_index:
+                if self.current_look_at == self.nest_index or self.predation_risk_tao > 0:
                     # compute the average value of going out
-                    M = self.nest_consumption_time
-                    rho = (values[i] - 0.5 / M * (time_within_patch)) * np.exp(-self.kappa * distance_to_patch)
+                    M = self.nest_consumption_rate
+                    rho = values[i] * np.exp(-self.kappa * distance_to_patch)
+                    rho[self.current_look_at] = rho[self.current_look_at] * np.exp(-self.nest_consumption_rate * time_within_patch)
                     rho_mean = 1 / (rho.shape[0] - 1) * np.sum(rho * not_looked_at_mask)
                     rho_max = np.max(rho * not_looked_at_mask)
-                    p_leave = 1 / (1 + np.exp(self.beta * (rho_mean)))
+                    p_leave = 1 / (1 + np.exp(self.beta * (rho[self.current_look_at] - rho_mean)))
                     rv = np.random.binomial(1, p_leave)
-                    print(p_leave, rho_mean)
                     if rv == 1:
-                        new_patch = np.argmax(values[i] * np.exp(-self.kappa * distance_to_patch) * not_looked_at_mask)
+                        prob = values[i] * np.exp(-self.kappa * distance_to_patch) * not_looked_at_mask
+                        heat = self.beta/2
+                        probability = np.exp(heat * prob)/np.sum(np.exp(heat * prob))
+                        # find the item with maximum probability
+                        deterministic_new_patch = np.argmax(prob)
+                        # sample the items for a more randomized new look-at-point
+                        sampled_new_patch = np.random.choice(np.arange(0, prob.shape[0]), 1, p=probability)[0]
+                        # use the sampled patch id for better looking result in a static scene
+                        new_patch = sampled_new_patch
                         time_within_patch = 0
                         time_away_from_nest = 0
                         self.current_look_at = new_patch
@@ -120,25 +127,20 @@ class Scavenger_planner_with_nest:
                     momemtum_distance = np.expand_dims(self.momentum, axis=0)
                     momemtum_distance = momemtum_distance * (self.object_positions - np.expand_dims(self.object_positions[self.nest_index], axis=0))
                     momemtum_distance = 1 / (1 + np.exp(- 10 * momemtum_distance.sum(axis=1)))
-                    # print(momemtum_distance)
                     rho = values[i] * np.exp(-self.kappa * distance_to_patch)
                     risk = np.exp(-self.kappa * distance_to_nest) * self.predation_risk_tao * np.exp(self.predation_risk_tao * time_away_from_nest)
-                    if (rho - risk).mean() > 0:
+                    # if it is still worth it to stay
+                    if (rho - risk).max() > 0:
                         # compute Q, the expected return of leaving the current patch and move to another patch
-                        Q = 1 / (self.object_positions.shape[0] - 1) * np.sum(rho * not_looked_at_mask * momemtum_distance)
+                        Q = 1 / (self.object_positions.shape[0] - 1) * np.sum(rho * not_looked_at_mask * np.exp(-momemtum_distance))
                         # compute g_patch, the instetaneous gain by staying at the current patch
                         if rho[self.current_look_at] > 0:
                             g_patch = rho[self.current_look_at]
                             g_patch = rho[self.current_look_at] * np.exp(-self.phi / values[i, self.current_look_at] * time_within_patch)
-
                         else:
                             g_patch = 0
                         # compute the probability of migration (logistic function as per the paper, howeverm it is very noisy )
                         p_stay = 1 / (1 + np.exp(-self.beta*(g_patch - Q)))
-                        # if g_patch > Q:
-                        #     p_stay = 1
-                        # else:
-                        #     p_stay = 0
 
                         ########################### sample from bernoulli distribution to determine wheter to switch patch #####################
                         # if the sampling determine that there is a patch switch (the issue is that given the sampling frequency,
@@ -149,7 +151,16 @@ class Scavenger_planner_with_nest:
                             rv = 0
                         if rv == 0 and time_within_patch >= self.min_saccade_time:
                             # TODO: make the new patch randomly sampled instead of deterministic
-                            new_patch = np.argmax(rho * not_looked_at_mask * momemtum_distance)
+                            prob = values[i] * np.exp(-self.kappa * distance_to_patch) * not_looked_at_mask * np.exp(-self.momentum_weight*momemtum_distance)
+                            heat = self.beta / 2
+                            probability = np.exp(heat * prob) / np.sum(np.exp(heat * prob))
+                            # find the item with maximum probability
+                            deterministic_new_patch = np.argmax(prob)
+                            # sample the items for a more randomized new look-at-point
+                            sampled_new_patch = np.random.choice(np.arange(0, prob.shape[0]), 1, p=probability)[0]
+                            # use the sampled patch id for better looking result in a static scene
+                            new_patch = sampled_new_patch
+
                             time_within_patch = 0
                             self.current_look_at = new_patch
                             output_target.append(self.current_look_at)

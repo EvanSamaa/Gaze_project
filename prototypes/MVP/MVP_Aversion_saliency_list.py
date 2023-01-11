@@ -78,8 +78,7 @@ class AversionSignalDrivenSaliency(Base_Static_Saliency_List):
             pos_i_local = self.scene_info.transform_world_to_local((pos_i_global))
             pos_i_local = np.expand_dims(pos_i_local, axis=0)
             rot_i = rotation_angles_frome_positions(pos_i_local)[0]
-            print(self.evaluate_all()[0])
-            circ = Circle(((int(rot_i[0]) + 180) * resolution, int(rot_i[1] + 90) * resolution), int(40 * self.evaluate_all()[0, object_i]))
+            circ = Circle(((int(rot_i[0]) + 180) * resolution, int(rot_i[1] + 90) * resolution), int(40 * self.map[0, object_i]))
             ax.add_patch(circ)
 
         plt.show()
