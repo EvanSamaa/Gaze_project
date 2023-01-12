@@ -6,7 +6,7 @@ import parselmouth
 import yaml
 import librosa
 from matplotlib import pyplot as plt
-
+import numpy as np
 class CNNet(nn.Module):
     def __init__(self, config, single_datapoint_shape=(1,40,1201), target_shape=50):
         super().__init__()
@@ -55,18 +55,16 @@ def normalise_tensor(matrix):
     return (matrix - matrix.mean(axis=0)) / matrix.std(axis=0)
 def load_single_audio_file_normalised(file_path, time_step=0.1):
     waveform, sample_rate = librosa.load(file_path, sr = 22050)
-    waveform = torch.Tensor(waveform)
-    print(sample_rate)
+    waveform = torch.Tensor(np.expand_dims(waveform, 0))
     if len(waveform.shape) == 2 and waveform.shape[0] == 2:
-        waveform = waveform[0] + waveform[1] 
+        waveform = waveform[0:1] + waveform[1:2]
         waveform = waveform / 2
-    print(waveform.shape)
     mfcc_spectogram = torchaudio.transforms.MFCC(sample_rate=sample_rate)(waveform)
     # Intensity
-    print(mfcc_spectogram.shape)
     snd = parselmouth.Sound(file_path)
     intensity = torch.tensor(snd.to_intensity(time_step=time_step).values).flatten()
-    print(intensity.shape)
+    print(mfcc_spectogram.shape, intensity.shape)
+
     to_pad = mfcc_spectogram.shape[2] - intensity.shape[0]
     intensity = torch.cat([intensity, torch.zeros(to_pad)], 0).to(torch.float32)
     mfcc_spectogram = torch.cat([mfcc_spectogram, intensity.unsqueeze(0).unsqueeze(0)], 1)
@@ -121,7 +119,7 @@ def predict_aversion(audio_file_path):
     '''
 
     x = load_single_audio_file_normalised(audio_file_path)
-    print(x.shape)
+
     x = x.to(config['device'])
     model = CNNet(config, [1] + list(x.shape), int(5/config["window_length"]))
     pretrained_dict = torch.load(checkpoint_path, map_location=config['device'])
@@ -134,7 +132,7 @@ def predict_aversion(audio_file_path):
 
 if __name__ == "__main__":
     # predict_aversion("/Users/evanpan/Desktop/_Number_0_channel_0_DVA2C.wav")    
-    # pred = predict_aversion("../../data/conversations/_Number_0_channel_0_DVA7B.wav")
+    pred = predict_aversion("../../data/conversations/_Number_0_channel_0_DVA7B.wav")
     pred = predict_aversion("F:/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault/audio.wav")
     plt.plot(pred)
     plt.show()
