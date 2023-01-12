@@ -9,7 +9,7 @@ from Signal_processing_utils import intensity_from_signal, pitch_from_signal, sp
 from Speech_Data_util import Sentence_word_phone_parser
 from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info
 from prototypes.MVP.MVP_static_saliency_list import ObjectBasedFixSaliency
-from prototypes.MVP.MVP_Aversion_saliency_list import AversionSignalDrivenSaliency
+from prototypes.MVP.MVP_Aversion_saliency_list import AversionSignalDrivenSaliency, CTSAversionSignalDrivenSaliency
 from prototypes.MVP.MVP_look_at_point_planner import HabituationBasedPlanner, RandomPlanner, PartnerHabituationPlanner
 from prototypes.MVP.MVP_eye_head_driver import HeuristicGazeMotionGenerator
 from prototypes.EyeCatch.Saccade_model_modified import SacccadeGenerator, InternalModelExact
@@ -17,14 +17,15 @@ from prototypes.Gaze_aversion_prior.Heuristic_model import *
 from prototypes.Boccignone2020.Gaze_target_planner import Scavenger_based_planner
 from prototypes.Boccignone2020.Improved_gaze_target_planner import Scavenger_planner_with_nest
 from prototypes.JaliNeck.JaliNeck import NeckCurve
+from prototypes.Gaze_aversion_prior.Ribhav_model import predict_aversion
 import pickle
 import math
 if __name__ == '__main__':
     np.random.seed(0)
     # inputs
     scene_data_path = "data/look_at_points/simplest_scene.json"
-    # input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
-    input_folder = "/Volumes/EVAN_DISK/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
+    input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
+    # input_folder = "/Volumes/EVAN_DISK/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
     # input_folder = "C:/Users/evan1/Documents/neckMovement/data/neck_rotation_values/Sarah"
 
     # input_file_name = "audio"
@@ -49,19 +50,27 @@ if __name__ == '__main__':
 
     # get aversion probability:
     compute_aversion_prob = ComputeAversionProbability(sementic_script, audio)
+    # based on voiced pauses
     aversion_probability_t, aversion_probability_p = compute_aversion_prob.compute()
+    # based on deep learning
+    dp_aversion_probability_t, dp_aversion_probability_p = predict_aversion(audio_location, dt=0.02)
     # compute aversion saliency map based on aversion probability
     aversion_saliency = AversionSignalDrivenSaliency(scene, audio, sementic_script, dt=0.02)
     aversion_saliency.compute_salience(aversion_probability_t, aversion_probability_p)
     # get static saliency maps
     base_saliency = ObjectBasedFixSaliency(scene, audio, sementic_script)
     base_saliency.compute_salience()
+    # get the aversion saliency based on DL prediction
+
+    aversion_saliency_audio = CTSAversionSignalDrivenSaliency(scene, dp_aversion_probability_t[:base_saliency.map.shape[0]], dp_aversion_probability_p[:base_saliency.map.shape[0]])
+    aversion_saliency_audio.compute_salience()
     # =============================================================================================
     # ========================== plan scan path based on the saliency maps ========================
     # =============================================================================================
-    planner = Scavenger_planner_with_nest([base_saliency, aversion_saliency], scene)
+    planner = Scavenger_planner_with_nest([base_saliency, aversion_saliency_audio], scene)
     # planner = Scavenger_planner_with_nest([base_saliency, aversion_saliency], scene)
     output_times, output_targets = planner.compute(scene.object_type.argmax())
+    print()
     # get view_target planner
     # planner = PartnerHabituationPlanner(base_saliency, audio, sementic_script, scene, 0.8)
     # planner = HabituationBasedPlanner(base_saliency, audio, sementic_script, scene, 0.7)
@@ -99,8 +108,9 @@ if __name__ == '__main__':
     # ek, hk, micro_saccade = motion_generator.generate_neck_eye_curve(output_times, output_target_positions)
     # out_location = "C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl"
     out_location = "C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/prototype2p2.pkl"
-    out_location = "data/out"
-    out = [ek, hk, micro_saccade, jali_neck_output]
+    # out_location = "data/out"
+    out = [ek, hk, micro_saccade, jali_neck_output, []]
     pickle.dump(out, open(out_location, 'wb'), protocol=2)
+    print("done")
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

@@ -81,7 +81,6 @@ def load_single_audio_file_regardless_of_length(file_path, time_step = 0.1):
         return out
 def load_single_audio_file_normalised(file_path, time_step=0.1):
     waveform, sample_rate = torchaudio.load(file_path)
-    print(waveform.shape)
     waveform, sr = librosa.load(file_path, sr=48000)
     if len(waveform.shape) == 1:
         waveform = np.expand_dims(waveform, axis=0)
@@ -89,7 +88,6 @@ def load_single_audio_file_normalised(file_path, time_step=0.1):
         waveform = waveform[0:1] + waveform[1:2] 
         waveform = waveform / 2
     waveform = torch.Tensor(waveform)
-    print(waveform.shape)
     mfcc_spectogram = torchaudio.transforms.MFCC(sample_rate=sample_rate)(waveform)
     # Intensity
     snd = parselmouth.Sound(file_path)
@@ -111,7 +109,7 @@ def process_240000_length_audio(waveform, sample_rate = 480000):
     return normalise_tensor(mfcc_spectogram.squeeze(0))
 
 
-def predict_aversion(audio_file_path):
+def predict_aversion(audio_file_path, dt):
     config = {
         "conv_layers": [1, 8, 32, 64, 128, 256],
         "kernel_size": 5,
@@ -134,8 +132,14 @@ def predict_aversion(audio_file_path):
     }
     checkpoint_path = '../../data/ribhav_model/time=2022-11-29 06_22_13.018369_epoch=10.pt'
     config_path = "../../data/ribhav_model/config.yaml"
-    with open(config_path, 'r') as f:
-        yaml_config = yaml.safe_load(f)
+    try:
+        with open(config_path, 'r') as f:
+            yaml_config = yaml.safe_load(f)
+    except:
+        checkpoint_path = 'data/ribhav_model/time=2022-11-29 06_22_13.018369_epoch=10.pt'
+        config_path = "data/ribhav_model/config.yaml"
+        with open(config_path, 'r') as f:
+            yaml_config = yaml.safe_load(f)
     for key in yaml_config:
         try:
             if 'value' in yaml_config[key]:
@@ -172,15 +176,14 @@ def predict_aversion(audio_file_path):
     ts = np.arange(0, len(out)*0.1, 0.1)
     xs = np.array(out)
 
-    interp = interp1d(ts, xs, bounds_error = False)
-    out_ts = np.arange(0, len(out) * 0.1, 0.01)
+    interp = interp1d(ts, xs, bounds_error = False, fill_value=1)
+    out_ts = np.arange(0, len(out) * 0.1 + 5, dt)
     out_xs = interp(out_ts)
 
-    return out_ts, out_xs
+    return out_ts.tolist(), out_xs.tolist()
 
 if __name__ == "__main__":
     # predict_aversion("/Users/evanpan/Desktop/_Number_0_channel_0_DVA2C.wav")    
     # pred = predict_aversion("../../data/conversations/_Number_0_channel_0_DVA7B.wav")
     ts, xs = predict_aversion("../../data/conversations/its_not_ur_fault.wav")
     # pred = predict_aversion("F:/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault/audio.wav")
-    print(ts.shape, xs.shape)
