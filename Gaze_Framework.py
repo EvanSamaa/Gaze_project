@@ -4,7 +4,6 @@ import numpy as np
 from matplotlib import pyplot as plt
 import os, sys
 import librosa
-sys.path.append("/Users/evanpan/Documents/GitHub/staggered_face/Utils")
 from Signal_processing_utils import intensity_from_signal, pitch_from_signal, sparse_key_smoothing
 from Speech_Data_util import Sentence_word_phone_parser
 from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info
@@ -24,8 +23,8 @@ if __name__ == '__main__':
     np.random.seed(0)
     # inputs
     scene_data_path = "data/look_at_points/simplest_scene.json"
-    input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
-    # input_folder = "/Volumes/EVAN_DISK/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
+    # input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
+    input_folder = "/Volumes/EVAN_DISK/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
     # input_folder = "C:/Users/evan1/Documents/neckMovement/data/neck_rotation_values/Sarah"
 
     # input_file_name = "audio"
@@ -70,7 +69,6 @@ if __name__ == '__main__':
     planner = Scavenger_planner_with_nest([base_saliency, aversion_saliency_audio], scene)
     # planner = Scavenger_planner_with_nest([base_saliency, aversion_saliency], scene)
     output_times, output_targets = planner.compute(scene.object_type.argmax())
-    print()
     # get view_target planner
     # planner = PartnerHabituationPlanner(base_saliency, audio, sementic_script, scene, 0.8)
     # planner = HabituationBasedPlanner(base_saliency, audio, sementic_script, scene, 0.7)
@@ -107,8 +105,8 @@ if __name__ == '__main__':
     # motion_generator = HeuristicGazeMotionGenerator(scene, sementic_script)
     # ek, hk, micro_saccade = motion_generator.generate_neck_eye_curve(output_times, output_target_positions)
     # out_location = "C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl"
-    out_location = "C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/prototype2p2.pkl"
-    # out_location = "data/out"
+    # out_location = "C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/prototype2p2.pkl"
+    out_location = "data/prototype2p2.pkl"
     out = [ek, hk, micro_saccade, jali_neck_output, []]
     pickle.dump(out, open(out_location, 'wb'), protocol=2)
     print("done")

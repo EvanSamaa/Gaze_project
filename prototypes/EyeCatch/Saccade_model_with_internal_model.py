@@ -5,10 +5,14 @@ from Geometry_Util import rotation_angles_frome_positions, rotation_axis_angle_f
     rotation_matrix_from_axis_angle, rotation_matrix_from_vectors
 from Signal_processing_utils import dx_dt
 from prototypes.Optimization_based_head_eye_seperator.Baseline_optimization import optimize_for_head_gaze_breakdown
+# class InternalModelCenterBias:
 class InternalModelExact:
     def __init__(self, scene: Dietic_Conversation_Gaze_Scene_Info):
         self.scene = scene
-    def estimate_target_pose(self, index, previous_position=None):    
+    def estimate_target_pose(self, index, previous_position=None):
+        if previous_position is None:
+            previous_position = self.get_base_pose()
+        
         return self.scene.object_pos[index]
     def get_base_pose(self):
         return self.scene.speaker_face_direction_local
