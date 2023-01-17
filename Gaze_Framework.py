@@ -4,6 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import os, sys
 import librosa
+sys.path.insert(0, '/Users/evanpan/Documents/GitHub/staggered_face/Utils')
 from Signal_processing_utils import intensity_from_signal, pitch_from_signal, sparse_key_smoothing, laplacian_smoothing
 from Speech_Data_util import Sentence_word_phone_parser
 from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info
@@ -32,11 +33,8 @@ if __name__ == '__main__':
     np.random.seed(0)
     # inputs
     scene_data_path = "data/look_at_points/simplest_scene.json"
-    input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/sarah_connor"
-    # input_folder = "/Volumes/EVAN_DISK/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
-    # input_folder = "C:/Users/evan1/Documents/neckMovement/data/neck_rotation_values/Sarah"
+    input_folder = "/Volumes/EVAN_DISK/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
 
-    # input_file_name = "audio"
     input_file_name = "audio"
     # get scene data
     scene_data_path = "data/look_at_points/simplest_scene.json"
@@ -65,11 +63,11 @@ if __name__ == '__main__':
     # based on deep learning
     dp_aversion_probability_t, dp_aversion_probability_p = predict_aversion(audio_location, dt=0.02)
     # compute aversion saliency map based on aversion probability
-    aversion_saliency = AversionSignalDrivenSaliency(scene, audio, sementic_script, dt=0.02)
+    aversion_saliency = AversionSignalDrivenSaliency(scene, audio, None, dt=0.02)
     aversion_saliency.compute_salience(dp_aversion_probability_t, laplacian_smoothing(dp_aversion_probability_p))
     id = scene.get_conversation_partner_id()
     # get static saliency maps
-    base_saliency = ObjectBasedFixSaliency(scene, audio, sementic_script)
+    base_saliency = ObjectBasedFixSaliency(scene, audio, None)
     base_saliency.compute_salience()
     # get the aversion saliency based on DL prediction
 
