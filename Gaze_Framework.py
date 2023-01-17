@@ -4,14 +4,23 @@ import numpy as np
 from matplotlib import pyplot as plt
 import os, sys
 import librosa
-from Signal_processing_utils import intensity_from_signal, pitch_from_signal, sparse_key_smoothing
+from Signal_processing_utils import intensity_from_signal, pitch_from_signal, sparse_key_smoothing, laplacian_smoothing
 from Speech_Data_util import Sentence_word_phone_parser
 from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info
 from prototypes.MVP.MVP_static_saliency_list import ObjectBasedFixSaliency
 from prototypes.MVP.MVP_Aversion_saliency_list import AversionSignalDrivenSaliency, CTSAversionSignalDrivenSaliency
 from prototypes.MVP.MVP_look_at_point_planner import HabituationBasedPlanner, RandomPlanner, PartnerHabituationPlanner
 from prototypes.MVP.MVP_eye_head_driver import HeuristicGazeMotionGenerator
-from prototypes.EyeCatch.Saccade_model_modified import SacccadeGenerator, InternalModelExact
+"""
+this is the old one
+
+VVVVV
+from prototypes.EyeCatch.Saccade_model_modified import InternalModelExact
+
+this is the new one
+VVVVV
+"""
+from prototypes.EyeCatch.Saccade_model_with_internal_model import *
 from prototypes.Gaze_aversion_prior.Heuristic_model import *
 from prototypes.Boccignone2020.Gaze_target_planner import Scavenger_based_planner
 from prototypes.Boccignone2020.Improved_gaze_target_planner import Scavenger_planner_with_nest
@@ -23,8 +32,8 @@ if __name__ == '__main__':
     np.random.seed(0)
     # inputs
     scene_data_path = "data/look_at_points/simplest_scene.json"
-    # input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
-    input_folder = "/Volumes/EVAN_DISK/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
+    input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/sarah_connor"
+    # input_folder = "/Volumes/EVAN_DISK/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
     # input_folder = "C:/Users/evan1/Documents/neckMovement/data/neck_rotation_values/Sarah"
 
     # input_file_name = "audio"
@@ -32,6 +41,8 @@ if __name__ == '__main__':
     # get scene data
     scene_data_path = "data/look_at_points/simplest_scene.json"
     scene = Dietic_Conversation_Gaze_Scene_Info(scene_data_path)
+    # get the intenal model of the character
+    internal_model = InternalModelCenterBias(scene)
 
     # get audio+script+alignment data
     audio_location = os.path.join(input_folder, input_file_name + ".wav")
@@ -55,7 +66,8 @@ if __name__ == '__main__':
     dp_aversion_probability_t, dp_aversion_probability_p = predict_aversion(audio_location, dt=0.02)
     # compute aversion saliency map based on aversion probability
     aversion_saliency = AversionSignalDrivenSaliency(scene, audio, sementic_script, dt=0.02)
-    aversion_saliency.compute_salience(aversion_probability_t, aversion_probability_p)
+    aversion_saliency.compute_salience(dp_aversion_probability_t, laplacian_smoothing(dp_aversion_probability_p))
+    id = scene.get_conversation_partner_id()
     # get static saliency maps
     base_saliency = ObjectBasedFixSaliency(scene, audio, sementic_script)
     base_saliency.compute_salience()
@@ -69,6 +81,8 @@ if __name__ == '__main__':
     planner = Scavenger_planner_with_nest([base_saliency, aversion_saliency_audio], scene)
     # planner = Scavenger_planner_with_nest([base_saliency, aversion_saliency], scene)
     output_times, output_targets = planner.compute(scene.object_type.argmax())
+    for i in range(0, len(output_targets)):
+        print(output_times[i], output_targets[i])
     # get view_target planner
     # planner = PartnerHabituationPlanner(base_saliency, audio, sementic_script, scene, 0.8)
     # planner = HabituationBasedPlanner(base_saliency, audio, sementic_script, scene, 0.7)
@@ -84,8 +98,6 @@ if __name__ == '__main__':
         else:
             # the virtual look-at directions (i.e. pondering locations)are in local coordinate space
             output_target_positions.append(aversion_saliency.get_object_positions()[output_targets[i]])
-    # get animation curves
-    internal_model = InternalModelExact(scene)
     generator = SacccadeGenerator(output_times, output_target_positions, output_targets, internal_model)
     ek, hk, micro_saccade = generator.compute()
     conversational_neck = NeckCurve(audio_location)

@@ -1,0 +1,1198 @@
+std::locale LC_COLLATE=C;LC_CTYPE=English_United States.1252;LC_MONETARY=C;LC_NUMERIC=C;LC_TIME=C done. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 4.12. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 4.27. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 4.35. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 4.47. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 4.5. 
+Skipped 'UW' in sonorant stats
+Skipped 'UW' in vowel stats
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 4.56. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 4.65. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 4.73. 
+Skipped 'w' in sonorant stats
+Skipped 'w' in consonants stats
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 4.78. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 4.81. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 4.84. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 4.95. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 5.01. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 5.14. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 5.23. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 5.31. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 5.41. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 5.45. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 5.64. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 5.68. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 5.77. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 5.86. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 5.97. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 6.06. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 6.11. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 6.2. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 6.24. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 6.32. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 6.35. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 6.48. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 6.55. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 6.62. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 6.66. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 6.7. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 6.81. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 6.86. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 6.91. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 7.01. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 7.05. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 7.15. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 7.19. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 7.22. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 7.26. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 7.33. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 7.41. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 7.47. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 7.51. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 7.68. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 8.27. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 8.4. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 8.43. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 8.47. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 8.54. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 8.69. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 9.19. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 9.24. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 9.32. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 9.39. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 9.45. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 9.48. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 9.56. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 9.64. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 9.73. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 9.78. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 9.82. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 9.98. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 10.01. 
+Skipped 'UW' in sonorant stats
+Skipped 'UW' in vowel stats
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 10.06. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 10.16. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 10.24. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 10.48. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 10.74. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 10.8. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 10.89. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 10.92. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 10.98. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 11.06. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 11.14. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 11.17. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 11.24. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 11.3. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 11.41. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 11.44. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 11.57. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 11.84. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 11.94. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.1. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.2. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.25. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.29. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.32. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.35. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.38. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.41. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.44. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.47. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.5. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.56. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.59. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.62. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.65. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.68. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.71. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.76. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.79. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.82. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 12.91. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 13.25. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 13.86. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 13.92. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 13.99. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 14.05. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 14.08. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 14.11. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 14.14. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 14.17. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 14.56. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 15.87. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 15.97. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 16.19. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 16.25. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 16.28. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 16.31. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 16.39. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 16.47. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 16.5. 
+Skipped 'w' in sonorant stats
+Skipped 'w' in consonants stats
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 16.57. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 16.78. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 16.92. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 17.07. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 17.17. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 17.38. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 17.41. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 17.44. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 17.47. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 17.51. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 17.65. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 17.77. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 17.8. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 17.83. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 17.87. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 17.9. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 17.98. 
+Skipped 'UW' in sonorant stats
+Skipped 'UW' in vowel stats
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 18.01. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 18.04. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 18.07. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 18.1. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 18.14. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 18.17. 
+Skipped 'w' in sonorant stats
+Skipped 'w' in consonants stats
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 18.28. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 18.46. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 18.7. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 19.83. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 19.86. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 19.89. 
+Skipped 'UW' in sonorant stats
+Skipped 'UW' in vowel stats
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 20.08. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 20.11. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 20.16. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 20.38. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 20.47. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 20.52. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 20.57. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 20.68. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 20.8. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 20.87. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 20.92. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 21.73. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 22.76. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 22.79. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 22.82. 
+Skipped 'UW' in sonorant stats
+Skipped 'UW' in vowel stats
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 22.86. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 23.41. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 23.44. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 24.03. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 24.87. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 24.9. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 25.51. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 25.57. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 27.65. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 27.69. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 27.83. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 27.92. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 27.99. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 28.14. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 28.43. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 28.54. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 28.59. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 28.66. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 28.72. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 28.76. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 28.79. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 28.87. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 29.14. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 29.17. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+total_clip_time = 41.88. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Skipped 'UW' in sonorant std stats
+Skipped 'UW' in vowel std stats
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Skipped 'UW' in sonorant std stats
+Skipped 'UW' in vowel std stats
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Skipped 'UW' in sonorant std stats
+Skipped 'UW' in vowel std stats
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Skipped 'UW' in sonorant std stats
+Skipped 'UW' in vowel std stats
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Skipped 'UW' in sonorant std stats
+Skipped 'UW' in vowel std stats
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Not using it, so, not loading profile file: C:/ProgramData/Jali/resources/input/Profile.txt
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: sil, . Start. 
+Else-Sync: sil, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: y, ya Start. 
+Else-Sync: y, ya Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AA, ya Start. 
+Else-Sync: AA, ya Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: y, you Start. 
+Else-Sync: UW, you Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UW, you Start. 
+Else-Sync: UW, you Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: n, know Start. 
+Else-Sync: OW, know Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: OW, know Start. 
+Else-Sync: OW, know Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: w, what Start. 
+Else-Sync: w, what Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, what Start. 
+Else-Sync: UX, what Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: t, what Start. 
+Else-Sync: D, what Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: D, this Start. 
+Else-Sync: D, this Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: IH, this Start. 
+Else-Sync: IH, this Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: s, this Start. 
+Else-Sync: s, this Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: f, feels Start. 
+Else-Sync: f, feels Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: IY, feels Start. 
+Else-Sync: IY, feels Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: l, feels Start. 
+Else-Sync: IY, feels Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: z, feels Start. 
+Else-Sync: z, feels Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: l, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AY, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: k, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: IH, it Start. 
+Else-Sync: IH, it Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: t, it Start. 
+Else-Sync: IH, it Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: f, feels Start. 
+Else-Sync: f, feels Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: IY, feels Start. 
+Else-Sync: IY, feels Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: l, feels Start. 
+Else-Sync: IY, feels Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: z, feels Start. 
+Else-Sync: z, feels Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: l, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AY, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: k, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, i'm Start. 
+Else-Sync: UX, i'm Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: m, i'm Start. 
+Else-Sync: m, i'm Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: IH, in Start. 
+Else-Sync: IH, in Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: n, in Start. 
+Else-Sync: IH, in Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: l, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AY, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: k, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, a Start. 
+Else-Sync: UX, a Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: v, vr Start. 
+Else-Sync: r, vr Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: r, vr Start. 
+Else-Sync: r, vr Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: g, game Start. 
+Else-Sync: EY, game Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: EY, game Start. 
+Else-Sync: EY, game Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: m, game Start. 
+Else-Sync: OA, game Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AO, or Start. 
+Else-Sync: AO, or Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: r, or Start. 
+Else-Sync: r, or Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AY, i Start. 
+Else-Sync: AY, i Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: m, mean Start. 
+Else-Sync: m, mean Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: IY, mean Start. 
+Else-Sync: IY, mean Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: n, mean Start. 
+Else-Sync: IY, mean Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: l, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AY, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: k, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, a Start. 
+Else-Sync: UX, a Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: f, first Start. 
+Else-Sync: ER, first Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: ER, first Start. 
+Else-Sync: ER, first Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: s, first Start. 
+Else-Sync: s, first Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: t, first Start. 
+Else-Sync: s, first Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: p, person Start. 
+Else-Sync: ER, person Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: ER, person Start. 
+Else-Sync: ER, person Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: s, person Start. 
+Else-Sync: s, person Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, person Start. 
+Else-Sync: UX, person Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: n, person Start. 
+Else-Sync: S, person Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: S, shooter Start. 
+Else-Sync: S, shooter Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UW, shooter Start. 
+Else-Sync: UW, shooter Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: t, shooter Start. 
+Else-Sync: UW, shooter Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: ER, shooter Start. 
+Else-Sync: ER, shooter Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: g, game Start. 
+Else-Sync: EY, game Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: EY, game Start. 
+Else-Sync: EY, game Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: m, game Start. 
+Else-Sync: m, game Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AY, i Start. 
+Else-Sync: AY, i Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: k, can Start. 
+Else-Sync: AY, can Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, can Start. 
+Else-Sync: UX, can Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: n, can Start. 
+Else-Sync: s, can Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: s, see Start. 
+Else-Sync: s, see Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: IY, see Start. 
+Else-Sync: IY, see Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: m, my Start. 
+Else-Sync: m, my Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AY, my Start. 
+Else-Sync: AY, my Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: OW, own Start. 
+Else-Sync: OW, own Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: n, own Start. 
+Else-Sync: OW, own Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: h, hand Start. 
+Else-Sync: AE, hand Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AE, hand Start. 
+Else-Sync: AE, hand Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: n, hand Start. 
+Else-Sync: AE, hand Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: d, hand Start. 
+Else-Sync: AE, hand Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AY, i Start. 
+Else-Sync: AY, i Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: k, can Start. 
+Else-Sync: UX, can Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, can Start. 
+Else-Sync: UX, can Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: n, can Start. 
+Else-Sync: r, can Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: r, run Start. 
+Else-Sync: r, run Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, run Start. 
+Else-Sync: UX, run Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: n, run Start. 
+Else-Sync: UX, run Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: l, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AY, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: k, like Start. 
+Else-Sync: AY, like Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: D, this Start. 
+Else-Sync: D, this Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: IH, this Start. 
+Else-Sync: IH, this Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: s, this Start. 
+Else-Sync: s, this Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AE, and Start. 
+Else-Sync: AE, and Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: n, and Start. 
+Else-Sync: AE, and Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: y, you Start. 
+Else-Sync: y, you Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UH, you Start. 
+Else-Sync: UH, you Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: n, know Start. 
+Else-Sync: OW, know Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: OW, know Start. 
+Else-Sync: OW, know Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: p, press Start. 
+Else-Sync: r, press Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: r, press Start. 
+Else-Sync: r, press Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: EH, press Start. 
+Else-Sync: EH, press Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: s, press Start. 
+Else-Sync: s, press Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: EH, f Start. 
+Else-Sync: EH, f Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: f, f Start. 
+Else-Sync: f, f Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: t, to Start. 
+Else-Sync: UX, to Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, to Start. 
+Else-Sync: UX, to Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: IH, interact Start. 
+Else-Sync: IH, interact Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: n, interact Start. 
+Else-Sync: ER, interact Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: ER, interact Start. 
+Else-Sync: ER, interact Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: r, interact Start. 
+Else-Sync: r, interact Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AE, interact Start. 
+Else-Sync: AE, interact Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: k, interact Start. 
+Else-Sync: AE, interact Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: t, interact Start. 
+Else-Sync: w, interact Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: w, with Start. 
+Else-Sync: w, with Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: IH, with Start. 
+Else-Sync: IH, with Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: T, with Start. 
+Else-Sync: T, with Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AA, objects Start. 
+Else-Sync: AA, objects Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: b, objects Start. 
+Else-Sync: J, objects Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: J, objects Start. 
+Else-Sync: J, objects Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: EH, objects Start. 
+Else-Sync: C, objects Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: k, objects Start. 
+Else-Sync: C, objects Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: t, objects Start. 
+Else-Sync: C, objects Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: s, objects Start. 
+Else-Sync: s, objects Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: p, press Start. 
+Else-Sync: r, press Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: r, press Start. 
+Else-Sync: r, press Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: EH, press Start. 
+Else-Sync: EH, press Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: s, press Start. 
+Else-Sync: s, press Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: EH, f Start. 
+Else-Sync: EH, f Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: f, f Start. 
+Else-Sync: f, f Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: t, to Start. 
+Else-Sync: UW, to Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UW, to Start. 
+Else-Sync: UW, to Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: d, drink Start. 
+Else-Sync: r, drink Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: r, drink Start. 
+Else-Sync: r, drink Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: IH, drink Start. 
+Else-Sync: IH, drink Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: N, drink Start. 
+Else-Sync: IH, drink Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: k, drink Start. 
+Else-Sync: w, drink Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: w, water Start. 
+Else-Sync: w, water Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AO, water Start. 
+Else-Sync: OA, water Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: t, water Start. 
+Else-Sync: ER, water Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: ER, water Start. 
+Else-Sync: ER, water Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: h, hu Start. 
+Else-Sync: UW, hu Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UW, hu Start. 
+Else-Sync: UW, hu Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: h, huh Start. 
+Else-Sync: UX, huh Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, huh Start. 
+Else-Sync: UX, huh Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: p, press Start. 
+Else-Sync: r, press Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: r, press Start. 
+Else-Sync: r, press Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: EH, press Start. 
+Else-Sync: EH, press Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: s, press Start. 
+Else-Sync: s, press Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: EH, f Start. 
+Else-Sync: EH, f Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: f, f Start. 
+Else-Sync: f, f Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: t, to Start. 
+Else-Sync: UX, to Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, to Start. 
+Else-Sync: UX, to Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: y, use Start. 
+Else-Sync: UW, use Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UW, use Start. 
+Else-Sync: UW, use Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: z, use Start. 
+Else-Sync: z, use Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: D, the Start. 
+Else-Sync: D, the Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, the Start. 
+Else-Sync: UX, the Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: k, calculater Start. 
+Else-Sync: AE, calculater Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AE, calculater Start. 
+Else-Sync: AE, calculater Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: l, calculater Start. 
+Else-Sync: AE, calculater Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: k, calculater Start. 
+Else-Sync: AE, calculater Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: y, calculater Start. 
+Else-Sync: y, calculater Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, calculater Start. 
+Else-Sync: UX, calculater Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: l, calculater Start. 
+Else-Sync: UX, calculater Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, calculater Start. 
+Else-Sync: UX, calculater Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: t, calculater Start. 
+Else-Sync: EH, calculater Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: EH, calculater Start. 
+Else-Sync: EH, calculater Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: k, calculate Start. 
+Else-Sync: AE, calculate Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: AE, calculate Start. 
+Else-Sync: AE, calculate Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: l, calculate Start. 
+Else-Sync: AE, calculate Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: k, calculate Start. 
+Else-Sync: AE, calculate Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: y, calculate Start. 
+Else-Sync: y, calculate Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: UX, calculate Start. 
+Else-Sync: UX, calculate Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: l, calculate Start. 
+Else-Sync: EY, calculate Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: EY, calculate Start. 
+Else-Sync: EY, calculate Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: t, calculate Start. 
+Else-Sync: EY, calculate Start. 
+tagfront: neutral, tagback: 80, emotion_mask: neutral-80, paralingual_bearing: 100
+Lip-Sync: %, . Start. 
+Else-Sync: %, . Start. 

@@ -81,12 +81,36 @@ def create_neck_blend_node(rig):
     elif rig == "waitress":
         cmds.connectAttr('xneck_pairBlend.outTranslate.outTranslateX', 'neck_1_ctrl.yRotate')
     return
-def load_gaze(rig):
-    create_neck_blend_node(rig)
-    filename = "C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl"
-    filename = "C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/prototype2p2.pkl"
+def load_tobii(filename, rig):
+    fps = mel.eval('float $fps = `currentTimeUnitToFPS`')
     motion_components = pkl.load(open(filename))
-    ek, hk, ms, neck, blend_weight = motion_components
+    ek, hk = motion_components
+    for i in range(0, len(hk)):
+        interval = hk[i]
+        for j in range(0, len(interval)):
+            # x direction is vertical (elevation)
+            cmds.setKeyframe("xneck_pairBlend_gaze", v=interval[j][2]/2, t=interval[j][0] * fps)
+            # y direction is horizontal (azimuth) 
+            cmds.setKeyframe("yneck_pairBlend_gaze", v=interval[j][1]/2, t=interval[j][0] * fps)
+            # cmds.setKeyframe("jNeck_ctl.jNeck_xRotate", t=interval[j][0] * fps, v=-interval[j][2])
+    
+    for i in range(0, len(ek)):
+        interval = ek[i]
+        for j in range(0, len(interval)):
+            if rig == "jali":
+                cmds.setAttr("lookMaster.headWorldBlend", 0)
+                cmds.setKeyframe("eyeStare_head.eyeStare_head_translateX", time=interval[j][0] * fps, value=interval[j][1])
+                cmds.setKeyframe("eyeStare_head.eyeStare_head_translateY", time=interval[j][0] * fps, value=interval[j][2])
+                cmds.setKeyframe("eyeStare_head.eyeStare_head_translateZ", time=interval[j][0] * fps, value=interval[j][3])
+            elif rig == "waitress":
+                cmds.setKeyframe("Eye_aim_ctrls.translateX", time=interval[j][0] * fps, value=interval[j][1])
+                cmds.setKeyframe("Eye_aim_ctrls.translateY", time=interval[j][0] * fps, value=interval[j][2])
+                cmds.setKeyframe("Eye_aim_ctrls.translateZ", time=interval[j][0] * fps, value=interval[j][3])
+                
+def load_gaze(filename, rig, tobii = False):
+    create_neck_blend_node(rig)
+    # filename = "C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl"
+    # filename = "C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/prototype2p2.pkl"
     fps = mel.eval('float $fps = `currentTimeUnitToFPS`')
     try:
         if rig == "jali":
@@ -110,7 +134,11 @@ def load_gaze(rig):
             cmds.cutKey("L_eye_aim_ctrl.translateY")
     except:
         pass
-    
+    if tobii:
+        return load_tobii(filename, rig)
+    motion_components = pkl.load(open(filename))
+    ek, hk, ms, neck, blend_weight = motion_components
+    cmds.setAttr("lookMaster.headWorldBlend", 10)
     # micro-saccade
     for i in range(0, len(ms)):
         interval = ms[i]
@@ -161,4 +189,6 @@ def load_gaze(rig):
                                  t=t[i] * fps)
         
     
-load_gaze("waitress")
+# load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/prototype2p2.pkl", "jali")
+load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/shakira/tobii_rotation.pkl", "jali", True)
+

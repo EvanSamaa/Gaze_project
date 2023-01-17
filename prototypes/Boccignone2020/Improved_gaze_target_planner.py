@@ -97,7 +97,7 @@ class Scavenger_planner_with_nest:
             # updates 5 times a second
             if (float(i) * self.dt / 0.1).is_integer() and i > 0:
                 # if we are currently in the nest
-                if self.current_look_at == self.nest_index or self.predation_risk_tao > 0:
+                if self.current_look_at == self.nest_index :
                     # compute the average value of going out
                     M = self.nest_consumption_rate
                     rho = values[i] * np.exp(-self.kappa * distance_to_patch)
@@ -123,13 +123,14 @@ class Scavenger_planner_with_nest:
                         output_t.append(self.dt * i)
                         self.momentum = self.object_positions[self.current_look_at] - self.object_positions[self.nest_index]
                 else:
+
                     # compute distance-weighted patch value rho
                     momemtum_distance = np.expand_dims(self.momentum, axis=0)
                     momemtum_distance = momemtum_distance * (self.object_positions - np.expand_dims(self.object_positions[self.nest_index], axis=0))
                     momemtum_distance = 1 / (1 + np.exp(- 10 * momemtum_distance.sum(axis=1)))
                     rho = values[i] * np.exp(-self.kappa * distance_to_patch)
                     risk = np.exp(-self.kappa * distance_to_nest) * self.predation_risk_tao * np.exp(self.predation_risk_tao * time_away_from_nest)
-                    # if it is still worth it to stay
+                    # if it is still worth it to not return to nest
                     if (rho - risk).max() > 0:
                         # compute Q, the expected return of leaving the current patch and move to another patch
                         Q = 1 / (self.object_positions.shape[0] - 1) * np.sum(rho * not_looked_at_mask * np.exp(-momemtum_distance))
@@ -141,7 +142,6 @@ class Scavenger_planner_with_nest:
                             g_patch = 0
                         # compute the probability of migration (logistic function as per the paper, howeverm it is very noisy )
                         p_stay = 1 / (1 + np.exp(-self.beta*(g_patch - Q)))
-
                         ########################### sample from bernoulli distribution to determine wheter to switch patch #####################
                         # if the sampling determine that there is a patch switch (the issue is that given the sampling frequency,
                         # it is actually highly likely for the gaze target to switch
@@ -150,7 +150,7 @@ class Scavenger_planner_with_nest:
                         else:
                             rv = 0
                         if rv == 0 and time_within_patch >= self.min_saccade_time:
-                            # TODO: make the new patch randomly sampled instead of deterministic
+                            # get probability of the gaze aversion
                             prob = values[i] * np.exp(-self.kappa * distance_to_patch) * not_looked_at_mask * np.exp(-self.momentum_weight*momemtum_distance)
                             heat = self.beta / 2
                             probability = np.exp(heat * prob) / np.sum(np.exp(heat * prob))

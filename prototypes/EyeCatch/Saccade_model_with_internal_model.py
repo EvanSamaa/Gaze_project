@@ -6,14 +6,35 @@ from Geometry_Util import rotation_angles_frome_positions, rotation_axis_angle_f
 from Signal_processing_utils import dx_dt
 from prototypes.Optimization_based_head_eye_seperator.Baseline_optimization import optimize_for_head_gaze_breakdown
 # class InternalModelCenterBias:
-class InternalModelExact:
+class InternalModelCenterBias:
     def __init__(self, scene: Dietic_Conversation_Gaze_Scene_Info):
         self.scene = scene
-    def estimate_target_pose(self, index, previous_position=None):
-        if previous_position is None:
-            previous_position = self.get_base_pose()
-        
-        return self.scene.object_pos[index]
+    def estimate_target_pose(self, index, previous_pos=None):
+        if index >= self.scene.object_pos.shape[0]:
+            index = index - self.scene.object_pos.shape[0]
+            return self.scene.get_wondering_points()[index]
+        if index == self.scene.get_conversation_partner_id():
+            return self.scene.get_wondering_points()[index]
+        if previous_pos is None:
+            previous_pos = self.get_base_pose()
+        personal_center_pos = self.get_base_pose() # this is in local space
+        target_mean_pos = self.scene.transform_world_to_local(self.scene.object_pos[index])
+
+        # accuracy drops with distance (in degrees) and speed (speed seems to correlate with distance )
+        target_rot = rotation_angles_frome_positions(target_mean_pos) # get the target pos in degrees
+        prev_rot = rotation_angles_frome_positions(previous_pos) # get the prev pos in degrees
+        distance = np.linalg.norm(target_rot - prev_rot) # get distance in degrees\
+
+        # an exit condition, if the delta target is small, then there is no variability (as per
+        # Speed and accuracy of saccadic eye movements: Characteristics of impulse variability in the oculomotor system)
+        if distance <= 6:
+            return target_mean_pos
+        # estimate actual target to attend to be slightly off from the real position
+        slightly_wrong_target_center = previous_pos + 0.9 * (target_mean_pos-previous_pos)
+        # the variation of the target
+        target_variation = np.abs(target_mean_pos-slightly_wrong_target_center)
+        output_position = np.random.normal(slightly_wrong_target_center, target_variation/2)
+        return output_position
     def get_base_pose(self):
         return self.scene.speaker_face_direction_local
     def estimate_listener_pose(self):
@@ -61,7 +82,6 @@ class SacccadeGenerator:
         :param time_arr: an array of times shape is (N, )
         :param pos_arr: an array of positions shape is  (N, K)
         :return:
-
         gaze_intervals_time: a list of [start, end] times
         gaze_intervals_pos: a list of positions
         """
@@ -269,10 +289,11 @@ class SacccadeGenerator:
                 gaze_movement_duration = self.get_saccade_duration(self.gaze_current_goal_position,
                                                                    self.interpolate_gaze_goal(self.t))
                 # add the gaze submovement
+                next_gaze_index = self.interpolate_gaze_goal_index(self.t)
                 gaze_submovement, gaze_submovement_range = self.add_gaze_submovement(self.t,
                                                                                      self.t + gaze_movement_duration,
                                                                                      self.gaze_current_goal_position,
-                                                                                     self.interpolate_gaze_goal(self.t))
+                                                                                     self.internal_model.estimate_target_pose(next_gaze_index, self.gaze_current_goal_position))
                 if not gaze_submovement is None:
                     gaze_submovements.append(gaze_submovement)
                     gaze_submovements_indexes.append(gaze_submovement_range)

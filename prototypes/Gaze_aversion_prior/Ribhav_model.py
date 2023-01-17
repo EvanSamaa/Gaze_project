@@ -52,6 +52,14 @@ class CNNet(nn.Module):
         pretrained_dict = {k: v for k, v in pretrained_dict.items() if k not in not_copy}
         model_dict.update(pretrained_dict)
         self.load_state_dict(model_dict)
+    def forward_test(self, x):
+        x = x.unsqueeze(1)
+        x = self.conv(x)
+        x = x.view(x.size(0), -1)
+        x = self.fc1(x)
+        x = 10*self.fc2(x)
+        return torch.sigmoid(x)
+
 
 def normalise_tensor(matrix):
     return (matrix - matrix.mean(axis=0)) / matrix.std(axis=0)
@@ -100,6 +108,7 @@ def load_single_audio_file_normalised(file_path, time_step=0.1):
 def process_240000_length_audio(waveform, sample_rate = 480000):
     mfcc_spectogram = torchaudio.transforms.MFCC(sample_rate=sample_rate)(waveform)
     # Intensity
+
     snd = parselmouth.Sound(waveform)
     intensity = torch.tensor(snd.to_intensity(time_step=0.01).values).flatten()
     to_pad = mfcc_spectogram.shape[2] - intensity.shape[0]
@@ -161,7 +170,6 @@ def predict_aversion(audio_file_path, dt):
     Finished Loading config
     '''
 
-    x = load_single_audio_file_normalised(audio_file_path)
     xs = load_single_audio_file_regardless_of_length(audio_file_path)
     x = xs[0]
     model = CNNet(config, [1] + list(x.shape), int(5/config["window_length"]))
@@ -170,7 +178,7 @@ def predict_aversion(audio_file_path, dt):
     model.to(config['device'])
     out = []
     for i in range(0, len(xs)):
-        pred = model(xs[i].unsqueeze(0))
+        pred = model.forward_test(xs[i].unsqueeze(0))
         pred = pred.cpu().detach().numpy().flatten().tolist()
         out=out + pred
     ts = np.arange(0, len(out)*0.1, 0.1)

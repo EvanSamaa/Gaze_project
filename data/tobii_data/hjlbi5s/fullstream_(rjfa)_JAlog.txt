@@ -1,0 +1,72 @@
+RJFA: Start: 1049.82
+JaliAnalyzer::RJFA --> after sox
+rjfa > Skipping Setting Locale. 
+rjfa > std::locale English_United States.1252 done. 
+JaliAnalyzer::RJFA --> language selection: 0
+JaliAnalyzer::AML --> Start.
+aml > Skipping Setting Locale. 
+JaliAnalyzer::RJFA --> number of langs: 1, main language: 0
+
+JaliAnalyzer::rjfa: creating .lab file since there is none currently 
+elfot > Start. 
+elfot > std::locale at Start: English_United States.1252 <--
+rjfa > Skipping Setting Locale. 
+elfot > std::locale after English_United States.1252 done.
+ELabfile (before anything): Ya you know what this feels like, it feels like I'm in like a VR game
+or, I mean like a first person shooter game, I can see my own hand, 
+I can run like this, and you know
+press F to interact with objects
+press F to drink water, Hu huh
+press F to use the calculater, calculate
+ELabfile (before output): YA YOU KNOW WHAT THIS FEELS LIKE IT FEELS LIKE I'M IN LIKE A VR GAME OR I MEAN LIKE A FIRST PERSON SHOOTER GAME I CAN SEE MY OWN HAND I CAN RUN LIKE THIS AND YOU KNOW PRESS F TO INTERACT WITH OBJECTS PRESS F TO DRINK WATER HU HUH PRESS F TO USE THE CALCULATER CALCULATE
+RJFA: Phase 2 (.lab) complete.
+
+JaliAnalyzer::RJFA(): CopyFile C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/hjlbi5s/fullstream.lab to C:\ProgramData\Jali/bin/jali-forced-aligner_2/hjlbi5s/fullstream.lab
+CopyFile: No Error.
+JaliAnalyzer::RJFA --> number of langs: 1 <- Running single set-up lang 
+CFOW: Dictionary Start.
+Word not found: CALCULATER
+Word not found: VR
+CFOW: writing: calculater
+vr
+
+      to: C:\ProgramData\Jali/alignments/wordlist.txt
+
+JaliAnalyzer:CFOW: New Dict: CALCULATER K AE1 L K Y AH0 L AH0 T EH0 
+CALCULATER K AE1 L K Y AH0 L AH0 T ER0 
+VR V R 
+VR V 
+
+
+JaliAnalyzer::CFOW: CopyFile C:\ProgramData\Jali/bin/jali-forced-aligner_2/pretrained_models/english/all.dict to C:\ProgramData\Jali/bin/jali-forced-aligner_2/pretrained_models/english/old.dict
+CopyFile: No Error.
+
+CFOW: new_dict: 
+'CALCULATER K AE1 L K Y AH0 L AH0 T EH0' 'CALCULATER K AE1 L K Y AH0 L AH0 T ER0' 'VR V' 'VR V R' 
+
+CFOW: merge sort done.
+
+CFOW: erase duplicates done.
+
+CFOW: new dict 1 done.
+
+CFOW: all dict 1 done.
+
+CFOW: all dict ready:
+CALCULATER K AE1 L K Y AH0 L AH0 T EH0
+CALCULATER K AE1 L K Y AH0 L AH0 T ER0
+VR V
+VR V R
+
+OOV DETECTED -> This file is empty: 'C:\ProgramData\Jali/alignments/oovs_found.txt'. SO far, so good.
+JaliAnalyzer::RJFA: Alignment exists.
+
+JaliAnalyzer::RJFA: CopyFile C:\ProgramData\Jali/alignments/hjlbi5s/fullstream.TextGrid to C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/hjlbi5s/fullstream_JFA.TextGrid
+
+JaliAnalyzer::RJFA: Save this dict as last working Dictionary: C:\ProgramData\Jali/bin/jali-forced-aligner_2/pretrained_models/english/all.dict to C:\ProgramData\Jali/bin/jali-forced-aligner_2/pretrained_models/english/last.dict
+
+JaliAnalyzer::RJFA: CopyFile C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/hjlbi5s/fullstream.txt to C:\ProgramData\Jali/alignments/hjlbi5s/fullstream.txt
+
+JaliAnalyzer::RJFA: CopyFile C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/hjlbi5s/fullstream.lab to C:\ProgramData\Jali/alignments/hjlbi5s/fullstream.lab
+
+JaliAnalyzer::RJFA: Done closing log.

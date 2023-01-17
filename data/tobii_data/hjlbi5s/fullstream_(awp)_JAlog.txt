@@ -1,0 +1,12 @@
+
+JaliAnalyzer::awp: Start. 
+
+JaliAnalyzer::AWP: CopyFile C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/hjlbi5s/fullstream_Short.TextGrid to C:\ProgramData\Jali/temp/fullstream_Short.TextGrid
+CopyFile: No Error.
+
+JaliAnalyzer::awp: Prevented copy self (.wav): C:\ProgramData\Jali/temp/fullstream.wav
+
+JaliAnalyzer::awp: CopyFile C:\ProgramData\Jali/temp/fullstream_PraatOutput.txt to C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/hjlbi5s/fullstream_PraatOutput.txt
+CopyFile: No Error.
+
+JaliAnalyzer::awp: End Log. 

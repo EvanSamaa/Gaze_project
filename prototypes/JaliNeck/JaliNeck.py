@@ -731,24 +731,15 @@ class NeckCurve:
         self.head_shakes = True
         self.threshold_from_previous_jitter = 0.7
         self.time_between_emphasis = 0.5
-        self.head_sentence_level = 5
-        self.head_sentence_level_z = 5
+        self.head_sentence_level = 2
+        self.head_sentence_level_z = 2
         self.base_number_of_shakes = 8
-        self.emphasis_max_rotation = 3
+        self.emphasis_max_rotation = 2
         self.max_ambient_movement = 1
         self.left_side_bias = 0.1
         self.random_seed = 0
         self.compute_curve()
     def compute_curve(self):
-        self.threshold_from_previous_jitter = 0.7
-        self.time_between_emphasis = 0.5
-        self.head_sentence_level = 5
-        self.head_sentence_level_z = 5
-        self.base_number_of_shakes = 8
-        self.emphasis_max_rotation = 3
-        self.max_ambient_movement = 1
-        self.left_side_bias = 0.1
-        self.random_seed = 0
 
         # compute tunable values
         self.semantics_script = Sentence_word_phone_pointer_structure(
@@ -1174,9 +1165,9 @@ class NeckCurve:
         impulse_xt, impulse_x = impulse_curve_set.recompute_all_points()
         sentence_level_xt, sentence_level_x = sentence_curve_set.recompute_all_points()
         out_xt, out_x = sentence_curve_set.sum_with_other_tiers([impulse_curve_set, jitter_curve_set])
-        out_x = sparse_key_smoothing(out_xt, out_x)
+        out_x = sparse_key_smoothing(out_xt, out_x, smoothing_win_size=3)
         out_zt, out_z = sentence_curve_set_z.recompute_all_points(mean=True)
-        out_z = sparse_key_smoothing(out_zt, out_z)
+        out_z = sparse_key_smoothing(out_zt, out_z, smoothing_win_size=3)
         out_yt, out_y = impulse_curve_set_y.recompute_all_points(mean=True)
         output = [out_xt, out_x, out_yt, out_y, out_zt, out_z]
         outputAsyncToFile(self.out_path, output)

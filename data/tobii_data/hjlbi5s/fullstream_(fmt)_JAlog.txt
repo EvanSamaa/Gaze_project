@@ -1,0 +1,21 @@
+
+JaliAnalyzer::fjfatg: Start. 
+
+JaliAnalyzer::fjfatg: .tab Exists. 
+
+JaliAnalyzer::fjfa: CopyFile C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/hjlbi5s/fullstream.txt to C:\ProgramData\Jali/temp/fullstream.txt
+CopyFile: No Error.
+
+JaliAnalyzer::fjfa: CopyFile C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/hjlbi5s/fullstream.tab to C:\ProgramData\Jali/temp/fullstream.tab
+CopyFile: No Error.
+
+JaliAnalyzer::fjfa: CopyFile C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/hjlbi5s/fullstream_JFA.TextGrid to C:\ProgramData\Jali/temp/fullstream_JFA.TextGrid
+CopyFile: No Error.
+
+JaliAnalyzer::fjfatg: CopyFile C:\ProgramData\Jali/temp/fullstream_Short.TextGrid to C:\ProgramData\Jali/alignments/hjlbi5s/fullstream_Short.TextGrid
+CopyFile: No Error.
+
+JaliAnalyzer::fjfatg: CopyFile C:\ProgramData\Jali/temp/fullstream_Short.TextGrid to C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/hjlbi5s/fullstream_Short.TextGrid
+CopyFile: No Error.
+
+JaliAnalyzer::fjfatg: Done. 
