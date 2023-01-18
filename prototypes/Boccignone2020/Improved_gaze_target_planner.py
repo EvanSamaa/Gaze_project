@@ -4,7 +4,7 @@ from Geometry_Util import rotation_angles_frome_positions
 import numpy as np
 from matplotlib import pyplot as plt
 class Scavenger_planner_with_nest:
-    def __init__(self, saliency_maps, scene_info):
+    def __init__(self, saliency_maps, scene_info, self_id=-1):
         # hyper-parameters
         self.smoothing_constant = 0.2
         self.kappa = 1.3333333 # this is the distance factor (i.e. cost of migration), this is from the paper
@@ -28,29 +28,43 @@ class Scavenger_planner_with_nest:
         # similarly store all the positions
         self.object_positions = []
         # get the maximum size
+        self.self_id = self_id
         object_count = 0
+        time_count = 0
         max_id = 0
         for i in range(0, len(saliency_maps)):
             arr = saliency_maps[i].map
             if arr.shape[1] > object_count:
                 object_count = arr.shape[1]
                 max_id = i
+            if arr.shape[0] > time_count:
+                time_count = arr.shape[0]
         for i in range(0, len(saliency_maps)):
             arr = saliency_maps[i].map
             if arr.shape[1] < object_count:
                 extension = np.zeros((arr.shape[0], object_count-arr.shape[1]))
                 arr = np.concatenate([arr, extension], axis=1)
+            if arr.shape[0] < time_count:
+                extension = np.zeros((time_count - arr.shape[0], object_count))
+                arr = np.concatenate([arr, extension], axis=0)
             self.saliency_maps_arrs.append(arr)
         # get the position of objects
         self.object_positions = saliency_maps[max_id].get_object_positions()
         # turn them into rotation angles
         self.object_positions = rotation_angles_frome_positions(self.object_positions) / 180 * np.pi
         # get the conversation partner's id
-        self.conversation_partner_id = saliency_maps[0].scene_info.get_conversation_partner_id()[0]
-        # ========================================= state variables ==========================================
-        self.current_look_at = self.conversation_partner_id
-        # index for the nest, of which the gaze will gravitate towards
-        self.nest_index = self.conversation_partner_id
+        if self.self_id == -1:
+            self.conversation_partner_id = saliency_maps[0].scene_info.get_conversation_partner_id()[0]
+            # ========================================= state variables ==========================================
+            self.current_look_at = self.conversation_partner_id
+            # index for the nest, of which the gaze will gravitate towards
+            self.nest_index = self.conversation_partner_id
+        else:
+            self.conversation_partner_id = saliency_maps[0].scene_info.get_conversation_partner_id(self.self_id, 0)
+            # ========================================= state variables ==========================================
+            self.current_look_at = self.conversation_partner_id
+            # index for the nest, of which the gaze will gravitate towards
+            self.nest_index = self.conversation_partner_id
         # momentum stores the current gaze_direction from the conversation-partner
         self.momentum = np.array([0, 0])
     def compute(self, initial_target):
@@ -70,6 +84,8 @@ class Scavenger_planner_with_nest:
         values = np.zeros(self.saliency_maps_arrs[0].shape)
         for map_arr in self.saliency_maps_arrs:
             values += map_arr
+        if self.self_id >= 0:
+            values[:, self.self_id] = 0
         # initialize the first look at point with the user speficied initial target
         self.current_look_at = self.nest_index
         time_within_patch = 0
@@ -78,6 +94,9 @@ class Scavenger_planner_with_nest:
         output_target.append(self.current_look_at)
         output_t.append(0)
         for i in range(0, self.saliency_maps_arrs[0].shape[0]):
+            # update new nest
+            if self.self_id >= 0:
+                self.nest_index = self.scene_info.get_conversation_partner_id(self.self_id, i*self.dt)
             ##############################################################################################
             ############################### decide whether to switch patch ###############################
             ##############################################################################################
@@ -110,6 +129,8 @@ class Scavenger_planner_with_nest:
                         prob = values[i] * np.exp(-self.kappa * distance_to_patch) * not_looked_at_mask
                         heat = self.beta/2
                         probability = np.exp(heat * prob)/np.sum(np.exp(heat * prob))
+                        probability[self.self_id] = 0
+                        probability = probability / probability.sum()
                         # find the item with maximum probability
                         deterministic_new_patch = np.argmax(prob)
                         # sample the items for a more randomized new look-at-point
@@ -154,6 +175,8 @@ class Scavenger_planner_with_nest:
                             prob = values[i] * np.exp(-self.kappa * distance_to_patch) * not_looked_at_mask * np.exp(-self.momentum_weight*momemtum_distance)
                             heat = self.beta / 2
                             probability = np.exp(heat * prob) / np.sum(np.exp(heat * prob))
+                            probability[self.self_id] = 0
+                            probability = probability / probability.sum()
                             # find the item with maximum probability
                             deterministic_new_patch = np.argmax(prob)
                             # sample the items for a more randomized new look-at-point

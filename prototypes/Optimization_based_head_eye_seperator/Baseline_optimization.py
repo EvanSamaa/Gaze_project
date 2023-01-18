@@ -6,7 +6,6 @@ import cvxpy as cp
 
 
 def optimize_for_head_gaze_breakdown(gaze_intervals, list_of_gaze_positions, listener_position):
-
     # gaze_position is probably a list of array
     gaze_positions = []
     for i in range(len(list_of_gaze_positions)):

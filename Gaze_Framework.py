@@ -33,7 +33,7 @@ if __name__ == '__main__':
     np.random.seed(0)
     # inputs
     scene_data_path = "data/look_at_points/simplest_scene.json"
-    input_folder = "/Volumes/EVAN_DISK/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
+    input_folder = "F:/MASC/JALI_neck/data/neck_rotation_values/sarah_connor"
 
     input_file_name = "audio"
     # get scene data

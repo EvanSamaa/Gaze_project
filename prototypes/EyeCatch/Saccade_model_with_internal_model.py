@@ -1,6 +1,6 @@
 import numpy as np
 from matplotlib import pyplot as plt
-from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info
+from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info, MultiPartyConversationalSceneInfo
 from Geometry_Util import rotation_angles_frome_positions, rotation_axis_angle_from_vector, \
     rotation_matrix_from_axis_angle, rotation_matrix_from_vectors
 from Signal_processing_utils import dx_dt
@@ -10,15 +10,15 @@ class InternalModelCenterBias:
     def __init__(self, scene: Dietic_Conversation_Gaze_Scene_Info):
         self.scene = scene
     def estimate_target_pose(self, index, previous_pos=None):
-        if index >= self.scene.object_pos.shape[0]:
-            index = index - self.scene.object_pos.shape[0]
+        if index >= self.scene.positions_world.shape[0]:
+            index = index - self.scene.positions_world.shape[0]
             return self.scene.get_wondering_points()[index]
         if index == self.scene.get_conversation_partner_id():
             return self.scene.get_wondering_points()[index]
         if previous_pos is None:
             previous_pos = self.get_base_pose()
         personal_center_pos = self.get_base_pose() # this is in local space
-        target_mean_pos = self.scene.transform_world_to_local(self.scene.object_pos[index])
+        target_mean_pos = self.scene.transform_world_to_local(self.scene.positions_world[index])
 
         # accuracy drops with distance (in degrees) and speed (speed seems to correlate with distance )
         target_rot = rotation_angles_frome_positions(target_mean_pos) # get the target pos in degrees
@@ -40,8 +40,46 @@ class InternalModelCenterBias:
     def estimate_listener_pose(self):
         for i in range(0, len(self.scene.object_type)):
             if self.scene.object_type[i] == 5:
-                return self.scene.transform_world_to_local(self.scene.object_pos[i])
+                return self.scene.transform_world_to_local(self.scene.positions_world[i])
+class MultiPartyInternalModelCenterBias:
+    def __init__(self, scene: MultiPartyConversationalSceneInfo, speaker_id):
+        self.scene = scene
+        self.speaker_id = speaker_id
+    def estimate_target_pose(self, index, t, previous_pos=None):
+        if index >= self.scene.positions_world.shape[0]:
+            index = index - self.scene.positions_world.shape[0]
+            return self.scene.get_wondering_points()[index]
+        if index == self.scene.get_conversation_partner_id(self.speaker_id, t):
+            return self.scene.get_wondering_points()[index]
+        if previous_pos is None:
+            previous_pos = self.get_base_pose()
+        personal_center_pos = self.get_base_pose() # this is in local space
+        if self.speaker_id >= 0:
+            target_mean_pos = self.scene.transform_world_to_local(self.scene.positions_world[index], self.speaker_id)
+        else:
+            target_mean_pos = self.scene.transform_world_to_local(self.scene.positions_world[index])
 
+        # accuracy drops with distance (in degrees) and speed (speed seems to correlate with distance )
+        target_rot = rotation_angles_frome_positions(target_mean_pos) # get the target pos in degrees
+        prev_rot = rotation_angles_frome_positions(previous_pos) # get the prev pos in degrees
+        distance = np.linalg.norm(target_rot - prev_rot) # get distance in degrees\
+
+        # an exit condition, if the delta target is small, then there is no variability (as per
+        # Speed and accuracy of saccadic eye movements: Characteristics of impulse variability in the oculomotor system)
+        if distance <= 6:
+            return target_mean_pos
+        # estimate actual target to attend to be slightly off from the real position
+        slightly_wrong_target_center = previous_pos + 0.9 * (target_mean_pos-previous_pos)
+        # the variation of the target
+        target_variation = np.abs(target_mean_pos-slightly_wrong_target_center)
+        output_position = np.random.normal(slightly_wrong_target_center, target_variation/2)
+        return output_position
+    def get_base_pose(self):
+        return self.scene.speaker_face_direction_local
+    def estimate_listener_pose(self):
+        for i in range(0, len(self.scene.object_type)):
+            if self.scene.object_type[i] == 5:
+                return self.scene.transform_world_to_local(self.scene.positions_world[i], self.speaker_id)
 
 class SacccadeGenerator:
     def interpolate_gaze_goal(self, t):
@@ -128,6 +166,7 @@ class SacccadeGenerator:
         # simulation state variables:
         self.target_times = target_times
         self.target_positions = np.array(target_positions)
+
         self.target_index = target_index
         self.target_positions_head = None
         self.target_gaze_intervals_time, self.target_gaze_intervals_pos = self.get_gaze_intervals(self.target_times, self.target_positions)
@@ -284,16 +323,26 @@ class SacccadeGenerator:
                     expired_head.append(i)
             # only generate saccade at fixed intervals i.e. if saccade_generation_test is an integer
             saccade_generation_test = self.t / self.submovement_dt
+
             if abs(saccade_generation_test - int(round(saccade_generation_test))) <= 0.001:
                 # obtain gaze shift duration as per properties of main sequence
                 gaze_movement_duration = self.get_saccade_duration(self.gaze_current_goal_position,
                                                                    self.interpolate_gaze_goal(self.t))
                 # add the gaze submovement
                 next_gaze_index = self.interpolate_gaze_goal_index(self.t)
-                gaze_submovement, gaze_submovement_range = self.add_gaze_submovement(self.t,
-                                                                                     self.t + gaze_movement_duration,
-                                                                                     self.gaze_current_goal_position,
-                                                                                     self.internal_model.estimate_target_pose(next_gaze_index, self.gaze_current_goal_position))
+                try:
+                    gaze_submovement, gaze_submovement_range = self.add_gaze_submovement(self.t,
+                                                                                         self.t + gaze_movement_duration,
+                                                                                         self.gaze_current_goal_position,
+                                                                                         self.internal_model.estimate_target_pose(next_gaze_index, self.t, self.gaze_current_goal_position))
+                except:
+                    gaze_submovement, gaze_submovement_range = self.add_gaze_submovement(self.t,
+                                                                                         self.t + gaze_movement_duration,
+                                                                                         self.gaze_current_goal_position,
+                                                                                         self.internal_model.estimate_target_pose(
+                                                                                             next_gaze_index,
+                                                                                             self.gaze_current_goal_position))
+
                 if not gaze_submovement is None:
                     gaze_submovements.append(gaze_submovement)
                     gaze_submovements_indexes.append(gaze_submovement_range)
