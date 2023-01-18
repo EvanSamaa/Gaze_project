@@ -7,7 +7,7 @@ import librosa
 sys.path.insert(0, '/Users/evanpan/Documents/GitHub/staggered_face/Utils')
 from Signal_processing_utils import intensity_from_signal, pitch_from_signal, sparse_key_smoothing, laplacian_smoothing
 from Speech_Data_util import Sentence_word_phone_parser
-from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info
+from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info, MultiPartyConversationalSceneInfo
 from prototypes.MVP.MVP_static_saliency_list import ObjectBasedFixSaliency
 from prototypes.MVP.MVP_Aversion_saliency_list import AversionSignalDrivenSaliency, CTSAversionSignalDrivenSaliency
 from prototypes.MVP.MVP_look_at_point_planner import HabituationBasedPlanner, RandomPlanner, PartnerHabituationPlanner
@@ -38,13 +38,25 @@ if __name__ == '__main__':
     files = os.listdir(input_folder)
     wav_files = [os.path.join(input_folder, k) for k in files if ".wav" in k]
     speakers = [k[len(input_folder):].split(".")[0] for k in wav_files]
-    # input_folder = "/Volumes/EVAN_DISK/MASC/JALI_neck/data/neck_rotation_values/not_ur_fault"
-    # input_folder = "C:/Users/evan1/Documents/neckMovement/data/neck_rotation_values/Sarah"
+
+    # get the audios of all speakers     
+    audios = []
+    audio_sr = 0
+    max_audio_length = 0
+    for speaker in speakers:
+        audio_location = os.path.join(input_folder, speaker + ".wav")
+        audio, sr = librosa.load(audio_location, sr=44100)
+        audios.append(audio)
+        max_audio_length = max(audio.shape[0], max_audio_length)
+        audio_sr = sr
+    # pad the audios to be the same length (so we can see who's speaking at any time)
+    for i in range(0, len(audios)):
+        audios[i] = np.pad(audios[i], [0, max_audio_length-audios[i].shape[0]], constant_values=0)
     for speaker in speakers:
         input_file_name = speaker
         # get scene data
         scene_data_path = os.path.join(input_folder, "{}_POV.json".format(speaker))
-        scene = Dietic_Conversation_Gaze_Scene_Info(scene_data_path)
+        scene = MultiPartyConversationalSceneInfo(scene_data_path)
         # get the intenal model of the character
         internal_model = InternalModelCenterBias(scene)
         # get audio+script+alignment data
