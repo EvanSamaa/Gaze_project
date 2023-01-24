@@ -10,9 +10,12 @@ from Video_analysis_utils import get_wav_from_video
 import cv2 as cv
 from scipy.interpolate import interp1d
 from matplotlib import pyplot as plt
+from Geometry_Util import rotation_matrix_from_vectors
 import csv
 import re
 import json
+import math
+from scipy.spatial.transform import Rotation
 def compute_optical_flow_magnitude(filename):
     cap = cv.VideoCapture(filename)
     fps = cap.get(cv.CAP_PROP_FPS)
@@ -34,7 +37,6 @@ def compute_optical_flow_magnitude(filename):
         prvs = next
     out_t = np.arange(0, len(out_x))/fps
     return interp1d(out_t, out_x, bounds_error=False, fill_value="extrapolate")
-
 def process_tobii_files_for_maya(file_name):
     input_dir = "F:/MASC/JALI_gaze/Tobii_recordings/{}/segments/1/".format(file_name)
     output_dir = "./data/tobii_data/{}/".format(file_name)
@@ -149,7 +151,6 @@ def read_csv_header(csvfile):
             names.append(match.group())
     return names
 def load_vicon_file(file_name, target_sr=100):
-    new_time_range, root_pos, root_rot, head_pos, head_rot = [], [], [], [], []
     csv_file = open(file_name)
     # get the list of objects in the scene
     objects_names = read_csv_header(csv_file)
@@ -157,7 +158,7 @@ def load_vicon_file(file_name, target_sr=100):
     data = csv_file.readlines()
     # output dictionary
     out_dict = {} 
-    # this dictionary will have shape {name: [[time], [positions], [rotations]]}
+    # this dictionary will have shape {name: [[time], [rotations], [positions]]}
     for item in range(num_of_objects):
         out_dict[objects_names[item]] = [[], [], []] # these are for [time], [positions], and [rotations] respectively
     # load up data
@@ -177,14 +178,52 @@ def load_vicon_file(file_name, target_sr=100):
                 continue
             else:
                 # get rotations and positions
-                out_dict[item][0].append(time)
+                out_dict[item][0].append(time/120)
                 rotations = data_cols[:3]
-                rotations = [float(i) for i in rotations]
+                rotations = [float(i)*180.0/math.pi for i in rotations]
                 out_dict[item][1].append(rotations)
                 positions = data_cols[3:]
                 positions = [float(i) for i in positions]
                 out_dict[item][2].append(positions)
     return out_dict
+def get_relatave_rotation(file_name, root_name, child_name, target_sr=100):
+    vicon_data = load_vicon_file(file_name, target_sr)
+    root_configuration = vicon_data[root_name]
+    r_positions = np.array(root_configuration[2])
+    r_rotations = np.array(root_configuration[1])    
+    child_configuration = vicon_data[child_name]
+    c_positions = np.array(child_configuration[2])
+    c_rotations = np.array(child_configuration[1])
+
+    # get the last timestamp in frames
+    last_vicon_frame = np.maximum(root_configuration[0][-1], child_configuration[0][-1])
+    # get the last timestamp in time (we know it's 120 fps)
+    last_vicon_time = last_vicon_frame
+    # get a new range for the rotations     
+    new_time_range = np.arange(0, last_vicon_time, 1/target_sr)    
+    # make interpolation matches the new sampling rate
+    r_rotations_interp = interp1d(np.array(root_configuration[0]), r_rotations, bounds_error=False, fill_value=(r_rotations[0], r_rotations[-1]), axis=0)
+    c_rotations_interp = interp1d(np.array(child_configuration[0]), c_rotations, bounds_error=False, fill_value=(c_rotations[0], c_rotations[-1]), axis=0)
+    r_rotations = r_rotations_interp(new_time_range)
+    c_rotations = c_rotations_interp(new_time_range)
+    r_positions_interp = interp1d(np.array(root_configuration[0]), r_positions, bounds_error=False, fill_value=(r_positions[0], r_positions[-1]), axis=0)
+    r_positions = r_positions_interp(new_time_range)
+    r_positions = r_positions - r_positions[0]
+    # get them as rotation matrices
+    root_R = Rotation.from_euler("xyz",r_rotations,degrees=True).as_matrix()
+    child_R = Rotation.from_euler("xyz",c_rotations,degrees=True).as_matrix()
+    root_R = np.linalg.inv(root_R[0:1]) @ root_R
+    child_R = np.linalg.inv(child_R[0:1]) @ child_R
+    
+    # back_prop the rotation to find the 
+    child_local_R = np.linalg.inv(root_R) @ child_R
+    c_rotations_relative = Rotation.from_matrix(child_local_R).as_euler('xyz', degrees=True)
+    
+    root_R = Rotation.from_matrix(root_R).as_euler('xyz', degrees=True)
+    output_json = {}
+    output_json["neck"] = [new_time_range.tolist(), c_rotations_relative.tolist()]
+    output_json["root"] = [new_time_range.tolist(), c_rotations_relative.tolist(), r_positions.tolist()]
+    return output_json    
 def load_tobii_file(file_name, target_sr=100):
     
     # see if the file has been decompressed already
@@ -246,21 +285,46 @@ def load_tobii_file(file_name, target_sr=100):
     new_time_range = np.arange(0, upper_limit, 1/target_sr)
     aligned_gaze = interp1d(gaze_t, gaze_v, bounds_error=False, axis=0)(new_time_range)
     aligned_gyro = interp1d(gyro_t, gyro_v, bounds_error=False, axis=0)(new_time_range)
-    
-    return new_time_range, aligned_gaze, aligned_gyro
+    output_json = {"gaze_local": [new_time_range.tolist(), aligned_gaze.tolist()],
+                "gyro": [new_time_range.tolist(), aligned_gyro.tolist()]}
+    return output_json
 
     return 0
 if __name__ == "__main__":
     # ========================================
     # ================ input =================
     # ========================================
+    # vicon
     output_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Misc_vicon_test/rotation_of_A_wrt_B_vicon.json"
+    output_path_relative = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Misc_vicon_test/rotation_of_A_wrt_B_vicon_relative.json"
     input_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Misc_vicon_test/rotation_of_A_wrt_B.csv"
-
-    out_dict = load_vicon_file(input_path)
-    json_object = json.dumps(out_dict, indent=4)
-    with open(output_path, "w") as f:
-        f.write(json_object)    
+    # tobii
+    input_tobii = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii/segments/1/livedata.json.gz"
+    output_path_tobii = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii/segments/1/aligned_livedata.json"
+    
+    # output_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon_data.json"
+    # input_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon.csv"
+    
+    goal = "all"
+    if goal == "load_motion" or goal == "all":
+        # get the json object
+        out_dict = load_vicon_file(input_path)    
+        # json the output dictionary and save it to file 
+        json_object = json.dumps(out_dict, indent=4)
+        with open(output_path, "w") as f:
+            f.write(json_object)
+    if goal == "relative_rotation" or goal == "all":
+        out_dict = get_relatave_rotation(input_path, "test_object_1:test_object_1", "test_object_2:test_object_2")
+        json_object = json.dumps(out_dict, indent=4)
+        with open(output_path_relative, "w") as f:
+            f.write(json_object)
+    if goal == "load_tobii" or goal == "all":
+        out_dict = load_tobii_file(input_tobii)
+        json_object = json.dumps(out_dict, indent=4)
+        with open(output_path_tobii, "w") as f:
+            f.write(json_object)
+    
+        
     # new_time_range, aligned_gaze, aligned_gyro = load_tobii_file("F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii/segments/1/livedata.json.gz")
     # print(aligned_gaze.shape)
     
