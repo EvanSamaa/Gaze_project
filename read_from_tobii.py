@@ -1,5 +1,7 @@
 import json
 import os
+import sys
+sys.path.insert(0, "C:/Users/evansamaa/Desktop/staggered_face/Utils/")
 import shutil
 import numpy as np
 import gzip
@@ -8,6 +10,9 @@ from Video_analysis_utils import get_wav_from_video
 import cv2 as cv
 from scipy.interpolate import interp1d
 from matplotlib import pyplot as plt
+import csv
+import re
+import json
 def compute_optical_flow_magnitude(filename):
     cap = cv.VideoCapture(filename)
     fps = cap.get(cv.CAP_PROP_FPS)
@@ -29,7 +34,8 @@ def compute_optical_flow_magnitude(filename):
         prvs = next
     out_t = np.arange(0, len(out_x))/fps
     return interp1d(out_t, out_x, bounds_error=False, fill_value="extrapolate")
-def process_tobii_files(file_name):
+
+def process_tobii_files_for_maya(file_name):
     input_dir = "F:/MASC/JALI_gaze/Tobii_recordings/{}/segments/1/".format(file_name)
     output_dir = "./data/tobii_data/{}/".format(file_name)
 
@@ -91,7 +97,7 @@ def process_tobii_files(file_name):
     ###################### compute the neck rotations over time from gyroscopic data and video ####################
     ###############################################################################################################
 
-    optical_flow_interp = compute_optical_flow_magnitude(os.path.join(input_dir, "fullstream.mp4"))
+    # optical_flow_interp = compute_optical_flow_magnitude(os.path.join(input_dir, "fullstream.mp4"))
 
     for i in range(1, len(gyro_rotation_angular_speed)):
         prev = gyro_rotation_angle[i - 1]
@@ -117,15 +123,147 @@ def process_tobii_files(file_name):
     out = [[out_gaze], [out_neck]]
     pkl.dump(out, open(os.path.join(output_dir, "tobii_rotation.pkl".format(file_name)), "wb"), protocol=2)
     get_wav_from_video("fullstream.mp4", output_dir)
+def read_csv_header(csvfile):
+    """
+    Parse the header of a Vicon csv file.
+    Returns list of tracked object names.
+    """
+    # Skip garbage object count
+    csvfile.readline()
+    csvfile.readline()
+
+    csvreader = csv.reader(csvfile)
+    object_name_row = next(csvreader, None)
+
+    # Skip column labels
+    next(csvreader)
+    next(csvreader)
+
+    # Also remove the "Global Angle" prefix from the object names
+    name_matcher = re.compile(r"\w+:\w+")
+    names = []
+
+    for i in range(2, len(object_name_row) - 1, 6):
+        match = name_matcher.search(object_name_row[i])
+        if match is not None:
+            names.append(match.group())
+    return names
+def load_vicon_file(file_name, target_sr=100):
+    new_time_range, root_pos, root_rot, head_pos, head_rot = [], [], [], [], []
+    csv_file = open(file_name)
+    # get the list of objects in the scene
+    objects_names = read_csv_header(csv_file)
+    num_of_objects = len(objects_names)    
+    data = csv_file.readlines()
+    # output dictionary
+    out_dict = {} 
+    # this dictionary will have shape {name: [[time], [positions], [rotations]]}
+    for item in range(num_of_objects):
+        out_dict[objects_names[item]] = [[], [], []] # these are for [time], [positions], and [rotations] respectively
+    # load up data
+    for i in range(0, len(data)):
+        line_list = (data[i].strip("\n")).split(",") # get all the data
+        # the final line might have no data
+        if len(line_list) < 2: break 
+        # get the frame number
+        time = float(line_list[0])
+        # get the position and rotation
+        for j in range(0, num_of_objects):
+            item = objects_names[j]
+            start = 2 + j*6
+            end = start + 6
+            data_cols = line_list[start:end]
+            if data_cols[0] == "":
+                continue
+            else:
+                # get rotations and positions
+                out_dict[item][0].append(time)
+                rotations = data_cols[:3]
+                rotations = [float(i) for i in rotations]
+                out_dict[item][1].append(rotations)
+                positions = data_cols[3:]
+                positions = [float(i) for i in positions]
+                out_dict[item][2].append(positions)
+    return out_dict
+def load_tobii_file(file_name, target_sr=100):
+    
+    # see if the file has been decompressed already
+    decompressed_file_name = file_name.split(".")[0]+".json"
+    if not os.path.exists(decompressed_file_name):        
+        with gzip.open(file_name) as f_in:
+            with open(decompressed_file_name, "wb") as f_out:
+                shutil.copyfileobj(f_in, f_out)
+    # load json file
+    tobii_data = []
+    with open(decompressed_file_name, "rb") as f:
+        lines = f.readlines()
+    for l in lines:
+        tobii_data.append(json.loads(l))
+    # sort by time stamp
+    tobii_data = sorted(tobii_data, key=lambda x: x["ts"])
+    # get the time_stamp/gaze_direction out
+    gaze_t = [] # timestamp for the gaze x, y, z
+    gaze_v = [] # x, y, z coordinate for the gaze
+    gyro_t = [] # timestamp for the gyro reading
+    gyro_v = [] # angular velocity of tobii in x, y, z
+    ts = [] # time code for tobii
+    vts = [] # time code for video    
+    
+    for i in range(0, len(tobii_data)):        
+        try:
+            # print("gaze", input[i]["ts"], input[i]["gp3"], input[i]["ts"] - prev_gaze["ts"])
+            gaze_v.append(tobii_data[i]["gp3"])
+            gaze_t.append(tobii_data[i]["ts"])
+        except:
+            pass
+        try:
+            # print("gyro", input[i]["ts"], input[i]["gy"], input[i]["ts"] - prev_gyro["ts"])
+            gyro_v.append(tobii_data[i]["gy"])
+            gyro_t.append(tobii_data[i]["ts"])
+        except:
+            pass
+        try:
+            vts.append(tobii_data[i]["vts"])
+            ts.append(tobii_data[i]["ts"])
+        except:
+            pass
+    gaze_t = np.array(gaze_t)
+    gaze_t = gaze_t - ts[0]
+    gaze_v = np.array(gaze_v)
+    gyro_t = np.array(gyro_t)
+    gyro_t = gyro_t - ts[0]
+    gyro_v = np.array(gyro_v)
+    ts = np.array(ts)
+    vts = np.array(vts)
+    # it is known that the glasses operate at 50hz, therefore each dt corresponds to 20ms
+    dt_gaze = (gaze_t[1:] - gaze_t[0:-1]).mean()
+    # the conversion rate from sampling rate to seconds
+    conversion_rate = (1/50) / dt_gaze    
+    gaze_t = gaze_t * conversion_rate
+    gyro_t = gyro_t * conversion_rate
+    # make a new sampling rate for 100 Hz to align both gaze and gyro data
+    upper_limit = np.round(gaze_t[-1] * 100) / 100
+    new_time_range = np.arange(0, upper_limit, 1/target_sr)
+    aligned_gaze = interp1d(gaze_t, gaze_v, bounds_error=False, axis=0)(new_time_range)
+    aligned_gyro = interp1d(gyro_t, gyro_v, bounds_error=False, axis=0)(new_time_range)
+    
+    return new_time_range, aligned_gaze, aligned_gyro
+
+    return 0
 if __name__ == "__main__":
     # ========================================
     # ================ input =================
     # ========================================
-    dt = 1.0 / 95
-    threshold = 10
-    # for file_name in os.listdir("F:/MASC/JALI_gaze/Tobii_recordings"):
-    #     process_tobii_files(file_name)
-    process_tobii_files("shakira")
+    output_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Misc_vicon_test/rotation_of_A_wrt_B_vicon.json"
+    input_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Misc_vicon_test/rotation_of_A_wrt_B.csv"
+
+    out_dict = load_vicon_file(input_path)
+    json_object = json.dumps(out_dict, indent=4)
+    with open(output_path, "w") as f:
+        f.write(json_object)    
+    # new_time_range, aligned_gaze, aligned_gyro = load_tobii_file("F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii/segments/1/livedata.json.gz")
+    # print(aligned_gaze.shape)
+    
 
 
 
