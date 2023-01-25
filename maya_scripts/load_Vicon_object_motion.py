@@ -93,7 +93,7 @@ def load_tobii(filename):
 cmds.currentUnit(l="mm")
 # name_dict = vicon_generate_objects_motion("F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon_data.json", "")
 # name_dict = vicon_generate_objects_motion("F:/MASC/JALI_gaze/Tobii_Vicon_recording/Misc_vicon_test/rotation_of_A_wrt_B_vicon.json", "")
-# vicon_load_neck_relative_motion("F:/MASC/JALI_gaze/Tobii_Vicon_recording/Misc_vicon_test/rotation_of_A_wrt_B_vicon_relative.json", "")
+vicon_load_neck_relative_motion("F:/MASC/JALI_gaze/Tobii_Vicon_recording/Misc_vicon_test/rotation_of_A_wrt_B_vicon_relative.json", "")
 cmds.currentUnit(l="cm")
 
 load_tobii("F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii/segments/1/aligned_livedata.json")
