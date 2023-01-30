@@ -154,7 +154,7 @@ def read_csv_header(csvfile):
         if match is not None:
             names.append(match.group())
     return names
-def load_vicon_file(file_name, target_sr=100):
+def load_vicon_file(file_name, target_sr=100, neutral_frame = 0):
     csv_file = open(file_name)
     # get the list of objects in the scene
     objects_names = read_csv_header(csv_file)
@@ -328,18 +328,19 @@ if __name__ == "__main__":
     # ================ input =================
     # ========================================
     # vicon
-    input_path = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon3.csv"
+    input_path = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon4.csv"
     # tobii
-    input_tobii = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii3/segments/1/livedata.json.gz"
+    input_tobii = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii4/segments/1/livedata.json.gz"
     # output_path
-    output_path_relative = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon3_out_relative.json"
-    output_path_tobii = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii3/segments/1/aligned_livedata.json"
-    output_path = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon3_out.json"
+    output_path_relative = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon4_out_relative.json"
+    output_path_tobii = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii4/segments/1/aligned_livedata.json"
+    output_path = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon4_out.json"
 
     # output_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon_data.json"
     # input_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon.csv"
-    
-    goal = "None"
+
+    # for trial 1-3 recorded with Vicon Tracker
+    goal = "load_motion"
     if goal == "load_motion" or goal == "all":
         # get the json object
         out_dict_vicon = load_vicon_file(input_path)
