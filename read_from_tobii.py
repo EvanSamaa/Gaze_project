@@ -11,7 +11,7 @@ import gzip
 import pickle as pkl
 from Video_analysis_utils import get_wav_from_video
 import cv2 as cv
-from Signal_processing_utils import dx_dt
+from Signal_processing_utils import dx_dt, laplacian_smoothing
 from scipy.interpolate import interp1d
 from matplotlib import pyplot as plt
 from Geometry_Util import rotation_matrix_from_vectors
@@ -154,7 +154,7 @@ def read_csv_header(csvfile):
         if match is not None:
             names.append(match.group())
     return names
-def load_vicon_file(file_name, target_sr=100, neutral_frame = 0):
+def load_vicon_file(file_name, target_sr=100, neutral_frame = -1):
     csv_file = open(file_name)
     # get the list of objects in the scene
     objects_names = read_csv_header(csv_file)
@@ -185,12 +185,156 @@ def load_vicon_file(file_name, target_sr=100, neutral_frame = 0):
                 # get rotations and positions
                 out_dict[item][0].append(time/100)
                 rotations = data_cols[:3]
-                rotations = [float(i)*180.0/math.pi for i in rotations]
+                rotations = [float(i) for i in rotations]
                 out_dict[item][1].append(rotations)
                 positions = data_cols[3:]
                 positions = [float(i) for i in positions]
                 out_dict[item][2].append(positions)
-    return out_dict
+    if neutral_frame == -1:
+        return out_dict
+    else:
+        print("confirm and make sure that the root is {}.".format(objects_names[0]))
+        root_configuration = out_dict[objects_names[0]]
+        child_configuration = out_dict[objects_names[1]]
+        r_positions = np.array(root_configuration[2])
+        r_rotations = np.array(root_configuration[1])
+        c_positions = np.array(child_configuration[2])
+        c_rotations = np.array(child_configuration[1])
+
+        last_vicon_frame = np.maximum(root_configuration[0][-1], child_configuration[0][-1])
+        # get the last timestamp in time (we know it's 100 fps)
+        last_vicon_time = last_vicon_frame
+        # get a new range for the rotations
+        new_time_range = np.arange(0, last_vicon_time, 1 / target_sr)
+
+        # make interpolation matches the new sampling rate
+        r_rotations_interp = interp1d(np.array(root_configuration[0]), r_rotations, bounds_error=False,
+                                      fill_value=(r_rotations[0], r_rotations[-1]), axis=0)
+        c_rotations_interp = interp1d(np.array(child_configuration[0]), c_rotations, bounds_error=False,
+                                      fill_value=(c_rotations[0], c_rotations[-1]), axis=0)
+        c_positions_interp = interp1d(np.array(child_configuration[0]), c_positions, bounds_error=False,
+                                      fill_value=(c_positions[0], c_positions[-1]), axis=0)
+        r_positions_interp = interp1d(np.array(root_configuration[0]), r_positions, bounds_error=False,
+                                      fill_value=(r_positions[0], r_positions[-1]), axis=0)
+        # use interpolation to re_sample basically
+        r_rotations = r_rotations_interp(new_time_range)
+        c_rotations = c_rotations_interp(new_time_range)
+        c_positions = c_positions_interp(new_time_range)
+        r_positions = r_positions_interp(new_time_range)
+
+        # use neutral pose to zero positions
+        r_positions = r_positions - r_positions[neutral_frame]
+        c_positions = c_positions - c_positions[neutral_frame]
+
+        # get them as rotation matrices
+        root_R = Rotation.from_euler("xyz", r_rotations, degrees=True).as_matrix()
+        child_R = Rotation.from_euler("xyz", c_rotations, degrees=True).as_matrix()
+
+        # use neutral pose to zero the rotation matrices
+        root_R = np.linalg.inv(root_R[neutral_frame:neutral_frame+1]) @ root_R
+        child_R = np.linalg.inv(child_R[neutral_frame:neutral_frame+1]) @ child_R
+
+        # turn rotation matrices to position matrices
+        child_local_R = child_R
+        c_rotations_relative = Rotation.from_matrix(child_local_R).as_euler('xyz', degrees=True)
+        root_R = Rotation.from_matrix(root_R).as_euler('xyz', degrees=True)
+
+        # prep output json
+        output_json = {}
+        output_json["neck"] = [new_time_range.tolist(), c_rotations_relative.tolist(), c_positions.tolist()]
+        output_json["torso"] = [new_time_range.tolist(), root_R.tolist(), r_positions.tolist()]
+        return output_json
+
+# this specifically load the vicon
+def load_vicon_neck(file_name, target_sr=100, neutral_frame = -1):
+    csv_file = open(file_name)
+    # get the list of objects in the scene
+    objects_names = read_csv_header(csv_file)
+    num_of_objects = len(objects_names)
+    data = csv_file.readlines()
+    # output dictionary
+    out_dict = {}
+    # this dictionary will have shape {name: [[time], [rotations], [positions]]}
+    for item in range(num_of_objects):
+        out_dict[objects_names[item]] = [[], [], []] # these are for [time], [positions], and [rotations] respectively
+    # load up data
+    for i in range(0, len(data)):
+        line_list = (data[i].strip("\n")).split(",") # get all the data
+        # the final line might have no data
+        if len(line_list) < 2: break
+        # get the frame number
+        time = float(line_list[0])
+        # get the position and rotation
+        for j in range(0, num_of_objects):
+            item = objects_names[j]
+            start = 2 + j*6
+            end = start + 6
+            end = min(end, len(line_list))
+            data_cols = line_list[start:end]
+            if data_cols[0] == "":
+                continue
+            else:
+                # get rotations and positions
+                out_dict[item][0].append(time/100)
+                rotations = data_cols[:3]
+                rotations = [float(i) for i in rotations]
+                out_dict[item][1].append(rotations)
+                # only record positions if the data has it
+                if len(data_cols) == 6:
+                    positions = data_cols[3:]
+                    positions = [float(i) for i in positions]
+                    out_dict[item][2].append(positions)
+    if neutral_frame == -1:
+        return out_dict
+    else:
+        print("confirm and make sure that the root is {}.".format(objects_names[0]))
+        root_configuration = out_dict[objects_names[0]]
+        child_configuration = out_dict[objects_names[1]]
+        r_positions = np.array(root_configuration[2])
+        r_rotations = np.array(root_configuration[1])
+        c_rotations = np.array(child_configuration[1])
+
+        last_vicon_frame = np.maximum(root_configuration[0][-1], child_configuration[0][-1])
+        # get the last timestamp in time (we know it's 100 fps)
+        last_vicon_time = last_vicon_frame
+        # get a new range for the rotations
+        new_time_range = np.arange(0, last_vicon_time, 1 / target_sr)
+
+        # make interpolation matches the new sampling rate
+        r_rotations_interp = interp1d(np.array(root_configuration[0]), r_rotations, bounds_error=False,
+                                      fill_value=(r_rotations[0], r_rotations[-1]), axis=0)
+        c_rotations_interp = interp1d(np.array(child_configuration[0]), c_rotations, bounds_error=False,
+                                      fill_value=(c_rotations[0], c_rotations[-1]), axis=0)
+        r_positions_interp = interp1d(np.array(root_configuration[0]), r_positions, bounds_error=False,
+                                      fill_value=(r_positions[0], r_positions[-1]), axis=0)
+        # use interpolation to re_sample basically
+        r_rotations = r_rotations_interp(new_time_range)
+        c_rotations = c_rotations_interp(new_time_range)
+        r_positions = r_positions_interp(new_time_range)
+
+        # use neutral pose to zero positions
+        r_positions = r_positions - r_positions[neutral_frame]
+        # get them as rotation matrices
+        root_R = Rotation.from_euler("xyz", r_rotations, degrees=True).as_matrix()
+        child_R = Rotation.from_euler("xyz", c_rotations, degrees=True).as_matrix()
+
+        # use neutral pose to zero the rotation matrices
+        root_R = np.linalg.inv(root_R[neutral_frame:neutral_frame+1]) @ root_R
+        child_R = np.linalg.inv(child_R[neutral_frame:neutral_frame+1]) @ child_R
+
+        # turn rotation matrices to position matrices
+        child_local_R = child_R
+        c_rotations_relative = Rotation.from_matrix(child_local_R).as_euler('xyz', degrees=True)
+        root_R = Rotation.from_matrix(root_R).as_euler('xyz', degrees=True)
+
+        root_R = laplacian_smwoothing(root_R, 1)
+        c_rotations_relative = laplacian_smoothing(c_rotations_relative, 1)
+
+        # prep output json
+        output_json = {}
+        output_json["neck"] = [new_time_range.tolist(), c_rotations_relative.tolist()]
+        output_json["torso"] = [new_time_range.tolist(), root_R.tolist(), r_positions.tolist()]
+        return output_json
 def get_relatave_rotation(file_name, root_name, child_name, target_sr=100):
     vicon_data = load_vicon_file(file_name, target_sr)
     root_configuration = vicon_data[root_name]
@@ -218,17 +362,16 @@ def get_relatave_rotation(file_name, root_name, child_name, target_sr=100):
     root_R = Rotation.from_euler("xyz",r_rotations,degrees=True).as_matrix()
     child_R = Rotation.from_euler("xyz",c_rotations,degrees=True).as_matrix()
     root_R = np.linalg.inv(root_R[1200:1201]) @ root_R
-    child_R = np.linalg.inv(child_R[1200:1201]) @ child_R
+    # child_R = np.linalg.inv(child_R[1200:1201]) @ child_R
     # back_prop the rotation to find the 
     child_local_R = np.linalg.inv(root_R) @ child_R
+    child_local_R = child_R
     c_rotations_relative = Rotation.from_matrix(child_local_R).as_euler('xyz', degrees=True)
     c_rotations_global = Rotation.from_matrix(child_R).as_euler('xyz', degrees=True)
     root_R = Rotation.from_matrix(root_R).as_euler('xyz', degrees=True)
     output_json = {}
-    plt.plot(r_positions)
-    plt.show()
     output_json["neck"] = [new_time_range.tolist(), c_rotations_global.tolist(), c_rotations_relative.tolist()]
-    output_json["root"] = [new_time_range.tolist(), root_R.tolist(), r_positions.tolist()]
+    output_json["torso"] = [new_time_range.tolist(), root_R.tolist(), r_positions.tolist()]
     return output_json    
 def load_tobii_file(file_name, target_sr=100):
     
@@ -303,6 +446,8 @@ def align_tobii_vicon(out_dict_tobii, out_dict_vicon):
     # compute delay array using correlation
     delay = scipy.signal.correlate(vicon_head_gyro, tobii_head_gyro, mode="valid")
     # compute the peak delay
+    # plt.plot(delay)
+    # plt.show()
     peak_delay = np.argmax(delay)
     out_dict_vicon_aligned = {}
     new_start = peak_delay
@@ -318,11 +463,11 @@ def align_tobii_vicon(out_dict_tobii, out_dict_vicon):
                                          out_dict_vicon_aligned["torso"][0]]
     for i in range(1, len(out_dict_vicon["torso"])):
         out_dict_vicon_aligned["torso"].append(out_dict_vicon["torso"][i][new_start:])
-    print(out_dict_vicon_aligned["neck"][0])
-    plt.plot(vicon_head_gyro[peak_delay:])
-    plt.plot(tobii_head_gyro)
+    # plt.plot(vicon_head_gyro[peak_delay:])
+    # plt.plot(tobii_head_gyro)
+    # plt.show()
     return out_dict_vicon_aligned
-
+# def output_tobii_vicon_file(file_name):
 if __name__ == "__main__":
     # ========================================
     # ================ input =================
@@ -336,22 +481,19 @@ if __name__ == "__main__":
     output_path_tobii = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii4/segments/1/aligned_livedata.json"
     output_path = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon4_out.json"
 
+    reference_frame_for_each_video = {"vicon4":2001}
+
     # output_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon_data.json"
     # input_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon.csv"
 
     # for trial 1-3 recorded with Vicon Tracker
-    goal = "load_motion"
+    goal = "all"
     if goal == "load_motion" or goal == "all":
         # get the json object
-        out_dict_vicon = load_vicon_file(input_path)
+        out_dict_vicon = load_vicon_neck(input_path, target_sr=100, neutral_frame=2001)
         # json the output dictionary and save it to file 
         json_object = json.dumps(out_dict_vicon, indent=4)
         with open(output_path, "w") as f:
-            f.write(json_object)
-    if goal == "relative_rotation" or goal == "all":
-        out_dict_relative = get_relatave_rotation(input_path, "Torsooo:Torsooo", "glasses:glasses")
-        json_object = json.dumps(out_dict_relative, indent=4)
-        with open(output_path_relative, "w") as f:
             f.write(json_object)
     if goal == "load_tobii" or goal == "all":
         out_dict_tobii = load_tobii_file(input_tobii)
@@ -359,17 +501,17 @@ if __name__ == "__main__":
         with open(output_path_tobii, "w") as f:
             f.write(json_object)
     if goal == "all":
-        new_out_dict_relative = align_tobii_vicon(out_dict_tobii, out_dict_relative)
+        new_out_dict_relative = align_tobii_vicon(out_dict_tobii, out_dict_vicon)
         json_object = json.dumps(new_out_dict_relative, indent=4)
-        with open(output_path_relative, "w") as f:
+        with open(output_path, "w") as f:
             f.write(json_object)
-    # new_time_range, aligned_gaze, aligned_gyro = load_tobii_file("F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii/segments/1/livedata.json.gz")
-    # print(aligned_gaze.shape)
-    out_dict_tobii = json.load(open(output_path_tobii))
-    out_dict_vicon = json.load(open(output_path_relative))
-    new_out_dict_vicon =  align_tobii_vicon(out_dict_tobii, out_dict_vicon)
-    
 
+    """
+    The following is for testing only.
+    """
+    # out_dict_tobii = json.load(open(output_path_tobii))
+    # out_dict_vicon = json.load(open(output_path_relative))
+    # new_out_dict_vicon =  align_tobii_vicon(out_dict_tobii, out_dict_vicon)
 
 
 
