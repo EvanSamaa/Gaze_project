@@ -96,9 +96,9 @@ cmds.currentUnit(l="mm")
 vicon_load_neck_relative_motion("F:/MASC/JALI_gaze/Tobii_Vicon_recording/Misc_vicon_test/rotation_of_A_wrt_B_vicon_relative.json", "")
 cmds.currentUnit(l="cm")
 
-output_path_relative = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon3_out_relative.json"
-output_path_tobii = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii3/segments/1/aligned_livedata.json"
-output_path = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon3_out.json"
+output_path_relative = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon2_out_relative.json"
+output_path_tobii = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii2/segments/1/aligned_livedata.json"
+output_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon2_out.json"
 vicon_load_neck_relative_motion(output_path_relative, "")
 load_tobii(output_path_tobii)
 
