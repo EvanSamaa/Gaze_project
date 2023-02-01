@@ -334,7 +334,7 @@ def load_vicon_neck(file_name, target_sr=100, neutral_frame = -1):
         # prep output json
         output_json = {}
         output_json["neck"] = [new_time_range.tolist(), c_rotations_relative.tolist()]
-        output_json["torso"] = [new_time_range.tolist(), root_R.tolist(), r_positions.tolist()]
+        output_json["torso"] = [new_time_range.tolist(), root_R.tolist(), r_positions.tolist() ]
         return output_json
 def get_relatave_rotation(file_name, root_name, child_name, target_sr=100):
     vicon_data = load_vicon_file(file_name, target_sr)
@@ -474,13 +474,13 @@ if __name__ == "__main__":
     # ================ input =================
     # ========================================
     # vicon
-    input_path = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon5.csv"
+    input_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon5.csv"
     # tobii
-    input_tobii = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii5/segments/1/livedata.json.gz"
+    input_tobii = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii5/segments/1/livedata.json.gz"
     # output_path
-    output_path_relative = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon5_out_relative.json"
-    output_path_tobii = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii5/segments/1/aligned_livedata.json"
-    output_path = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon5_out.json"
+    output_path_relative = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon5_out_relative.json"
+    output_path_tobii = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii5/segments/1/aligned_livedata.json"
+    output_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon5_out.json"
 
     reference_frame_for_each_video = {"vicon4":2001, "vicon5": 2222}
 

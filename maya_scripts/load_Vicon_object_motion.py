@@ -30,7 +30,7 @@ def vicon_load_neck_relative_motion(vicon_path, tobii_path):
         t = data[0][i]
         xyz = data[1][i]
         xyz = [f for f in xyz]
-        z, y, x = xyz 
+        z, x, y = xyz 
         cmds.setKeyframe("jNeck_ctl.jNeck_xRotate", v=x, t=t * fps)
         cmds.setKeyframe("jNeck_ctl.jNeck_yRotate", v=y, t=t * fps)
         cmds.setKeyframe("jNeck_ctl.jNeck_zRotate", v=z, t=t * fps)
@@ -106,9 +106,9 @@ def load_tobii(filename):
 cmds.currentUnit(l="mm")
 # name_dict = vicon_generate_objects_motion("F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon_data.json", "")
 # name_dict = vicon_generate_objects_motion("F:/MASC/JALI_gaze/Tobii_Vicon_recording/Misc_vicon_test/rotation_of_A_wrt_B_vicon.json", "")
-output_path_relative = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon5_out_relative.json"
-output_path_tobii = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii5/segments/1/aligned_livedata.json"
-output_path = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon5_out.json"
+output_path_relative = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon5_out_relative.json"
+output_path_tobii = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii5/segments/1/aligned_livedata.json"
+output_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon5_out.json"
 vicon_load_neck_relative_motion(output_path, "")
 load_tobii(output_path_tobii)
 cmds.currentUnit(l="cm")
