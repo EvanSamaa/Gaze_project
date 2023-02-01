@@ -1,14 +1,12 @@
 import json
 import os
 import sys
-
-import scipy.signal
-
 sys.path.insert(0, "C:/Users/evansamaa/Desktop/staggered_face/Utils/")
 import shutil
 import numpy as np
 import gzip
 import pickle as pkl
+import scipy.signal
 from Video_analysis_utils import get_wav_from_video
 import cv2 as cv
 from Signal_processing_utils import dx_dt, laplacian_smoothing
@@ -154,7 +152,7 @@ def read_csv_header(csvfile):
         if match is not None:
             names.append(match.group())
     return names
-def load_vicon_file(file_name, target_sr=100, neutral_frame = -1):
+def load_vicon_file(file_name, target_sr=100, neutral_frame=-1, start=-1, end = -1):
     csv_file = open(file_name)
     # get the list of objects in the scene
     objects_names = read_csv_header(csv_file)
@@ -260,10 +258,13 @@ def load_vicon_neck(file_name, target_sr=100, neutral_frame = -1):
     # load up data
     for i in range(0, len(data)):
         line_list = (data[i].strip("\n")).split(",") # get all the data
-        # the final line might have no data
-        if len(line_list) < 2: break
+        # skipping all lines that might have no data
+        if len(line_list) <= 5: continue
         # get the frame number
-        time = float(line_list[0])
+        try:
+            time = float(line_list[0])
+        except:
+            continue
         # get the position and rotation
         for j in range(0, num_of_objects):
             item = objects_names[j]
@@ -293,7 +294,8 @@ def load_vicon_neck(file_name, target_sr=100, neutral_frame = -1):
         r_positions = np.array(root_configuration[2])
         r_rotations = np.array(root_configuration[1])
         c_rotations = np.array(child_configuration[1])
-
+        for i in child_configuration:
+            print(np.array(i).shape)
         last_vicon_frame = np.maximum(root_configuration[0][-1], child_configuration[0][-1])
         # get the last timestamp in time (we know it's 100 fps)
         last_vicon_time = last_vicon_frame
@@ -327,9 +329,8 @@ def load_vicon_neck(file_name, target_sr=100, neutral_frame = -1):
         c_rotations_relative = Rotation.from_matrix(child_local_R).as_euler('xyz', degrees=True)
         root_R = Rotation.from_matrix(root_R).as_euler('xyz', degrees=True)
 
-        root_R = laplacian_smwoothing(root_R, 1)
-        c_rotations_relative = laplacian_smoothing(c_rotations_relative, 1)
-
+        # root_R = laplacian_smoothing(root_R, 1)
+        # c_rotations_relative = laplacian_smoothing(c_rotations_relative, 1)
         # prep output json
         output_json = {}
         output_json["neck"] = [new_time_range.tolist(), c_rotations_relative.tolist()]
@@ -463,9 +464,9 @@ def align_tobii_vicon(out_dict_tobii, out_dict_vicon):
                                          out_dict_vicon_aligned["torso"][0]]
     for i in range(1, len(out_dict_vicon["torso"])):
         out_dict_vicon_aligned["torso"].append(out_dict_vicon["torso"][i][new_start:])
-    # plt.plot(vicon_head_gyro[peak_delay:])
-    # plt.plot(tobii_head_gyro)
-    # plt.show()
+    plt.plot(vicon_head_gyro[peak_delay:])
+    plt.plot(tobii_head_gyro)
+    plt.show()
     return out_dict_vicon_aligned
 # def output_tobii_vicon_file(file_name):
 if __name__ == "__main__":
@@ -473,15 +474,15 @@ if __name__ == "__main__":
     # ================ input =================
     # ========================================
     # vicon
-    input_path = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon4.csv"
+    input_path = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon5.csv"
     # tobii
-    input_tobii = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii4/segments/1/livedata.json.gz"
+    input_tobii = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii5/segments/1/livedata.json.gz"
     # output_path
-    output_path_relative = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon4_out_relative.json"
-    output_path_tobii = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii4/segments/1/aligned_livedata.json"
-    output_path = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon4_out.json"
+    output_path_relative = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon5_out_relative.json"
+    output_path_tobii = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/tobii5/segments/1/aligned_livedata.json"
+    output_path = "D:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon5_out.json"
 
-    reference_frame_for_each_video = {"vicon4":2001}
+    reference_frame_for_each_video = {"vicon4":2001, "vicon5": 2222}
 
     # output_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon_data.json"
     # input_path = "F:/MASC/JALI_gaze/Tobii_Vicon_recording/Integration_test/vicon.csv"
@@ -490,7 +491,7 @@ if __name__ == "__main__":
     goal = "all"
     if goal == "load_motion" or goal == "all":
         # get the json object
-        out_dict_vicon = load_vicon_neck(input_path, target_sr=100, neutral_frame=2001)
+        out_dict_vicon = load_vicon_neck(input_path, target_sr=100, neutral_frame=2222)
         # json the output dictionary and save it to file 
         json_object = json.dumps(out_dict_vicon, indent=4)
         with open(output_path, "w") as f:
@@ -505,7 +506,6 @@ if __name__ == "__main__":
         json_object = json.dumps(new_out_dict_relative, indent=4)
         with open(output_path, "w") as f:
             f.write(json_object)
-
     """
     The following is for testing only.
     """
