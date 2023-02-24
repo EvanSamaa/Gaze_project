@@ -30,7 +30,7 @@ def vicon_load_neck_relative_motion(vicon_path, tobii_path):
         t = data[0][i]
         xyz = data[1][i]
         xyz = [f for f in xyz]
-        z, x, y = xyz 
+        y, x, z = xyz 
         cmds.setKeyframe("jNeck_ctl.jNeck_xRotate", v=x, t=t * fps)
         cmds.setKeyframe("jNeck_ctl.jNeck_yRotate", v=y, t=t * fps)
         cmds.setKeyframe("jNeck_ctl.jNeck_zRotate", v=z, t=t * fps)
@@ -39,7 +39,7 @@ def vicon_load_neck_relative_motion(vicon_path, tobii_path):
         t = data_torso[0][i]
         xyz = data_torso[1][i]
         xyz = [f for f in xyz]
-        z, y, x = xyz 
+        y, z, x = xyz 
         cmds.setKeyframe("CNT_THOR.rotateX", v=x, t=t * fps)
         cmds.setKeyframe("CNT_THOR.rotateY", v=y, t=t * fps)
         cmds.setKeyframe("CNT_THOR.rotateZ", v=z, t=t * fps)
@@ -73,7 +73,7 @@ def vicon_generate_objects_motion(vicon_path, tobii_path, distance_factor = 10, 
             t = data[0][i] / time_factor
             xyz = data[2][i]
             xyz = [f/distance_factor for f in xyz]
-            x, z, y = xyz 
+            x, y, z = xyz 
             cmds.setKeyframe(key+".translateX", v=x, t=t * fps)
             cmds.setKeyframe(key+".translateY", v=y+y_offset, t=t * fps)
             cmds.setKeyframe(key+".translateZ", v=z+z_offset, t=t * fps)
