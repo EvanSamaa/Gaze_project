@@ -5,6 +5,7 @@ from matplotlib import pyplot as plt
 import os, sys
 import librosa
 sys.path.insert(0, '/Users/evanpan/Documents/GitHub/staggered_face/Utils')
+sys.path.insert(0, '/Users/evanpan/Desktop/openpose/python/')
 from Signal_processing_utils import intensity_from_signal, pitch_from_signal, sparse_key_smoothing, laplacian_smoothing
 from Speech_Data_util import Sentence_word_phone_parser
 from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info

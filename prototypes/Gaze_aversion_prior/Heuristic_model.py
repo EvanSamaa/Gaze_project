@@ -13,7 +13,6 @@ class ComputeAversionProbability:
         # set up hyper-parameters
         self.eye_contact_comfort_level = 5  # how much time the character is comfortable with holding eye contact
         self.gaze_away_comfort_level = 5  # how often the character is comfortable with looking else where until looking at the charcter
-
     def compute(self):
         # set state variables
         time_since_prev_aversion = 5
@@ -59,7 +58,5 @@ class ComputeAversionProbability:
                 avert_probability_value.append(0)
                 avert_probability_time.append(self.script.word_intervals[i][0])
         return avert_probability_time, avert_probability_value
-
-
 if __name__ == "__main__":
     k = 2
