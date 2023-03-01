@@ -1,24 +1,27 @@
+import sys
+sys.path.insert(0, '/Users/evansamaa/Documents/GitHub/Gaze_project')
+sys.path.insert(0, "C:/Users/evansamaa/Documents/GitHub/EvansToolBox/Utils")
 import numpy as np
 from matplotlib import pyplot as plt
-from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info, MultiPartyConversationalSceneInfo
+from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info, MultiPartyConversationalSceneInfo, AgentInfo
 from Geometry_Util import rotation_angles_frome_positions, rotation_axis_angle_from_vector, \
     rotation_matrix_from_axis_angle, rotation_matrix_from_vectors
 from Signal_processing_utils import dx_dt
 from prototypes.Optimization_based_head_eye_seperator.Baseline_optimization import optimize_for_head_gaze_breakdown
 # class InternalModelCenterBias:
 class InternalModelCenterBias:
-    def __init__(self, scene: Dietic_Conversation_Gaze_Scene_Info):
+    def __init__(self, scene: AgentInfo):
         self.scene = scene
     def estimate_target_pose(self, index, previous_pos=None):
-        if index >= self.scene.positions_world.shape[0]:
-            index = index - self.scene.positions_world.shape[0]
-            return self.scene.get_wondering_points()[index]
-        if index == self.scene.get_conversation_partner_id():
-            return self.scene.get_wondering_points()[index]
+        # if index >= self.scene.get_all_positions(coordinate_space="global").shape[0]:
+        #     index = index - self.scene.positions_world.shape[0]
+        #     return self.scene.get_wondering_points()[index]
+        # if index == self.scene.get_conversation_partner_id():
+        #     return self.scene.get_wondering_points()[index]
         if previous_pos is None:
             previous_pos = self.get_base_pose()
         personal_center_pos = self.get_base_pose() # this is in local space
-        target_mean_pos = self.scene.transform_world_to_local(self.scene.positions_world[index])
+        target_mean_pos = self.scene.get_all_positions(coordinate_space="local", index=index)
 
         # accuracy drops with distance (in degrees) and speed (speed seems to correlate with distance )
         target_rot = rotation_angles_frome_positions(target_mean_pos) # get the target pos in degrees
@@ -38,9 +41,10 @@ class InternalModelCenterBias:
     def get_base_pose(self):
         return self.scene.speaker_face_direction_local
     def estimate_listener_pose(self):
-        for i in range(0, len(self.scene.object_type)):
-            if self.scene.object_type[i] == 5:
-                return self.scene.transform_world_to_local(self.scene.positions_world[i])
+        return self.scene.get_active_object_position()[0]
+        # for i in range(0, len(self.scene.object_type)):
+        #     if self.scene.object_type[i] == 5:
+        #         return self.scene.transform_world_to_local(self.scene.positions_world[i])
 class MultiPartyInternalModelCenterBias:
     def __init__(self, scene: MultiPartyConversationalSceneInfo, speaker_id):
         self.scene = scene
@@ -80,7 +84,6 @@ class MultiPartyInternalModelCenterBias:
         for i in range(0, len(self.scene.object_type)):
             if self.scene.object_type[i] == 5:
                 return self.scene.transform_world_to_local(self.scene.positions_world[i], self.speaker_id)
-
 class SacccadeGenerator:
     def interpolate_gaze_goal(self, t):
         if t < self.target_times[0]:
@@ -348,7 +351,7 @@ class SacccadeGenerator:
                     gaze_submovements_indexes.append(gaze_submovement_range)
                     self.gaze_positions[t_index] += gaze_submovement[0]
                 # obtain head shift duration
-                head_movement_duration = .4
+                head_movement_duration = 1
                 # add the head movement
                 head_submovement, head_submovement_range = self.add_head_submovement(self.t,
                                                                                      self.t + head_movement_duration,
@@ -416,6 +419,11 @@ class SacccadeGenerator:
 
 
 if __name__ == "__main__":
+    
+    np.random.seed(0)
+    # inputs
+    scene_data_path = "C:/Users/evansamaa/Documents/GitHub/Gaze_project/data/look_at_points/simplest_scene2_less_items.json"
+    agentScene1 = AgentInfo(scene_data_path)
     target_times = [0.0, 0.08, 0.27, 0.42, 0.55, 0.85, 0.91, 1.06, 1.31, 1.65, 1.68, 2.0, 2.36, 2.62, 2.87, 2.97, 3.41,
                     3.61, 3.86, 4.16, 4.31, 4.65, 4.72, 5.13, 5.69, 5.72, 6.08, 6.81, 7.39, 7.61, 7.78, 7.97, 8.19,
                     8.28, 8.52, 8.83, 8.93, 9.07, 9.21, 9.46, 9.58, 9.89, 9.93, 10.39, 10.71, 11.07, 11.15, 11.44, 11.5,
@@ -486,5 +494,11 @@ if __name__ == "__main__":
                        [18.606098592763445, 0.9596711559607343, 161.84341837309665],
                        [18.606098592763445, 0.9596711559607343, 161.84341837309665]]
     target_location = np.array(target_location)
-    pass
+    internal_model = InternalModelCenterBias(agentScene1)
+    from numpy import array
+    target_times = [0, 0, 0.4, 1.4000000000000001, 4.6000000000000005, 6.4, 7.6000000000000005, 7.7, 9.0, 10.9, 11.700000000000001, 11.8, 14.700000000000001, 15.8, 15.9, 17.400000000000002, 18.8, 19.900000000000002, 20.6, 21.3, 22.8, 25.3, 25.400000000000002, 25.5, 27.8, 28.900000000000002, 30.400000000000002, 31.5, 34.6, 35.0, 37.2, 38.5, 38.6, 42.300000000000004, 42.5, 42.800000000000004, 43.5, 44.6, 47.0, 49.300000000000004, 49.5, 50.7, 52.7, 54.1, 54.2, 56.7, 57.800000000000004, 58.4, 59.800000000000004, 59.9, 69.2, 70.60000000000001, 72.60000000000001, 72.7, 73.9, 76.0, 76.5, 76.60000000000001, 78.60000000000001, 78.7, 80.60000000000001, 82.7, 82.9, 84.5, 86.10000000000001, 86.9, 87.7, 91.7, 93.4, 93.5, 93.7, 94.9, 97.9, 98.0, 100.2, 101.0, 101.10000000000001, 102.8, 104.3, 106.5, 107.5, 109.7, 110.7, 111.7, 111.8, 113.2, 115.2, 115.3, 115.7, 116.0, 117.9, 118.7, 118.8]
+    target_location = [array([ 18.60609859, 163.4965227 , 152.23135916]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([-86.57015776,  19.54535685, 130.97888255]), array([ 77.5670647 , -98.062397  ,  55.17771834]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([-86.57015776,  19.54535685, 130.97888255]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([-86.57015776,  19.54535685, 130.97888255]), array([  99.19217314, -134.72294727,   98.83931537]), array([  99.19217314, -134.72294727,   98.83931537]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([ 77.5670647 , -98.062397  ,  55.17771834]), array([  99.19217314, -134.72294727,   98.83931537]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([ -76.25453769, -165.51713441,  114.94985496]), array([  99.19217314, -134.72294727,   98.83931537]), array([-392.1011579 ,  -66.03683609,   79.91651373]), array([ -76.25453769, -165.51713441,  114.94985496]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([ -76.25453769, -165.51713441,  114.94985496]), array([  0.        , -34.20201433,  93.96926208]), array([  99.19217314, -134.72294727,   98.83931537]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([ -76.25453769, -165.51713441,  114.94985496]), array([-135.88727278,  -14.58413319,   75.10063517]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([-86.57015776,  19.54535685, 130.97888255]), array([ 77.5670647 , -98.062397  ,  55.17771834]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([ 77.5670647 , -98.062397  ,  55.17771834]), array([-135.88727278,  -14.58413319,   75.10063517]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([ 77.5670647 , -98.062397  ,  55.17771834]), array([-86.57015776,  19.54535685, 130.97888255]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([  99.19217314, -134.72294727,   98.83931537]), array([149.6303476 , -55.47518358, 114.35288247]), array([ 77.5670647 , -98.062397  ,  55.17771834]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([149.6303476 , -55.47518358, 114.35288247]), array([-135.88727278,  -14.58413319,   75.10063517]), array([-392.1011579 ,  -66.03683609,   79.91651373]), array([-86.57015776,  19.54535685, 130.97888255]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([-86.57015776,  19.54535685, 130.97888255]), array([ -76.25453769, -165.51713441,  114.94985496]), array([149.6303476 , -55.47518358, 114.35288247]), array([  0.        , -34.20201433,  93.96926208]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([-86.57015776,  19.54535685, 130.97888255]), array([-135.88727278,  -14.58413319,   75.10063517]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([-86.57015776,  19.54535685, 130.97888255]), array([ 77.5670647 , -98.062397  ,  55.17771834]), array([149.6303476 , -55.47518358, 114.35288247]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([-86.57015776,  19.54535685, 130.97888255]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([ -76.25453769, -165.51713441,  114.94985496]), array([  99.19217314, -134.72294727,   98.83931537]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([-135.88727278,  -14.58413319,   75.10063517]), array([-135.88727278,  -14.58413319,   75.10063517]), array([  99.19217314, -134.72294727,   98.83931537]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([ 77.5670647 , -98.062397  ,  55.17771834]), array([-392.1011579 ,  -66.03683609,   79.91651373]), array([-135.88727278,  -14.58413319,   75.10063517]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([  99.19217314, -134.72294727,   98.83931537]), array([ 77.5670647 , -98.062397  ,  55.17771834]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([-392.1011579 ,  -66.03683609,   79.91651373]), array([-135.88727278,  -14.58413319,   75.10063517]), array([-86.57015776,  19.54535685, 130.97888255]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([-135.88727278,  -14.58413319,   75.10063517]), array([ 77.5670647 , -98.062397  ,  55.17771834]), array([ -76.25453769, -165.51713441,  114.94985496]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([149.6303476 , -55.47518358, 114.35288247]), array([-86.57015776,  19.54535685, 130.97888255]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([  0.        , -34.20201433,  93.96926208]), array([-392.1011579 ,  -66.03683609,   79.91651373]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([  99.19217314, -134.72294727,   98.83931537]), array([  0.        , -34.20201433,  93.96926208]), array([-135.88727278,  -14.58413319,   75.10063517]), array([-135.88727278,  -14.58413319,   75.10063517]), array([ 18.60609859, 163.4965227 , 152.23135916]), array([ 77.5670647 , -98.062397  ,  55.17771834])] 
+    target_index = [7, 7, 2, 4, 7, 2, 7, 2, 6, 6, 7, 4, 6, 7, 1, 6, 5, 1, 7, 1, 8, 6, 7, 1, 0, 7, 2, 4, 7, 4, 0, 7, 4, 2, 7, 6, 3, 4, 7, 7, 3, 0, 5, 2, 7, 2, 1, 3, 8, 7, 2, 0, 7, 2, 4, 3, 7, 2, 7, 1, 6, 7, 0, 0, 6, 7, 4, 5, 0, 7, 6, 4, 7, 5, 0, 2, 7, 0, 4, 1, 7, 3, 2, 7, 8, 5, 7, 6, 8, 0, 0, 7, 4]
+    generator = SacccadeGenerator(target_times, target_location, target_index, internal_model)
+    ek, hk, micro_saccade = generator.compute()
     # simuluation state variables

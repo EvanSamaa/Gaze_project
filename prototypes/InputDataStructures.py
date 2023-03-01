@@ -257,6 +257,8 @@ class AgentInfo:
                 self.active_object_interest.append(temp_object_interest[temp_scene_object_ids[i]])
                 self.active_object_pos.append(temp_object_pos[temp_scene_object_ids[i]])
                 self.active_obejct_id.append(temp_scene_object_ids[i])  
+        self.active_object_pos = np.array(self.active_object_pos)
+        self.active_object_pos = np.array(self.active_object_pos)
     def rotation_matrix_from_vectors(self, vec1, vec2):
         """ Find the rotation matrix that aligns vec1 to vec2
         :param vec1: A 3d "source" vector
@@ -275,13 +277,13 @@ class AgentInfo:
         kmat = np.array([[0, -v[2], v[1]], [v[2], 0, -v[0]], [-v[1], v[0], 0]])
         rotation_matrix = np.eye(3) + kmat + kmat.dot(kmat) * ((1 - c) / (s ** 2))
         return rotation_matrix
-    def get_wondering_points(self, neutral_gaze_spot_local=np.array([0, 0, 100])):
+    def get_wondering_points(self, neutral_gaze_spot_local=np.array([0, 0, 100]), coordinate_space="local"):
         """
         get all the looking positions in local frame
         :param neutral_gaze_spot_local: the default gaze position
         :return: a [6, 3] array of all the positions to wonder
         """
-        wondering_angles = [[22, 10], [-22, 10], [-22, -10], [22, -10]]
+        wondering_angles = [[0, -20], [0, 20]]
         out_positions = []
         out_angles = []
         neutral_gaze_angle = rotation_angles_frome_positions(neutral_gaze_spot_local)
@@ -292,7 +294,13 @@ class AgentInfo:
             out_angles.append(new_angle)
         out_angles = np.concatenate(out_angles, axis=0)
         out_positions = directions_from_rotation_angles(out_angles, np.linalg.norm(neutral_gaze_spot_local))
-        return out_positions
+        if coordinate_space == "local":
+            return out_positions
+        else:
+            out = np.zeros(out_positions.shape)
+            for i in range(0, out.shape[0]):
+                out[i] = self.transform_local_to_world(out_positions[i])
+            return out
     def transform_world_to_local(self, pos_world):
         p = pos_world - self.self_position_world
         return self.world_to_local @ p
@@ -328,6 +336,15 @@ class AgentInfo:
                 return self.active_object_pos[id]
             elif coordinate_space == "local":
                 return self.transform_world_to_local(self.active_object_pos[id])
+    def get_all_positions(self, coordinate_space="local", index=-1):
+        objs = self.get_object_positions(coordinate_space=coordinate_space)
+        active_objs = self.get_object_positions(coordinate_space=coordinate_space)
+        wp = self.get_wondering_points(coordinate_space=coordinate_space)
+        possss = np.concatenate([objs, active_objs, wp], axis=0)
+        if index == -1:
+            return possss
+        else:
+            return possss[index]
 
 class TurnTakingData:
     def __init__(self, audio_path, audio_threshold=40):

@@ -40,7 +40,7 @@ class GMM_Decomposition:
             try:
                 temp_gmm_dict[int(float(key))] = pkl.load(open(filepath, "rb"))
             except:
-                alt_filepath = "C:/Users/evan1/Documents/Gaze_project/prototypes/Jin2019/model/" + filepath[54:] 
+                alt_filepath = "C:/Users/evansamaa/Documents/Github/Gaze_project/prototypes/Jin2019/model/" + filepath[54:] 
                 try:               
                     temp_gmm_dict[int(float(key))] = pkl.load(open(alt_filepath, "rb"))
                 except:

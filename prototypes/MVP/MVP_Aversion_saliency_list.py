@@ -1,5 +1,5 @@
 from prototypes.VirtualClasses import Base_Static_Saliency_List
-from prototypes.InputDataStructures import MultiPartyConversationalSceneInfo
+from prototypes.InputDataStructures import MultiPartyConversationalSceneInfo, AgentInfo
 from Geometry_Util import rotation_angles_frome_positions
 from Signal_processing_utils import interpolate1D
 import numpy as np
@@ -10,7 +10,7 @@ from matplotlib.patches import Circle
 from prototypes.Gaze_aversion_prior.Ribhav_model import predict_aversion
 class AversionSignalDrivenSaliency(Base_Static_Saliency_List):
     def __init__(self, scene_info: MultiPartyConversationalSceneInfo, audio: np.array, script: Sentence_word_phone_parser, sr=44100, dt=0.02):
-        self.scene_info: MultiPartyConversationalSceneInfo = scene_info
+        self.scene_info: MultiPartyConverAgentInfosationalSceneInfo = scene_info
         self._number_of_objects = scene_info.positions_world.shape[0] + scene_info.get_wondering_points().shape[0]
         self._sr = sr
         self._dt = dt # 100 hz

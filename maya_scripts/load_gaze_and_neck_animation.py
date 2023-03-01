@@ -1,68 +1,194 @@
 import pickle as pkl
 import math
-
-def load_neck_and_gaze(filename):
-    neck_blend_dir = ["jNeck_xRotate", "jNeck_yRotate", "jNeck_zRotate"]
-    for item in neck_blend_dir:
-        try:
-            cmds.delete(item + '_pairBlend')
-        except:
-            pass
-        try:
-            cmds.delete(item + '_alpha_speech')
-        except:
-            pass
-        try:
-            cmds.delete(item + '_speech')
-        except:
-            pass
-        try:
-            cmds.delete(item + '_gaze')
-        except:
-            pass
-
-        cmds.createNode('pairBlend', n=item + '_pairBlend')
-        cmds.createNode('animCurveTL', n=item + '_alpha_speech')        
-        cmds.createNode('animCurveTL', n=item + '_speech')
-        cmds.createNode('animCurveTL', n=item + '_gaze')
-       
-        cmds.connectAttr(item + '_speech.output', item + '_pairBlend.inTranslateX2')
-        cmds.connectAttr(item + '_gaze.output', item + '_pairBlend.inTranslateX1')
-
-    # this blends between two sets of musical articulation with pitch sensitivity
-
-    motion_components = pkl.load(open(filename))
-    ek, hk, ms, neck = motion_components
+def create_neck_blend_node(rig):
     try:
-        cmds.cutKey("jNeck_ctl.jNeck_yRotate")
         cmds.cutKey("jNeck_ctl.jNeck_xRotate")
-        cmds.cutKey("eyeStare_world.eyeStare_world_translateX")
-        cmds.cutKey("eyeStare_world.eyeStare_world_translateY")
-        cmds.cutKey("eyeStare_world.eyeStare_world_translateZ")
-        cmds.cutKey("CNT_BOTH_EYES.LeftRight_eyes")
-        cmds.cutKey("CNT_BOTH_EYES.DownUp_eyes")
+        cmds.cutKey("jNeck_ctl.jNeck_yRotate")
+        cmds.cutKey("jNeck_ctl.jNeck_zRotate")
     except:
         pass
-    
-    
-    for i in range(0, len(ms)):
-        interval = ms[i]
-        for j in range(0, len(interval)):
-            cmds.setKeyframe("CNT_BOTH_EYES.LeftRight_eyes", t=interval[j][0] * 24, v=interval[j][1])
-            cmds.setKeyframe("CNT_BOTH_EYES.DownUp_eyes", t=interval[j][0] * 24, v=-interval[j][2])
-    
+    try:        
+        cmds.delete("jSync1_Vanilla_B1")
+    except:
+        pass
+    try:
+        cmds.delete("jSync1_Vanilla_B2")
+    except:
+        pass
+    try:
+        cmds.delete("jSync1_Vanilla_B3")
+    except:
+        pass
+    try:
+        cmds.delete("xneck_pairBlend")
+    except:
+        pass
+    try:
+        cmds.delete("xneck_pairBlend_gaze")
+    except:
+        pass
+    try:
+        cmds.delete("xneck_pairBlend_speech")
+    except:
+        pass
+    try:
+        cmds.delete("xneck_pairBlend_blend")
+    except:
+        pass
+    # make node for pairblend
+    cmds.createNode('pairBlend', n="xneck_pairBlend")
+    # make node to store animation curves
+    cmds.createNode('animCurveTL', n='xneck_pairBlend_gaze')
+    cmds.createNode('animCurveTL', n='xneck_pairBlend_speech')
+    cmds.createNode('animCurveTL', n='xneck_pairBlend_blend_speech1') # 1 is gaze, 0 is speech
+    # make them connection
+    cmds.connectAttr('xneck_pairBlend_blend_speech1.output', 'xneck_pairBlend.weight')
+    cmds.connectAttr('xneck_pairBlend_gaze.output', 'xneck_pairBlend.inTranslateX1')
+    cmds.connectAttr('xneck_pairBlend_speech.output', 'xneck_pairBlend.inTranslateX2')
+    if rig == "jali":
+        cmds.connectAttr('xneck_pairBlend.outTranslate.outTranslateX', 'jNeck_ctl.jNeck_xRotate')
+    elif rig == "waitress":
+        cmds.connectAttr('xneck_pairBlend.outTranslate.outTranslateX', 'neck_1_ctrl.rotateZ')
+        
+    try:
+        cmds.delete("yneck_pairBlend")
+    except:
+        pass
+    try:
+        cmds.delete("yneck_pairBlend_gaze")
+    except:
+        pass
+    try:
+        cmds.delete("yneck_pairBlend_speech")
+    except:
+        pass
+    try:
+        cmds.delete("yneck_pairBlend_blend")
+    except:
+        pass
+    # make node for pairblend
+    cmds.createNode('pairBlend', n="yneck_pairBlend")
+    # make node to store animation curves
+    cmds.createNode('animCurveTL', n='yneck_pairBlend_gaze')
+    cmds.createNode('animCurveTL', n='yneck_pairBlend_speech')
+    cmds.createNode('animCurveTL', n='yneck_pairBlend_blend_speech1') # 1 is gaze, 0 is speech
+    # make them connection
+    cmds.connectAttr('yneck_pairBlend_blend_speech1.output', 'yneck_pairBlend.weight')
+    cmds.connectAttr('yneck_pairBlend_gaze.output', 'yneck_pairBlend.inTranslateX1')
+    cmds.connectAttr('yneck_pairBlend_speech.output', 'yneck_pairBlend.inTranslateX2')
+    if rig == "jali":
+        cmds.connectAttr('yneck_pairBlend.outTranslate.outTranslateX', 'jNeck_ctl.jNeck_yRotate')
+    elif rig == "waitress":
+        cmds.connectAttr('xneck_pairBlend.outTranslate.outTranslateX', 'neck_1_ctrl.yRotate')
+    return
+def load_tobii(filename, rig):
+    fps = mel.eval('float $fps = `currentTimeUnitToFPS`')
+    motion_components = pkl.load(open(filename))
+    ek, hk = motion_components
     for i in range(0, len(hk)):
         interval = hk[i]
         for j in range(0, len(interval)):
-            # y direction has 
-            cmds.setKeyframe("jNeck_ctl.jNeck_yRotate", t=interval[j][0] * 24, v=interval[j][1])
-            cmds.setKeyframe("jNeck_ctl.jNeck_xRotate", t=interval[j][0] * 24, v=-interval[j][2])
+            # x direction is vertical (elevation)
+            cmds.setKeyframe("xneck_pairBlend_gaze", v=interval[j][2]/2, t=interval[j][0] * fps)
+            # y direction is horizontal (azimuth) 
+            cmds.setKeyframe("yneck_pairBlend_gaze", v=interval[j][1]/2, t=interval[j][0] * fps)
+            # cmds.setKeyframe("jNeck_ctl.jNeck_xRotate", t=interval[j][0] * fps, v=-interval[j][2])
     
     for i in range(0, len(ek)):
         interval = ek[i]
         for j in range(0, len(interval)):
-            print(interval[j][1], 100 * math.tan(interval[j][1]/180 * 3.1415926))
-            cmds.setKeyframe("eyeStare_world.eyeStare_world_translateX", time=interval[j][0]*24, value=interval[j][1])
-            cmds.setKeyframe("eyeStare_world.eyeStare_world_translateY", time=interval[j][0]*24, value=interval[j][2])
-            cmds.setKeyframe("eyeStare_world.eyeStare_world_translateZ", time=interval[j][0]*24, value=100)    
-load_neck_and_gaze("C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl")
+            if rig == "jali":
+                cmds.setAttr("lookMaster.headWorldBlend", 0)
+                cmds.setKeyframe("eyeStare_head.eyeStare_head_translateX", time=interval[j][0] * fps, value=interval[j][1])
+                cmds.setKeyframe("eyeStare_head.eyeStare_head_translateY", time=interval[j][0] * fps, value=interval[j][2])
+                cmds.setKeyframe("eyeStare_head.eyeStare_head_translateZ", time=interval[j][0] * fps, value=interval[j][3])
+            elif rig == "waitress":
+                cmds.setKeyframe("Eye_aim_ctrls.translateX", time=interval[j][0] * fps, value=interval[j][1])
+                cmds.setKeyframe("Eye_aim_ctrls.translateY", time=interval[j][0] * fps, value=interval[j][2])
+                cmds.setKeyframe("Eye_aim_ctrls.translateZ", time=interval[j][0] * fps, value=interval[j][3])
+                
+def load_gaze(filename, rig, tobii = False):
+    create_neck_blend_node(rig)
+    # filename = "C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl"
+    # filename = "C:/Users/evansamaa/Desktop/Gaze_project/data/look_at_points/prototype2p2.pkl"
+    fps = mel.eval('float $fps = `currentTimeUnitToFPS`')
+    try:
+        if rig == "jali":
+            cmds.cutKey("jNeck_ctl.jNeck_yRotate")
+            cmds.cutKey("jNeck_ctl.jNeck_xRotate")
+            cmds.cutKey("eyeStare_world.eyeStare_world_translateX")
+            cmds.cutKey("eyeStare_world.eyeStare_world_translateY")
+            cmds.cutKey("eyeStare_world.eyeStare_world_translateZ")
+            cmds.cutKey("CNT_BOTH_EYES.LeftRight_eyes")
+            cmds.cutKey("CNT_BOTH_EYES.DownUp_eyes")
+        elif rig == "waitress":
+            cmds.cutKey("neck_1_ctrl.rotateY")
+            cmds.cutKey("neck_1_ctrl.rotateZ")
+            cmds.cutKey("neck_1_ctrl.rotateX")
+            cmds.cutKey("Eye_aim_ctrls.translateX")
+            cmds.cutKey("Eye_aim_ctrls.translateY")
+            cmds.cutKey("Eye_aim_ctrls.translateZ")
+            cmds.cutKey("R_eye_aim_ctrl.translateX")
+            cmds.cutKey("R_eye_aim_ctrl.translateY")
+            cmds.cutKey("L_eye_aim_ctrl.translateX")
+            cmds.cutKey("L_eye_aim_ctrl.translateY")
+    except:
+        pass
+    if tobii:
+        return load_tobii(filename, rig)
+    motion_components = pkl.load(open(filename))
+    ek, hk, ms, neck, blend_weight = motion_components
+    cmds.setAttr("lookMaster.headWorldBlend", 10)
+    # micro-saccade
+    for i in range(0, len(ms)):
+        interval = ms[i]
+        for j in range(0, len(interval)):
+            if rig == "jali":
+                cmds.setKeyframe("CNT_BOTH_EYES.LeftRight_eyes", t=interval[j][0] * fps, v=interval[j][1])
+                cmds.setKeyframe("CNT_BOTH_EYES.DownUp_eyes", t=interval[j][0] * fps, v=-interval[j][2])
+            elif rig == "waitress":
+                cmds.setKeyframe("R_eye_aim_ctrl.translateX", t=interval[j][0] * fps, v=interval[j][1])
+                cmds.setKeyframe("R_eye_aim_ctrl.translateY", t=interval[j][0] * fps, v=-interval[j][2])
+                cmds.setKeyframe("L_eye_aim_ctrl.translateX", t=interval[j][0] * fps, v=interval[j][1])
+                cmds.setKeyframe("L_eye_aim_ctrl.translateY", t=interval[j][0] * fps, v=-interval[j][2])
+    
+    for i in range(0, len(hk)):
+        interval = hk[i]
+        for j in range(0, len(interval)):
+            # x direction is vertical (elevation)
+            cmds.setKeyframe("xneck_pairBlend_gaze", v=-interval[j][2], t=interval[j][0] * fps)
+            # y direction is horizontal (azimuth) 
+            cmds.setKeyframe("yneck_pairBlend_gaze", v=interval[j][1], t=interval[j][0] * fps)
+            # cmds.setKeyframe("jNeck_ctl.jNeck_xRotate", t=interval[j][0] * fps, v=-interval[j][2])
+    
+    for i in range(0, len(ek)):
+        interval = ek[i]
+        for j in range(0, len(interval)):
+            if rig == "jali":
+                cmds.setKeyframe("eyeStare_world.eyeStare_world_translateX", time=interval[j][0] * fps, value=interval[j][1])
+                cmds.setKeyframe("eyeStare_world.eyeStare_world_translateY", time=interval[j][0] * fps, value=interval[j][2])
+                cmds.setKeyframe("eyeStare_world.eyeStare_world_translateZ", time=interval[j][0] * fps, value=interval[j][3])
+            elif rig == "waitress":
+                cmds.setKeyframe("Eye_aim_ctrls.translateX", time=interval[j][0] * fps, value=interval[j][1])
+                cmds.setKeyframe("Eye_aim_ctrls.translateY", time=interval[j][0] * fps, value=interval[j][2])
+                cmds.setKeyframe("Eye_aim_ctrls.translateZ", time=interval[j][0] * fps, value=interval[j][3])
+    dims = ["x", "y", "z"]
+    for k in range(0, 3):
+        t = neck[k*2]
+        v = neck[k*2+1]
+        for i in range(len(t)):
+            if dims[k] == "x" or dims[k] == "y":
+                cmds.setKeyframe("{}neck_pairBlend_speech".format(dims[k]), v=-(v[i]),
+                t=t[i] * fps)
+            else:
+                if rig == "jali":
+                    cmds.setKeyframe("jNeck_ctl.jNeck_{}Rotate".format(dims[k]), v=-(v[i]),
+                                 t=t[i] * fps)
+                elif rig == "waitress":
+                    cmds.setKeyframe("neck_1_ctrl.RotateZ".format(dims[k]), v=-(v[i]),
+                                 t=t[i] * fps)
+        
+    
+# load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/prototype2p2.pkl", "jali")
+load_gaze("C:/Users/evansamaa/Documents/Github/Gaze_project/data/prototype2p2.pkl", "jali", False)
+

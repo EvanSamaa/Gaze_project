@@ -36,6 +36,9 @@ def optimize_for_head_gaze_breakdown(gaze_intervals, list_of_gaze_positions, lis
         prev_ele = gaze_angles[max(0, i-1), 1]
         ele_angle = gaze_angles[i, 1]
         ele_gaze, ele_head = ele_decomp.decompose(ele_angle, prev_ele)
+        # make the character look down less
+        if ele_head < 0:
+            ele_head = ele_head * 0.3
         new_head_angles = np.array([[azi_head, ele_head]])
         prior_head_angles.append((new_head_angles))
 
@@ -69,7 +72,8 @@ def optimize_for_head_gaze_breakdown(gaze_intervals, list_of_gaze_positions, lis
                                 2 * (neck_angle_ele - listener_angle[1]) ** 2)
         problem = cp.Problem(objective, [])
         opt = problem.solve()
-        solved_angles.append(np.array([[neck_angle_azi.value[0], neck_angle_ele.value[0]]]))
+        solved_angles.append(np.array([[prior_head_angles[i, 0], prior_head_angles[i, 1]]]))
+        # solved_angles.append(np.array([[neck_angle_azi.value[0], neck_angle_ele.value[0]]]))
 
     solved_angles = np.concatenate(solved_angles, axis = 0)
     head_pos = directions_from_rotation_angles(solved_angles, gaze_positions_norm)
