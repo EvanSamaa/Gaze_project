@@ -344,7 +344,7 @@ class SacccadeGenerator:
                     gaze_submovements_indexes.append(gaze_submovement_range)
                     self.gaze_positions[t_index] += gaze_submovement[0]
                 # obtain head shift duration
-                head_movement_duration = 1
+                head_movement_duration = 0.5
                 # add the head movement
                 head_submovement, head_submovement_range = self.add_head_submovement(self.t,
                                                                                      self.t + head_movement_duration,
