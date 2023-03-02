@@ -338,14 +338,14 @@ class AgentInfo:
                 return self.transform_world_to_local(self.active_object_pos[id])
     def get_all_positions(self, coordinate_space="local", index=-1):
         objs = self.get_object_positions(coordinate_space=coordinate_space)
-        active_objs = self.get_object_positions(coordinate_space=coordinate_space)
+        active_objs = self.get_active_object_position(coordinate_space=coordinate_space)
         wp = self.get_wondering_points(coordinate_space=coordinate_space)
+
         possss = np.concatenate([objs, active_objs, wp], axis=0)
         if index == -1:
             return possss
         else:
             return possss[index]
-
 class TurnTakingData:
     def __init__(self, audio_path, audio_threshold=40):
         

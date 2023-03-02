@@ -191,4 +191,4 @@ def load_gaze(filename, rig, tobii = False):
     
 # load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/prototype2p2.pkl", "jali")
 load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/shakira/tobii_rotation.pkl", "jali", True)
-
+load_gaze("/Users/evanpan/Documents/GitHub/Gaze_project/data/look_at_points/prototype2p2.pkl")

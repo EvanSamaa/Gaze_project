@@ -1,5 +1,5 @@
 from prototypes.VirtualClasses import Base_Static_Saliency_List
-from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info, MultiPartyConversationalSceneInfo
+from prototypes.InputDataStructures import Dietic_Conversation_Gaze_Scene_Info, MultiPartyConversationalSceneInfo, AgentInfo
 from Geometry_Util import rotation_angles_frome_positions
 import numpy as np
 from scipy.interpolate import interp1d
@@ -7,9 +7,9 @@ from Speech_Data_util import Sentence_word_phone_parser
 from matplotlib import pyplot as plt
 from matplotlib.patches import Circle
 class ObjectBasedFixSaliency(Base_Static_Saliency_List):
-    def __init__(self, scene_info: Dietic_Conversation_Gaze_Scene_Info, audio: np.array, script: Sentence_word_phone_parser, sr=44100, dt=0.02):
-        self.scene_info: Dietic_Conversation_Gaze_Scene_Info = scene_info
-        self._number_of_objects = len(scene_info.object_pos)
+    def __init__(self, scene_info: AgentInfo, audio: np.array, script: Sentence_word_phone_parser, sr=44100, dt=0.02):
+        self.scene_info: AgentInfo = scene_info
+        self._number_of_objects = self.scene_info.get_all_positions().shape[0]
         self._sr = 44100
         self._dt = dt # 100 hz
         self._audio_start = 0
@@ -22,11 +22,12 @@ class ObjectBasedFixSaliency(Base_Static_Saliency_List):
         self.map_interp = None
     def compute_salience(self):
         # set the salience of the conversation partner to 1 by default
-        for i in range(0, self.scene_info.object_type.shape[0]):
-            if self.scene_info.object_type[i] == 5:
-                self.map[0, i] = self.scene_info.object_interest[i]
-            else:
-                self.map[0, i] = self.scene_info.object_interest[i]
+        for i in range(0, len(self.scene_info.object_interest)):
+            self.map[0, i] = self.scene_info.object_interest[i]
+        for i in range(0, len(self.scene_info.active_object_interest)):
+            self.map[0, i+len(self.scene_info.object_interest)] = self.scene_info.active_object_interest[i]
+        for i in range(0, len(self.scene_info.active_object_interest)):
+            self.map[0, i+len(self.scene_info.object_interest)+len(self.scene_info.active_object_interest)] = 0.5
         # continue setting salience for all objects
         for i in range(1, self._numb_of_frames):
             self.map[i] = self.map[0]
@@ -49,7 +50,8 @@ class ObjectBasedFixSaliency(Base_Static_Saliency_List):
             self.map_interp = interp1d(x, self.map, axis=0, fill_value="extrapolate")
             self.evaluated = True
             return self.map_interp(t)
-
+    def get_object_positions(self):
+        return self.scene_info.get_all_positions()
     def plot(self):
         resolution = 5
         out_img = np.zeros((180 * resolution, 360 * resolution))

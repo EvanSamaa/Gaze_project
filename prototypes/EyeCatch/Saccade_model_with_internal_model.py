@@ -8,16 +8,10 @@ from Geometry_Util import rotation_angles_frome_positions, rotation_axis_angle_f
     rotation_matrix_from_axis_angle, rotation_matrix_from_vectors
 from Signal_processing_utils import dx_dt
 from prototypes.Optimization_based_head_eye_seperator.Baseline_optimization import optimize_for_head_gaze_breakdown
-# class InternalModelCenterBias:
 class InternalModelCenterBias:
     def __init__(self, scene: AgentInfo):
         self.scene = scene
     def estimate_target_pose(self, index, previous_pos=None):
-        # if index >= self.scene.get_all_positions(coordinate_space="global").shape[0]:
-        #     index = index - self.scene.positions_world.shape[0]
-        #     return self.scene.get_wondering_points()[index]
-        # if index == self.scene.get_conversation_partner_id():
-        #     return self.scene.get_wondering_points()[index]
         if previous_pos is None:
             previous_pos = self.get_base_pose()
         personal_center_pos = self.get_base_pose() # this is in local space
@@ -30,13 +24,13 @@ class InternalModelCenterBias:
 
         # an exit condition, if the delta target is small, then there is no variability (as per
         # Speed and accuracy of saccadic eye movements: Characteristics of impulse variability in the oculomotor system)
-        if distance <= 6:
+        if distance <= 1:
             return target_mean_pos
         # estimate actual target to attend to be slightly off from the real position
-        slightly_wrong_target_center = previous_pos + 0.9 * (target_mean_pos-previous_pos)
+        slightly_wrong_target_center = previous_pos + 0.8 * (target_mean_pos-previous_pos)
         # the variation of the target
         target_variation = np.abs(target_mean_pos-slightly_wrong_target_center)
-        output_position = np.random.normal(slightly_wrong_target_center, target_variation/2)
+        output_position = np.random.normal(slightly_wrong_target_center, target_variation)
         return output_position
     def get_base_pose(self):
         return self.scene.speaker_face_direction_local
@@ -84,6 +78,13 @@ class MultiPartyInternalModelCenterBias:
         for i in range(0, len(self.scene.object_type)):
             if self.scene.object_type[i] == 5:
                 return self.scene.transform_world_to_local(self.scene.positions_world[i], self.speaker_id)
+
+def display_targetss(gaze_points, label=None):
+    # gaze_points = gaze_points / gaze_points[:, 2:3] * 100
+    if label is None:
+        plt.scatter(gaze_points[:, 0], gaze_points[:, 1])
+    else:
+        plt.scatter(gaze_points[:, 0], gaze_points[:, 1], label=label)
 class SacccadeGenerator:
     def interpolate_gaze_goal(self, t):
         if t < self.target_times[0]:
@@ -160,7 +161,7 @@ class SacccadeGenerator:
 
         # meta parameters:
         self.simulation_dt = dt
-        self.submovement_dt = 0.200
+        self.submovement_dt = 0.200 
         self.movement_threshold = 2000  # use to detect intervals with no gaze shift. In which micro saccade are generated
 
         # Internal Model of the scene (will introduce bias, errors and everything)
@@ -173,12 +174,12 @@ class SacccadeGenerator:
         self.target_index = target_index
         self.target_positions_head = None
         self.target_gaze_intervals_time, self.target_gaze_intervals_pos = self.get_gaze_intervals(self.target_times, self.target_positions)
-
         self.t = 0
 
         # Initialize aray to store the state history (positions) i.e. the animation curve
         end_t = self.target_times[-1] + 10.0
         end_t = int(np.ceil(end_t / self.simulation_dt))
+        # the memory will be allocated ahead of time since we know
         self.gaze_positions = internal_model.get_base_pose().astype(np.float32)
         self.gaze_positions = np.expand_dims(self.gaze_positions, axis=0)
         self.gaze_positions = np.tile(self.gaze_positions, [end_t, 1])
@@ -297,7 +298,7 @@ class SacccadeGenerator:
     def compute(self):
         # first compute the head/eye contribution of the gaze:
         self.target_positions_head = optimize_for_head_gaze_breakdown(self.target_gaze_intervals_time, self.target_gaze_intervals_pos, self.internal_model.estimate_listener_pose())
-
+        
         # add an end time to the sequence
         end_t = self.target_times[-1] + 10.0
         # store the current list of submovments that gets updated
@@ -333,19 +334,11 @@ class SacccadeGenerator:
                                                                    self.interpolate_gaze_goal(self.t))
                 # add the gaze submovement
                 next_gaze_index = self.interpolate_gaze_goal_index(self.t)
-                try:
-                    gaze_submovement, gaze_submovement_range = self.add_gaze_submovement(self.t,
-                                                                                         self.t + gaze_movement_duration,
-                                                                                         self.gaze_current_goal_position,
-                                                                                         self.internal_model.estimate_target_pose(next_gaze_index, self.t, self.gaze_current_goal_position))
-                except:
-                    gaze_submovement, gaze_submovement_range = self.add_gaze_submovement(self.t,
-                                                                                         self.t + gaze_movement_duration,
-                                                                                         self.gaze_current_goal_position,
-                                                                                         self.internal_model.estimate_target_pose(
-                                                                                             next_gaze_index,
-                                                                                             self.gaze_current_goal_position))
-
+                next_gaze_goal = self.internal_model.estimate_target_pose(next_gaze_index, self.gaze_current_goal_position)
+                gaze_submovement, gaze_submovement_range = self.add_gaze_submovement(self.t,
+                                                                                        self.t + gaze_movement_duration,
+                                                                                        self.gaze_current_goal_position,
+                                                                                        next_gaze_goal)
                 if not gaze_submovement is None:
                     gaze_submovements.append(gaze_submovement)
                     gaze_submovements_indexes.append(gaze_submovement_range)
@@ -410,7 +403,6 @@ class SacccadeGenerator:
         for i in range(0, ts.shape[0]):
             eye_kf.append([float(ts[i]), float(self.gaze_positions[i][0]), float(self.gaze_positions[i][1]),
                            float(self.gaze_positions[i][2])])
-
         # turn the head look at point into angles
         head_rotations = rotation_angles_frome_positions(self.head_positions)
         for i in range(0, ts.shape[0]):
