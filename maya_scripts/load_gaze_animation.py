@@ -1,5 +1,6 @@
 import pickle as pkl
 import math
+import json
 def create_neck_blend_node(rig):
     try:
         cmds.cutKey("jNeck_ctl.jNeck_xRotate")
@@ -106,7 +107,40 @@ def load_tobii(filename, rig):
                 cmds.setKeyframe("Eye_aim_ctrls.translateX", time=interval[j][0] * fps, value=interval[j][1])
                 cmds.setKeyframe("Eye_aim_ctrls.translateY", time=interval[j][0] * fps, value=interval[j][2])
                 cmds.setKeyframe("Eye_aim_ctrls.translateZ", time=interval[j][0] * fps, value=interval[j][3])
-                
+def load_video_annotation(filename, motion_to_load):
+    fps = mel.eval('float $fps = `currentTimeUnitToFPS`')
+    try:
+        if rig == "jali":
+            cmds.cutKey("jNeck_ctl.jNeck_yRotate")
+            cmds.cutKey("jNeck_ctl.jNeck_xRotate")
+            cmds.cutKey("eyeStare_world.eyeStare_world_translateX")
+            cmds.cutKey("eyeStare_world.eyeStare_world_translateY")
+            cmds.cutKey("eyeStare_world.eyeStare_world_translateZ")
+            cmds.cutKey("CNT_BOTH_EYES.LeftRight_eyes")
+            cmds.cutKey("CNT_BOTH_EYES.DownUp_eyes")
+        elif rig == "waitress":
+            cmds.cutKey("neck_1_ctrl.rotateY")
+            cmds.cutKey("neck_1_ctrl.rotateZ")
+            cmds.cutKey("neck_1_ctrl.rotateX")
+            cmds.cutKey("Eye_aim_ctrls.translateX")
+            cmds.cutKey("Eye_aim_ctrls.translateY")
+            cmds.cutKey("Eye_aim_ctrls.translateZ")
+            cmds.cutKey("R_eye_aim_ctrl.translateX")
+            cmds.cutKey("R_eye_aim_ctrl.translateY")
+            cmds.cutKey("L_eye_aim_ctrl.translateX")
+            cmds.cutKey("L_eye_aim_ctrl.translateY")
+    except:
+        pass
+    motion = json.load(open(filename))
+    ts = motion["ts"]
+    x, y = motion[motion_to_load]
+    for j in range(0, len(x)):
+        # x direction is vertical (elevation)
+        cmds.setKeyframe("jNeck_ctl.jNeck_xRotate", v=-x[j], t=ts[j] * fps)
+        # y direction is horizontal (azimuth) 
+        cmds.setKeyframe("jNeck_ctl.jNeck_yRotate", v=y[j], t=ts[j] * fps)
+    
+    
 def load_gaze(filename, rig, tobii = False):
     create_neck_blend_node(rig)
     # filename = "C:/Users/evan1/Documents/Gaze_project/data/look_at_points/prototype2p2.pkl"
@@ -188,7 +222,7 @@ def load_gaze(filename, rig, tobii = False):
                     cmds.setKeyframe("neck_1_ctrl.RotateZ".format(dims[k]), v=-(v[i]),
                                  t=t[i] * fps)
         
-    
+load_video_annotation('/Users/evanpan/Documents/GitHub/Gaze_project/data/look_at_points/video_annotation.json', "all_head")
 # load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/prototype2p2.pkl", "jali")
-load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/shakira/tobii_rotation.pkl", "jali", True)
-load_gaze("/Users/evanpan/Documents/GitHub/Gaze_project/data/look_at_points/prototype2p2.pkl")
+# load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/shakira/tobii_rotation.pkl", "jali", True)
+# load_gaze("/Users/evanpan/Documents/GitHub/Gaze_project/data/look_at_points/prototype2p2.pkl")
