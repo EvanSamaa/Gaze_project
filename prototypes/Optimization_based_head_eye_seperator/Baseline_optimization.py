@@ -20,11 +20,12 @@ def optimize_for_head_gaze_breakdown(gaze_intervals, list_of_gaze_positions, lis
     # get the angle to be in degrees
     gaze_angles = gaze_angles
 
-    azi_decomp = GMM_Decomposition.fromfile(
-        "prototypes/Jin2019/model/head_eye_decomposition_azimuth_60_clusters_fixation/")
-    ele_decomp = GMM_Decomposition.fromfile(
-        "prototypes/Jin2019/model/head_eye_decomposition_elevation_60_clusters_fixation/")
-
+    # azi_decomp = GMM_Decomposition.fromfile(
+    #     "prototypes/Jin2019/model/head_eye_decomposition_azimuth_60_clusters_fixation/")
+    # ele_decomp = GMM_Decomposition.fromfile(
+    #     "prototypes/Jin2019/model/head_eye_decomposition_elevation_60_clusters_fixation/")
+    azi_decomp = Heuristic_decomposition_azimuth()
+    ele_decomp = Heuristic_decomposition_elevation()
     # motion prior
     motion_priors = []
     # get the prior angles one by one
@@ -32,11 +33,11 @@ def optimize_for_head_gaze_breakdown(gaze_intervals, list_of_gaze_positions, lis
     for i in range(0, gaze_angles.shape[0]):
         prev_azi = gaze_angles[max(0, i-1), 0]
         azi_angle = gaze_angles[i, 0]
-        azi_gaze, azi_head = azi_decomp.decompose(azi_angle, prev_azi)
+        azi_gaze, azi_head = azi_decomp.decompose(azi_angle, 0.3)
         prev_ele = gaze_angles[max(0, i-1), 1]
         ele_angle = gaze_angles[i, 1]
-        ele_gaze, ele_head = ele_decomp.decompose(ele_angle, prev_ele)
-        # make the character look down less
+        ele_gaze, ele_head = ele_decomp.decompose(ele_angle, 1)
+        # make the character look down less if they are looking down
         if ele_head < 0:
             ele_head = ele_head * 0.3
         new_head_angles = np.array([[azi_head, ele_head]])
@@ -52,6 +53,7 @@ def optimize_for_head_gaze_breakdown(gaze_intervals, list_of_gaze_positions, lis
 
     # solve for the neck based on the simple optimization
     solved_angles = []
+    print(len(gaze_positions), prior_head_angles.shape)
     for i in range(0, prior_head_angles.shape[0]):
         gaze_time = gaze_intervals[i][1] - gaze_intervals[i][0]
         neck_angle_ele = cp.Variable(1)

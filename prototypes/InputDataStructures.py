@@ -263,7 +263,7 @@ class AgentInfo:
         """ Find the rotation matrix that aligns vec1 to vec2
         :param vec1: A 3d "source" vector
         :param vec2: A 3d "destination" vector
-        :return mat: A transform matrix (3x3) which when applied to vec1, aligns it with vec2.
+        :return mat: A transform matrix (3x3) which when applied to vec1z, aligns it with vec2.
         """
         a, b = (vec1 / np.linalg.norm(vec1)).reshape(3), (vec2 / np.linalg.norm(vec2)).reshape(3)
         v = np.cross(a, b)
@@ -283,7 +283,7 @@ class AgentInfo:
         :param neutral_gaze_spot_local: the default gaze position
         :return: a [6, 3] array of all the positions to wonder
         """
-        wondering_angles = [[0, -20], [0, 20]]
+        wondering_angles = [[0, -20], [0, 10], [-10, -10], [10, -10], [10, 5], [-10, 5]]
         out_positions = []
         out_angles = []
         neutral_gaze_angle = rotation_angles_frome_positions(neutral_gaze_spot_local)
