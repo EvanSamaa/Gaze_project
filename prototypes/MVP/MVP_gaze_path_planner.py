@@ -10,12 +10,12 @@ class Responsive_planner_simple:
     def __init__(self, saliency_maps, scene, self_id=-1):
         # hyper-parameters
         self.dt = saliency_maps[0]._dt
-        self.directgaze_comfy_threshold = 6 # need to look away after 6 seconds.         
-        self.aversion_comfy_threshold = 6 # need to look back at the parter after 6 seconds
+        self.directgaze_comfy_threshold = 3 # need to look away after 6 seconds.         
+        self.aversion_comfy_threshold = 2 # need to look back at the parter after 6 seconds
         self.min_eye_contact_threshold = 3 # how short should an average eye contact be 
         
         self.kappa = 1.33 # this is the distance factor (i.e. cost of migration)
-        self.kappa = 2.5
+        self.kappa = 1.33
         self.phi = 1 # this is the consumption efficiency i.e. how long it takes to consume all resources within a patch
         self.beta = 20 # this is use to generate the probability of the bernoulli variable that determines staying vs
         self.min_saccade_time = 0.4 # this specified how closely two nearby saccade can be with one another.

@@ -5,6 +5,10 @@ import random
 from Signal_processing_utils import sparse_key_smoothing
 import librosa
 import parselmouth
+import sys
+sys.path.insert(0, "C:/Users/evansamaa/Documents/GitHub/EvansToolBox/Utils")
+from Speech_Data_util import Sentence_word_phone_parser
+
 
 class SplineInterval:
     def __init__(self, id, min_t, max_t, points, priority=0):
@@ -742,7 +746,7 @@ class NeckCurve:
     def compute_curve(self):
 
         # compute tunable values
-        self.semantics_script = Sentence_word_phone_pointer_structure(
+        self.semantics_script = Sentence_word_phone_parser(
             self.input_praatscript,
             self.input_script_path,
         )
@@ -801,7 +805,9 @@ class NeckCurve:
         emphasized_words = []
         # remember which sentences are negative affirmations
         negative_sentences = []
-
+        
+        
+        print(len(self.semantics_script.sentence_to_word))
         for i in range(0, len(self.semantics_script.sentence_to_word)):
             sentence_level_transience_head_levels_xt = []
             sentence_level_transience_head_levels_x = []
