@@ -248,7 +248,15 @@ def load_gaze(filename, rig, tobii = False):
     if tobii:
         return load_tobii(filename, rig)
     motion_components = pkl.load(open(filename))
-    ek, hk, ms, neck, blend_weight = motion_components
+    ek = motion_components["eye_frames"]
+    hk = motion_components["head_frames"]
+    ms = motion_components["micro_saccade"]
+    neck = motion_components["other_neck"]
+    envelope = motion_components["envelope"]
+    
+    
+    
+    
     cmds.setAttr("lookMaster.headWorldBlend", 10)
     # micro-saccade
     for i in range(0, len(ms)):
@@ -304,4 +312,4 @@ def load_gaze(filename, rig, tobii = False):
 # load_video_annotation('/Users/evanpan/Documents/GitHub/Gaze_project/data/look_at_points/video_annotation.json', "all_head")
 # load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/prototype2p2.pkl", "jali")
 # load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/shakira/tobii_rotation.pkl", "jali", True)
-load_gaze("C:/Users/evansamaa/Documents/GitHub/Gaze_project/data/look_at_points/prototype2p2.pkl", "jali")
+load_gaze("F:/MASC/Ribhav_processed_dataset/outputs\Madelaine Petsch audition for The Prom.pkl", "jali")
