@@ -10,12 +10,9 @@ class Responsive_planner_simple:
     def __init__(self, saliency_maps, scene, self_id=-1):
         # hyper-parameters
         self.dt = saliency_maps[0]._dt
-        self.directgaze_comfy_threshold = 3 # need to look away after 6 seconds.         
-        self.aversion_comfy_threshold = 2 # need to look back at the parter after 6 seconds
-        self.min_eye_contact_threshold = 3 # how short should an average eye contact be 
-        
+        self.aversion_comfy_threshold = 4 # need to look back at the parter after 6 seconds
+        self.min_eye_contact_threshold = 2 # how short should an average eye contact be 
         self.kappa = 1.33 # this is the distance factor (i.e. cost of migration)
-        self.kappa = 2.2
         self.phi = 1 # this is the consumption efficiency i.e. how long it takes to consume all resources within a patch
         self.beta = 20 # this is use to generate the probability of the bernoulli variable that determines staying vs
         self.min_saccade_time = 0.4 # this specified how closely two nearby saccade can be with one another.
@@ -80,12 +77,12 @@ class Responsive_planner_simple:
                 # conversation partner, we look at the partner. 
                 if (highest_salience == self.conversation_partner_id and 
                 current_target != self.conversation_partner_id):
-                    if t - prev_t >= 0.4: # we have to make sure the motion is not too rapid
+                    if t - prev_t >= self.min_saccade_time: # we have to make sure the motion is not too rapid
                         output_target.append(highest_salience)
                         output_t.append(t)
-                elif current_target != self.conversation_partner_id and t - prev_t >= self.aversion_comfy_threshold:
-                    output_target.append(self.conversation_partner_id)
-                    output_t.append(t)
+                # elif current_target != self.conversation_partner_id and t - prev_t >= self.aversion_comfy_threshold:
+                #     output_target.append(self.conversation_partner_id)
+                #     output_t.append(t)
                 elif current_target == self.conversation_partner_id and t - prev_t >= self.min_eye_contact_threshold:  
                     time_within_patch = t - output_t[-1]
                     ##############################################################################################
@@ -128,7 +125,7 @@ class Responsive_planner_simple:
                         output_target.append(current_target)
                         output_t.append(self.dt * idx)
             elif current_target != self.conversation_partner_id and highest_salience == self.conversation_partner_id and t - prev_t >= self.aversion_comfy_threshold:
-                if t - prev_t >= 0.4: # we have to make sure the motion is not too rapid
+                if t - prev_t >= self.min_saccade_time: # we have to make sure the motion is not too rapid
                     output_target.append(highest_salience)
                     output_t.append(t)
             idx = idx + 1
