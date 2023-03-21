@@ -15,7 +15,7 @@ class Responsive_planner_simple:
         self.min_eye_contact_threshold = 3 # how short should an average eye contact be 
         
         self.kappa = 1.33 # this is the distance factor (i.e. cost of migration)
-        self.kappa = 3.0
+        self.kappa = 2.2
         self.phi = 1 # this is the consumption efficiency i.e. how long it takes to consume all resources within a patch
         self.beta = 20 # this is use to generate the probability of the bernoulli variable that determines staying vs
         self.min_saccade_time = 0.4 # this specified how closely two nearby saccade can be with one another.
