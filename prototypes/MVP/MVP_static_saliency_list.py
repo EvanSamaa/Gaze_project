@@ -26,7 +26,8 @@ class ObjectBasedFixSaliency(Base_Static_Saliency_List):
             self.map[0, i] = self.scene_info.object_interest[i]
         for i in range(0, len(self.scene_info.active_object_interest)):
             self.map[0, i+len(self.scene_info.object_interest)] = self.scene_info.active_object_interest[i]
-        for i in range(0, len(self.scene_info.active_object_interest)):
+        extra_points = self.scene_info.get_all_positions().shape[0] - len(self.scene_info.active_object_interest) - len(self.scene_info.object_interest)
+        for i in range(0, extra_points):
             self.map[0, i+len(self.scene_info.object_interest)+len(self.scene_info.active_object_interest)] = 0.5
         # continue setting salience for all objects
         for i in range(1, self._numb_of_frames):

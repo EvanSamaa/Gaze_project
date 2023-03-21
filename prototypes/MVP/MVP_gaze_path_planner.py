@@ -15,11 +15,11 @@ class Responsive_planner_simple:
         self.min_eye_contact_threshold = 3 # how short should an average eye contact be 
         
         self.kappa = 1.33 # this is the distance factor (i.e. cost of migration)
-        self.kappa = 1.33
+        self.kappa = 3.0
         self.phi = 1 # this is the consumption efficiency i.e. how long it takes to consume all resources within a patch
         self.beta = 20 # this is use to generate the probability of the bernoulli variable that determines staying vs
         self.min_saccade_time = 0.4 # this specified how closely two nearby saccade can be with one another.
-        
+        self.top_bias = 0.1 # this specifies how much the look up and down 0.5 is neutral, 1 will cause the avatar to look up more, and 0 will be down
         # ====================================== Storing saliency maps ======================================
         # store information about the scene
         self.scene_info = scene
@@ -53,7 +53,6 @@ class Responsive_planner_simple:
         self.object_positions = saliency_maps[max_id].get_object_positions()
         # turn them into rotation angles
         self.object_positions = rotation_angles_frome_positions(self.object_positions) / 180 * np.pi
-
         # get the conversation partner's id
         self.conversation_partner_id = self.scene_info.object_pos.shape[0]
     def compute(self):
@@ -68,13 +67,14 @@ class Responsive_planner_simple:
         output_target = [self.conversation_partner_id]
         output_t = [0]
         idx = 0
-        normalized_object_positions = self.object_positions / np.linalg.norm(self.object_positions, axis=1, keepdims=True) 
-        
+        # normalized_object_positions = self.object_positions / np.linalg.norm(self.object_positions, axis=1, keepdims=True) 
+        normalized_object_positions =  self.object_positions
         while idx < self.values.shape[0]-1:
             t = idx* self.dt
             current_target = output_target[-1]
             highest_salience = np.argmax(self.values[idx+1])
-            prev_t = output_t[-1] # previous gaze shift happened at prev_t             
+            prev_t = output_t[-1] # previous gaze shift happened at prev_t      
+            # if there is a change in the salience list       
             if d_val[idx] >= 1:
                 # otherwise, if we have been looking away, and need to look at the
                 # conversation partner, we look at the partner. 
@@ -98,9 +98,12 @@ class Responsive_planner_simple:
                     # compute the distance to the patch (first use this variable to store the position of look_at_point)
                     distance_to_patch = np.tile(normalized_object_positions[current_target:current_target+1], [self.object_positions.shape[0], 1])
                     distance_to_patch = (distance_to_patch - normalized_object_positions)
+                    vertical_distance = (normalized_object_positions - distance_to_patch)[:, 1]
+                    vertical_bias_factor = np.exp(vertical_distance * (self.top_bias - 0.5)) # if the direction is the same then the factor will be big, otherwise small 
+                    
                     distance_to_patch = np.sqrt(np.square(distance_to_patch).sum(axis=1))
-                    # compute distance-weighted patch value rho
-                    rho = self.values[i] * np.exp(-self.kappa * distance_to_patch)
+                    # compute distance-weighted patch value rho 
+                    rho = self.values[i] * np.exp(-self.kappa * distance_to_patch) * vertical_bias_factor
                     # compute Q, the expected return of leaving the current patch and move to another patch
                     Q = 1 / (self.object_positions.shape[0] - 1) * np.sum(rho * not_looked_at_mask)
                     # compute g_patch, the instetaneous gain by staying at the current patch
@@ -129,4 +132,6 @@ class Responsive_planner_simple:
                     output_target.append(highest_salience)
                     output_t.append(t)
             idx = idx + 1
+        output_t.append(self.dt * self.values.shape[0])
+        output_target.append(self.conversation_partner_id)
         return output_t, output_target

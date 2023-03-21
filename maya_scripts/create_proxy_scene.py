@@ -1,4 +1,5 @@
 import json
+import pickle as pkl
 if 'created_object_list' in locals():
     for i in range(0, len(created_object_list)):
         try:
@@ -10,8 +11,7 @@ if 'created_object_list' in locals():
 else:
     created_object_list = []
     
-file_name = "/Volumes/EVAN_DISK/MASC/Ribhav_processed_dataset/annotated_scene/Madelaine Petsch audition for The Prom.json"
-    
+file_name = "F:/MASC/Ribhav_processed_dataset/annotated_scene\Madelaine Petsch audition for The Prom.json"
 file_content = json.load(open(file_name))
 # file_content = json.load(open("C:/Users/evansamaa/Documents/GitHub/Gaze_project/data/look_at_points/simplest_scene2_less_items.json"))
 temp_object_type, temp_object_pos, temp_object_interest = file_content["object_type"], file_content["object_pos"], file_content["object_interestingness"]

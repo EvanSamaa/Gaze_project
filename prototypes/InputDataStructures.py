@@ -220,7 +220,8 @@ class MultiPartyConversationalSceneInfo:
                 return i
 class AgentInfo:
     # image based variables
-    def __init__(self, scene_data_path):
+    def __init__(self, scene_data_path, wonder = True):
+        self.wonder = wonder
         with open(scene_data_path) as f:
             scene_data = json.load(f)
         # print(scene_data.keys())
@@ -286,6 +287,7 @@ class AgentInfo:
         wondering_angles = [[0, -20], [0, 10], [-10, -10], [10, -10], [10, 5], [-10, 5]]
         out_positions = []
         out_angles = []
+        neutral_gaze_spot_local = self.get_active_object_position(0)
         neutral_gaze_angle = rotation_angles_frome_positions(neutral_gaze_spot_local)
         for angle in wondering_angles:
             new_angle = np.zeros((1, 2))
@@ -340,8 +342,10 @@ class AgentInfo:
         objs = self.get_object_positions(coordinate_space=coordinate_space)
         active_objs = self.get_active_object_position(coordinate_space=coordinate_space)
         wp = self.get_wondering_points(coordinate_space=coordinate_space)
-
-        possss = np.concatenate([objs, active_objs, wp], axis=0)
+        if self.wonder:
+            possss = np.concatenate([objs, active_objs, wp], axis=0)
+        else:
+            possss = np.concatenate([objs, active_objs], axis=0)
         if index == -1:
             return possss
         else:
