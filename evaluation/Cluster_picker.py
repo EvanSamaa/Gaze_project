@@ -3,7 +3,7 @@ import numpy as np
 import pickle as pkl
 if __name__ == "__main__":
     # Generate some sample data
-    data = pkl.load(open("./points.pkl", "rb"))
+    data = pkl.load(open("./evaluation/points.pkl", "rb"))
     # Create a scatter plot of the data
     fig, ax = plt.subplots()
     ax.scatter(data[:, 0], data[:, 1])
@@ -53,7 +53,13 @@ if __name__ == "__main__":
         # Set the circle patch to None
         global circle
         global speaker
-        output.append([circle.center[0], circle.center[1], speaker])
+        inside_count = 0
+        for i in range(data.shape[0]):
+            dist = (circle.center[0] - data[i, 0]) ** 2 + (circle.center[1] - data[i, 1]) ** 2
+            dist = np.sqrt(dist)
+            if dist < circle.radius:
+                inside_count = inside_count + 1
+        output.append([circle.center[0], circle.center[1], speaker, inside_count / data.shape[0]])
         radius = circle.radius
         circle.remove()
         if speaker == 1: # if it's a speaker
