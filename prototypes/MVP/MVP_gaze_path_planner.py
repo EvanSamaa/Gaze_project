@@ -7,16 +7,18 @@ from matplotlib import pyplot as plt
 import random
 class Responsive_planner_simple:
     # this planner is designed to be responsive to the input heatmap signal
-    def __init__(self, saliency_maps, scene, self_id=-1):
+    def __init__(self, saliency_maps, scene, beats, self_id=-1):
         # hyper-parameters
         self.dt = saliency_maps[0]._dt
-        self.aversion_comfy_threshold = 4 # need to look back at the parter after 6 seconds
+        self.aversion_comfy_threshold = 3 # need to look back at the parter after 6 seconds
         self.min_eye_contact_threshold = 2 # how short should an average eye contact be 
         self.kappa = 1.33 # this is the distance factor (i.e. cost of migration)
+        self.kappa = 1.33
         self.phi = 1 # this is the consumption efficiency i.e. how long it takes to consume all resources within a patch
         self.beta = 20 # this is use to generate the probability of the bernoulli variable that determines staying vs
         self.min_saccade_time = 0.4 # this specified how closely two nearby saccade can be with one another.
-        self.top_bias = 0.1 # this specifies how much the look up and down 0.5 is neutral, 1 will cause the avatar to look up more, and 0 will be down
+        self.top_bias = 0.0 # this specifies how much the look up and down 0.5 is neutral, 1 will cause the avatar to look up more, and 0 will be down
+        self.beats = beats
         # ====================================== Storing saliency maps ======================================
         # store information about the scene
         self.scene_info = scene
@@ -52,6 +54,12 @@ class Responsive_planner_simple:
         self.object_positions = rotation_angles_frome_positions(self.object_positions) / 180 * np.pi
         # get the conversation partner's id
         self.conversation_partner_id = self.scene_info.object_pos.shape[0]
+    def onbeats(self, t):
+        for i in range(0, self.beats.shape[0]):
+            if self.beats[i] - t <= 0.05:
+                return True
+            else:
+                return False
     def compute(self):
         # sum up the difference salience maps 
         self.values = np.zeros(self.saliency_maps_arrs[0].shape)
@@ -71,12 +79,12 @@ class Responsive_planner_simple:
             current_target = output_target[-1]
             highest_salience = np.argmax(self.values[idx+1])
             prev_t = output_t[-1] # previous gaze shift happened at prev_t      
-            # if there is a change in the salience list       
+            # if there is a change in the salience list    
             if d_val[idx] >= 1:
                 # otherwise, if we have been looking away, and need to look at the
                 # conversation partner, we look at the partner. 
                 if (highest_salience == self.conversation_partner_id and 
-                current_target != self.conversation_partner_id):
+                current_target != self.conversation_partner_id and self.onbeats(t)):
                     if t - prev_t >= self.min_saccade_time: # we have to make sure the motion is not too rapid
                         output_target.append(highest_salience)
                         output_t.append(t)
