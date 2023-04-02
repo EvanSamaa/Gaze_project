@@ -19,6 +19,10 @@ sys.path.insert(0, '/Users/evanpan/Desktop/openpose/python/')
 
 from Geometry_Util import rotation_angles_frome_positions
 
+
+# Dataset for deep learning
+
+# Dataset for statistical stuff
 class ShotDataSet_Selftape111(Dataset):
     def __init__(self, processed_data_path):
         # save dataset root path
@@ -47,8 +51,9 @@ class ShotDataSet_Selftape111(Dataset):
         audio_onscreen, sr = librosa.load(output_audio_onscreen_path)
         audio_offscreen, sr = librosa.load(output_audio_offscreen_path)
         return [sr, audio_onscreen, audio_offscreen], [fps, gaze, head, blinks]
-class  SegmentDataset_SelfTape111(Dataset):
-    def __init__(self, processed_data_path, win_length=10, stride_length=5):
+class SegmentDataset_SelfTape111(Dataset):
+    def __init__(self, processed_data_path, win_length=10, stride_length=5, aversion=False):
+        self.aversion = aversion
         # save dataset root path
         self.data_root_path = processed_data_path
         self.count = 0
@@ -115,15 +120,18 @@ class  SegmentDataset_SelfTape111(Dataset):
         gaze = pkl.load(open(output_gaze_path, "rb"))[v_range[0]:v_range[1]]
         head = pkl.load(open(output_head_path, "rb"))[v_range[0]:v_range[1]]
         blinks = pkl.load(open(output_blinks_path, "rb"))[v_range[0]:v_range[1]]
-        aversion = pkl.load(open(output_aversion_path, "rb"))
-
         audio_onscreen, sr = librosa.load(output_audio_onscreen_path)
         audio_offscreen, sr = librosa.load(output_audio_offscreen_path)
         audio_onscreen = audio_onscreen[a_range[0]:a_range[1]]
         audio_offscreen = audio_offscreen[a_range[0]:a_range[1]]
-        return [sr, audio_onscreen, audio_offscreen], [fps, gaze, head, blinks, aversion]  
+        if self.aversion:
+            aversion = pkl.load(open(output_aversion_path, "rb"))
+            return [sr, audio_onscreen, audio_offscreen], [fps, gaze, head, blinks, aversion]      
+        return [sr, audio_onscreen, audio_offscreen], [fps, gaze, head, blinks]  
+    
     def total_shot_count(self):
         return len(self.video_metadata)
+    
     def get_video(self, idx):
         file_name = self.video_metadata[idx]["name"]
         fps = self.video_metadata[idx]["fps"]
@@ -137,9 +145,10 @@ class  SegmentDataset_SelfTape111(Dataset):
         gaze = pkl.load(open(output_gaze_path, "rb"))
         head = pkl.load(open(output_head_path, "rb"))
         blinks = pkl.load(open(output_blinks_path, "rb"))
-        # aversion = pkl.load(open(output_aversion_path, "rb"))
-
         audio_onscreen, sr = librosa.load(output_audio_onscreen_path)
         audio_offscreen, sr = librosa.load(output_audio_offscreen_path)
         shot_range = self.video_metadata[idx]["video_range"]
-        return [sr, audio_onscreen, audio_offscreen], [fps, gaze, head, blinks], [file_name, shot_range], 
+        if self.aversion:
+            aversion = pkl.load(open(output_aversion_path, "rb"))
+            return [sr, audio_onscreen, audio_offscreen], [fps, gaze, head, blinks, aversion], [file_name, shot_range]
+        return [sr, audio_onscreen, audio_offscreen], [fps, gaze, head, blinks], [file_name, shot_range]
