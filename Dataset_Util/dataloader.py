@@ -43,7 +43,6 @@ class ShotDataSet_Selftape111(Dataset):
         output_gaze_path = os.path.join(*[self.data_root_path, "gaze", file_name+".pkl"]) 
         output_head_path = os.path.join(*[self.data_root_path, "head", file_name+".pkl"]) 
         output_blinks_path = os.path.join(*[self.data_root_path, "blinks", file_name+".pkl"])
-
         gaze = pkl.load(open(output_gaze_path, "rb"))
         head = pkl.load(open(output_head_path, "rb"))
         blinks = pkl.load(open(output_blinks_path, "rb"))
