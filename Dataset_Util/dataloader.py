@@ -16,11 +16,8 @@ import soundfile as sf
 sys.path.insert(0, '/Users/evanpan/Documents/GitHub/EvansToolBox/Utils')
 sys.path.insert(0, '/Users/evanpan/Desktop/openpose/python/')
 # sys.path.insert(0, "C:/Users/evansamaa/Documents/GitHub/EvansToolBox")
-
 from Geometry_Util import rotation_angles_frome_positions
-
-
-# Dataset for deep learning
+    
 
 # Dataset for statistical stuff
 class ShotDataSet_Selftape111(Dataset):
@@ -151,3 +148,69 @@ class SegmentDataset_SelfTape111(Dataset):
             aversion = pkl.load(open(output_aversion_path, "rb"))
             return [sr, audio_onscreen, audio_offscreen], [fps, gaze, head, blinks, aversion], [file_name, shot_range]
         return [sr, audio_onscreen, audio_offscreen], [fps, gaze, head, blinks], [file_name, shot_range]
+    
+# Dataset for deep learning
+class Aversion_SelfTap111(Dataset):
+    def __init__(self, processed_data_path, videos_included=None, audio_only=False, word_timing=False, sentence_and_word_timing=False):
+        self.filler = np.array([-36.04365338911715,0.0,0.0,0.0,0.0,0.0,-3.432169450445466e-14,0.0,0.0,0.0,9.64028691651994e-15,0.0,0.0,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715])
+        # save dataset root path
+        self.data_root_path = processed_data_path
+        # load video names
+        video_names_path = os.path.join(*[self.data_root_path, "video_to_window_metadata.json"])
+        self.metadata = json.load(open(video_names_path, "r"))
+        self.all_files_in_set = []
+        if videos_included is None:
+            videos_included = list(self.metadata.keys())
+        for i in videos_included:
+            self.all_files_in_set = self.all_files_in_set + self.metadata[i]
+        self.audio_only = audio_only
+        self.word_timing = word_timing
+        self.sentence_and_word_timing = sentence_and_word_timing
+
+    def __len__(self):
+        return len(self.all_files_in_set)
+    def __getitem__(self, idx):
+        onscreen_audio_feature_path = os.path.join(*[self.data_root_path, "audio", "clip_{}_speaker_{}.npy".format(idx, 0)])
+        offscreen_audio_feature_path = os.path.join(*[self.data_root_path, "audio", "clip_{}_speaker_{}.npy".format(idx, 1)])
+        onscreen_text_feature_path = os.path.join(*[self.data_root_path, "text", "clip_{}_speaker_{}.npy".format(idx, 0)])
+        offscreen_text_feature_path = os.path.join(*[self.data_root_path, "text", "clip_{}_speaker_{}.npy".format(idx, 1)])
+        if self.word_timing:
+            onscreen_text_feature_path = os.path.join(*[self.data_root_path, "word_timing", "clip_{}_speaker_{}.npy".format(idx, 0)])
+            offscreen_text_feature_path = os.path.join(*[self.data_root_path, "word_timing", "clip_{}_speaker_{}.npy".format(idx, 1)])
+        if self.sentence_and_word_timing:
+            onscreen_text_feature1_path = os.path.join(*[self.data_root_path, "word_timing", "clip_{}_speaker_{}.npy".format(idx, 0)])
+            offscreen_text_feature1_path = os.path.join(*[self.data_root_path, "word_timing", "clip_{}_speaker_{}.npy".format(idx, 1)])
+            onscreen_text_feature2_path = os.path.join(*[self.data_root_path, "sentence_timing", "clip_{}_speaker_{}.npy".format(idx, 0)])
+            offscreen_text_feature2_path = os.path.join(*[self.data_root_path, "sentence_timing", "clip_{}_speaker_{}.npy".format(idx, 1)])
+        aversion_label_path = os.path.join(*[self.data_root_path, "aversion_label", "clip_{}.npy".format(idx)])
+        # output_target
+        output_target = np.load(aversion_label_path)
+        # see if we need to concat any thing
+        input_audio_on_screen = np.load(onscreen_audio_feature_path)
+        input_audio_off_screen = np.load(offscreen_audio_feature_path)
+        if self.audio_only:
+            missing_frames = output_target.shape[0] - input_audio_on_screen.shape[0]
+            padding = np.tile(np.expand_dims(self.filler, axis=0), [missing_frames, 1])
+            input_audio_on_screen = np.concatenate([input_audio_on_screen, padding], axis=0)
+            input_audio_off_screen = np.concatenate([input_audio_off_screen, padding], axis=0)
+            input_vector = np.concatenate([input_audio_on_screen, input_audio_off_screen], axis=1)
+            return input_vector, output_target
+        input_text_on_screen = np.load(onscreen_text_feature_path)
+        input_text_off_screen = np.load(offscreen_text_feature_path)
+        if self.sentence_and_word_timing:
+            input_text_on_screen1 = np.load(onscreen_text_feature1_path)
+            input_text_off_screen1 = np.load(offscreen_text_feature1_path)
+            input_text_on_screen2 = np.load(onscreen_text_feature2_path)
+            input_text_off_screen2 = np.load(offscreen_text_feature2_path)
+            input_text_on_screen = np.concatenate([input_text_on_screen1, input_text_on_screen2], axis = 1)
+            input_text_off_screen = np.concatenate([input_text_off_screen1, input_text_off_screen2], axis = 1)
+            
+        if input_audio_on_screen.shape[0] < input_text_on_screen.shape[0]:
+            missing_frames = input_text_on_screen.shape[0] - input_audio_on_screen.shape[0]
+            padding = np.tile(np.expand_dims(self.filler, axis=0), [missing_frames, 1])
+            input_audio_on_screen = np.concatenate([input_audio_on_screen, padding], axis=0)
+            input_audio_off_screen = np.concatenate([input_audio_off_screen, padding], axis=0)
+        input_vector_onscreen = np.concatenate([input_audio_on_screen, input_text_on_screen], axis=1)
+        input_vector_offscreen = np.concatenate([input_audio_off_screen, input_text_off_screen], axis=1)
+        input_vector = np.concatenate([input_vector_onscreen, input_vector_offscreen], axis=1)
+        return input_vector, output_target

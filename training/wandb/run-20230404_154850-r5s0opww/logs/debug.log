@@ -1,0 +1,272 @@
+2023-04-04 15:48:50,946 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Configure stats pid to 15585
+2023-04-04 15:48:50,946 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /u8/c/evanpan/.config/wandb/settings
+2023-04-04 15:48:50,946 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/settings
+2023-04-04 15:48:50,946 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-04-04 15:48:50,946 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2023-04-04 15:48:50,946 INFO    MainThread:15585 [wandb_init.py:_log_setup():506] Logging user logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_154850-r5s0opww/logs/debug.log
+2023-04-04 15:48:50,946 INFO    MainThread:15585 [wandb_init.py:_log_setup():507] Logging internal logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_154850-r5s0opww/logs/debug-internal.log
+2023-04-04 15:48:50,946 INFO    MainThread:15585 [wandb_init.py:init():546] calling init triggers
+2023-04-04 15:48:50,946 INFO    MainThread:15585 [wandb_init.py:init():552] wandb.init called with sweep_config: {}
+config: {'win_length': 10, 'stride_length': 5, 'model_type': 'recurrent', 'num_layers': 3, 'input_dims': 1674, 'input_layer_out': 128, 'frames_ahead': 5, 'frames_behind': 10, 'lstm_layer_num': 2, 'lstm_feature_size': 256, 'lstm_output_feature_size': 256, 'output_layer_1_hidden': 128, 'output_layer_2_hidden': 64, 'output_layer_3_hidden': 1, 'wandb': True, 'load_model': False, 'checkpoint_name': '', 'checkpoint_path': '', 'batch_size': 64, 'learning_rate': 0.0001, 'dropout': 0.2, 'epochs': 200, 'device': 'gpu', 'early_stopping': 20}
+2023-04-04 15:48:50,947 INFO    MainThread:15585 [wandb_init.py:init():602] starting backend
+2023-04-04 15:48:50,947 INFO    MainThread:15585 [wandb_init.py:init():606] setting up manager
+2023-04-04 15:48:50,948 INFO    MainThread:15585 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-04-04 15:48:50,949 INFO    MainThread:15585 [wandb_init.py:init():613] backend started and connected
+2023-04-04 15:48:50,955 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1204] probe notebook
+2023-04-04 15:48:50,955 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1214] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2023-04-04 15:48:50,955 INFO    MainThread:15585 [wandb_init.py:init():701] updated telemetry
+2023-04-04 15:48:50,996 INFO    MainThread:15585 [wandb_init.py:init():741] communicating run to backend with 60.0 second timeout
+2023-04-04 15:48:51,215 INFO    MainThread:15585 [wandb_run.py:_on_init():2133] communicating current version
+2023-04-04 15:49:07,880 WARNING MainThread:15585 [wandb_init.py:init():1165] interrupted
+Traceback (most recent call last):
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1144, in init
+    run = wi.init()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 787, in init
+    run._on_init()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2137, in _on_init
+    version_result = version_handle.wait(timeout=30)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/lib/mailbox.py", line 283, in wait
+    found, abandoned = self._slot._get_and_clear(timeout=wait_timeout)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/lib/mailbox.py", line 130, in _get_and_clear
+    if self._wait(timeout=timeout):
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/lib/mailbox.py", line 126, in _wait
+    return self._event.wait(timeout=timeout)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/threading.py", line 607, in wait
+    signaled = self._cond.wait(timeout)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/threading.py", line 324, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt
+2023-04-04 15:49:10,196 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Configure stats pid to 15585
+2023-04-04 15:49:10,197 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /u8/c/evanpan/.config/wandb/settings
+2023-04-04 15:49:10,197 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/settings
+2023-04-04 15:49:10,197 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-04-04 15:49:10,197 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2023-04-04 15:49:10,197 INFO    MainThread:15585 [wandb_init.py:_log_setup():506] Logging user logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_154910-do1mxgg5/logs/debug.log
+2023-04-04 15:49:10,197 INFO    MainThread:15585 [wandb_init.py:_log_setup():507] Logging internal logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_154910-do1mxgg5/logs/debug-internal.log
+2023-04-04 15:49:10,197 INFO    MainThread:15585 [wandb_init.py:init():546] calling init triggers
+2023-04-04 15:49:10,197 INFO    MainThread:15585 [wandb_init.py:init():552] wandb.init called with sweep_config: {}
+config: {'win_length': 10, 'stride_length': 5, 'model_type': 'recurrent', 'num_layers': 3, 'input_dims': 1674, 'input_layer_out': 128, 'frames_ahead': 5, 'frames_behind': 10, 'lstm_layer_num': 2, 'lstm_feature_size': 256, 'lstm_output_feature_size': 256, 'output_layer_1_hidden': 128, 'output_layer_2_hidden': 64, 'output_layer_3_hidden': 1, 'wandb': True, 'load_model': False, 'checkpoint_name': '', 'checkpoint_path': '', 'batch_size': 64, 'learning_rate': 0.0001, 'dropout': 0.2, 'epochs': 200, 'device': 'gpu', 'early_stopping': 20}
+2023-04-04 15:49:10,197 INFO    MainThread:15585 [wandb_init.py:init():602] starting backend
+2023-04-04 15:49:10,197 INFO    MainThread:15585 [wandb_init.py:init():606] setting up manager
+2023-04-04 15:49:10,198 INFO    MainThread:15585 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-04-04 15:49:10,199 INFO    MainThread:15585 [wandb_init.py:init():613] backend started and connected
+2023-04-04 15:49:10,206 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1204] probe notebook
+2023-04-04 15:49:10,206 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1214] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2023-04-04 15:49:10,206 INFO    MainThread:15585 [wandb_init.py:init():701] updated telemetry
+2023-04-04 15:49:10,228 INFO    MainThread:15585 [wandb_init.py:init():741] communicating run to backend with 60.0 second timeout
+2023-04-04 15:49:10,423 WARNING MsgRouterThr:15585 [router.py:message_loop():77] message_loop has been closed
+2023-04-04 15:50:10,259 ERROR   MainThread:15585 [wandb_init.py:init():755] backend process timed out, exiting...
+encountered error: Error communicating with wandb process, exiting...
+For more info see: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+2023-04-04 15:50:10,267 ERROR   MainThread:15585 [wandb_init.py:init():1171] error
+Traceback (most recent call last):
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1144, in init
+    run = wi.init()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 773, in init
+    raise error
+wandb.errors.CommError: Error communicating with wandb process, exiting...
+For more info see: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+2023-04-04 15:50:26,474 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Configure stats pid to 15585
+2023-04-04 15:50:26,474 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /u8/c/evanpan/.config/wandb/settings
+2023-04-04 15:50:26,475 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/settings
+2023-04-04 15:50:26,475 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-04-04 15:50:26,475 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2023-04-04 15:50:26,475 INFO    MainThread:15585 [wandb_init.py:_log_setup():506] Logging user logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_155026-rmcosfbp/logs/debug.log
+2023-04-04 15:50:26,475 INFO    MainThread:15585 [wandb_init.py:_log_setup():507] Logging internal logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_155026-rmcosfbp/logs/debug-internal.log
+2023-04-04 15:50:26,475 INFO    MainThread:15585 [wandb_init.py:init():546] calling init triggers
+2023-04-04 15:50:26,475 INFO    MainThread:15585 [wandb_init.py:init():552] wandb.init called with sweep_config: {}
+config: {'win_length': 10, 'stride_length': 5, 'model_type': 'recurrent', 'num_layers': 3, 'input_dims': 1674, 'input_layer_out': 128, 'frames_ahead': 5, 'frames_behind': 10, 'lstm_layer_num': 2, 'lstm_feature_size': 256, 'lstm_output_feature_size': 256, 'output_layer_1_hidden': 128, 'output_layer_2_hidden': 64, 'output_layer_3_hidden': 1, 'wandb': True, 'load_model': False, 'checkpoint_name': '', 'checkpoint_path': '', 'batch_size': 64, 'learning_rate': 0.0001, 'dropout': 0.2, 'epochs': 200, 'device': 'gpu', 'early_stopping': 20}
+2023-04-04 15:50:26,475 INFO    MainThread:15585 [wandb_init.py:init():602] starting backend
+2023-04-04 15:50:26,475 INFO    MainThread:15585 [wandb_init.py:init():606] setting up manager
+2023-04-04 15:50:26,476 INFO    MainThread:15585 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-04-04 15:50:26,477 INFO    MainThread:15585 [wandb_init.py:init():613] backend started and connected
+2023-04-04 15:50:26,483 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1204] probe notebook
+2023-04-04 15:50:26,484 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1214] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2023-04-04 15:50:26,484 INFO    MainThread:15585 [wandb_init.py:init():701] updated telemetry
+2023-04-04 15:50:26,508 INFO    MainThread:15585 [wandb_init.py:init():741] communicating run to backend with 60.0 second timeout
+2023-04-04 15:51:26,540 ERROR   MainThread:15585 [wandb_init.py:init():755] backend process timed out, exiting...
+encountered error: Error communicating with wandb process, exiting...
+For more info see: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+2023-04-04 15:51:26,548 ERROR   MainThread:15585 [wandb_init.py:init():1171] error
+Traceback (most recent call last):
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1144, in init
+    run = wi.init()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 773, in init
+    raise error
+wandb.errors.CommError: Error communicating with wandb process, exiting...
+For more info see: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+2023-04-04 15:51:55,874 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Configure stats pid to 15585
+2023-04-04 15:51:55,875 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /u8/c/evanpan/.config/wandb/settings
+2023-04-04 15:51:55,875 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/settings
+2023-04-04 15:51:55,875 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-04-04 15:51:55,875 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2023-04-04 15:51:55,876 INFO    MainThread:15585 [wandb_init.py:_log_setup():506] Logging user logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_155155-6dgl5prw/logs/debug.log
+2023-04-04 15:51:55,876 INFO    MainThread:15585 [wandb_init.py:_log_setup():507] Logging internal logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_155155-6dgl5prw/logs/debug-internal.log
+2023-04-04 15:51:55,876 INFO    MainThread:15585 [wandb_init.py:init():546] calling init triggers
+2023-04-04 15:51:55,876 INFO    MainThread:15585 [wandb_init.py:init():552] wandb.init called with sweep_config: {}
+config: {'win_length': 10, 'stride_length': 5, 'model_type': 'recurrent', 'num_layers': 3, 'input_dims': 1674, 'input_layer_out': 128, 'frames_ahead': 5, 'frames_behind': 10, 'lstm_layer_num': 2, 'lstm_feature_size': 256, 'lstm_output_feature_size': 256, 'output_layer_1_hidden': 128, 'output_layer_2_hidden': 64, 'output_layer_3_hidden': 1, 'wandb': True, 'load_model': False, 'checkpoint_name': '', 'checkpoint_path': '', 'batch_size': 64, 'learning_rate': 0.0001, 'dropout': 0.2, 'epochs': 200, 'device': 'gpu', 'early_stopping': 20}
+2023-04-04 15:51:55,876 INFO    MainThread:15585 [wandb_init.py:init():602] starting backend
+2023-04-04 15:51:55,876 INFO    MainThread:15585 [wandb_init.py:init():606] setting up manager
+2023-04-04 15:51:55,877 INFO    MainThread:15585 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-04-04 15:51:55,878 INFO    MainThread:15585 [wandb_init.py:init():613] backend started and connected
+2023-04-04 15:51:55,885 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1204] probe notebook
+2023-04-04 15:51:55,885 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1214] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2023-04-04 15:51:55,885 INFO    MainThread:15585 [wandb_init.py:init():701] updated telemetry
+2023-04-04 15:51:55,913 INFO    MainThread:15585 [wandb_init.py:init():741] communicating run to backend with 60.0 second timeout
+2023-04-04 15:52:55,944 ERROR   MainThread:15585 [wandb_init.py:init():755] backend process timed out, exiting...
+encountered error: Error communicating with wandb process, exiting...
+For more info see: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+2023-04-04 15:52:55,950 ERROR   MainThread:15585 [wandb_init.py:init():1171] error
+Traceback (most recent call last):
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1144, in init
+    run = wi.init()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 773, in init
+    raise error
+wandb.errors.CommError: Error communicating with wandb process, exiting...
+For more info see: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+2023-04-04 15:55:04,997 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Configure stats pid to 15585
+2023-04-04 15:55:04,998 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /u8/c/evanpan/.config/wandb/settings
+2023-04-04 15:55:04,998 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/settings
+2023-04-04 15:55:04,999 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-04-04 15:55:04,999 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2023-04-04 15:55:04,999 INFO    MainThread:15585 [wandb_init.py:_log_setup():506] Logging user logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_155504-os48sznq/logs/debug.log
+2023-04-04 15:55:04,999 INFO    MainThread:15585 [wandb_init.py:_log_setup():507] Logging internal logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_155504-os48sznq/logs/debug-internal.log
+2023-04-04 15:55:04,999 INFO    MainThread:15585 [wandb_init.py:init():546] calling init triggers
+2023-04-04 15:55:04,999 INFO    MainThread:15585 [wandb_init.py:init():552] wandb.init called with sweep_config: {}
+config: {'win_length': 10, 'stride_length': 5, 'model_type': 'recurrent', 'num_layers': 3, 'input_dims': 1674, 'input_layer_out': 128, 'frames_ahead': 5, 'frames_behind': 10, 'lstm_layer_num': 2, 'lstm_feature_size': 256, 'lstm_output_feature_size': 256, 'output_layer_1_hidden': 128, 'output_layer_2_hidden': 64, 'output_layer_3_hidden': 1, 'wandb': True, 'load_model': False, 'checkpoint_name': '', 'checkpoint_path': '', 'batch_size': 64, 'learning_rate': 0.0001, 'dropout': 0.2, 'epochs': 200, 'device': 'gpu', 'early_stopping': 20}
+2023-04-04 15:55:04,999 INFO    MainThread:15585 [wandb_init.py:init():602] starting backend
+2023-04-04 15:55:04,999 INFO    MainThread:15585 [wandb_init.py:init():606] setting up manager
+2023-04-04 15:55:05,000 INFO    MainThread:15585 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-04-04 15:55:05,001 INFO    MainThread:15585 [wandb_init.py:init():613] backend started and connected
+2023-04-04 15:55:05,007 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1204] probe notebook
+2023-04-04 15:55:05,008 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1214] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2023-04-04 15:55:05,008 INFO    MainThread:15585 [wandb_init.py:init():701] updated telemetry
+2023-04-04 15:55:05,042 INFO    MainThread:15585 [wandb_init.py:init():741] communicating run to backend with 60.0 second timeout
+2023-04-04 15:56:05,073 ERROR   MainThread:15585 [wandb_init.py:init():755] backend process timed out, exiting...
+encountered error: Error communicating with wandb process, exiting...
+For more info see: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+2023-04-04 15:56:05,082 ERROR   MainThread:15585 [wandb_init.py:init():1171] error
+Traceback (most recent call last):
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1144, in init
+    run = wi.init()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 773, in init
+    raise error
+wandb.errors.CommError: Error communicating with wandb process, exiting...
+For more info see: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+2023-04-04 15:56:52,979 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Configure stats pid to 15585
+2023-04-04 15:56:52,980 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /u8/c/evanpan/.config/wandb/settings
+2023-04-04 15:56:52,980 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/settings
+2023-04-04 15:56:52,980 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-04-04 15:56:52,980 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2023-04-04 15:56:52,981 INFO    MainThread:15585 [wandb_init.py:_log_setup():506] Logging user logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_155652-1a89aqxm/logs/debug.log
+2023-04-04 15:56:52,981 INFO    MainThread:15585 [wandb_init.py:_log_setup():507] Logging internal logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_155652-1a89aqxm/logs/debug-internal.log
+2023-04-04 15:56:52,981 INFO    MainThread:15585 [wandb_init.py:init():546] calling init triggers
+2023-04-04 15:56:52,981 INFO    MainThread:15585 [wandb_init.py:init():552] wandb.init called with sweep_config: {}
+config: {'win_length': 10, 'stride_length': 5, 'model_type': 'recurrent', 'num_layers': 3, 'input_dims': 1674, 'input_layer_out': 128, 'frames_ahead': 5, 'frames_behind': 10, 'lstm_layer_num': 2, 'lstm_feature_size': 256, 'lstm_output_feature_size': 256, 'output_layer_1_hidden': 128, 'output_layer_2_hidden': 64, 'output_layer_3_hidden': 1, 'wandb': True, 'load_model': False, 'checkpoint_name': '', 'checkpoint_path': '', 'batch_size': 64, 'learning_rate': 0.0001, 'dropout': 0.2, 'epochs': 200, 'device': 'gpu', 'early_stopping': 20}
+2023-04-04 15:56:52,981 INFO    MainThread:15585 [wandb_init.py:init():602] starting backend
+2023-04-04 15:56:52,981 INFO    MainThread:15585 [wandb_init.py:init():606] setting up manager
+2023-04-04 15:56:52,982 INFO    MainThread:15585 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: fork
+2023-04-04 15:56:52,983 INFO    MainThread:15585 [wandb_init.py:init():613] backend started and connected
+2023-04-04 15:56:52,992 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1204] probe notebook
+2023-04-04 15:56:52,993 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1214] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2023-04-04 15:56:52,993 INFO    MainThread:15585 [wandb_init.py:init():701] updated telemetry
+2023-04-04 15:56:53,029 INFO    MainThread:15585 [wandb_init.py:init():741] communicating run to backend with 60.0 second timeout
+2023-04-04 15:57:53,060 ERROR   MainThread:15585 [wandb_init.py:init():755] backend process timed out, exiting...
+encountered error: Error communicating with wandb process, exiting...
+For more info see: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+2023-04-04 15:57:53,069 ERROR   MainThread:15585 [wandb_init.py:init():1171] error
+Traceback (most recent call last):
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1144, in init
+    run = wi.init()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 773, in init
+    raise error
+wandb.errors.CommError: Error communicating with wandb process, exiting...
+For more info see: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+2023-04-04 15:58:52,584 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Configure stats pid to 15585
+2023-04-04 15:58:52,586 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /u8/c/evanpan/.config/wandb/settings
+2023-04-04 15:58:52,586 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/settings
+2023-04-04 15:58:52,586 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-04-04 15:58:52,586 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2023-04-04 15:58:52,586 INFO    MainThread:15585 [wandb_init.py:_log_setup():506] Logging user logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_155852-lrexg8l3/logs/debug.log
+2023-04-04 15:58:52,586 INFO    MainThread:15585 [wandb_init.py:_log_setup():507] Logging internal logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_155852-lrexg8l3/logs/debug-internal.log
+2023-04-04 15:58:52,586 INFO    MainThread:15585 [wandb_init.py:init():546] calling init triggers
+2023-04-04 15:58:52,586 INFO    MainThread:15585 [wandb_init.py:init():552] wandb.init called with sweep_config: {}
+config: {'win_length': 10, 'stride_length': 5, 'model_type': 'recurrent', 'num_layers': 3, 'input_dims': 1674, 'input_layer_out': 128, 'frames_ahead': 5, 'frames_behind': 10, 'lstm_layer_num': 2, 'lstm_feature_size': 256, 'lstm_output_feature_size': 256, 'output_layer_1_hidden': 128, 'output_layer_2_hidden': 64, 'output_layer_3_hidden': 1, 'wandb': True, 'load_model': False, 'checkpoint_name': '', 'checkpoint_path': '', 'batch_size': 64, 'learning_rate': 0.0001, 'dropout': 0.2, 'epochs': 200, 'device': 'gpu', 'early_stopping': 20}
+2023-04-04 15:58:52,587 INFO    MainThread:15585 [wandb_init.py:init():602] starting backend
+2023-04-04 15:58:52,587 INFO    MainThread:15585 [wandb_init.py:init():606] setting up manager
+2023-04-04 15:58:52,588 INFO    MainThread:15585 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: fork
+2023-04-04 15:58:52,589 INFO    MainThread:15585 [wandb_init.py:init():613] backend started and connected
+2023-04-04 15:58:52,595 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1204] probe notebook
+2023-04-04 15:58:52,596 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1214] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2023-04-04 15:58:52,596 INFO    MainThread:15585 [wandb_init.py:init():701] updated telemetry
+2023-04-04 15:58:52,636 INFO    MainThread:15585 [wandb_init.py:init():741] communicating run to backend with 60.0 second timeout
+2023-04-04 15:58:52,841 INFO    MainThread:15585 [wandb_run.py:_on_init():2133] communicating current version
+2023-04-04 15:59:22,847 INFO    MainThread:15585 [wandb_init.py:init():789] starting run threads in backend
+2023-04-04 15:59:52,878 INFO    MainThread:15585 [wandb_run.py:_console_start():2114] atexit reg
+2023-04-04 15:59:52,879 INFO    MainThread:15585 [wandb_run.py:_redirect():1969] redirect: SettingsConsole.WRAP_RAW
+2023-04-04 15:59:52,880 INFO    MainThread:15585 [wandb_run.py:_redirect():2034] Wrapping output streams.
+2023-04-04 15:59:52,880 INFO    MainThread:15585 [wandb_run.py:_redirect():2059] Redirects installed.
+2023-04-04 15:59:52,881 INFO    MainThread:15585 [wandb_init.py:init():831] run started, returning control to user process
+2023-04-04 16:13:07,658 INFO    MainThread:15585 [wandb_run.py:_finish():1854] finishing run gaze_prediction_team/gaze_prediction/lrexg8l3
+2023-04-04 16:13:07,660 INFO    MainThread:15585 [wandb_run.py:_atexit_cleanup():2083] got exitcode: 0
+2023-04-04 16:13:07,660 INFO    MainThread:15585 [wandb_run.py:_restore():2066] restore
+2023-04-04 16:13:07,661 INFO    MainThread:15585 [wandb_run.py:_restore():2072] restore done
+2023-04-04 16:25:32,039 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Configure stats pid to 15585
+2023-04-04 16:25:32,040 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /u8/c/evanpan/.config/wandb/settings
+2023-04-04 16:25:32,040 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/settings
+2023-04-04 16:25:32,040 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-04-04 16:25:32,040 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2023-04-04 16:25:32,040 INFO    MainThread:15585 [wandb_init.py:_log_setup():506] Logging user logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_162531-5t6c17ho/logs/debug.log
+2023-04-04 16:25:32,041 INFO    MainThread:15585 [wandb_init.py:_log_setup():507] Logging internal logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_162531-5t6c17ho/logs/debug-internal.log
+2023-04-04 16:25:32,041 INFO    MainThread:15585 [wandb_init.py:init():546] calling init triggers
+2023-04-04 16:25:32,041 INFO    MainThread:15585 [wandb_init.py:init():552] wandb.init called with sweep_config: {}
+config: {'win_length': 10, 'stride_length': 5, 'model_type': 'recurrent', 'num_layers': 3, 'input_dims': 1674, 'input_layer_out': 128, 'frames_ahead': 5, 'frames_behind': 10, 'lstm_layer_num': 2, 'lstm_feature_size': 256, 'lstm_output_feature_size': 256, 'output_layer_1_hidden': 128, 'output_layer_2_hidden': 64, 'output_layer_3_hidden': 1, 'wandb': True, 'load_model': False, 'checkpoint_name': '', 'checkpoint_path': '', 'batch_size': 128, 'learning_rate': 0.001, 'dropout': 0.2, 'epochs': 200, 'device': 'gpu', 'early_stopping': 10}
+2023-04-04 16:25:32,041 INFO    MainThread:15585 [wandb_init.py:init():602] starting backend
+2023-04-04 16:25:32,041 INFO    MainThread:15585 [wandb_init.py:init():606] setting up manager
+2023-04-04 16:25:32,042 INFO    MainThread:15585 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: fork
+2023-04-04 16:25:32,043 INFO    MainThread:15585 [wandb_init.py:init():613] backend started and connected
+2023-04-04 16:25:32,050 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1204] probe notebook
+2023-04-04 16:25:32,050 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1214] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2023-04-04 16:25:32,050 INFO    MainThread:15585 [wandb_init.py:init():701] updated telemetry
+2023-04-04 16:25:32,097 INFO    MainThread:15585 [wandb_init.py:init():741] communicating run to backend with 60.0 second timeout
+2023-04-04 16:26:32,128 ERROR   MainThread:15585 [wandb_init.py:init():755] backend process timed out, exiting...
+encountered error: Error communicating with wandb process, exiting...
+For more info see: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+2023-04-04 16:26:32,137 ERROR   MainThread:15585 [wandb_init.py:init():1171] error
+Traceback (most recent call last):
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1144, in init
+    run = wi.init()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 773, in init
+    raise error
+wandb.errors.CommError: Error communicating with wandb process, exiting...
+For more info see: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+2023-04-04 16:26:59,057 INFO    MainThread:15585 [wandb_run.py:_finish():1854] finishing run gaze_prediction_team/gaze_prediction/lrexg8l3
+2023-04-04 16:27:04,006 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Configure stats pid to 15585
+2023-04-04 16:27:04,006 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /u8/c/evanpan/.config/wandb/settings
+2023-04-04 16:27:04,006 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/settings
+2023-04-04 16:27:04,006 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-04-04 16:27:04,006 INFO    MainThread:15585 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2023-04-04 16:27:04,006 INFO    MainThread:15585 [wandb_init.py:_log_setup():506] Logging user logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_162703-lq438x45/logs/debug.log
+2023-04-04 16:27:04,007 INFO    MainThread:15585 [wandb_init.py:_log_setup():507] Logging internal logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230404_162703-lq438x45/logs/debug-internal.log
+2023-04-04 16:27:04,007 INFO    MainThread:15585 [wandb_init.py:init():546] calling init triggers
+2023-04-04 16:27:04,007 INFO    MainThread:15585 [wandb_init.py:init():552] wandb.init called with sweep_config: {}
+config: {'win_length': 10, 'stride_length': 5, 'model_type': 'recurrent', 'num_layers': 3, 'input_dims': 1674, 'input_layer_out': 128, 'frames_ahead': 5, 'frames_behind': 10, 'lstm_layer_num': 2, 'lstm_feature_size': 256, 'lstm_output_feature_size': 256, 'output_layer_1_hidden': 128, 'output_layer_2_hidden': 64, 'output_layer_3_hidden': 1, 'wandb': True, 'load_model': False, 'checkpoint_name': '', 'checkpoint_path': '', 'batch_size': 128, 'learning_rate': 0.001, 'dropout': 0.2, 'epochs': 200, 'device': 'gpu', 'early_stopping': 10}
+2023-04-04 16:27:04,007 INFO    MainThread:15585 [wandb_init.py:init():602] starting backend
+2023-04-04 16:27:04,007 INFO    MainThread:15585 [wandb_init.py:init():606] setting up manager
+2023-04-04 16:27:04,008 INFO    MainThread:15585 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: fork
+2023-04-04 16:27:04,009 INFO    MainThread:15585 [wandb_init.py:init():613] backend started and connected
+2023-04-04 16:27:04,016 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1204] probe notebook
+2023-04-04 16:27:04,017 INFO    MainThread:15585 [wandb_run.py:_label_probe_notebook():1214] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2023-04-04 16:27:04,017 INFO    MainThread:15585 [wandb_init.py:init():701] updated telemetry
+2023-04-04 16:27:04,065 INFO    MainThread:15585 [wandb_init.py:init():741] communicating run to backend with 60.0 second timeout
+2023-04-04 16:28:04,097 ERROR   MainThread:15585 [wandb_init.py:init():755] backend process timed out, exiting...
+encountered error: Error communicating with wandb process, exiting...
+For more info see: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+2023-04-04 16:28:04,105 ERROR   MainThread:15585 [wandb_init.py:init():1171] error
+Traceback (most recent call last):
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1144, in init
+    run = wi.init()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 773, in init
+    raise error
+wandb.errors.CommError: Error communicating with wandb process, exiting...
+For more info see: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-

@@ -1,0 +1,161 @@
+No such comm: 6a07d04a51c1457ebdb1a797b69669c0
+No such comm: 6a07d04a51c1457ebdb1a797b69669c0
+No such comm: 6a07d04a51c1457ebdb1a797b69669c0
+No such comm: 6a07d04a51c1457ebdb1a797b69669c0
+No such comm: 5edfbeb63f084927a9723db3f0982c8d
+No such comm: 5edfbeb63f084927a9723db3f0982c8d
+No such comm: 5edfbeb63f084927a9723db3f0982c8d
+No such comm: 5edfbeb63f084927a9723db3f0982c8d
+No such comm: b6eb97bf6a7e482e81015d1b85fa4c17
+No such comm: b6eb97bf6a7e482e81015d1b85fa4c17
+No such comm: b6eb97bf6a7e482e81015d1b85fa4c17
+No such comm: b6eb97bf6a7e482e81015d1b85fa4c17
+No such comm: d449f2473d684b0b8c57cbd80ecc0364
+No such comm: d449f2473d684b0b8c57cbd80ecc0364
+No such comm: d449f2473d684b0b8c57cbd80ecc0364
+No such comm: d449f2473d684b0b8c57cbd80ecc0364
+No such comm: d6c286443cf847c2a84cecfc2386d7b4
+No such comm: d6c286443cf847c2a84cecfc2386d7b4
+No such comm: d6c286443cf847c2a84cecfc2386d7b4
+No such comm: d6c286443cf847c2a84cecfc2386d7b4
+No such comm: 3ae7b1dedea64a7aa679c0269d03914c
+No such comm: 3ae7b1dedea64a7aa679c0269d03914c
+No such comm: 3ae7b1dedea64a7aa679c0269d03914c
+No such comm: 3ae7b1dedea64a7aa679c0269d03914c
+No such comm: 9fdda3a119c0470da9cf1754012dd79f
+No such comm: 9fdda3a119c0470da9cf1754012dd79f
+No such comm: 9fdda3a119c0470da9cf1754012dd79f
+No such comm: 9fdda3a119c0470da9cf1754012dd79f
+No such comm: 6fba88aa6db34589aac7da3a68b421e9
+No such comm: 6fba88aa6db34589aac7da3a68b421e9
+No such comm: 6fba88aa6db34589aac7da3a68b421e9
+No such comm: 6fba88aa6db34589aac7da3a68b421e9
+No such comm: bff022bf2b3649b1b6534d6bdde8d7dd
+No such comm: bff022bf2b3649b1b6534d6bdde8d7dd
+No such comm: bff022bf2b3649b1b6534d6bdde8d7dd
+No such comm: bff022bf2b3649b1b6534d6bdde8d7dd
+No such comm: ab71778d7ed24b3699a864e71cb088e3
+No such comm: ab71778d7ed24b3699a864e71cb088e3
+No such comm: ab71778d7ed24b3699a864e71cb088e3
+No such comm: ab71778d7ed24b3699a864e71cb088e3
+No such comm: 1f8d1177210546bf85f2001370490663
+No such comm: 1f8d1177210546bf85f2001370490663
+No such comm: 1f8d1177210546bf85f2001370490663
+No such comm: 1f8d1177210546bf85f2001370490663
+No such comm: 3dd69e9c2c774d63a93420412eded102
+No such comm: 3dd69e9c2c774d63a93420412eded102
+No such comm: 3dd69e9c2c774d63a93420412eded102
+No such comm: 3dd69e9c2c774d63a93420412eded102
+No such comm: 470d01a607f34970a455dd5becb6b53a
+No such comm: 470d01a607f34970a455dd5becb6b53a
+No such comm: 470d01a607f34970a455dd5becb6b53a
+No such comm: 470d01a607f34970a455dd5becb6b53a
+No such comm: 4915b95842784fb49de4729a3dc33cc3
+No such comm: 4915b95842784fb49de4729a3dc33cc3
+No such comm: 4915b95842784fb49de4729a3dc33cc3
+No such comm: 4915b95842784fb49de4729a3dc33cc3
+No such comm: 7f2dfd62d2ee4455832e052d58766ba3
+No such comm: 7f2dfd62d2ee4455832e052d58766ba3
+No such comm: 7f2dfd62d2ee4455832e052d58766ba3
+No such comm: 7f2dfd62d2ee4455832e052d58766ba3
+No such comm: 35414fe9b781469e97b07081008cf46d
+No such comm: 35414fe9b781469e97b07081008cf46d
+No such comm: 35414fe9b781469e97b07081008cf46d
+No such comm: 35414fe9b781469e97b07081008cf46d
+  0%|          | 0/200 [00:00<?, ?it/s]
+tensor(0.5583, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2782, device='cuda:0', grad_fn=<StdBackward0>)
+tensor(0.3880, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.1911, device='cuda:0', grad_fn=<StdBackward0>)
+tensor(0.4759, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2369, device='cuda:0', grad_fn=<StdBackward0>)
+tensor(0.4813, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2407, device='cuda:0', grad_fn=<StdBackward0>)
+
+  0%|          | 0/200 [00:24<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+tensor(0.4960, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2469, device='cuda:0', grad_fn=<StdBackward0>)
+
+  0%|          | 1/200 [00:06<22:15,  6.71s/it]
+
+  1%|          | 2/200 [00:12<19:28,  5.90s/it]
+tensor(0.5135, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2494, device='cuda:0', grad_fn=<StdBackward0>)
+tensor(0.5186, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2554, device='cuda:0', grad_fn=<StdBackward0>)
+
+  2%|▏         | 3/200 [00:17<18:26,  5.61s/it]
+tensor(0.5150, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2557, device='cuda:0', grad_fn=<StdBackward0>)
+
+  2%|▏         | 4/200 [00:23<19:06,  5.85s/it]
+tensor(0.5151, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2565, device='cuda:0', grad_fn=<StdBackward0>)
+tensor(0.5134, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2579, device='cuda:0', grad_fn=<StdBackward0>)
+
+  2%|▎         | 5/200 [00:30<20:08,  6.20s/it]
+
+  3%|▎         | 6/200 [00:35<19:13,  5.95s/it]
+tensor(0.4868, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2447, device='cuda:0', grad_fn=<StdBackward0>)
+
+  4%|▎         | 7/200 [00:41<18:29,  5.75s/it]
+tensor(0.4613, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2315, device='cuda:0', grad_fn=<StdBackward0>)
+
+  4%|▍         | 8/200 [00:46<17:55,  5.60s/it]
+tensor(0.4450, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2218, device='cuda:0', grad_fn=<StdBackward0>)
+
+  4%|▍         | 9/200 [00:51<17:36,  5.53s/it]
+tensor(0.4462, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2196, device='cuda:0', grad_fn=<StdBackward0>)
+
+  5%|▌         | 10/200 [00:57<17:17,  5.46s/it]
+tensor(0.4543, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2306, device='cuda:0', grad_fn=<StdBackward0>)
+
+  6%|▌         | 11/200 [01:02<17:02,  5.41s/it]
+tensor(0.4760, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2403, device='cuda:0', grad_fn=<StdBackward0>)
+
+  6%|▌         | 12/200 [01:07<16:56,  5.41s/it]
+
+  6%|▌         | 12/200 [01:12<18:50,  6.01s/it]
+  0%|          | 0/200 [00:00<?, ?it/s]
+tensor(0.4826, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2384, device='cuda:0', grad_fn=<StdBackward0>)
+
+  0%|          | 1/200 [00:06<21:23,  6.45s/it]
+tensor(0.4759, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2412, device='cuda:0', grad_fn=<StdBackward0>)
+
+  1%|          | 2/200 [00:12<21:06,  6.40s/it]
+tensor(0.4796, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2370, device='cuda:0', grad_fn=<StdBackward0>)
+
+  2%|▏         | 3/200 [00:18<19:28,  5.93s/it]
+tensor(0.4769, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2400, device='cuda:0', grad_fn=<StdBackward0>)
+
+  2%|▏         | 4/200 [00:24<19:51,  6.08s/it]
+tensor(0.4749, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2398, device='cuda:0', grad_fn=<StdBackward0>)
+
+  2%|▎         | 5/200 [00:29<18:58,  5.84s/it]
+tensor(0.4782, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2370, device='cuda:0', grad_fn=<StdBackward0>)
+
+  3%|▎         | 6/200 [00:35<18:19,  5.67s/it]
+tensor(0.4764, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2409, device='cuda:0', grad_fn=<StdBackward0>)
+
+  4%|▎         | 7/200 [00:41<18:55,  5.89s/it]
+
+  4%|▍         | 8/200 [00:46<18:18,  5.72s/it]
+tensor(0.4694, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2468, device='cuda:0', grad_fn=<StdBackward0>)
+tensor(0.4828, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2385, device='cuda:0', grad_fn=<StdBackward0>)
+
+  4%|▍         | 9/200 [00:52<17:49,  5.60s/it]
+tensor(0.4789, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2383, device='cuda:0', grad_fn=<StdBackward0>)
+
+  5%|▌         | 10/200 [00:57<17:30,  5.53s/it]
+tensor(0.4789, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2344, device='cuda:0', grad_fn=<StdBackward0>)
+
+  6%|▌         | 11/200 [01:04<18:13,  5.78s/it]
+tensor(0.4725, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2350, device='cuda:0', grad_fn=<StdBackward0>)
+
+  6%|▌         | 12/200 [01:09<17:42,  5.65s/it]
+tensor(0.4703, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2332, device='cuda:0', grad_fn=<StdBackward0>)
+
+  6%|▋         | 13/200 [01:14<17:18,  5.56s/it]
+tensor(0.4656, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2343, device='cuda:0', grad_fn=<StdBackward0>)
+
+  7%|▋         | 14/200 [01:20<17:54,  5.78s/it]
+tensor(0.4649, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2345, device='cuda:0', grad_fn=<StdBackward0>)
+
+  8%|▊         | 15/200 [01:26<17:26,  5.65s/it]
+tensor(0.4697, device='cuda:0', grad_fn=<MeanBackward0>) tensor(0.2330, device='cuda:0', grad_fn=<StdBackward0>)
+
+  8%|▊         | 16/200 [01:31<17:07,  5.58s/it]
+
+  8%|▊         | 16/200 [01:36<18:25,  6.01s/it]

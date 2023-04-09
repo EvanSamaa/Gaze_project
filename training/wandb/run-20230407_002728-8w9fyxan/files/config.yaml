@@ -1,0 +1,114 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.14.0
+    framework: huggingface
+    huggingface_version: 4.24.0
+    is_jupyter_run: true
+    is_kaggle_kernel: false
+    python_version: 3.10.10
+    session_history: code/_session_history.ipynb
+    start_time: 1680841648.597356
+    t:
+      1:
+      - 1
+      - 5
+      - 9
+      - 11
+      - 49
+      - 53
+      - 55
+      2:
+      - 1
+      - 5
+      - 9
+      - 11
+      - 49
+      - 53
+      - 55
+      3:
+      - 2
+      - 5
+      - 14
+      - 16
+      - 23
+      4: 3.10.10
+      5: 0.14.0
+      6: 4.24.0
+      8:
+      - 1
+      - 5
+batch_size:
+  desc: null
+  value: 256
+checkpoint_name:
+  desc: null
+  value: ''
+checkpoint_path:
+  desc: null
+  value: ''
+device:
+  desc: null
+  value: gpu
+dropout:
+  desc: null
+  value: 0.1
+early_stopping:
+  desc: null
+  value: 10
+epochs:
+  desc: null
+  value: 400
+frames_ahead:
+  desc: null
+  value: 0
+frames_behind:
+  desc: null
+  value: 0
+input_dims:
+  desc: null
+  value: 142
+input_layer_out:
+  desc: null
+  value: 16
+learning_rate:
+  desc: null
+  value: 1.0e-05
+load_model:
+  desc: null
+  value: true
+lstm_feature_size:
+  desc: null
+  value: 256
+lstm_layer_num:
+  desc: null
+  value: 1
+lstm_output_feature_size:
+  desc: null
+  value: 256
+model_type:
+  desc: null
+  value: recurrent
+num_layers:
+  desc: null
+  value: 3
+output_layer_1_hidden:
+  desc: null
+  value: 64
+output_layer_2_hidden:
+  desc: null
+  value: 64
+output_layer_3_hidden:
+  desc: null
+  value: 2
+stride_length:
+  desc: null
+  value: 5
+wandb:
+  desc: null
+  value: true
+win_length:
+  desc: null
+  value: 10

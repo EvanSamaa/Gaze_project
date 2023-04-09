@@ -1,0 +1,188 @@
+{
+    "os": "Linux-4.15.0-208-generic-x86_64-with-glibc2.27",
+    "python": "3.10.10",
+    "heartbeatAt": "2023-04-05T05:41:10.458059",
+    "startedAt": "2023-04-05T05:41:09.820210",
+    "docker": null,
+    "cuda": null,
+    "args": null,
+    "state": "running",
+    "program": "<python with no main file>",
+    "git": {
+        "remote": "https://github.com/EvanSamaa/Gaze_project.git",
+        "commit": "13c289dfdf5325e8b8c5c1bbebdb2b64917c9b6c"
+    },
+    "email": "evan12345pan@hotmail.com",
+    "root": "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project",
+    "host": "jason",
+    "username": "evanpan",
+    "executable": "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/bin/python",
+    "cpu_count": 28,
+    "cpu_count_logical": 28,
+    "cpu_freq": {
+        "current": 2177.0875357142854,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1697.623,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1651.622,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2267.469,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2247.651,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2662.571,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2033.312,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2277.367,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1735.734,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2075.968,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1606.432,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2277.168,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2274.311,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2437.159,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1687.515,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2284.689,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2363.206,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2304.012,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3078.782,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2300.803,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2303.78,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2459.402,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2301.019,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2319.519,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2306.991,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2318.344,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1660.24,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2344.948,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1680.814,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "total": 937.3305015563965,
+        "used": 50.06278610229492
+    },
+    "gpu": "TITAN RTX",
+    "gpu_count": 2,
+    "gpu_devices": [
+        {
+            "name": "TITAN RTX",
+            "memory_total": 25396838400
+        },
+        {
+            "name": "TITAN RTX",
+            "memory_total": 25396838400
+        }
+    ],
+    "memory": {
+        "total": 376.5566101074219
+    }
+}

@@ -1,0 +1,83 @@
+No such comm: d59091be7656422fa38682fe94b8dc89
+No such comm: d59091be7656422fa38682fe94b8dc89
+No such comm: d59091be7656422fa38682fe94b8dc89
+No such comm: b57b1d86369443fa9977138fca08e43e
+No such comm: b57b1d86369443fa9977138fca08e43e
+No such comm: b57b1d86369443fa9977138fca08e43e
+No such comm: 927bfdc87f6c4bb7a23ffa9430afe8e6
+No such comm: 927bfdc87f6c4bb7a23ffa9430afe8e6
+No such comm: 927bfdc87f6c4bb7a23ffa9430afe8e6
+No such comm: 36c58799a9114c07b3d2a83ba6cde11e
+No such comm: 36c58799a9114c07b3d2a83ba6cde11e
+No such comm: 36c58799a9114c07b3d2a83ba6cde11e
+No such comm: f818067757e54fefb4abbdd2f62fad61
+No such comm: f818067757e54fefb4abbdd2f62fad61
+No such comm: f818067757e54fefb4abbdd2f62fad61
+No such comm: 80937840ece94653a56b9f47c39dcc67
+No such comm: 80937840ece94653a56b9f47c39dcc67
+No such comm: 80937840ece94653a56b9f47c39dcc67
+No such comm: a4dffc48a8bb4eadb2319e11e596d667
+No such comm: a4dffc48a8bb4eadb2319e11e596d667
+No such comm: a4dffc48a8bb4eadb2319e11e596d667
+No such comm: 79d34346f8b642c79d9c8bdee5587076
+No such comm: 79d34346f8b642c79d9c8bdee5587076
+No such comm: 79d34346f8b642c79d9c8bdee5587076
+No such comm: d20d90dffa914ddfa9823fcb73106f6b
+No such comm: d20d90dffa914ddfa9823fcb73106f6b
+No such comm: d20d90dffa914ddfa9823fcb73106f6b
+No such comm: 55eb926e29ef40c6bc824b7d4d163a67
+No such comm: 55eb926e29ef40c6bc824b7d4d163a67
+No such comm: 55eb926e29ef40c6bc824b7d4d163a67
+No such comm: 6cea8a9eacbd43598464416f4dc97c8d
+No such comm: 6cea8a9eacbd43598464416f4dc97c8d
+No such comm: 6cea8a9eacbd43598464416f4dc97c8d
+No such comm: 24255a629e62485db15ac1e8f1fee357
+No such comm: 24255a629e62485db15ac1e8f1fee357
+No such comm: 24255a629e62485db15ac1e8f1fee357
+No such comm: 8a81e623c8194a718cdb5fa00770da41
+No such comm: 8a81e623c8194a718cdb5fa00770da41
+No such comm: 8a81e623c8194a718cdb5fa00770da41
+No such comm: c4f39953bfc94fd0b054f0b4d257d658
+No such comm: c4f39953bfc94fd0b054f0b4d257d658
+No such comm: c4f39953bfc94fd0b054f0b4d257d658
+No such comm: 6c4bc6726da1424bbfdb59a0b90d6551
+No such comm: 6c4bc6726da1424bbfdb59a0b90d6551
+No such comm: 6c4bc6726da1424bbfdb59a0b90d6551
+No such comm: 551157f03b534c89a379f64e0f62de2a
+No such comm: 551157f03b534c89a379f64e0f62de2a
+No such comm: 551157f03b534c89a379f64e0f62de2a
+  0%|          | 0/200 [00:00<?, ?it/s]
+0.03449014124949654
+mean: 0.5974612089529724, std: 0.03449014124949654
+training L: 0.7498041014467824
+
+  0%|          | 1/200 [00:02<07:47,  2.35s/it]
+0.0387789817215484
+mean: 0.648003122124935, std: 0.0387789817215484
+training L: 0.750510350090623
+  0%|          | 1/200 [00:02<07:47,  2.35s/it]/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/numpy/core/fromnumeric.py:3432: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/numpy/core/_methods.py:190: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+  1%|          | 2/200 [00:04<06:59,  2.12s/it]
+0.029644162000120988
+mean: 0.6950838980002896, std: 0.029644162000120988
+training L: 0.7506199214130393
+
+  2%|▏         | 3/200 [00:06<06:41,  2.04s/it]
+0.02540355121551124
+mean: 0.6974240211738563, std: 0.02540355121551124
+training L: 0.7506199214130393
+
+  2%|▏         | 4/200 [00:08<06:31,  2.00s/it]
+0.014475230401421608
+mean: 0.6587029522108311, std: 0.014475230401421608
+training L: 0.7506199214130393
+
+  2%|▎         | 5/200 [00:10<06:36,  2.03s/it]
+0.008366695740317093
+mean: 0.6412970440137612, std: 0.008366695740317093
+training L: 0.7506199214130393
+
+  3%|▎         | 6/200 [00:12<06:37,  2.05s/it]
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling wandb.login() after wandb.init() has no effect.

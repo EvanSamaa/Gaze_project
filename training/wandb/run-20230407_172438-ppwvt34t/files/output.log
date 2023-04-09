@@ -1,0 +1,41 @@
+Epoch 1, mean: 0.9998506307601929, std: 0.0122212003916502
+training L: 0.47407087497610473
+validation L:0.474633954552651
+Epoch 2, mean: 0.9992697238922119, std: 0.027014242485165596
+training L: 0.4731195501860977
+validation L:0.49355552669654223
+/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/numpy/core/fromnumeric.py:3432: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/numpy/core/_methods.py:190: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+Epoch 3, mean: 0.9998672604560852, std: 0.011522354558110237
+training L: 0.47348892918625324
+validation L:0.5171141569803435
+Epoch 4, mean: 0.9992199540138245, std: 0.027919301763176918
+training L: 0.4732425494537603
+validation L:0.4940207693365482
+Epoch 5, mean: 0.9993361234664917, std: 0.02575792372226715
+training L: 0.47384504897970586
+validation L:0.502547025933456
+Epoch 6, mean: 0.9851784706115723, std: 0.12083932012319565
+training L: 0.4871419195713272
+validation L:0.5036807809140758
+Epoch 7, mean: 0.9836016893386841, std: 0.1270027607679367
+training L: 0.48327056010521025
+validation L:0.509351995707302
+No such comm: 4ddd541d2b084a6b9713356fba298e44
+No such comm: 5f60d28c75b3401dbddae301ebf3d0b3
+No such comm: 7ece2ec4edce4614b3aa2f8d6ada0098
+No such comm: bdf4d97d745b4467a7b9c8973fc107a2
+No such comm: 84b2b2dbc32e4b6b992a666881207d12
+No such comm: b931e137c7e445c880a4c27eb381312a
+No such comm: 51203e92cd6e4213b7aec92ab931a88d
+No such comm: 8cb7ae671d564d8fa42695be395a2e78
+No such comm: 99022b5bd1cd4efcb23b2424b5b85ccd
+No such comm: 305a5eb7d4cb40fca3dea7265a501d57
+No such comm: 75244f3ca66842ae9c566fb94ffe42b3
+No such comm: 8f96039edc0647c3bf9b0365115087b3
+No such comm: 1b00765f71f245dfb225c1995908132a
+No such comm: 62ca7fbc47ae48c68310f984630b9a10
+No such comm: 7c25b39ac515489e9f3de7f24ec9b2a3
+No such comm: e1621c0547804fe09154942e32ea8186
