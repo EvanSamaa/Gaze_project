@@ -11,13 +11,16 @@ import shutil
 from matplotlib import pyplot as plt
 import csv
 from datetime import datetime
+from scipy.signal.windows import gaussian
 import soundfile as sf
 # import utility functions
 sys.path.insert(0, '/Users/evanpan/Documents/GitHub/EvansToolBox/Utils')
 sys.path.insert(0, '/Users/evanpan/Desktop/openpose/python/')
+sys.path.insert(0, '/scratch/ondemand27/evanpan/EvansToolBox/Utils/')
+sys.path.insert(0, '/scratch/ondemand27/evanpan/Gaze_project/')
 # sys.path.insert(0, "C:/Users/evansamaa/Documents/GitHub/EvansToolBox")
-from Geometry_Util import rotation_angles_frome_positions
-    
+# from Geometry_Util import rotation_angles_frome_positions
+from Signal_processing_utils import dx_dt
 
 # Dataset for statistical stuff
 class ShotDataSet_Selftape111(Dataset):
@@ -148,10 +151,10 @@ class SegmentDataset_SelfTape111(Dataset):
             aversion = pkl.load(open(output_aversion_path, "rb"))
             return [sr, audio_onscreen, audio_offscreen], [fps, gaze, head, blinks, aversion], [file_name, shot_range]
         return [sr, audio_onscreen, audio_offscreen], [fps, gaze, head, blinks], [file_name, shot_range]
-    
+
 # Dataset for deep learning
 class Aversion_SelfTap111(Dataset):
-    def __init__(self, processed_data_path, videos_included=None, audio_only=False, word_timing=False, sentence_and_word_timing=False):
+    def __init__(self, processed_data_path, videos_included=None, audio_only=False, word_timing=False, sentence_and_word_timing=False, velocity_label=False):
         self.filler = np.array([-36.04365338911715,0.0,0.0,0.0,0.0,0.0,-3.432169450445466e-14,0.0,0.0,0.0,9.64028691651994e-15,0.0,0.0,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715])
         # save dataset root path
         self.data_root_path = processed_data_path
@@ -166,7 +169,9 @@ class Aversion_SelfTap111(Dataset):
         self.audio_only = audio_only
         self.word_timing = word_timing
         self.sentence_and_word_timing = sentence_and_word_timing
-
+        self.velocity_label = velocity_label
+        if velocity_label:
+            self.gaussian_window = gaussian(5, 1)
     def __len__(self):
         return len(self.all_files_in_set)
     def __getitem__(self, idx):
@@ -213,4 +218,10 @@ class Aversion_SelfTap111(Dataset):
         input_vector_onscreen = np.concatenate([input_audio_on_screen, input_text_on_screen], axis=1)
         input_vector_offscreen = np.concatenate([input_audio_off_screen, input_text_off_screen], axis=1)
         input_vector = np.concatenate([input_vector_onscreen, input_vector_offscreen], axis=1)
+
+
+        if self.velocity_label:
+            vel_output_target = dx_dt(output_target)
+            vel_output_target = np.correlate(vel_output_target, self.gaussian_window, mode="same")
+            return input_vector, [output_target, vel_output_target]
         return input_vector, output_target

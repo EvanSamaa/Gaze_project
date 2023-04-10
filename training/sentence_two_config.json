@@ -21,6 +21,7 @@
     "learning_rate": 0.001,
     "dropout": 0.1,
     "epochs": 1000,
+    "stage_two_begins": 0,
     "device": "gpu",
     "early_stopping":20
 }

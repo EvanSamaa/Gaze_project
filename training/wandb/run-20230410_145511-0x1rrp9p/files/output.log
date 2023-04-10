@@ -1,0 +1,8 @@
+/usr/bin/nvidia-modprobe: unrecognized option: "-s"
+ERROR: Invalid commandline, please run `/usr/bin/nvidia-modprobe --help`
+       for usage information.
+/usr/bin/nvidia-modprobe: unrecognized option: "-s"
+ERROR: Invalid commandline, please run `/usr/bin/nvidia-modprobe --help`
+       for usage information.
+Epoch 1, mean: 0.9997344613075256, std: 0.01629398763179779
+training L: 0.4781257072875797

@@ -1,0 +1,434 @@
+No such comm: 371a6997bd7b4d269963cf02d85d5553
+No such comm: 0675c75dc97f403ea48e9c1e6097322f
+No such comm: ff44f3955709439dae81ffd5ada560de
+No such comm: 1da68542e7264a5798a9f7a817675dae
+No such comm: 05b84a89ba0f408b95416b8c7937c349
+No such comm: 39df033818d944b2b157340fb8eb42ba
+No such comm: bab07c63d51d4ca88f2917f506ca9be6
+No such comm: 3a5c9b7307cf4f6287d57fb86198fd48
+No such comm: f5b7ce20232642898d7feaad478245ca
+No such comm: 5685d91ba07343529cfa741a26d0b6dd
+No such comm: a71b528e64274673a5a55d60c46ef45c
+No such comm: 4bd6955338d044f5aee964bdc71ff7ed
+No such comm: 8c7e7206c3914dc49a82d3eebb7cb319
+No such comm: fcf823e92ec44c1e8dbf0c03c2c131b9
+No such comm: 4aecf60a061848e7be87eb1a4d665ddc
+No such comm: 8f2fdfe34b464feeb49af13be5370b0a
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+(250,)
+(array([[-3.60436534e+01,  0.00000000e+00,  0.00000000e+00, ...,
+         1.00000000e+00, -7.00000000e-02, -1.07000000e+00],
+       [-3.60436534e+01,  0.00000000e+00,  0.00000000e+00, ...,
+         1.04000000e+00, -3.00000000e-02, -1.07000000e+00],
+       [-3.60436534e+01,  0.00000000e+00,  0.00000000e+00, ...,
+         8.53347486e-02, -2.31759907e-03, -8.76523477e-02],
+       ...,
+       [ 5.12352058e-01, -3.76182509e+01,  1.30272286e+01, ...,
+         3.55000000e+00, -9.39000000e+00, -1.29400000e+01],
+       [-3.64693097e+00, -1.88291266e+01, -6.39254869e+00, ...,
+         3.59000000e+00, -9.35000000e+00, -1.29400000e+01],
+       [-2.15716268e+00, -1.50833033e+00, -1.17214252e+01, ...,
+         3.63000000e+00, -9.31000000e+00, -1.29400000e+01]]), [array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 0., 0., 0., 0., 0., 0., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 0., 0., 0.,
+       0., 0., 0., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 0., 0., 0., 0., 0.,
+       0., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.]), array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0., -1.,  0.,  0.,  0.,  0.,  0.,  1.,
+        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0., -1.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0.,  1.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0., -1.,  0.,  0.,  0.,  0.,  0.,  1.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0., -1.,  0.,
+        0.,  0.,  0.,  0.,  1.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+        0.,  0.,  0.])])
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+(250,)
+(array([[-3.60436534e+01,  0.00000000e+00,  0.00000000e+00, ...,
+         1.00000000e+00, -7.00000000e-02, -1.07000000e+00],
+       [-3.60436534e+01,  0.00000000e+00,  0.00000000e+00, ...,
+         1.04000000e+00, -3.00000000e-02, -1.07000000e+00],
+       [-3.60436534e+01,  0.00000000e+00,  0.00000000e+00, ...,
+         8.53347486e-02, -2.31759907e-03, -8.76523477e-02],
+       ...,
+       [ 5.12352058e-01, -3.76182509e+01,  1.30272286e+01, ...,
+         3.55000000e+00, -9.39000000e+00, -1.29400000e+01],
+       [-3.64693097e+00, -1.88291266e+01, -6.39254869e+00, ...,
+         3.59000000e+00, -9.35000000e+00, -1.29400000e+01],
+       [-2.15716268e+00, -1.50833033e+00, -1.17214252e+01, ...,
+         3.63000000e+00, -9.31000000e+00, -1.29400000e+01]]), [array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 0., 0., 0., 0., 0., 0., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 0., 0., 0.,
+       0., 0., 0., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 0., 0., 0., 0., 0.,
+       0., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.]), array([ 0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        , -0.13533528,
+       -0.60653066, -1.        , -0.60653066, -0.13533528,  0.        ,
+        0.13533528,  0.60653066,  1.        ,  0.60653066,  0.13533528,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+       -0.13533528, -0.60653066, -1.        , -0.60653066, -0.13533528,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.13533528,  0.60653066,
+        1.        ,  0.60653066,  0.13533528,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+       -0.13533528, -0.60653066, -1.        , -0.60653066, -0.13533528,
+        0.        ,  0.13533528,  0.60653066,  1.        ,  0.60653066,
+        0.13533528,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        , -0.13533528, -0.60653066, -1.        ,
+       -0.60653066, -0.13533528,  0.        ,  0.13533528,  0.60653066,
+        1.        ,  0.60653066,  0.13533528,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.        ])])
+(250,)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+(250,)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+(250,)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+torch.Size([131, 250, 2])
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+torch.Size([131, 250, 2]) torch.Size([131, 250, 2])
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/numpy/core/fromnumeric.py:3432: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/numpy/core/_methods.py:190: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+Epoch 1, mean: 0.01838168129324913, std: 0.13432922959327698
+training L: 0.24842445426754423
+validation L:0.303604099328445
+Epoch 2, mean: 0.10018321126699448, std: 0.3002487123012543
+training L: 0.32294533478053933
+validation L:0.45874665467978226
+Epoch 3, mean: 0.3694046139717102, std: 0.4826509654521942
+training L: 0.4702005106895253
+validation L:0.5457898626643743
+Epoch 4, mean: 0.7469618916511536, std: 0.4347592890262604
+training L: 0.5259981378223609
+validation L:0.529038052895505
+Epoch 5, mean: 0.9345038533210754, std: 0.2474031150341034
+training L: 0.4859130699210294
+validation L:0.5066877329938072
+Epoch 6, mean: 0.9872366786003113, std: 0.11225346475839615
+training L: 0.4578530203485868
+validation L:0.5010236143290904
+Epoch 7, mean: 0.9975878596305847, std: 0.04905576631426811
+training L: 0.45192646404205217
+validation L:0.49972521759451
+Epoch 8, mean: 0.9993893504142761, std: 0.024704914540052414
+training L: 0.4514365362716726
+validation L:0.49932907235723145, model have not improved for 1 iterations
+Epoch 9, mean: 0.99993896484375, std: 0.007814527489244938
+training L: 0.45093922834713546
+validation L:0.49904111077228025, model have not improved for 2 iterations
+Epoch 10, mean: 0.999908447265625, std: 0.009570655412971973
+training L: 0.4510088849744354
+validation L:0.49904111077228025, model have not improved for 3 iterations
+Epoch 11, mean: 1.0, std: 0.0
+training L: 0.45096786484650264
+validation L:0.49904111077228025, model have not improved for 4 iterations
+Epoch 12, mean: 0.9999695420265198, std: 0.005525789689272642
+training L: 0.45095354686993777
+validation L:0.49904111077228025, model have not improved for 5 iterations
+Epoch 13, mean: 1.0, std: 0.0
+training L: 0.45096786484650264
+validation L:0.49904111077228025, model have not improved for 6 iterations
+Epoch 14, mean: 1.0, std: 0.0
+training L: 0.45096786484650264
+validation L:0.49904111077228025, model have not improved for 7 iterations
+Epoch 15, mean: 1.0, std: 0.0
+training L: 0.45096786484650264
+validation L:0.49904111077228025
+Epoch 16, mean: 0.9999695420265198, std: 0.005525789689272642
+training L: 0.45095354686993777
+validation L:0.49904111077228025
+Epoch 17, mean: 1.0, std: 0.0
+training L: 0.45096786484650264
+validation L:0.4989221311475409, model have not improved for 1 iterations
+Epoch 18, mean: 0.9997863173484802, std: 0.0146185252815485
+training L: 0.4511195038655656
+validation L:0.4997849850805927
+Epoch 19, mean: 0.9996947050094604, std: 0.0174716804176569
+training L: 0.45116044486786444
+validation L:0.499557204818643
+Epoch 20, mean: 0.9992672204971313, std: 0.0270612221211195
+training L: 0.4517146134936236
+validation L:0.4997130048650497
+Epoch 21, mean: 0.9987787008285522, std: 0.03492734581232071
+training L: 0.45148437453356033
+validation L:0.499772904358286
+Epoch 22, mean: 0.9983512163162231, std: 0.04057322442531586
+training L: 0.4521204107608023
+validation L:0.4996246312730855
+Epoch 23, mean: 0.9963359236717224, std: 0.060421913862228394
+training L: 0.45316961977360387
+validation L:0.5011518972012005
+Epoch 24, mean: 0.9948397278785706, std: 0.07165077328681946
+training L: 0.4547033038081339
+validation L:0.5024714007957545
+Epoch 25, mean: 0.992580235004425, std: 0.08581968396902084
+training L: 0.4551066933128931
+validation L:0.5006448208363874
+Epoch 26, mean: 0.991236686706543, std: 0.09320314973592758
+training L: 0.45644118674225936
+validation L:0.5048360659545506
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+Epoch 27, mean: 0.991175651550293, std: 0.09352445602416992
+training L: 0.45748763049062763
+validation L:0.5049269843867596
+Epoch 28, mean: 0.9906260371208191, std: 0.0963662639260292
+training L: 0.45655583711452996
+validation L:0.5038704269150233
+Epoch 29, mean: 0.9912977814674377, std: 0.09288069605827332
+training L: 0.45680231573261737
+validation L:0.5040897198286701
+Epoch 30, mean: 0.9927939772605896, std: 0.08458366990089417
+training L: 0.4554594836777223
+validation L:0.5036773287047999
+Epoch 31, mean: 0.994564950466156, std: 0.07352373003959656
+training L: 0.45440435807087093
+validation L:0.5028363873290523, model have not improved for 1 iterations
+Epoch 32, mean: 0.9957252740859985, std: 0.06524311751127243
+training L: 0.4546294063278691
+validation L:0.5011278382180371, model have not improved for 2 iterations
+Epoch 33, mean: 0.9968550205230713, std: 0.05599323660135269
+training L: 0.4530831532258821
+validation L:0.5014459005877202, model have not improved for 3 iterations
+Epoch 34, mean: 0.997984766960144, std: 0.04484715685248375
+training L: 0.4527004427902177
+validation L:0.4999525497492369, model have not improved for 4 iterations
+Epoch 35, mean: 0.9986259937286377, std: 0.037043217569589615
+training L: 0.45216658411220023
+validation L:0.4984458495460441, model have not improved for 5 iterations
+Epoch 36, mean: 0.9989924430847168, std: 0.031727731227874756
+training L: 0.45183666824547664
+validation L:0.49915032470943266, model have not improved for 6 iterations
+Epoch 37, mean: 0.9995420575141907, std: 0.021396717056632042
+training L: 0.4513405126145972
+validation L:0.499557204818643, model have not improved for 7 iterations
+Epoch 38, mean: 0.9993893504142761, std: 0.024704914540052414
+training L: 0.45118482467926135
+validation L:0.5000722691258352
+Epoch 39, mean: 0.9997252225875854, std: 0.016575343906879425
+training L: 0.4512587349889671
+validation L:0.4989816254955779, model have not improved for 1 iterations
+Epoch 40, mean: 0.9996336698532104, std: 0.019138682633638382
+training L: 0.45138357655817135
+validation L:0.499557204818643
+Epoch 41, mean: 0.9996947050094604, std: 0.0174716804176569
+training L: 0.4510764987750024
+validation L:0.4996168664943034
+Epoch 42, mean: 0.9996947050094604, std: 0.0174716804176569
+training L: 0.4513283370535886
+validation L:0.499557204818643
+Epoch 43, mean: 0.9996030926704407, std: 0.0199198666960001
+training L: 0.45103348878546834
+validation L:0.4989816254955779, model have not improved for 1 iterations
+Epoch 44, mean: 0.9997557997703552, std: 0.015627622604370117
+training L: 0.45102121483229796
+validation L:0.4989221311475409, model have not improved for 2 iterations
+Epoch 45, mean: 0.9996641874313354, std: 0.018324172124266624
+training L: 0.45114610452290593
+validation L:0.4989816254955779, model have not improved for 3 iterations
+Epoch 46, mean: 0.9996947050094604, std: 0.0174716804176569
+training L: 0.45116044486786444
+validation L:0.49915032470943266, model have not improved for 4 iterations
+Epoch 47, mean: 0.9995420575141907, std: 0.021396717056632042
+training L: 0.4515083625533766
+validation L:0.4989221311475409, model have not improved for 5 iterations
+Epoch 48, mean: 0.9995725750923157, std: 0.020671507343649864
+training L: 0.4514387969966117
+validation L:0.4990311145318593, model have not improved for 6 iterations
+Epoch 49, mean: 0.9992977380752563, std: 0.026491854339838028
+training L: 0.4518967812778872
+validation L:0.4994378546052842
+Epoch 50, mean: 0.9992977380752563, std: 0.026491854339838028
+training L: 0.4518967812778872
+validation L:0.49926949882092225
+Epoch 51, mean: 0.9990839958190918, std: 0.030252594500780106
+training L: 0.4517960134324258
+validation L:0.4996056559231872
+Epoch 52, mean: 0.9985954761505127, std: 0.03745197132229805
+training L: 0.4526549155666001
+validation L:0.5000124138577224
+Epoch 53, mean: 0.9991756081581116, std: 0.02870144508779049
+training L: 0.4517553285213779
+validation L:0.4989221311475409, model have not improved for 1 iterations
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+Epoch 54, mean: 0.9990534782409668, std: 0.03075219877064228
+training L: 0.4516139008879736
+validation L:0.4996056559231872
+Epoch 55, mean: 0.9985649585723877, std: 0.037856291979551315
+training L: 0.4530594058795868
+validation L:0.499557204818643
+Epoch 56, mean: 0.9980763792991638, std: 0.04381805658340454
+training L: 0.4529950730627607
+validation L:0.4994378546052842, model have not improved for 1 iterations
+Epoch 57, mean: 0.9983206391334534, std: 0.04094655439257622
+training L: 0.4526922632265223
+validation L:0.5000722691258352
+Epoch 58, mean: 0.9984122514724731, std: 0.0398159995675087
+training L: 0.45265191246078107
+validation L:0.4997849850805927
+Epoch 59, mean: 0.9984428286552429, std: 0.039431892335414886
+training L: 0.4522475129453468
+validation L:0.49937816606318464, model have not improved for 1 iterations
+Epoch 60, mean: 0.9983817338943481, std: 0.040196407586336136
+training L: 0.45272120938930743
+validation L:0.49972521759451
+Epoch 61, mean: 0.9982901215553284, std: 0.04131648689508438
+training L: 0.45292904668275774
+validation L:0.49937816606318464, model have not improved for 1 iterations
+Epoch 62, mean: 0.9982596039772034, std: 0.04168311506509781
+training L: 0.4524958184595691
+validation L:0.49937816606318464, model have not improved for 2 iterations
+Epoch 63, mean: 0.9984122514724731, std: 0.0398159958422184
+training L: 0.45248437401953856
+validation L:0.4997849850805927
+Epoch 64, mean: 0.9977405071258545, std: 0.047481633722782135
+training L: 0.4534212946450369
+validation L:0.499557204818643
+Epoch 65, mean: 0.9978321194648743, std: 0.046511340886354446
+training L: 0.45371596251730584
+validation L:0.5002994435752867
+Epoch 66, mean: 0.9973741173744202, std: 0.05117752030491829
+training L: 0.45374861385286863
+validation L:0.49965309651980916
+Epoch 67, mean: 0.9970382452011108, std: 0.05434289202094078
+training L: 0.45408985420122927
+validation L:0.5009788679894785
+Epoch 68, mean: 0.995603084564209, std: 0.0661645457148552
+training L: 0.45540456245966265
+validation L:0.5011278382180371
+wandb: ERROR Dropped streaming file chunk (see wandb/debug-internal.log)
+Epoch 1, mean: 0.5446717739105225, std: 0.49800804257392883
+training L: 0.5132843483749812
+validation L:0.5371700953172484
+Epoch 2, mean: 0.8699848055839539, std: 0.33632534742355347
+training L: 0.5061146328019027
+validation L:0.5078391749329139
+Epoch 3, mean: 0.979633629322052, std: 0.14125235378742218
+training L: 0.4624379408456071
+validation L:0.5006438153817138, model have not improved for 1 iterations
+Epoch 4, mean: 0.9973130226135254, std: 0.05176760256290436
+training L: 0.45254882193462226
+validation L:0.49904111077228025, model have not improved for 2 iterations
+Epoch 5, mean: 0.9997557997703552, std: 0.015627622604370117
+training L: 0.45110516937965495
+validation L:0.49904111077228025
+Epoch 6, mean: 0.9998779296875, std: 0.011051073670387268
+training L: 0.45116250405801556
+validation L:0.49904111077228025
+Epoch 7, mean: 0.99993896484375, std: 0.007814527489244938
+training L: 0.45102320827550085
+validation L:0.49904111077228025, model have not improved for 1 iterations
+Epoch 8, mean: 0.9999695420265198, std: 0.005525789689272642
+training L: 0.45095354686993777
+validation L:0.49904111077228025, model have not improved for 2 iterations
+Epoch 9, mean: 1.0, std: 0.0
+training L: 0.45096786484650264
+validation L:0.4996168664943034
+Epoch 10, mean: 0.9999695420265198, std: 0.005525789689272642
+training L: 0.45095354686993777
+validation L:0.49932907235723145
+Epoch 11, mean: 0.9996947050094604, std: 0.0174716804176569
+training L: 0.4512443909607265
+validation L:0.49949753418970344
+Epoch 12, mean: 0.9998168349266052, std: 0.013534331694245338
+training L: 0.45104987480246966
+validation L:0.4992587620971374
+Epoch 13, mean: 0.9994504451751709, std: 0.023437852039933205
+training L: 0.4513813561009119
+validation L:0.49931846856120293
