@@ -1,7 +1,0 @@
-/usr/bin/nvidia-modprobe: unrecognized option: "-s"
-ERROR: Invalid commandline, please run `/usr/bin/nvidia-modprobe --help`
-       for usage information.
-/usr/bin/nvidia-modprobe: unrecognized option: "-s"
-ERROR: Invalid commandline, please run `/usr/bin/nvidia-modprobe --help`
-       for usage information.
-[34m[1mwandb[39m[22m: [33mWARNING[39m Saving files without folders. If you want to preserve sub directories pass base_path to wandb.save, i.e. wandb.save("/mnt/folder/file.h5", base_path="/mnt")

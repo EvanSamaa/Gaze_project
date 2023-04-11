@@ -1,1 +1,0 @@
-{"validation_f1": 0.9119901399208232, "validation_loss": 0.18008372864225766, "percentage_predicted_aversion": 0.6324298039215687, "_step": 288, "_runtime": 9626.9783244133, "_timestamp": 1681162538.4118583, "training_f1": 0.9270766868837628, "training loss": 0.1671711668124922, "_wandb": {"runtime": 22}}
