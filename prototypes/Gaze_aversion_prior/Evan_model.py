@@ -178,9 +178,10 @@ class SentenceBaseline_GazePredictionModel(nn.Module):
         model_dict.update(pretrained_dict)
         self.load_state_dict(model_dict)
 class Aversion111Prior():
-    def __init__(self) -> None:
-        self.whisper_root = "/scratch/ondemand27/evanpan/data/deep_learning_processed_dataset"
-        self.model_location = "/scratch/ondemand27/evanpan/data/Gaze_aversion_models/sentence_and_words"
+    def __init__(self, model_location="/scratch/ondemand27/evanpan/data/Gaze_aversion_models/sentence_and_words",
+                 whisper_root = "/scratch/ondemand27/evanpan/data/deep_learning_processed_dataset") -> None:
+        self.whisper_root = whisper_root
+        self.model_location = model_location
         config = json.load(open(os.path.join(*[self.model_location, "config.json"]), "r"))
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         model_weights_path = os.path.join(*[self.model_location, "best.pt"])
