@@ -1,0 +1,15 @@
+/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/numpy/core/fromnumeric.py:3432: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/numpy/core/_methods.py:190: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+Epoch 289, mean: 0.727568507194519, std: 0.4452143907546997
+training L: 0.8862669987488125
+validation L:0.8699159448302187
+Epoch 290, mean: 0.6913692951202393, std: 0.46193215250968933
+training L: 0.9023071043049081
+validation L:0.9032333195554947
+Epoch 291, mean: 0.6280165910720825, std: 0.48333799839019775
+training L: 0.9212732141318789
+validation L:0.9204383766673967
+Epoch 292, mean: 0.6386224031448364, std: 0.4804036617279053
+training L: 0.9278142231326103

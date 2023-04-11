@@ -1,0 +1,18 @@
+No such comm: 873d93ae1c204a5ea5724c5b255a486a
+No such comm: 30044b7ddc4e4f7799762f3460508686
+No such comm: f5957290bce445bca121ead495e05242
+No such comm: 75d5883403814bb78b1e6e70e9e455d2
+No such comm: acb926b49cb64fe7a5714eaa46305c4b
+No such comm: 1446f75e9fa54a098c16a0f6a084aaae
+No such comm: 48ce74202ecc4a088d94404fa5ab4a33
+No such comm: 5b62052afe89487498c810613511065e
+No such comm: b6b125d1d7114085a32e89f5a30d9aa3
+No such comm: a4c6a3e6df5a46e9ac6005d5cf6e67a8
+No such comm: 7339e5cd301b44c08dee866988e04af6
+No such comm: 083d2c61f4c24092951e01ecea8d827d
+No such comm: 4d0bad2b614f49918d71403db20dd35e
+No such comm: e4e2d4bac5144712a2968a3428f01c09
+No such comm: f873861a5f27455cb8fa3ffdb937e06e
+No such comm: 58d7128a464248bda61bc3def91cec2c
+cuda
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling wandb.login() after wandb.init() has no effect.

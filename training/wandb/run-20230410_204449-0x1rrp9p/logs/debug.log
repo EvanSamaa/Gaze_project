@@ -1,0 +1,40 @@
+2023-04-10 20:44:49,871 INFO    MainThread:5055 [wandb_setup.py:_flush():76] Configure stats pid to 5055
+2023-04-10 20:44:49,871 INFO    MainThread:5055 [wandb_setup.py:_flush():76] Loading settings from /u8/c/evanpan/.config/wandb/settings
+2023-04-10 20:44:49,871 INFO    MainThread:5055 [wandb_setup.py:_flush():76] Loading settings from /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/settings
+2023-04-10 20:44:49,871 INFO    MainThread:5055 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-04-10 20:44:49,871 INFO    MainThread:5055 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2023-04-10 20:44:49,872 INFO    MainThread:5055 [wandb_init.py:_log_setup():506] Logging user logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230410_204449-0x1rrp9p/logs/debug.log
+2023-04-10 20:44:49,872 INFO    MainThread:5055 [wandb_init.py:_log_setup():507] Logging internal logs to /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/wandb/run-20230410_204449-0x1rrp9p/logs/debug-internal.log
+2023-04-10 20:44:49,872 INFO    MainThread:5055 [wandb_init.py:init():546] calling init triggers
+2023-04-10 20:44:49,872 INFO    MainThread:5055 [wandb_init.py:init():552] wandb.init called with sweep_config: {}
+config: {'win_length': 10, 'stride_length': 5, 'model_type': 'recurrent', 'num_layers': 3, 'input_dims': 154, 'input_layer_out': 16, 'frames_ahead': 0, 'frames_behind': 0, 'lstm_layer_num': 1, 'lstm_feature_size': 256, 'lstm_output_feature_size': 256, 'output_layer_1_hidden': 64, 'output_layer_2_hidden': 64, 'output_layer_3_hidden': 2, 'wandb': True, 'load_model': True, 'checkpoint_name': '', 'checkpoint_path': '', 'batch_size': 256, 'learning_rate': 0.001, 'dropout': 0.1, 'epochs': 1000, 'device': 'gpu', 'early_stopping': 20}
+2023-04-10 20:44:49,872 INFO    MainThread:5055 [wandb_init.py:init():568] re-initializing run, found existing run on stack: 0x1rrp9p
+2023-04-10 20:44:49,873 INFO    MainThread:5055 [wandb_run.py:_finish():1854] finishing run gaze_prediction_team/gaze_prediction/0x1rrp9p
+2023-04-10 20:44:49,883 INFO    MainThread:5055 [jupyter.py:save_history():474] saving 17 cells to _session_history.ipynb
+2023-04-10 20:44:49,884 INFO    MainThread:5055 [wandb_run.py:_config_callback():1251] config_cb ('_wandb', 'session_history') code/_session_history.ipynb None
+2023-04-10 20:44:49,941 INFO    MainThread:5055 [jupyter.py:_save_ipynb():384] looking for notebook: None
+2023-04-10 20:44:49,941 INFO    MainThread:5055 [wandb_init.py:_jupyter_teardown():434] cleaning up jupyter logic
+2023-04-10 20:44:49,941 INFO    MainThread:5055 [wandb_run.py:_atexit_cleanup():2083] got exitcode: 0
+2023-04-10 20:44:49,941 INFO    MainThread:5055 [wandb_run.py:_restore():2066] restore
+2023-04-10 20:44:49,941 INFO    MainThread:5055 [wandb_run.py:_restore():2072] restore done
+2023-04-10 20:44:53,775 INFO    MainThread:5055 [wandb_run.py:_footer_history_summary_info():3422] rendering history
+2023-04-10 20:44:53,775 INFO    MainThread:5055 [wandb_run.py:_footer_history_summary_info():3454] rendering summary
+2023-04-10 20:44:53,784 INFO    MainThread:5055 [wandb_run.py:_footer_sync_info():3380] logging synced files
+2023-04-10 20:44:53,791 INFO    MainThread:5055 [wandb_init.py:init():602] starting backend
+2023-04-10 20:44:53,792 INFO    MainThread:5055 [wandb_init.py:init():606] setting up manager
+2023-04-10 20:44:53,793 INFO    MainThread:5055 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-04-10 20:44:53,794 INFO    MainThread:5055 [wandb_init.py:init():613] backend started and connected
+2023-04-10 20:44:53,800 INFO    MainThread:5055 [wandb_run.py:_label_probe_notebook():1204] probe notebook
+2023-04-10 20:44:53,800 INFO    MainThread:5055 [wandb_run.py:_label_probe_notebook():1214] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2023-04-10 20:44:53,800 INFO    MainThread:5055 [wandb_init.py:init():701] updated telemetry
+2023-04-10 20:44:53,832 INFO    MainThread:5055 [wandb_init.py:init():741] communicating run to backend with 60.0 second timeout
+2023-04-10 20:44:55,078 INFO    MainThread:5055 [wandb_init.py:init():779] run resumed
+2023-04-10 20:44:55,086 INFO    MainThread:5055 [wandb_run.py:_on_init():2133] communicating current version
+2023-04-10 20:44:55,208 INFO    MainThread:5055 [wandb_run.py:_on_init():2142] got version response upgrade_message: "wandb version 0.14.2 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2023-04-10 20:44:55,208 INFO    MainThread:5055 [wandb_init.py:init():789] starting run threads in backend
+2023-04-10 20:44:55,234 INFO    MainThread:5055 [wandb_run.py:_console_start():2114] atexit reg
+2023-04-10 20:44:55,235 INFO    MainThread:5055 [wandb_run.py:_redirect():1969] redirect: SettingsConsole.WRAP_RAW
+2023-04-10 20:44:55,235 INFO    MainThread:5055 [wandb_run.py:_redirect():2034] Wrapping output streams.
+2023-04-10 20:44:55,235 INFO    MainThread:5055 [wandb_run.py:_redirect():2059] Redirects installed.
+2023-04-10 20:44:55,235 INFO    MainThread:5055 [wandb_init.py:init():831] run started, returning control to user process

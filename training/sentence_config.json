@@ -14,7 +14,7 @@
     "output_layer_2_hidden": 64,
     "output_layer_3_hidden": 2,
     "wandb":true,
-    "load_model": false,
+    "load_model": true,
     "checkpoint_name":"",
     "checkpoint_path":"",
     "batch_size": 256,

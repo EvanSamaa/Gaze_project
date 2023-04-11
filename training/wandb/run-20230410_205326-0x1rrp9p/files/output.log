@@ -1,0 +1,31 @@
+got pred
+got loss
+got pred
+got loss
+got pred
+got loss
+got pred
+got loss
+got pred
+got loss
+got pred
+got loss
+got pred
+got loss
+No such comm: a030cb639aa840239e68a073698c4c07
+No such comm: 8e6987f71e3b4ae895aa069aaaa803e5
+No such comm: c81615dfe0bb4c58abcdc80698f8a646
+No such comm: 2eda350f99da4e93b41571cb6242dfd9
+No such comm: 4d3cd76b312141b6b707acd11369abec
+No such comm: bf2645bc3fc2420e92172b749722f09a
+No such comm: b8592f1a6d2f4462a047169a76e5411e
+No such comm: d59d6e771e5449e5be5a856d2639dc3e
+No such comm: c85fbf791a3e4ad8a3e1b846c3870a83
+No such comm: 85a8e5d10e8f4831a966de1d139f8d28
+No such comm: 2edde93c8e5148cfbbbfe1ee05fce892
+No such comm: 2d3a3e0342994a769159d5d9deb3fb35
+No such comm: 71ad6182c27645288bac609341beb20c
+No such comm: c0f20f21e7f44bcd9831cb25e421bad2
+No such comm: 010639b571a34adfa98bc264cc9f3d8c
+No such comm: 723324dc865a43f7826de59a7c6f0555
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling wandb.login() after wandb.init() has no effect.

@@ -227,7 +227,7 @@ class Aversion111Prior():
                 word_alignment_self = word_alignment_self + raw_word_predictions_self["segments"][s]["words"]
             word_alignment_other = []
             for s in range(0,len(raw_word_predictions_other["segments"])):
-                word_alignment_other = word_alignment_self + raw_word_predictions_other["segments"][s]["words"]
+                word_alignment_other = word_alignment_other + raw_word_predictions_other["segments"][s]["words"]
 
             trascript_json = {"self":word_alignment_self, "other":word_alignment_other}
             json.dump(trascript_json, open(word_output_path, "w")) 
@@ -270,7 +270,10 @@ class Aversion111Prior():
             np.save(processed_input_vector_self_path, output_feature_self)
             np.save(processed_input_vector_other_path, output_feature_other)
         torch.set_default_tensor_type(torch.DoubleTensor)
-        X = torch.from_numpy(np.expand_dims(np.load(processed_input_vector_self_path), axis=0)).to(self.device)
+        if speaker == 0:
+            X = torch.from_numpy(np.expand_dims(np.load(processed_input_vector_self_path), axis=0)).to(self.device)
+        else:
+            X = torch.from_numpy(np.expand_dims(np.load(processed_input_vector_other_path), axis=0)).to(self.device)
         if divide_and_conquer:
             out = self.divide_and_conquer(X, segment_length)
         else:

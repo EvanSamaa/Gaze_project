@@ -1,0 +1,24 @@
+got pred
+got loss
+got pred
+got loss
+got pred
+got loss
+No such comm: 45c684f71d1b42b8aeb22b8cbb2f3af9
+No such comm: 6d6b1cbcd87a4b46b59b97d4d36cd787
+No such comm: d2c4c7546bbf4612ac8d54523c4be3b9
+No such comm: a770e1c4d10e4faaa0781bd444c49707
+No such comm: 364cbcaaf1a6467cb57c5e1c81a57f50
+No such comm: 25ddb6ee1c8547f89bc0df883c61ee79
+No such comm: 9784da24a55b47b885c01a589e6be3bd
+No such comm: ac1521c4631b41b0889c356f1370a4bd
+No such comm: bda3ec4d83ea4ab79566462986bc531d
+No such comm: d30584f331c14204a71a7f8582bd35bc
+No such comm: 974772351bb242a7bf4e1c2d49e8cfef
+No such comm: 18b8e029121d410387f2dda9a876d0bb
+No such comm: 7ecf5af635174baebdaabd11d1f121bc
+No such comm: 0d409c9bfb6a41e1a32204eb20fef097
+No such comm: 5c0c2ab4a0d645e5b97f5431a3cdabb5
+No such comm: f2b2327531094c4bac218442ebc0eb11
+cuda:1
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling wandb.login() after wandb.init() has no effect.
