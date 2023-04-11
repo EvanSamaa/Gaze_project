@@ -1,1 +1,1 @@
-{"training_f1": 0.9278142231326103, "training loss": 0.16506102530820735, "validation_f1": 0.9182339477268722, "validation_loss": 0.16578054960385014, "_timestamp": 1681175120.3112588, "percentage_predicted_aversion": 0.6381437908496732, "_step": 292, "_runtime": 10867.162139892578}
+{"training_f1": 0.9291209295851822, "training loss": 0.16201256496935307, "validation_f1": 0.9153522540467047, "validation_loss": 0.16870875991550613, "_timestamp": 1681178853.6752737, "percentage_predicted_aversion": 0.6342316339869281, "_step": 323, "_runtime": 14600.526154756546}
