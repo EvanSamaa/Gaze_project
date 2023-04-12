@@ -312,4 +312,4 @@ def load_gaze(filename, rig, tobii = False):
 # load_video_annotation('/Users/evanpan/Documents/GitHub/Gaze_project/data/look_at_points/video_annotation.json', "all_head")
 # load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/prototype2p2.pkl", "jali")
 # load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/shakira/tobii_rotation.pkl", "jali", True)
-load_gaze("F:/MASC/Ribhav_processed_dataset/outputs\Madelaine Petsch audition for The Prom.pkl", "jali")
+load_gaze("F:/MASC/JALI_gaze/Animations/Allison_Ungar/outputs/Allison Ungar Self Tape_0_neural.pkl", "jali")

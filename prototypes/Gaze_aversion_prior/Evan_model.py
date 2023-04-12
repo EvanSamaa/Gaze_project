@@ -10,6 +10,7 @@ import torch.nn as nn
 from matplotlib import pyplot as plt
 from scipy.special import softmax
 import math
+import shutil
 
 sys.path.insert(0, '/Users/evanpan/Documents/GitHub/EvansToolBox/Utils')
 sys.path.insert(0, '/Users/evanpan/Desktop/openpose/python/')
@@ -217,6 +218,14 @@ class Aversion111Prior():
         word_output_path = os.path.join(*[temp_folder, input_file_name+"_transcript.json"])
         processed_input_vector_self_path = os.path.join(*[temp_folder, input_file_name+"_input_feature_self.npy"])
         processed_input_vector_other_path = os.path.join(*[temp_folder, input_file_name+"_input_feature_other.npy"])
+        # output paths for JALI
+        no_space_input_file_name = input_file_name.replace(" ", "_")
+        self_script_output_path = os.path.join(*[temp_folder, no_space_input_file_name+"_{}.txt".format(speaker)])
+        other_script_output_path = os.path.join(*[temp_folder, no_space_input_file_name+"_{}.txt".format(1-speaker)])
+        self_script_tagged_output_path = os.path.join(*[temp_folder, no_space_input_file_name+"_{}_tagged.txt".format(speaker)])
+        other_script_tagged_output_path = os.path.join(*[temp_folder, no_space_input_file_name+"_{}_tagged.txt".format(1-speaker)])
+        self_audio_output_path = os.path.join(*[temp_folder, no_space_input_file_name+"_{}.wav".format(speaker)])
+        other_audio_output_path = os.path.join(*[temp_folder, input_file_name+"_{}.wav".format(1-speaker)])
         if not os.path.exists(processed_input_vector_other_path):
             torch.set_default_tensor_type(torch.FloatTensor)
             # if the input was not generated
@@ -270,6 +279,27 @@ class Aversion111Prior():
             output_feature_other = np.concatenate([output_feature_just_other, output_feature_just_self], axis=1)
             np.save(processed_input_vector_self_path, output_feature_self)
             np.save(processed_input_vector_other_path, output_feature_other)
+        # also output the file into the temp folder for JALI to generate the lip motion
+        if not os.path.exists(self_script_output_path):
+            script = json.load(open(word_output_path, "r"))
+            self_script = script["self"]
+            # get the text of other
+            self_out_script = ""
+            for i in range(0, len(self_script)):
+                self_out_script += " " + self_script[i]["text"]
+            # get the text of self
+            other_script = script["other"]
+            other_out_script = ""
+            for i in range(0, len(other_script)):
+                other_out_script += " " + other_script[i]["text"]
+            with open(self_script_output_path, "w") as file:
+                file.write(self_out_script)
+            with open(other_script_output_path, "w") as file:
+                file.write(other_out_script)
+            shutil.copy2(audio_path_self, self_audio_output_path)
+            shutil.copy2(audio_path_other, other_audio_output_path)
+            shutil.copy2(self_script_output_path, self_script_tagged_output_path)
+            shutil.copy2(other_script_output_path, other_script_tagged_output_path)
         torch.set_default_tensor_type(torch.DoubleTensor)
         if speaker == 0:
             X = torch.from_numpy(np.expand_dims(np.load(processed_input_vector_self_path), axis=0)).to(self.device)
