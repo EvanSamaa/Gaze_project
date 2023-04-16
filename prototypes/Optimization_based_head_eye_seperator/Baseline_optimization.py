@@ -63,7 +63,7 @@ def optimize_for_head_gaze_breakdown(gaze_intervals, list_of_gaze_positions, lis
         #                         + (neck_angle_azi - listener_angle[0])**2)
         objective = cp.Minimize(0.1 * (neck_angle_azi - prior_head_angles[i, 0]) ** 2 +
                                 min(gaze_time, 1) * (gaze_angles[i, 0] - neck_angle_azi) ** 2 +
-                                max(1 - gaze_time, 0) * (neck_angle_azi - listener_angle[0]) ** 2)
+                                max(1 - gaze_time, 0.00001) * (neck_angle_azi - listener_angle[0]) ** 2)
         problem = cp.Problem(objective, [])
         opt = problem.solve()
         # optimize for neck angle elevation
