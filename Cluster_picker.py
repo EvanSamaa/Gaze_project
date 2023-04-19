@@ -2,8 +2,9 @@ from matplotlib import pyplot as plt
 import numpy as np
 import pickle as pkl
 if __name__ == "__main__":
-    # Generate some sample data
-    data = pkl.load(open("./evaluation/points.pkl", "rb"))
+    # get gaze data
+    data = pkl.load(open("F:/MASC/shot_processed_dataset/gaze/Allison Ungar Self Tape_0.pkl", "rb"))
+    out_path = "F:/MASC/JALI_gaze/Animations/heat/annotated_scene/heat_source_video_points.json"
     # Create a scatter plot of the data
     fig, ax = plt.subplots()
     ax.scatter(data[:, 0], data[:, 1])
@@ -75,6 +76,8 @@ if __name__ == "__main__":
         for i in range(0, len(output)):
             print(output[i], ", ")
         print("]")
+        print(np.array(output).shape)
+        pkl.dump(np.array(output), open(out_path, "wb"), )
     # the undo button
     circle_list = []   
     def on_press(event):

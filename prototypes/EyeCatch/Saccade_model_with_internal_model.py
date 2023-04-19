@@ -294,7 +294,6 @@ class SacccadeGenerator:
             output_list.append([prev_saccade_frame_counter, offset_x, offset_y])
             prev_saccade_frame_counter += saccade_duration
         return output_list, prev_saccade_frame_counter
-
     def compute(self):
         # first compute the head/eye contribution of the gaze:
         self.target_positions_head = optimize_for_head_gaze_breakdown(self.target_gaze_intervals_time, self.target_gaze_intervals_pos, self.internal_model.estimate_listener_pose())

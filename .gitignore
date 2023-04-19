@@ -1,1 +1,3 @@
 training/wandb/*
+prototypes/Gaze_aversion_prior/sentence_word_audio_velocity_model/*
+models/whisper*
