@@ -260,6 +260,7 @@ class AgentInfo:
                 self.active_obejct_id.append(temp_scene_object_ids[i])  
         self.active_object_pos = np.array(self.active_object_pos)
         self.active_object_pos = np.array(self.active_object_pos)
+        self.scene_data = scene_data
     def rotation_matrix_from_vectors(self, vec1, vec2):
         """ Find the rotation matrix that aligns vec1 to vec2
         :param vec1: A 3d "source" vector

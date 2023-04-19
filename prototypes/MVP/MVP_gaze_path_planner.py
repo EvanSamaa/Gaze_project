@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 import random
 class Responsive_planner_no_Gaze_deploy:
     # this planner is designed to be responsive to the input heatmap signal
-    def __init__(self, saliency_maps, scene, aversion_probability, self_id=-1):
+    def __init__(self, saliency_maps, scene, aversion_probability, beats, self_id=-1):
         # hyper-parameters
         self.dt = saliency_maps[0]._dt
         self.kappa = 1.33 # this is the distance factor (i.e. cost of migration)
@@ -52,6 +52,13 @@ class Responsive_planner_no_Gaze_deploy:
         # get the conversation partner's id
         self.conversation_partner_id = self.scene_info.object_pos.shape[0]
         self.aversion_probability = aversion_probability
+        self.beats = beats
+    def onbeats(self, t):
+        for i in range(0, self.beats.shape[0]):
+            if abs(self.beats[i] - t) <= 0.05:
+                return True
+            else:
+                return False
     def compute(self):
         # sum up the difference salience maps         
         self.values = np.zeros(self.saliency_maps_arrs[0].shape)
@@ -123,12 +130,12 @@ class Responsive_planner_no_Gaze_deploy:
                     p_stay = 1 / (1 + np.exp(-self.beta*(g_patch - Q)))
                     ########################### sample from bernoulli distribution to determine wheter to switch patch #####################
                     # if the sampling determine that there is a patch switch
-                    if p_stay <= 0.5:
+                    if p_stay <= 0.2:
                         rv = np.random.binomial(1, p_stay)
                     else:
                         rv = 1
                     # see where is the nearest next impulse
-                    if (rv == 0 or output_target[-1] == self.conversation_partner_id) and time_within_patch >= self.min_saccade_time: # we have to make sure the motion is not too rapid
+                    if ((rv == 0 and self.onbeats(t)) or current_target==self.conversation_partner_id) and time_within_patch >= self.min_saccade_time : # we have to make sure the motion is not too rapid
                         # TODO: make the new patch randomly sampled instead of deterministic
                         # new_patch = np.argmax(rho * not_looked_at_mask)
                         new_patch = random.choices(list(range(0, rho.shape[0])),  weights=rho * not_looked_at_mask)[0]
@@ -313,7 +320,7 @@ class Responsive_planner_simple:
         self.conversation_partner_id = self.scene_info.object_pos.shape[0]
     def onbeats(self, t):
         for i in range(0, self.beats.shape[0]):
-            if self.beats[i] - t <= 0.05:
+            if self.beats[i] - t <= 0.02:
                 return True
             else:
                 return False
@@ -382,7 +389,7 @@ class Responsive_planner_simple:
                         rv = np.random.binomial(1, p_stay)
                     else:
                         rv = 1
-                    if rv == 0 and time_within_patch >= self.min_saccade_time:
+                    if rv == 0 and time_within_patch >= self.min_saccade_time and self.onbeats(t):
                         # TODO: make the new patch randomly sampled instead of deterministic
                         # new_patch = np.argmax(rho * not_looked_at_mask)
                         new_patch = random.choices(list(range(0, rho.shape[0])),  weights=rho * not_looked_at_mask)[0]

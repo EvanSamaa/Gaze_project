@@ -209,23 +209,27 @@ class Aversion111Prior():
             end = int(np.minimum(out[i].shape[0], segment_length))
             out_vec = np.concatenate([out_vec, out[i][:end]])
         return out_vec
-    def predict(self, temp_folder, input_folder, input_file_name, speaker, divide_and_conquer=False, segment_length=500):
+    def predict(self, temp_folder, input_folder, input_file_name, speaker, divide_and_conquer=False, segment_length=500, in_dataset=True):
         target_fps = 25
+        no_space_input_file_name = input_file_name.replace(" ", "_")
         # get input paths
-        audio_path_self = os.path.join(*[input_folder, "audio", input_file_name+"_{}.wav".format(speaker)])
-        audio_path_other = os.path.join(*[input_folder, "audio", input_file_name+"_{}.wav".format(1-speaker)])
+        if in_dataset:
+            audio_path_self = os.path.join(*[input_folder, "audio", input_file_name+"_{}.wav".format(speaker)])
+            audio_path_other = os.path.join(*[input_folder, "audio", input_file_name+"_{}.wav".format(1-speaker)])
+        else:
+            audio_path_self = os.path.join(*[temp_folder, no_space_input_file_name+"_{}.wav".format(speaker)])
+            audio_path_other = os.path.join(*[temp_folder, no_space_input_file_name+"_{}.wav".format(1-speaker)])
         # output paths
         word_output_path = os.path.join(*[temp_folder, input_file_name+"_transcript.json"])
         processed_input_vector_self_path = os.path.join(*[temp_folder, input_file_name+"_input_feature_self.npy"])
         processed_input_vector_other_path = os.path.join(*[temp_folder, input_file_name+"_input_feature_other.npy"])
         # output paths for JALI
-        no_space_input_file_name = input_file_name.replace(" ", "_")
         self_script_output_path = os.path.join(*[temp_folder, no_space_input_file_name+"_{}.txt".format(speaker)])
         other_script_output_path = os.path.join(*[temp_folder, no_space_input_file_name+"_{}.txt".format(1-speaker)])
         self_script_tagged_output_path = os.path.join(*[temp_folder, no_space_input_file_name+"_{}_tagged.txt".format(speaker)])
         other_script_tagged_output_path = os.path.join(*[temp_folder, no_space_input_file_name+"_{}_tagged.txt".format(1-speaker)])
         self_audio_output_path = os.path.join(*[temp_folder, no_space_input_file_name+"_{}.wav".format(speaker)])
-        other_audio_output_path = os.path.join(*[temp_folder, input_file_name+"_{}.wav".format(1-speaker)])
+        other_audio_output_path = os.path.join(*[temp_folder, no_space_input_file_name+"_{}.wav".format(1-speaker)])
         if not os.path.exists(processed_input_vector_other_path):
             torch.set_default_tensor_type(torch.FloatTensor)
             # if the input was not generated
@@ -296,8 +300,9 @@ class Aversion111Prior():
                 file.write(self_out_script)
             with open(other_script_output_path, "w") as file:
                 file.write(other_out_script)
-            shutil.copy2(audio_path_self, self_audio_output_path)
-            shutil.copy2(audio_path_other, other_audio_output_path)
+            if not in_dataset:
+                shutil.copy2(audio_path_self, self_audio_output_path)
+                shutil.copy2(audio_path_other, other_audio_output_path)            
             shutil.copy2(self_script_output_path, self_script_tagged_output_path)
             shutil.copy2(other_script_output_path, other_script_tagged_output_path)
         torch.set_default_tensor_type(torch.DoubleTensor)
