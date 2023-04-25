@@ -1,3 +1,4 @@
+
 from prototypes.MVP.MVP_static_saliency_list import ObjectBasedFixSaliency
 from prototypes.MVP.MVP_Aversion_saliency_list import AversionSignalDrivenSaliency
 from Geometry_Util import rotation_angles_frome_positions
@@ -9,7 +10,7 @@ class Scavenger_based_planner:
         self.smoothing_constant = 0.2
         self.kappa = 1 # this is the distance factor (i.e. cost of migration)
         self.phi = 1 # this is the consumption efficiency i.e. how long it takes to consume all resources within a patch
-        self.beta = 20 # this is use to generate the probability of the bernoulli variable that determines staying vs
+        self.beta = 10 # this is use to generate the probability of the bernoulli variable that determines staying vs
         self.min_saccade_time = 0.2 # this specified how closely two nearby saccade can be with one another.
         # get the dt
         self.dt = saliency_maps[0]._dt
