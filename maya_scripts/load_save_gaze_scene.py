@@ -1,6 +1,7 @@
 import maya.cmds as cmds
 import json
 import math
+import pymel.core as pm
 # Define the load_scene function
 def obtain_items_of_interest(manual_select, look_through=True):
     try:

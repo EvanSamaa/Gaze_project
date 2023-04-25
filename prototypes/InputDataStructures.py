@@ -285,7 +285,7 @@ class AgentInfo:
         :param neutral_gaze_spot_local: the default gaze position
         :return: a [6, 3] array of all the positions to wonder
         """
-        wondering_angles = [[0, -20], [0, 10], [-10, -10], [10, -10], [10, 5], [-10, 5]]
+        wondering_angles = [[0, -10], [0, 8], [-10, -10], [10, -10], [10, 5], [-10, 5]]
         out_positions = []
         out_angles = []
         neutral_gaze_spot_local = self.get_active_object_position(0)
@@ -342,7 +342,7 @@ class AgentInfo:
     def get_all_positions(self, coordinate_space="local", index=-1):
         objs = self.get_object_positions(coordinate_space=coordinate_space)
         active_objs = self.get_active_object_position(coordinate_space=coordinate_space)
-        wp = self.get_wondering_points(coordinate_space=coordinate_space)
+        wp = self.get_wondering_points(coordinate_space=coordinate_space, neutral_gaze_spot_local=active_objs[0])
         if self.wonder:
             possss = np.concatenate([objs, active_objs, wp], axis=0)
         else:

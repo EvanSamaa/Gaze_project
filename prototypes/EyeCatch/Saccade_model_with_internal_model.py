@@ -232,7 +232,6 @@ class SacccadeGenerator:
         if np.linalg.norm(p0 - p1) <= 0.00001:
             return None, None
         # the first step is to find the desired displacement (direction and magnitude) of the head movement
-
         # get the rotation axis and angle to get to the goal position
         rot_axis, rot_angle = rotation_axis_angle_from_vector(p0, p1)
         # test whether there is a gimbal lock situation
