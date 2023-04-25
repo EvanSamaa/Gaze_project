@@ -17,11 +17,11 @@
     "load_model": false,
     "checkpoint_name":"",
     "checkpoint_path":"",
-    "batch_size": 256,
+    "batch_size": 512,
     "learning_rate": 0.001,
-    "dropout": 0.1,
-    "epochs": 1000,
+    "dropout": 0.15,
+    "epochs": 2000,
     "stage_two_begins": 0,
     "device": "gpu",
-    "early_stopping":20
+    "early_stopping":30
 }
