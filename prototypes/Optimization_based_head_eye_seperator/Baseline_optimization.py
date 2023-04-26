@@ -72,7 +72,7 @@ def optimize_for_head_gaze_breakdown(gaze_intervals, list_of_gaze_positions, lis
                                 max(1.5 - gaze_time, 0) * (neck_angle_ele) ** 2)
         problem = cp.Problem(objective, [])
         opt = problem.solve()
-        # solved_angles.append(np.array([[prior_head_angles[i, 0], prior_head_angles[i, 1]]]))
+        # solved_angles.append(np.array([[prior_head_angles[i, 0]+listener_angle[0], prior_head_angles[i, 1]+listener_angle[0]]]))
         solved_angles.append(np.array([[neck_angle_azi.value[0]+listener_angle[0], neck_angle_ele.value[0]+listener_angle[1]]]))
         # solved_angles.append(np.array([[listener_angle[0], listener_angle[0]]]))
 

@@ -100,11 +100,11 @@ def parse_for_sentence_intervals(transcript, threshold=0.56):
         else:
             current_sentence.append(transcript[i])
     return sentence_intervals, sentence_words
-class SentenceBaseline_GazePredictionModel(nn.Module):
+class SentenceBaseline_Gaze_and_Direction_PredictionModel_only_updown(nn.Module):
     def __init__(self, config):
         torch.set_default_tensor_type(torch.DoubleTensor)
         # initialize model
-        super(SentenceBaseline_GazePredictionModel, self).__init__()
+        super(SentenceBaseline_Gaze_and_Direction_PredictionModel_only_updown, self).__init__()
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.activation = nn.Sigmoid()
         self.num_layers = config["num_layers"]
@@ -122,13 +122,21 @@ class SentenceBaseline_GazePredictionModel(nn.Module):
                             self.lstm_hidden_dims, 
                             self.num_lstm_layer, 
                             batch_first=True)        
-        # output layers
+        # aversion output layers
         self.output_layer_1 = nn.Linear(self.lstm_hidden_dims, config["output_layer_1_hidden"])
         self.output_layer_1 = nn.Sequential(self.output_layer_1, self.activation, nn.Dropout(self.config["dropout"]))
         self.output_layer_2 = nn.Linear(config["output_layer_1_hidden"], config["output_layer_2_hidden"])
         self.output_layer_2 = nn.Sequential(self.output_layer_2, self.activation, nn.Dropout(self.config["dropout"]))
         self.output_layer_3 = nn.Linear(config["output_layer_2_hidden"], config["output_layer_3_hidden"])
         self.output_layer_3 = nn.Sequential(self.output_layer_3)
+
+        # directional output layers
+        self.directional_output_layer_1 = nn.Linear(self.lstm_hidden_dims, config["output_layer_1_hidden"])
+        self.directional_output_layer_1 = nn.Sequential(self.directional_output_layer_1, self.activation, nn.Dropout(self.config["dropout"]))
+        self.directional_output_layer_2 = nn.Linear(config["output_layer_1_hidden"], config["output_layer_2_hidden"])
+        self.directional_output_layer_2 = nn.Sequential(self.directional_output_layer_2, self.activation, nn.Dropout(self.config["dropout"]))
+        self.directional_output_layer_3 = nn.Linear(config["output_layer_2_hidden"], 3)
+        self.directional_output_layer_3 = nn.Sequential(self.directional_output_layer_3)
 
         # audio_filler = torch.tensor([[[-36.04365338911715,0.0,0.0,0.0,0.0,0.0,-3.432169450445466e-14,0.0,0.0,0.0,9.64028691651994e-15,0.0,0.0,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715,-36.04365338911715]]]).to(self.device)
         # text_filler = torch.ones([1, 1, 772]).to(self.device) * -15
@@ -171,7 +179,12 @@ class SentenceBaseline_GazePredictionModel(nn.Module):
         x = self.output_layer_1(x)
         x = self.output_layer_2(x)
         x = self.output_layer_3(x)
-        return x
+
+        x_dir = self.activation(out)
+        x_dir = self.directional_output_layer_1(x_dir)
+        x_dir = self.directional_output_layer_2(x_dir)
+        x_dir = self.directional_output_layer_3(x_dir)
+        return x, x_dir
     def load_weights(self, pretrained_dict):
     #   not_copy = set(['fc.weight', 'fc.bias'])
         model_dict = self.state_dict()
@@ -187,7 +200,7 @@ class Direct_up_down_111Prior():
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         model_weights_path = os.path.join(*[self.model_location, "best.pt"])
         pretrained_dict = torch.load(model_weights_path, map_location=self.device)
-        self.model = SentenceBaseline_GazePredictionModel(config)
+        self.model = SentenceBaseline_Gaze_and_Direction_PredictionModel_only_updown(config)
         # get the raw transcript prediction
         self.model.load_weights(pretrained_dict)
         self.model.to(self.device)
@@ -313,7 +326,7 @@ class Direct_up_down_111Prior():
         if divide_and_conquer:
             out = self.divide_and_conquer(X, segment_length)
         else:
-            out = self.model(X)[0].cpu().detach().numpy()
+            out = self.model(X)[1][0].cpu().detach().numpy()
         out = softmax(out, axis=1)
         return out
 

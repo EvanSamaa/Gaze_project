@@ -315,7 +315,7 @@ class Aversion111Prior():
         else:
             out = self.model(X)[0].cpu().detach().numpy()
         out = softmax(out, axis=1)
-        return out
+        return out, X
 
 
 
