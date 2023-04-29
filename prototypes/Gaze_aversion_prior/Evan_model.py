@@ -233,21 +233,27 @@ class Aversion111Prior():
         if not os.path.exists(processed_input_vector_other_path):
             torch.set_default_tensor_type(torch.FloatTensor)
             # if the input was not generated
-            raw_word_predictions_self = whisper_timestamped.transcribe(self.model_word, audio_path_self, beam_size=5, best_of=5, temperature=(0.0, 0.2, 0.4, 0.6, 0.8, 1.0), vad=True)
-            raw_word_predictions_other = whisper_timestamped.transcribe(self.model_word, audio_path_other, beam_size=5, best_of=5, temperature=(0.0, 0.2, 0.4, 0.6, 0.8, 1.0), vad=True)
-            # generate the json file containing word timing
-            word_alignment_self = []
-            for s in range(0,len(raw_word_predictions_self["segments"])):
-                word_alignment_self = word_alignment_self + raw_word_predictions_self["segments"][s]["words"]
-            word_alignment_other = []
-            for s in range(0,len(raw_word_predictions_other["segments"])):
-                word_alignment_other = word_alignment_other + raw_word_predictions_other["segments"][s]["words"]
-
-            trascript_json = {"self":word_alignment_self, "other":word_alignment_other}
-            json.dump(trascript_json, open(word_output_path, "w")) 
+            if not os.path.exists(word_output_path):
+                raw_word_predictions_self = whisper_timestamped.transcribe(self.model_word, audio_path_self, beam_size=5, best_of=5, temperature=(0.0, 0.2, 0.4, 0.6, 0.8, 1.0), vad=True)
+                raw_word_predictions_other = whisper_timestamped.transcribe(self.model_word, audio_path_other, beam_size=5, best_of=5, temperature=(0.0, 0.2, 0.4, 0.6, 0.8, 1.0), vad=True)
+                # generate the json file containing word timing
+                word_alignment_self = []
+                for s in range(0,len(raw_word_predictions_self["segments"])):
+                    word_alignment_self = word_alignment_self + raw_word_predictions_self["segments"][s]["words"]
+                word_alignment_other = []
+                for s in range(0,len(raw_word_predictions_other["segments"])):
+                    word_alignment_other = word_alignment_other + raw_word_predictions_other["segments"][s]["words"]
+                trascript_json = {"self":word_alignment_self, "other":word_alignment_other}
+                json.dump(trascript_json, open(word_output_path, "w"))
+            else:
+                with open(word_output_path, "rb") as f:
+                    trascript_json = json.load(f)
             # get audio information
             audio_self, sr = librosa.load(audio_path_self)
             audio_other, sr = librosa.load(audio_path_other)
+            max_length = np.maximum(audio_self.shape[0], audio_self.shape[0])
+            audio_self = np.concatenate([audio_self, np.zeros([max_length - audio_self.shape[0], ])], axis=0)
+            audio_other = np.concatenate([audio_other, np.zeros([max_length - audio_other.shape[0], ])], axis=0)
             # padding these so we don't lose any frames (we are padding 
             # half a window of the windowed functionss)
             audio_self = np.pad(audio_self, ((int(0.02 * sr), int(0.02 * sr))))
@@ -301,8 +307,9 @@ class Aversion111Prior():
             with open(other_script_output_path, "w") as file:
                 file.write(other_out_script)
             if not in_dataset:
-                shutil.copy2(audio_path_self, self_audio_output_path)
-                shutil.copy2(audio_path_other, other_audio_output_path)            
+                # shutil.copy2(audio_path_self, self_audio_output_path)
+                # shutil.copy2(audio_path_other, other_audio_output_path)
+                pass            
             shutil.copy2(self_script_output_path, self_script_tagged_output_path)
             shutil.copy2(other_script_output_path, other_script_tagged_output_path)
         torch.set_default_tensor_type(torch.DoubleTensor)
