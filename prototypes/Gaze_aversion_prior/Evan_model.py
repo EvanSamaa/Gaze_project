@@ -178,6 +178,38 @@ class SentenceBaseline_GazePredictionModel(nn.Module):
         pretrained_dict = {k: v for k, v in pretrained_dict.items()}
         model_dict.update(pretrained_dict)
         self.load_state_dict(model_dict)
+        
+def merge_transcript(list1, list2):
+    i = 0
+    j = 0
+    result = ""
+    speaker = -1
+    while i < len(list1) and j < len(list2):
+        if list1[i]["start"] <= list2[j]["start"]:
+            if speaker != 1:
+                result += "\nspeaker_0: "
+                speaker = 1
+            result += str(list1[i]["text"]) + " "
+            i += 1
+        else:
+            if speaker != 2:
+                result += "\nspeaker_1: "
+                speaker = 2
+            result += str(list2[j]["text"]) + " "
+            j += 1
+    while i < len(list1 ):
+        if speaker != 1:
+            result += "\nspeaker_0: "
+            speaker = 1
+        result += str(list1[i]["text"]) + " "
+        i += 1
+    while j < len(list2):
+        if speaker != 2:
+            result += "\nspeaker_1: "
+            speaker = 2
+        result += str(list2[j]["text"]) + " "
+        j += 1
+    return result.strip()
 class Aversion111Prior():
     def __init__(self, model_location="/scratch/ondemand27/evanpan/data/Gaze_aversion_models/sentence_and_words",
                  whisper_root = "/scratch/ondemand27/evanpan/data/deep_learning_processed_dataset") -> None:
@@ -219,6 +251,11 @@ class Aversion111Prior():
         else:
             audio_path_self = os.path.join(*[temp_folder, no_space_input_file_name+"_{}.wav".format(speaker)])
             audio_path_other = os.path.join(*[temp_folder, no_space_input_file_name+"_{}.wav".format(1-speaker)])
+        # dialog output path
+        dialog_output_path = os.path.join(*[temp_folder, input_file_name+"_dialog_transcript.txt"])
+        tagged_dialog_output_path_0 = os.path.join(*[temp_folder, input_file_name+"_dialog_transcript_tagging_0.txt"])
+        tagged_dialog_output_path_1 = os.path.join(*[temp_folder, input_file_name+"_dialog_transcript_tagging_1.txt"])
+        
         # output paths
         word_output_path = os.path.join(*[temp_folder, input_file_name+"_transcript.json"])
         processed_input_vector_self_path = os.path.join(*[temp_folder, input_file_name+"_input_feature_self.npy"])
@@ -312,6 +349,18 @@ class Aversion111Prior():
                 pass            
             shutil.copy2(self_script_output_path, self_script_tagged_output_path)
             shutil.copy2(other_script_output_path, other_script_tagged_output_path)
+        if not os.path.exists(dialog_output_path):
+            with open(word_output_path, "r") as f:
+                transcribe_json = json.load(f)
+            speaker_0 = transcribe_json["self"]
+            speaker_1 = transcribe_json["other"]
+            output_string = merge_transcript(speaker_0, speaker_1)
+            with open(dialog_output_path, "w") as f:
+                f.write(output_string)
+            with open(tagged_dialog_output_path_0, "w") as f:
+                f.write(output_string)
+            with open(tagged_dialog_output_path_1, "w") as f:
+                f.write(output_string)
         torch.set_default_tensor_type(torch.DoubleTensor)
         if speaker == 0:
             X = torch.from_numpy(np.expand_dims(np.load(processed_input_vector_self_path), axis=0)).to(self.device)
