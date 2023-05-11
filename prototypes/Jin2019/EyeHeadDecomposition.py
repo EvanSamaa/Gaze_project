@@ -196,7 +196,6 @@ class Heuristic_eye_velocity:
             return self.get_y(self.p1, self.p2, angle_displacement)
         else:
             return 200
-
 class Heuristic_eye_velocity_simple:
     def __init__(self):
         # here the percentage the is the percentage of neck contribution

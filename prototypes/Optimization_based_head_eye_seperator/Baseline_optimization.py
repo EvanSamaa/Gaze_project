@@ -50,7 +50,7 @@ def optimize_for_head_gaze_breakdown_dynamic_scene(gaze_intervals, list_of_gaze_
         azi_gaze, azi_head = azi_decomp.decompose(azi_angle, 0.5)
         prev_ele = gaze_angles[max(0, i-1), 1]
         ele_angle = gaze_angles[i, 1]
-        ele_gaze, ele_head = ele_decomp.decompose(ele_angle, 0.5)
+        ele_gaze, ele_head = ele_decomp.decompose(ele_angle, 0.32)
         # make the character look down less if they are looking down
         if ele_head < 0:
             ele_head = ele_head * 0.3
@@ -61,6 +61,7 @@ def optimize_for_head_gaze_breakdown_dynamic_scene(gaze_intervals, list_of_gaze_
     same_target = []
     prior_long_term_target_angles = []
     for i in range(0, gaze_angles.shape[0]):
+        # if we are looking at the listener then we mark it as True
         if np.linalg.norm(listener_angle_expand[i] - gaze_angles[i]) <= 0.00001:
             same_target.append(True)
         else:
@@ -70,7 +71,7 @@ def optimize_for_head_gaze_breakdown_dynamic_scene(gaze_intervals, list_of_gaze_
         azi_gaze, azi_head = azi_decomp.decompose(azi_angle, 0.3)
         prev_ele = listener_angle_expand[max(0, i-1), 1]
         ele_angle = listener_angle_expand[i, 1]
-        ele_gaze, ele_head = ele_decomp.decompose(ele_angle, 0.5)
+        ele_gaze, ele_head = ele_decomp.decompose(ele_angle, 0.3)
         # make the character look down less if they are looking down
         if ele_head < 0:
             ele_head = ele_head * 0.3
@@ -98,8 +99,8 @@ def optimize_for_head_gaze_breakdown_dynamic_scene(gaze_intervals, list_of_gaze_
         
         # prior_head_angles[i] = prior_head_angles[i] - prev_angle 
         objective = cp.Minimize(0 +
-                                min(gaze_time, 3) * (prior_angle[0] - neck_angle_azi) ** 2 +
-                                max(3 - gaze_time, 0.00001) * (neck_angle_azi) ** 2)
+                                min(gaze_time, 3) * (gaze_target[0] - neck_angle_azi) ** 2 +
+                                max(3 - gaze_time, 0) * (neck_angle_azi) ** 2)
         problem = cp.Problem(objective, [])
         opt = problem.solve()
         # optimize for neck angle elevation
@@ -110,9 +111,6 @@ def optimize_for_head_gaze_breakdown_dynamic_scene(gaze_intervals, list_of_gaze_
                                 max(3 - gaze_time, 0) * (neck_angle_ele) ** 2)
         problem = cp.Problem(objective, [])
         opt = problem.solve()
-        # solved_angles.append(np.array([[prior_head_angles[i, 0], prior_head_angles[i, 1]]]))
-        # solved_angles.append(np.array([[neck_angle_azi.value[0] + prior_long_term_target_angles[i][0], 
-        #                                 neck_angle_ele.value[0] + prior_long_term_target_angles[i][1]]]))
         if same_target[i]:
             solved_angles.append(np.array([[prior_long_term_target_angles[i][0], 
                                             prior_long_term_target_angles[i][1]]]))
@@ -121,11 +119,11 @@ def optimize_for_head_gaze_breakdown_dynamic_scene(gaze_intervals, list_of_gaze_
                                             neck_angle_ele.value[0] + prior_long_term_target_angles[i][1]]]))
         
 
-        prev_angle = np.array([neck_angle_azi.value[0] + prior_long_term_target_angles[i][0], 
-                               neck_angle_ele.value[0] + prior_long_term_target_angles[i][1]])
+        # prev_angle = np.array([neck_angle_azi.value[0] + prior_long_term_target_angles[i][0], 
+        #                        neck_angle_ele.value[0] + prior_long_term_target_angles[i][1]])
         # solved_angles.append(np.array([[listener_angle[0], listener_angle[0]]]))
     solved_angles = np.concatenate(solved_angles, axis = 0)
-    head_pos = directions_from_rotation_angles(solved_angles, gaze_positions_norm)
+    head_pos = directions_from_rotation_angles(solved_angles, np.expand_dims(gaze_positions_norm, axis=1))
     return head_pos
 
 def optimize_for_head_gaze_breakdown(gaze_intervals, list_of_gaze_positions, listener_position):
@@ -171,7 +169,7 @@ def optimize_for_head_gaze_breakdown(gaze_intervals, list_of_gaze_positions, lis
     prior_head_angles = np.concatenate(prior_head_angles, axis=0)
     # center bias is the tendency of looking at the center
     center_bias_head_angles = np.zeros((prior_head_angles.shape))
-
+    prior_head_angles = gaze_angles
     # solve for the neck based on the simple optimization
     solved_angles = []
     for i in range(0, prior_head_angles.shape[0]):

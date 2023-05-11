@@ -43,6 +43,7 @@ def create_neck_addition_node(rig):
     cmds.createNode('animCurveTL', n='xneck_pairBlend_gaze')
     cmds.createNode('animCurveTL', n='xneck_pairBlend_speech')
     cmds.createNode('animCurveTL', n='xneck_pairBlend_blend_speech1') # 1 is gaze, 0 is speech
+    
     # make them connection
     # cmds.connectAttr('xneck_pairBlend_blend_speech1.output', 'xneck_pairBlend.weight')
     cmds.connectAttr('xneck_pairBlend_gaze.output', 'xneck_pairBlend.input1D[0]')
@@ -312,4 +313,6 @@ def load_gaze(filename, rig, tobii = False):
 # load_video_annotation('/Users/evanpan/Documents/GitHub/Gaze_project/data/look_at_points/video_annotation.json', "all_head")
 # load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/prototype2p2.pkl", "jali")
 # load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/shakira/tobii_rotation.pkl", "jali", True)
-load_gaze("F:/MASC/JALI_gaze/Animations/green_book_letter/outputs/raw_clip_neural_0.pkl", "jali")
+
+load_gaze("F:/MASC/JALI_gaze/Animations/heat/outputs/heat_source_video_neural_0.pkl", "jali")
+# load_gaze("F:/MASC/JALI_gaze/for_non_conversational/video_360/office_stanford_non_conversational.pkl", "jali")

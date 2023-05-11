@@ -128,6 +128,7 @@ class Responsive_planner_Differnet_Targets:
                 # note since we use forward difference, dx_dt gives us the difference
                 # between x[i] and x[i-1]
         # if this is zero do not smooth
+        print(speech_change_boundaries)
         if self.min_saccade_time_consecutive > 0:
             speech_change_boundaries = self.smooth(speech_change_boundaries)
         else:
