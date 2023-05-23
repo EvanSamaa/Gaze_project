@@ -266,12 +266,17 @@ def np_sum(arr):
         out += i
     return out
 def np_mean_and_std(arr):
+    if len(arr) == 0:
+        return 0, 0
     mean = np_sum(arr)/len(arr)
     std = 0
     for i in arr:
         std += (i - mean)**2
-    std = std / (len(arr)-1)
-    std = math.sqrt(std)
+    if len(arr) == 1:
+        std = 0
+    else:
+        std = std / (len(arr)-1)
+        std = math.sqrt(std)
     return mean, std
 def np_max_min(arr):
     max_val = arr[0]
