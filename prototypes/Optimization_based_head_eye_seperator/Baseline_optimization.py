@@ -50,7 +50,7 @@ def optimize_for_head_gaze_breakdown_dynamic_scene(gaze_intervals, list_of_gaze_
         azi_gaze, azi_head = azi_decomp.decompose(azi_angle, 0.5)
         prev_ele = gaze_angles[max(0, i-1), 1]
         ele_angle = gaze_angles[i, 1]
-        ele_gaze, ele_head = ele_decomp.decompose(ele_angle, 0.32)
+        ele_gaze, ele_head = ele_decomp.decompose(ele_angle, 0.3)
         # make the character look down less if they are looking down
         if ele_head < 0:
             ele_head = ele_head * 0.3
@@ -68,13 +68,13 @@ def optimize_for_head_gaze_breakdown_dynamic_scene(gaze_intervals, list_of_gaze_
             same_target.append(False)
         prev_azi = listener_angle_expand[max(0, i-1), 0]
         azi_angle = listener_angle_expand[i, 0]
-        azi_gaze, azi_head = azi_decomp.decompose(azi_angle, 0.3)
+        azi_gaze, azi_head = azi_decomp.decompose(azi_angle, 0.5)
         prev_ele = listener_angle_expand[max(0, i-1), 1]
         ele_angle = listener_angle_expand[i, 1]
         ele_gaze, ele_head = ele_decomp.decompose(ele_angle, 0.3)
         # make the character look down less if they are looking down
         if ele_head < 0:
-            ele_head = ele_head * 0.3
+            ele_head = ele_head
         new_head_angles = np.array([[azi_head, ele_head]])
         prior_long_term_target_angles.append((new_head_angles))
     prior_long_term_target_angles = np.concatenate(prior_long_term_target_angles, axis=0)
@@ -99,7 +99,7 @@ def optimize_for_head_gaze_breakdown_dynamic_scene(gaze_intervals, list_of_gaze_
         
         # prior_head_angles[i] = prior_head_angles[i] - prev_angle 
         objective = cp.Minimize(0 +
-                                min(gaze_time, 3) * (gaze_target[0] - neck_angle_azi) ** 2 +
+                                min(gaze_time, 3) * (prior_angle[0] - neck_angle_azi) ** 2 +
                                 max(3 - gaze_time, 0) * (neck_angle_azi) ** 2)
         problem = cp.Problem(objective, [])
         opt = problem.solve()

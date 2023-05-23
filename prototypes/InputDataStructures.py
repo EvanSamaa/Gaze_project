@@ -607,7 +607,9 @@ class AgentInfo_final:
         :param neutral_gaze_spot_local: the default gaze position
         :return: a [6, 3] array of all the positions to wonder
         """
-        wondering_angles = [[0, -10], [0, 8], [-10, -10], [10, -10], [10, 5], [-10, 5]]
+        wondering_angles = [[0, -10], [0, 8], [-5, -5], [5, -5], [5, 5], [-5, 5]]
+        # wondering_angles = [[-10, -10], [10, -10], [10, 10], [-10, 10]]
+        # print(wondering_angles)
         out_positions = []
         out_angles = []
         neutral_gaze_spot_local = self.get_active_object_position()
@@ -661,6 +663,7 @@ class AgentInfo_final:
         return possss
     def get_interest(self, object_id, t):
         interest_arr = self.object_interest[object_id]
+        # print(interest_arr)
         if interest_arr.shape[0] == 1:
             return interest_arr[0][1]
         else:

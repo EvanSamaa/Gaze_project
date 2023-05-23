@@ -288,7 +288,7 @@ class Aversion111Prior():
             # get audio information
             audio_self, sr = librosa.load(audio_path_self)
             audio_other, sr = librosa.load(audio_path_other)
-            max_length = np.maximum(audio_self.shape[0], audio_self.shape[0])
+            max_length = np.maximum(audio_self.shape[0], audio_other.shape[0])
             audio_self = np.concatenate([audio_self, np.zeros([max_length - audio_self.shape[0], ])], axis=0)
             audio_other = np.concatenate([audio_other, np.zeros([max_length - audio_other.shape[0], ])], axis=0)
             # padding these so we don't lose any frames (we are padding 

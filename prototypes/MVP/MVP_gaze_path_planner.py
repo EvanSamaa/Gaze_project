@@ -128,7 +128,6 @@ class Responsive_planner_Differnet_Targets:
                 # note since we use forward difference, dx_dt gives us the difference
                 # between x[i] and x[i-1]
         # if this is zero do not smooth
-        print(speech_change_boundaries)
         if self.min_saccade_time_consecutive > 0:
             speech_change_boundaries = self.smooth(speech_change_boundaries)
         else:
@@ -147,6 +146,7 @@ class Responsive_planner_Differnet_Targets:
         aversion_start = -1
         aversion_end = -1
         aversion_time = -1
+        
         while t < self.aversion_probability.shape[0] * self.dt + 5:
             # if we are at a scripted target change      
             if t > self.primary_gaze_target[gaze_target_counter][0] - 0.3 and not no_more_gaze_swaps:
@@ -247,14 +247,16 @@ class Responsive_planner_Differnet_Targets:
                             output_target.append(current_target)
                             output_t.append(t)
                             in_aversion = True
-                        
-                        
                     # if there isn't a deep learning predicted change
                     current_target = output_target[-1]
                     time_within_patch = t - output_t[-1]
                     # if there isn't an explicit change in aversion status.
-
-                        
+                # if the person is just looking into the blank space
+                # else:
+                    
+                #     # if there isn't a deep learning predicted change
+                #     current_target = output_target[-1]
+                #     time_within_patch = t - output_t[-1]
             t += self.dt
         return output_t, output_target
         

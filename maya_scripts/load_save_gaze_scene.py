@@ -2,7 +2,7 @@ import maya.cmds as cmds
 import json
 import math
 import pymel.core as pm
-
+created_object_list = []
 def obtain_items_of_interest_time_varying(manual_select, look_through=True):
     try:
         cmds.delete("camera1")
@@ -209,15 +209,20 @@ def load_scene(*args):
         cmds.addAttr(sp, ln='object_type', at="float", k=True)
         cmds.setAttr(sp+".object_type", object_type)
         cmds.addAttr(sp, ln='object_interestingness', at="float", k=True)
-        
-        for i in range(0, len(object_interest)):
-            # iterate through the list of [[time, value]] pairs
-            for pair in object_interest[i]:
+        try:
+            print(object_interest)
+            for pair in object_interest:
                 time = pair[0]
                 value = pair[1]
-                
                 # add a keyframe with the corresponding time and value
                 cmds.setKeyframe(sp, attribute='object_interestingness', t=time, v=value)
+        except:
+            time = 0
+            value = object_interest
+            
+            # add a keyframe with the corresponding time and value
+            cmds.setKeyframe(sp, attribute='object_interestingness', t=time, v=value)
+                
     print("load from: ", text_file_path)
 
 # Define the save_scene function
