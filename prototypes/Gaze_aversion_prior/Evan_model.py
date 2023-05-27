@@ -177,8 +177,7 @@ class SentenceBaseline_GazePredictionModel(nn.Module):
         model_dict = self.state_dict()
         pretrained_dict = {k: v for k, v in pretrained_dict.items()}
         model_dict.update(pretrained_dict)
-        self.load_state_dict(model_dict)
-        
+        self.load_state_dict(model_dict)  
 def merge_transcript(list1, list2):
     i = 0
     j = 0

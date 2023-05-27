@@ -47,7 +47,7 @@ def optimize_for_head_gaze_breakdown_dynamic_scene(gaze_intervals, list_of_gaze_
     for i in range(0, gaze_angles.shape[0]):
         prev_azi = gaze_angles[max(0, i-1), 0]
         azi_angle = gaze_angles[i, 0]
-        azi_gaze, azi_head = azi_decomp.decompose(azi_angle, 0.5)
+        azi_gaze, azi_head = azi_decomp.decompose(azi_angle, 0.7)
         prev_ele = gaze_angles[max(0, i-1), 1]
         ele_angle = gaze_angles[i, 1]
         ele_gaze, ele_head = ele_decomp.decompose(ele_angle, 0.3)
@@ -68,7 +68,7 @@ def optimize_for_head_gaze_breakdown_dynamic_scene(gaze_intervals, list_of_gaze_
             same_target.append(False)
         prev_azi = listener_angle_expand[max(0, i-1), 0]
         azi_angle = listener_angle_expand[i, 0]
-        azi_gaze, azi_head = azi_decomp.decompose(azi_angle, 0.5)
+        azi_gaze, azi_head = azi_decomp.decompose(azi_angle, 0.7)
         prev_ele = listener_angle_expand[max(0, i-1), 1]
         ele_angle = listener_angle_expand[i, 1]
         ele_gaze, ele_head = ele_decomp.decompose(ele_angle, 0.3)
