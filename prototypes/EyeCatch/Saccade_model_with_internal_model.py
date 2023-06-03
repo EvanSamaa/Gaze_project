@@ -58,7 +58,7 @@ class InternalModelCenterBias_dynamic_scene:
         if distance <= 1:
             return target_mean_pos
         # estimate actual target to attend to be slightly off from the real position
-        slightly_wrong_target_center = previous_pos + 0.8 * (target_mean_pos-previous_pos)
+        slightly_wrong_target_center = previous_pos + 0.5 * (target_mean_pos-previous_pos)
         # the variation of the target
         target_variation = np.abs(target_mean_pos-slightly_wrong_target_center)
         output_position = np.random.normal(slightly_wrong_target_center, target_variation)
@@ -278,7 +278,7 @@ class SacccadeGenerator_dynamic_scene:
         # in the case of no gimbal lock
         if np.linalg.norm((test_rot_matrix @ p0) - p1) <= 0.000001:
             # threshold the rotation speed
-            rot_angle = np.maximum(0.0, rot_angle * 0.7)
+            rot_angle = np.maximum(0.0, rot_angle * 0.9)
             # compute the actual rotation matrix
             rot_matrix = rotation_matrix_from_axis_angle(rot_axis, rot_angle)
             # find the displacement using the rotation
@@ -448,7 +448,6 @@ class SacccadeGenerator_dynamic_scene:
         for i in range(0, ts.shape[0]):
             head_kf.append([float(ts[i]), float(head_rotations[i][0]), float(head_rotations[i][1])])
         return [eye_kf], [head_kf], self.micro_saccade_kf
-
 class SacccadeGenerator:
     def interpolate_gaze_goal(self, t):
         if t < self.target_times[0]:
