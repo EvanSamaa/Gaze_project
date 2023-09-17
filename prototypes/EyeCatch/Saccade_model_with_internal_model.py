@@ -58,7 +58,7 @@ class InternalModelCenterBias_dynamic_scene:
         if distance <= 1:
             return target_mean_pos
         # estimate actual target to attend to be slightly off from the real position
-        slightly_wrong_target_center = previous_pos + 0.5 * (target_mean_pos-previous_pos)
+        slightly_wrong_target_center = previous_pos + 0.8 * (target_mean_pos-previous_pos)
         # the variation of the target
         target_variation = np.abs(target_mean_pos-slightly_wrong_target_center)
         output_position = np.random.normal(slightly_wrong_target_center, target_variation)
@@ -287,7 +287,7 @@ class SacccadeGenerator_dynamic_scene:
         else:
             submovement_direction = (p1_not_normalized - p0_not_normalized)
             submovement_magnitude = np.linalg.norm(submovement_direction)
-            reduced_submovement_magnitude = submovement_magnitude * 0.8
+            reduced_submovement_magnitude = submovement_magnitude * 0.9
             submovement_direction = submovement_direction / submovement_magnitude * reduced_submovement_magnitude
 
         self.head_current_goal_position = p0_not_normalized + submovement_direction

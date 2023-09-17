@@ -314,5 +314,5 @@ def load_gaze(filename, rig, tobii = False):
 # load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/prototype2p2.pkl", "jali")
 # load_gaze("C:/Users/evansamaa/Desktop/Gaze_project/data/tobii_data/shakira/tobii_rotation.pkl", "jali", True)
 
-load_gaze("F:/MASC/JALI_gaze/Animations/heat/outputs/heat_source_video_neural_0.pkl", "jali")
+load_gaze("F:/MASC/JALI_gaze/Animations/lE_2012_3/outputs/video_neural_0.pkl", "jali")
 # load_gaze("F:/MASC/JALI_gaze/for_non_conversational/video_360/office_stanford_non_conversational.pkl", "jali")
