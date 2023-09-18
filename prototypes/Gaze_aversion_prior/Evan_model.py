@@ -412,15 +412,15 @@ class Aversion111Prior_three_party():
             audio_path_2_other = os.path.join(*[temp_folder, no_space_input_file_name+"_{}_other.wav".format(2)])
         
             # check if audio_path_0_other exists
-            if not os.path.exists(audio_path_0_other) or True:
+            if not os.path.exists(audio_path_0_other):
                 # generate these files by combining the other two
                 audio_0, sr1 = sf.read(audio_path_0)
                 audio_1, sr = sf.read(audio_path_1)
                 audio_2, sr = sf.read(audio_path_2)
                 max_length = np.maximum(audio_0.shape[0], audio_1.shape[0])
                 max_length = np.maximum(max_length, audio_2.shape[0])
+                
                 # normalize the length so they are all the same length
-                print(audio_0.shape)
                 audio_0 = np.concatenate([audio_0, np.zeros([max_length - audio_0.shape[0], audio_0.shape[1]])], axis=0)
                 audio_1 = np.concatenate([audio_1, np.zeros([max_length - audio_1.shape[0], audio_1.shape[1]])], axis=0)
                 audio_2 = np.concatenate([audio_2, np.zeros([max_length - audio_2.shape[0], audio_2.shape[1]])], axis=0)
@@ -453,6 +453,26 @@ class Aversion111Prior_three_party():
         script_tagged_output_path_0 = os.path.join(*[temp_folder, no_space_input_file_name+"_{}_tagged.txt".format(0)])
         script_tagged_output_path_1 = os.path.join(*[temp_folder, no_space_input_file_name+"_{}_tagged.txt".format(1)])
         script_tagged_output_path_2 = os.path.join(*[temp_folder, no_space_input_file_name+"_{}_tagged.txt".format(2)])
+        
+        praat_path_0 = os.path.join(*[temp_folder, no_space_input_file_name+"_{}_PraatOutput.txt".format(0)])
+        praat_path_1 = os.path.join(*[temp_folder, no_space_input_file_name+"_{}_PraatOutput.txt".format(1)])
+        praat_path_2 = os.path.join(*[temp_folder, no_space_input_file_name+"_{}_PraatOutput.txt".format(2)])
+        if os.path.exists(praat_path_0):
+            # generate the word_alignment files using the praat file
+            _, _, words_0, word_interval_0 = generate_word_alignment(praat_path_0)
+            _, _, words_1, word_interval_1 = generate_word_alignment(praat_path_1)
+            _, _, words_2, word_interval_2 = generate_word_alignment(praat_path_2)
+            
+            word_alignment_0 = generate_transcript_whisper_style(words_0, word_interval_0)
+            word_alignment_1 = generate_transcript_whisper_style(words_1, word_interval_1)
+            word_alignment_2 = generate_transcript_whisper_style(words_2, word_interval_2)
+            # generate other_transcript 
+            word_alignment_0_other = combine_whisper_transcripts(word_alignment_1, word_alignment_2)
+            word_alignment_1_other = combine_whisper_transcripts(word_alignment_0, word_alignment_2)
+            word_alignment_2_other = combine_whisper_transcripts(word_alignment_0, word_alignment_1)
+            trascript_json = {"0":word_alignment_0, "1":word_alignment_1, "2":word_alignment_2, "0_other":word_alignment_0_other, "1_other":word_alignment_1_other, "2_other":word_alignment_2_other}
+            json.dump(trascript_json, open(word_output_path, "w"))
+            
         
         if not os.path.exists(processed_input_vector_0_path):
             
@@ -586,7 +606,7 @@ class Aversion111Prior_three_party():
             np.save(processed_input_vector_1_path, output_feature_1)
             np.save(processed_input_vector_2_path, output_feature_2)
         # also output the file into the temp folder for JALI to generate the lip motion
-        if not os.path.exists(script_output_path_0):
+        if not os.path.exists(script_output_path_0) :
             script = json.load(open(word_output_path, "r"))
             script_0 = script["0"]
             # get the text of speaker 0
@@ -647,8 +667,101 @@ class Aversion111Prior_three_party():
         out = softmax(out, axis=1)
         return out, X
                     
-            
-                
+def generate_word_alignment(praat_path):
+    
+    phone_prosodic_list = []
+    phone_list = []
+    phone_intervals = []
+    word_list = []
+    word_intervals = []
+    stats = []
+    try:
+        f = open(praat_path)
+    except:
+        print("check if file exist at \n {}".format(praat_path))
+        return [], [], [], []
+    garb = f.readline()
+    arr = f.readlines()
+    for i in range(0, len(arr)):
+        content = arr[i].split("\t")
+        start = float(content[0])
+        end = float(content[1])
+        phone = content[21]
+        word = content[26]
+        phone_list.append(phone)
+        word_list.append(word)
+        phone_intervals.append([start, end])
+    #     merged_word_list = []
+    merged_word_intervals = []
+
+    prev_word = word_list[0]
+    merged_word_intervals.append([phone_intervals[0][0]])
+
+    prev_k = 1
+    for i in range(1, len(word_list)):
+        if word_list[i] != prev_word:
+            merged_word_intervals[-1].append(phone_intervals[i - 1][1])
+            for j in range(0, prev_k - 1):
+                merged_word_intervals.append(merged_word_intervals[-1])
+            prev_word = word_list[i]
+            merged_word_intervals.append([phone_intervals[i][0]])
+            prev_k = 0
+        if i == len(word_list) - 1:
+            merged_word_intervals[-1].append(phone_intervals[i - 1][1])
+            for j in range(0, prev_k):
+                merged_word_intervals.append(merged_word_intervals[-1])
+        prev_k = prev_k + 1
+        
+        
+    out_word_list = []
+    out_word_intervals = []
+    start = 0
+    for i in range(1, len(word_list)):
+        if word_list[i - 1] != word_list[i]:
+            out_word_list.append(word_list[i - 1])
+            out_word_intervals.append(merged_word_intervals[i - 1])
+            word_to_phone_temp = []
+            for j in range(start, i):
+                word_to_phone_temp.append(j)
+            start = i
+        if i == len(word_list) - 1:
+
+            out_word_list.append(word_list[i])
+            out_word_intervals.append(merged_word_intervals[i])
+            word_to_phone_temp = []
+            for j in range(start, i + 1):
+                word_to_phone_temp.append(j)
+            start = i
+    return phone_list, phone_intervals, out_word_list, out_word_intervals
+def generate_transcript_whisper_style(word_list, word_intervals):
+    output = []
+    for i in range(0, len(word_list)):
+        if word_list[i] == ".":
+            continue
+        elif word_list[i][0] == "_":
+            output.append({"text":word_list[i][1:], "start":word_intervals[i][0], "end":word_intervals[i][1], "confidence":0.5})
+        else:
+            output.append({"text":word_list[i][:], "start":word_intervals[i][0], "end":word_intervals[i][1], "confidence":0.5})
+    return output
+def combine_whisper_transcripts(transcript_1, transcript_2):
+    transcript_combined = []
+    pointer_1 = 0
+    pointer_2 = 0
+    while pointer_1 < len(transcript_1) and pointer_2 < len(transcript_2):
+        if transcript_1[pointer_1]["start"] < transcript_2[pointer_2]["start"]:
+            transcript_combined.append(transcript_1[pointer_1])
+            pointer_1 = pointer_1 + 1
+        else:
+            transcript_combined.append(transcript_2[pointer_2])
+            pointer_2 = pointer_2 + 1
+    while pointer_1 < len(transcript_1):
+        transcript_combined.append(transcript_1[pointer_1])
+        pointer_1 = pointer_1 + 1
+    while pointer_2 < len(transcript_2):
+        transcript_combined.append(transcript_2[pointer_2])
+        pointer_2 = pointer_2 + 1
+    return transcript_combined
+                       
             
             
             
