@@ -477,9 +477,17 @@ class Responsive_planner_ThreeParty:
         aversion_start = -1
         aversion_end = -1
         aversion_time = -1
+        current_target = output_target[-1]
         while t < self.aversion_probability.shape[0] * self.dt + 5:
+            # get the next speaker at t + 4
+            index = int(round(t/self.dt))
+            if index < self.speech_activity.shape[0] - 4:
+                next_speaker_in_a_bit = self.speech_activity[index + 4]
+            else:
+                next_speaker_in_a_bit = self.self_id
+            next_speaker_object_id = self.scene_info.get_object_id_based_on_speaker_id(next_speaker_in_a_bit)
             # if we are at a scripted target change      
-            if t > self.scripted_gaze_target[gaze_target_counter][0] - 0.3 and not no_more_gaze_swaps:
+            if t > self.scripted_gaze_target[gaze_target_counter][1] - 0.3 and not no_more_gaze_swaps:
                 if gaze_target_counter == len(self.scripted_gaze_target) - 1:
                     no_more_gaze_swaps = True
                 # see if the active object changes
@@ -493,7 +501,13 @@ class Responsive_planner_ThreeParty:
                     output_target.append(self.scene_info.active_object_id)
                     output_t.append(t)
                     swap_target = False
-            # the case that the neural model does not predict change
+            # the case that the next speaker is not the current gaze target and the next speaker is not the self
+            elif next_speaker_object_id != output_target[-1] and next_speaker_in_a_bit != self.self_id:
+                # find the object id of that speaker
+                current_target = self.scene_info.get_object_id_based_on_speaker_id(next_speaker_in_a_bit)
+                output_target.append(current_target)
+                output_t.append(t)
+            # the case that the neural model predicts changes
             else:
                 # if it's not currently a scripted change, then see if the current active object is the other speaker
                 # if it is another speaker
@@ -506,7 +520,25 @@ class Responsive_planner_ThreeParty:
                         if self.aversion_probability[index] <= 0.5:
                             # if it's direct gaze
                             in_aversion = False
-                            output_target.append(self.scene_info.other_speaker_id)
+                            # get the current speaker id:
+                            window_of_speaker = self.speech_activity[index:index+25]
+                            current_speaker_id = window_of_speaker[0]
+                            next_target = -1
+                            # we choose the next target to be either the current speaker
+                            if current_speaker_id != self.self_id:
+                                next_target = current_speaker_id
+                            # or the immediate next speaker
+                            else:
+                                for i_in_win in range(len(window_of_speaker)):
+                                    if window_of_speaker[i_in_win] != window_of_speaker[i_in_win-1]:
+                                        next_target = self.scene_info.other_speaker_id[i_in_win]
+                                        break
+                            if next_target == -1:
+                                # if the speaker is speaking himself. Then the speaker will look at the two speaker with an unequal probability
+                                speakers = self.scene_info.other_speaker_id
+                                next_target = random.choices(speakers, weights=[0.5, 0.5])[0]
+
+                            output_target.append(next_target)
                             output_t.append(t)
                         else:
                             # if it's entering aversion
@@ -520,10 +552,10 @@ class Responsive_planner_ThreeParty:
                             # compute rho (value) to determine gaze target
                             look_at_mask = np.zeros((self.saliency_maps_arrs[0].shape[1], ))
                             look_at_mask[current_target] = 1
-                            if self.speech_activity[index] == 1 and self.aversion_probability_other[index] == 1:
-                                pass
-                            else:
-                                look_at_mask[self.conversation_partner_id] = 1
+                            # if self.speech_activity[index] == 1 and self.aversion_probability_other[index] == 1:
+                            #     pass
+                            # else:
+                            look_at_mask[self.conversation_partner_id] = 1
                             not_looked_at_mask = np.ones(look_at_mask.shape) - look_at_mask
                             # compute the distance to the patch (first use this variable to store the position of look_at_point)
                             distance_to_patch = np.tile(normalized_object_positions[current_target:current_target+1], [self.object_positions.shape[0], 1])
@@ -541,10 +573,10 @@ class Responsive_planner_ThreeParty:
                         # compute rho (value)
                         look_at_mask = np.zeros((self.saliency_maps_arrs[0].shape[1], ))
                         look_at_mask[current_target] = 1
-                        if self.speech_activity[index] == 1 and self.aversion_probability_other[index] == 1:
-                            pass
-                        else:
-                            look_at_mask[self.conversation_partner_id] = 1
+                        # if self.speech_activity[index] == 1 and self.aversion_probability_other[index] == 1:
+                        #     pass
+                        # else:
+                        look_at_mask[self.conversation_partner_id] = 1
                         not_looked_at_mask = np.ones(look_at_mask.shape) - look_at_mask
                         # compute the distance to the patch (first use this variable to store the position of look_at_point)
                         distance_to_patch = np.tile(normalized_object_positions[current_target:current_target+1], [self.object_positions.shape[0], 1])
@@ -590,76 +622,6 @@ class Responsive_planner_ThreeParty:
             t += self.dt
         return output_t, output_target
         
-        for i in range(0, len(speech_change_boundaries)):
-            # see if the next state is aversion or direct gaze
-            if speech_change_boundaries[i][1] == 0:
-                # if it's direct gaze
-                in_aversion = False
-                output_target.append(self.conversation_partner_id)
-                output_t.append(speech_change_boundaries[i][0])
-            else:
-                # if it's aversion
-                if i == len(speech_change_boundaries)-1:
-                    aversion_end = speech_change_boundaries[i][0] + 2
-                else:
-                    aversion_end = speech_change_boundaries[i+1][0]
-                aversion_start = speech_change_boundaries[i][0]
-                aversion_time = aversion_end - aversion_start
-                t = aversion_start
-                while t < aversion_end:
-                    idx = int(t / self.dt)
-                    # make sure index is not out of range
-                    idx = min(idx, self.values.shape[0]-1)
-                    current_target = output_target[-1]
-                    time_within_patch = t - output_t[-1]
-                    ##############################################################################################
-                    ############################### decide whether to switch patch ###############################
-                    ##############################################################################################
-                    # compute rho (value)
-                    look_at_mask = np.zeros((self.saliency_maps_arrs[0].shape[1], ))
-                    look_at_mask[current_target] = 1
-                    if self.speech_activity[idx] == 1 and self.aversion_probability_other[idx] == 1:
-                        pass
-                    else:
-                        look_at_mask[self.conversation_partner_id] = 1
-                    not_looked_at_mask = np.ones(look_at_mask.shape) - look_at_mask
-                    # compute the distance to the patch (first use this variable to store the position of look_at_point)
-                    distance_to_patch = np.tile(normalized_object_positions[current_target:current_target+1], [self.object_positions.shape[0], 1])
-                    distance_to_patch = (distance_to_patch - normalized_object_positions)
-                    distance_to_patch = np.sqrt(np.square(distance_to_patch).sum(axis=1))
-                    # compute distance-weighted patch value rho
-                     
-                    rho = self.values[idx] * np.exp(-self.kappa * distance_to_patch * (1 / aversion_time))
-                    # compute Q, the expected return of leaving the current patch and move to another patch
-                    Q = 1 / (self.object_positions.shape[0] - 1) * np.sum(rho * not_looked_at_mask)
-                    # compute g_patch, the instetaneous gain by staying at the current patch
-                    if rho[current_target] > 0:
-                        g_patch = rho[current_target] * np.exp(-self.phi / self.values[idx, current_target] * time_within_patch)
-                    else:
-                        g_patch = 0
-                    # compute the probability of migration (logistic function as per the paper, howeverm it is very noisy )
-                    p_stay = 1 / (1 + np.exp(-self.beta*(g_patch - Q)))
-                    ########################### sample from bernoulli distribution to determine wheter to switch patch #####################
-                    # if the sampling determine that there is a patch switch
-                    if p_stay <= 0.2:
-                        rv = np.random.binomial(1, p_stay)
-                    else:
-                        rv = 1
-                    # see where is the nearest next impulse
-                    if ((rv == 0 and self.onbeats(t) and time_within_patch >= self.min_gaze_shift_time 
-                         ) or in_aversion == False) and time_within_patch >= self.min_saccade_time_psysiological: # we have to make sure the motion is not too rapid
-                        # TODO: make the new patch randomly sampled instead of deterministicand
-                        # new_patch = np.argmax(rho * not_looked_at_mask)
-                        new_patch = random.choices(list(range(0, rho.shape[0])),  weights=rho * not_looked_at_mask)[0]
-                        time_within_patch = 0
-                        current_target = new_patch
-                        output_target.append(current_target)
-                        output_t.append(t)
-                        in_aversion = True
-                    t = t + self.dt
-        output_t.append(self.dt * self.values.shape[0])
-        output_target.append(self.conversation_partner_id)
-        return output_t, output_target
 
 class Responsive_planner_React_to_gaze_no_Gaze_deploy:
     # this planner is designed to be responsive to the input heatmap signal

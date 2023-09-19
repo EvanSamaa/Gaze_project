@@ -217,6 +217,12 @@ class MultiPartyConversationalSceneInfo:
         for i in range(0, self.intensity_interp(t).shape[0]):
             if i != self_id:
                 return i
+    def get_object_id_based_on_speaker_id(self, speaker_id):
+        for i in range(0, len(self.speakers_index)):
+            if self.speakers_index[i] == speaker_id:
+                return i
+        else:
+            return -1
 class AgentInfo:
     # image based variables
     def __init__(self, scene_data_path, wonder = True):
@@ -729,7 +735,7 @@ class AgentInfo_final_multiparty:
         self.scene_data = scene_data
     def change_speaker(self, speaker_id):
         # find the index of whcih the speaker_id matches the parameter
-        print(speaker_id, self.speaker_id)
+        # print(speaker_id, self.speaker_id)
         for i in range(0, len(self.speaker_id)):
             if self.speaker_id[i][1] == speaker_id:
                 self.active_object_id = i
@@ -829,7 +835,11 @@ class AgentInfo_final_multiparty:
             return self.transform_world_to_local(self.camera_pos)
         else:
             return self.camera_pos
-
+    def get_object_id_based_on_speaker_id(self, speaker_id):
+        for i in range(0, len(self.speaker_id)):
+            if self.speaker_id[i][0][1] == speaker_id:
+                return i
+        
 if __name__ == "__main__":
     a = AgentInfo("/Users/evanpan/Documents/GitHub/Gaze_project/data/look_at_points/simplest_scene2_less_items.json")
     print(a.get_active_object_position(0, coordinate_space="global"))
