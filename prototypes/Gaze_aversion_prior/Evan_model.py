@@ -412,7 +412,7 @@ class Aversion111Prior_three_party():
             audio_path_2_other = os.path.join(*[temp_folder, no_space_input_file_name+"_{}_other.wav".format(2)])
         
             # check if audio_path_0_other exists
-            if not os.path.exists(audio_path_0_other):
+            if not os.path.exists(audio_path_0_other) or True:
                 # generate these files by combining the other two
                 audio_0, sr1 = sf.read(audio_path_0)
                 audio_1, sr = sf.read(audio_path_1)

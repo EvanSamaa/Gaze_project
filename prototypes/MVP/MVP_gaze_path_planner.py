@@ -114,7 +114,7 @@ class Responsive_planner_Differnet_Targets:
         # compute the rate of change of the speech aversion probability
         d_val_neural = np.abs(dx_dt(self.aversion_probability, method=1))
         # get all the boundaries of gaze shifts
-        speech_change_boundaries = []
+        speech_change_boundaries = [[0, self.conversation_partner_id]]
         scene_change_boundaries = []
         for i in range(0, d_val_neural.shape[0]-1):
             if d_val_neural[i] > 0.5:
@@ -206,6 +206,12 @@ class Responsive_planner_Differnet_Targets:
                             output_target.append(current_target)
                             output_t.append(t)
                     else:
+                        # ================================ NEW ================================ 
+                        if current_target == self.conversation_partner_id:
+                            t += self.dt
+                            time_within_patch = t - output_t[-1]
+                            continue
+                        # ================================ NEW ================================
                         time_within_patch = t - output_t[-1]
                         # use the random walk algorithm to determine whether to switch patch
                         # compute rho (value)
@@ -379,7 +385,7 @@ class Responsive_planner_ThreeParty:
         # turn them into rotation angles
         self.object_positions = rotation_angles_frome_positions(self.object_positions) / 180 * np.pi
         # get the conversation partner's id
-        self.conversation_partner_id = self.scene_info.other_speaker_id
+        self.conversation_partner_id = self.scene_info.active_object_id
         self.aversion_probability = aversion_probability
         self.aversion_probability_other_l = aversion_probability_other_l
         self.aversion_probability_other_r = aversion_probability_other_r
@@ -478,23 +484,37 @@ class Responsive_planner_ThreeParty:
         aversion_end = -1
         aversion_time = -1
         current_target = output_target[-1]
+        length_of_scripted_target = len(self.scripted_gaze_target)
         while t < self.aversion_probability.shape[0] * self.dt + 5:
             # get the next speaker at t + 4
-            index = int(round(t/self.dt))
+            index = int(np.floor(t/self.dt))
             if index < self.speech_activity.shape[0] - 4:
                 next_speaker_in_a_bit = self.speech_activity[index + 4]
             else:
                 next_speaker_in_a_bit = self.self_id
             next_speaker_object_id = self.scene_info.get_object_id_based_on_speaker_id(next_speaker_in_a_bit)
+            
+            # get the next eventual speaker object id (regardless of t+4):
+            next_speaker_timeeeee = index
+            next_eventual_speaker_object_id = output_target[-1]
+            current_speaker_idddddd = -self.self_id
+            if index < self.speech_activity.shape[0]:
+                current_speaker_idddddd = self.speech_activity[index]
+                for i in range(index + 1, self.speech_activity.shape[0]):
+                    if self.speech_activity[i] != self.speech_activity[i-1]:
+                        next_speaker_timeeeee = i
+                        next_eventual_speaker_object_id =  self.scene_info.get_object_id_based_on_speaker_id(self.speech_activity[i])
+                        break
+            
             # if we are at a scripted target change      
-            if t > self.scripted_gaze_target[gaze_target_counter][1] - 0.3 and not no_more_gaze_swaps:
+            if length_of_scripted_target > 0 and t > self.scripted_gaze_target[gaze_target_counter][1] - 0.3 and not no_more_gaze_swaps:
                 if gaze_target_counter == len(self.scripted_gaze_target) - 1:
                     no_more_gaze_swaps = True
                 # see if the active object changes
-                if self.scene_info.active_object_id != self.scripted_gaze_target[gaze_target_counter][1]:
+                if self.scene_info.active_object_id != self.scripted_gaze_target[gaze_target_counter][0]:
                     swap_target = True # if it does, mark the swap_target variable to True
                 # change the active object ID
-                self.scene_info.active_object_id = self.scripted_gaze_target[gaze_target_counter][1]
+                self.scene_info.active_object_id = self.scripted_gaze_target[gaze_target_counter][0]
                 if gaze_target_counter < len(self.scripted_gaze_target) - 1:
                     gaze_target_counter = gaze_target_counter + 1
                 if swap_target:
@@ -507,18 +527,22 @@ class Responsive_planner_ThreeParty:
                 current_target = self.scene_info.get_object_id_based_on_speaker_id(next_speaker_in_a_bit)
                 output_target.append(current_target)
                 output_t.append(t)
+            # if we are speaking, we need to look at the next speaker
+            elif current_speaker_idddddd == self.self_id and next_eventual_speaker_object_id != output_target[-1]:
+                output_target.append(next_eventual_speaker_object_id)
+                output_t.append(t)
             # the case that the neural model predicts changes
             else:
                 # if it's not currently a scripted change, then see if the current active object is the other speaker
                 # if it is another speaker
                 current_target = output_target[-1]
-                if self.scene_info.active_object_id in self.scene_info.other_speaker_id:
+                if True or self.scene_info.active_object_id in self.scene_info.other_speaker_id:
                     index = int(round(t/self.dt))
                     index = min(index, self.values.shape[0]-1)
                     # see if there is a change in aversion/direct gaze status
                     if d_val_neural[index] > 0.5:
                         if self.aversion_probability[index] <= 0.5:
-                            # if it's direct gaze
+                            # if it's direct gaze 
                             in_aversion = False
                             # get the current speaker id:
                             window_of_speaker = self.speech_activity[index:index+25]
@@ -531,13 +555,16 @@ class Responsive_planner_ThreeParty:
                             else:
                                 for i_in_win in range(len(window_of_speaker)):
                                     if window_of_speaker[i_in_win] != window_of_speaker[i_in_win-1]:
-                                        next_target = self.scene_info.other_speaker_id[i_in_win]
+                                        
+                                        next_target = self.scene_info.other_speaker_id[window_of_speaker[i_in_win]]
                                         break
                             if next_target == -1:
                                 # if the speaker is speaking himself. Then the speaker will look at the two speaker with an unequal probability
                                 speakers = self.scene_info.other_speaker_id
-                                next_target = random.choices(speakers, weights=[0.5, 0.5])[0]
-
+                                # find the previous speaker
+                                for jjj in range(0, len(output_target)):
+                                    if output_target[-1-jjj] in self.scene_info.other_speaker_id:
+                                        next_target = output_target[-1-jjj]  
                             output_target.append(next_target)
                             output_t.append(t)
                         else:
