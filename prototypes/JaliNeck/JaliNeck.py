@@ -266,12 +266,17 @@ def np_sum(arr):
         out += i
     return out
 def np_mean_and_std(arr):
+    if len(arr) == 0:
+        return 0, 0
     mean = np_sum(arr)/len(arr)
     std = 0
     for i in arr:
         std += (i - mean)**2
-    std = std / (len(arr)-1)
-    std = math.sqrt(std)
+    if len(arr) == 1:
+        std = 0
+    else:
+        std = std / (len(arr)-1)
+        std = math.sqrt(std)
     return mean, std
 def np_max_min(arr):
     max_val = arr[0]
@@ -720,7 +725,7 @@ class NeckCurve:
             ["not", "no", "none", "never", "nah", "negative", "disappointed", "wrong", "incorrect", "negative",
              "won't", "can't", "isn't", "aren't", "didn't", "don't", "doesn't", "shouldn't", "couldn't",
              "wouldn't", "weren't", "wasn't", "mustn't", "needn't", "hadn't", "haven't", "hasn't", "nobody",
-             "nothing", "nowhere"])
+             "nothing", "nowhere", "stop"])
 
         # compute intensity and pitch values
         snd = parselmouth.Sound(self.input_wav_path)
@@ -738,7 +743,7 @@ class NeckCurve:
         self.head_sentence_level = 2
         self.head_sentence_level_z = 2
         self.base_number_of_shakes = 8
-        self.emphasis_max_rotation = 2
+        self.emphasis_max_rotation = 4
         self.max_ambient_movement = 1
         self.left_side_bias = 0.1
         self.random_seed = 0
@@ -951,9 +956,10 @@ class NeckCurve:
                 sentence_curve_set_z.add_to_interval_tier([sentence_level_head_levels_zt, sentence_level_head_levels_z],
                                                           0)
             # ================================= add word level emphasis ============================
-            if len(interval) > 2 and False:
+            if len(interval) > 2:
                 # see if the sentence is negative......
                 if len(negative_word_id) == 0:
+                    continue
                     # keep track to see if the emphasis is at the start of the sentence
                     end_of_sentence = False
                     start_of_sentence = False
@@ -1026,7 +1032,7 @@ class NeckCurve:
                         for tttt in range(0, len(emphasis_tracking[3])):
                             val = 0
                             for iiii in range(0, len(emphasis_ranking_separate)):
-                                val += emphasis_tracking[iiii, tttt]
+                                val += emphasis_tracking[iiii][tttt]
                             emphasis_ranking.append(val)
                         emphasis_peak = np_argmax(emphasis_ranking) + interval[0]
 
@@ -1087,7 +1093,7 @@ class NeckCurve:
                     for tttt in range(0, len(emphasis_tracking[3])):
                         val = 0
                         for iiii in range(0, len(emphasis_ranking_separate)):
-                            val += emphasis_tracking[iiii, tttt]
+                            val += emphasis_tracking[iiii][tttt]
                         emphasis_ranking.append(val)
                     emphasis_peak = negative_word_id[np_argmax(emphasis_ranking)] + interval[0]
                     word_interval = self.semantics_script.word_intervals[emphasis_peak]
