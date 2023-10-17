@@ -70,10 +70,6 @@ class InternalModelCenterBias_dynamic_scene:
     def estimate_listener_pose(self):
         # return self.estimate_target_pose(self.scene.active_object_id)
         return self.scene.get_active_object_position()
-    
-        # for i in range(0, len(self.scene.object_type)):
-        #     if self.scene.object_type[i] == 5:
-        #         return self.scene.transform_world_to_local(self.scene.positions_world[i])
 
 class MultiPartyInternalModelCenterBias:
     def __init__(self, scene: MultiPartyConversationalSceneInfo, speaker_id):
@@ -384,7 +380,25 @@ class SacccadeGenerator_dynamic_scene:
                     gaze_submovements_indexes.append(gaze_submovement_range)
                     self.gaze_positions[t_index] += gaze_submovement[0]
                 # obtain head shift duration
-                head_movement_duration = 0.8
+                head_movement_duration = 0.6
+                # get angle between two vectors and do something if the angle is small
+                if np.linalg.norm(self.head_current_goal_position - self.interpolate_head_goal(self.t)) > 1E-3:
+                    magnitude1 = np.linalg.norm(self.head_current_goal_position)
+                    magnitude2 = np.linalg.norm(self.interpolate_head_goal(self.t))
+                    dot_product = np.dot(self.head_current_goal_position, self.interpolate_head_goal(self.t))
+                    # Calculate the cosine of the angle between the vectors
+                    cosine_angle = dot_product / (magnitude1 * magnitude2)
+                    # Use arccosine to find the angle in radians
+                    angle_in_radians = np.arccos(cosine_angle)
+                    # Convert the angle from radians to degrees
+                    angle_in_degrees = np.degrees(angle_in_radians)
+                    if angle_in_degrees <= 20:
+                        # head_movement_duration = 0.3
+                        # print(self.head_current_goal_position, self.interpolate_head_goal(self.t))                        
+                        # ====================== DO NOTHING AT THE MOMENT ======================
+                        # ====================== DO NOTHING AT THE MOMENT ======================
+                        pass
+                         
                 # add the head movement
                 head_submovement, head_submovement_range = self.add_head_submovement(self.t,
                                                                                      self.t + head_movement_duration,
@@ -435,7 +449,6 @@ class SacccadeGenerator_dynamic_scene:
             end = stable_windows[i][1]
             micro_saccade_list, prev_saccade = self.handle_microsaccade(start, prev_saccade, end)
             self.micro_saccade_kf.append(micro_saccade_list)
-        print(stable_windows)
         return self.prepare_output()
 
     def prepare_output(self):
