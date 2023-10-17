@@ -50,3 +50,5 @@ if __name__ == "__main__":
     turn_taking_threshold = 2
     fps = 24
     np.random.seed(speaker_id + shot_id)
+
+    
