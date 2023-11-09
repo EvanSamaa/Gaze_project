@@ -1,0 +1,231 @@
+2023-10-17 12:29:44,218 INFO    StreamThr :169042 [internal.py:wandb_internal():87] W&B internal server running at pid: 169042, started at: 2023-10-17 12:29:44.213212
+2023-10-17 12:29:44,268 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status
+2023-10-17 12:29:44,300 INFO    WriterThread:169042 [datastore.py:open_for_write():85] open: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/run-7f919r51.wandb
+2023-10-17 12:29:44,307 DEBUG   SenderThread:169042 [sender.py:send():336] send: header
+2023-10-17 12:29:44,307 DEBUG   SenderThread:169042 [sender.py:send():336] send: run
+2023-10-17 12:29:44,530 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: check_version
+2023-10-17 12:29:44,579 INFO    SenderThread:169042 [dir_watcher.py:__init__():219] watching files in: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files
+2023-10-17 12:29:44,579 INFO    SenderThread:169042 [sender.py:_start_run_threads():1078] run started: 7f919r51 with start time 1697560184.219486
+2023-10-17 12:29:44,579 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: summary_record
+2023-10-17 12:29:44,594 INFO    SenderThread:169042 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2023-10-17 12:29:44,595 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: check_version
+2023-10-17 12:29:44,840 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: run_start
+2023-10-17 12:29:45,432 DEBUG   HandlerThread:169042 [system_info.py:__init__():31] System info init
+2023-10-17 12:29:45,432 DEBUG   HandlerThread:169042 [system_info.py:__init__():46] System info init done
+2023-10-17 12:29:45,432 INFO    HandlerThread:169042 [system_monitor.py:start():183] Starting system monitor
+2023-10-17 12:29:45,432 INFO    SystemMonitor:169042 [system_monitor.py:_start():147] Starting system asset monitoring threads
+2023-10-17 12:29:45,436 INFO    HandlerThread:169042 [system_monitor.py:probe():204] Collecting system info
+2023-10-17 12:29:45,449 INFO    SystemMonitor:169042 [interfaces.py:start():187] Started cpu monitoring
+2023-10-17 12:29:45,466 INFO    SystemMonitor:169042 [interfaces.py:start():187] Started disk monitoring
+2023-10-17 12:29:45,502 INFO    SystemMonitor:169042 [interfaces.py:start():187] Started gpu monitoring
+2023-10-17 12:29:45,503 INFO    SystemMonitor:169042 [interfaces.py:start():187] Started memory monitoring
+2023-10-17 12:29:45,516 INFO    SystemMonitor:169042 [interfaces.py:start():187] Started network monitoring
+2023-10-17 12:29:45,554 INFO    Thread-13 :169042 [dir_watcher.py:_on_file_created():278] file/dir created: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/wandb-summary.json
+2023-10-17 12:29:47,054 DEBUG   HandlerThread:169042 [system_info.py:probe():195] Probing system
+2023-10-17 12:29:47,070 DEBUG   HandlerThread:169042 [system_info.py:_probe_git():180] Probing git
+2023-10-17 12:29:47,094 DEBUG   HandlerThread:169042 [system_info.py:_probe_git():188] Probing git done
+2023-10-17 12:29:47,094 DEBUG   HandlerThread:169042 [system_info.py:probe():240] Probing system done
+2023-10-17 12:29:47,094 DEBUG   HandlerThread:169042 [system_monitor.py:probe():213] {'os': 'Linux-5.15.0-84-generic-x86_64-with-glibc2.35', 'python': '3.10.10', 'heartbeatAt': '2023-10-17T16:29:47.054340', 'startedAt': '2023-10-17T16:29:44.092813', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct.py', 'codePath': 'training/training_2023_Oct.py', 'git': {'remote': 'https://github.com/EvanSamaa/Gaze_project.git', 'commit': '4be53c570168543b6dcccbbdc3d45aaa7421cb8c'}, 'email': 'evan12345pan@hotmail.com', 'root': '/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project', 'host': 'tyche', 'username': 'evanpan', 'executable': '/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/bin/python', 'cpu_count': 56, 'cpu_count_logical': 112, 'cpu_freq': {'current': 3288.355276785714, 'min': 800.0, 'max': 3500.0}, 'cpu_freq_per_core': [{'current': 3108.52, 'min': 800.0, 'max': 3500.0}, {'current': 3108.539, 'min': 800.0, 'max': 3500.0}, {'current': 3108.156, 'min': 800.0, 'max': 3500.0}, {'current': 3108.588, 'min': 800.0, 'max': 3500.0}, {'current': 3108.595, 'min': 800.0, 'max': 3500.0}, {'current': 3108.624, 'min': 800.0, 'max': 3500.0}, {'current': 3108.633, 'min': 800.0, 'max': 3500.0}, {'current': 3108.66, 'min': 800.0, 'max': 3500.0}, {'current': 3108.672, 'min': 800.0, 'max': 3500.0}, {'current': 3108.698, 'min': 800.0, 'max': 3500.0}, {'current': 3066.263, 'min': 800.0, 'max': 3500.0}, {'current': 3106.87, 'min': 800.0, 'max': 3500.0}, {'current': 3108.746, 'min': 800.0, 'max': 3500.0}, {'current': 3090.987, 'min': 800.0, 'max': 3500.0}, {'current': 3108.782, 'min': 800.0, 'max': 3500.0}, {'current': 3108.811, 'min': 800.0, 'max': 3500.0}, {'current': 3090.857, 'min': 800.0, 'max': 3500.0}, {'current': 3108.85, 'min': 800.0, 'max': 3500.0}, {'current': 3108.862, 'min': 800.0, 'max': 3500.0}, {'current': 3108.888, 'min': 800.0, 'max': 3500.0}, {'current': 3094.937, 'min': 800.0, 'max': 3500.0}, {'current': 3108.927, 'min': 800.0, 'max': 3500.0}, {'current': 3108.937, 'min': 800.0, 'max': 3500.0}, {'current': 3108.967, 'min': 800.0, 'max': 3500.0}, {'current': 3080.862, 'min': 800.0, 'max': 3500.0}, {'current': 3109.006, 'min': 800.0, 'max': 3500.0}, {'current': 3109.014, 'min': 800.0, 'max': 3500.0}, {'current': 3109.044, 'min': 800.0, 'max': 3500.0}, {'current': 3400.002, 'min': 800.0, 'max': 3500.0}, {'current': 3400.002, 'min': 800.0, 'max': 3500.0}, {'current': 3361.205, 'min': 800.0, 'max': 3500.0}, {'current': 3400.0, 'min': 800.0, 'max': 3500.0}, {'current': 3315.636, 'min': 800.0, 'max': 3500.0}, {'current': 3400.0, 'min': 800.0, 'max': 3500.0}, {'current': 3400.002, 'min': 800.0, 'max': 3500.0}, {'current': 3400.0, 'min': 800.0, 'max': 3500.0}, {'current': 3400.0, 'min': 800.0, 'max': 3500.0}, {'current': 3399.997, 'min': 800.0, 'max': 3500.0}, {'current': 3400.002, 'min': 800.0, 'max': 3500.0}, {'current': 3400.0, 'min': 800.0, 'max': 3500.0}, {'current': 3329.918, 'min': 800.0, 'max': 3500.0}, {'current': 3400.002, 'min': 800.0, 'max': 3500.0}, {'current': 3400.0, 'min': 800.0, 'max': 3500.0}, {'current': 3400.0, 'min': 800.0, 'max': 3500.0}, {'current': 3400.0, 'min': 800.0, 'max': 3500.0}, {'current': 3400.0, 'min': 800.0, 'max': 3500.0}, {'current': 3400.002, 'min': 800.0, 'max': 3500.0}, {'current': 3400.0, 'min': 800.0, 'max': 3500.0}, {'current': 3400.002, 'min': 800.0, 'max': 3500.0}, {'current': 3399.997, 'min': 800.0, 'max': 3500.0}, {'current': 3400.0, 'min': 800.0, 'max': 3500.0}, {'current': 3399.997, 'min': 800.0, 'max': 3500.0}, {'current': 3399.997, 'min': 800.0, 'max': 3500.0}, {'current': 3400.0, 'min': 800.0, 'max': 3500.0}, {'current': 3400.0, 'min': 800.0, 'max': 3500.0}, {'current': 3400.002, 'min': 800.0, 'max': 3500.0}, {'current': 3109.679, 'min': 800.0, 'max': 3500.0}, {'current': 3109.713, 'min': 800.0, 'max': 3500.0}, {'current': 3109.724, 'min': 800.0, 'max': 3500.0}, {'current': 3109.761, 'min': 800.0, 'max': 3500.0}, {'current': 3109.769, 'min': 800.0, 'max': 3500.0}, {'current': 3109.807, 'min': 800.0, 'max': 3500.0}, {'current': 3109.818, 'min': 800.0, 'max': 3500.0}, {'current': 3109.853, 'min': 800.0, 'max': 3500.0}, {'current': 3109.866, 'min': 800.0, 'max': 3500.0}, {'current': 3109.902, 'min': 800.0, 'max': 3500.0}, {'current': 3061.586, 'min': 800.0, 'max': 3500.0}, {'current': 3107.181, 'min': 800.0, 'max': 3500.0}, {'current': 3109.967, 'min': 800.0, 'max': 3500.0}, {'current': 3089.731, 'min': 800.0, 'max': 3500.0}, {'current': 3110.012, 'min': 800.0, 'max': 3500.0}, {'current': 3110.05, 'min': 800.0, 'max': 3500.0}, {'current': 3099.549, 'min': 800.0, 'max': 3500.0}, {'current': 3110.101, 'min': 800.0, 'max': 3500.0}, {'current': 3110.111, 'min': 800.0, 'max': 3500.0}, {'current': 3110.148, 'min': 800.0, 'max': 3500.0}, {'current': 3093.564, 'min': 800.0, 'max': 3500.0}, {'current': 3110.202, 'min': 800.0, 'max': 3500.0}, {'current': 3087.218, 'min': 800.0, 'max': 3500.0}, {'current': 3087.229, 'min': 800.0, 'max': 3500.0}, {'current': 3072.788, 'min': 800.0, 'max': 3500.0}, {'current': 3087.276, 'min': 800.0, 'max': 3500.0}, {'current': 3087.287, 'min': 800.0, 'max': 3500.0}, {'current': 3087.319, 'min': 800.0, 'max': 3500.0}, {'current': 3371.007, 'min': 800.0, 'max': 3500.0}, {'current': 3370.812, 'min': 800.0, 'max': 3500.0}, {'current': 3370.735, 'min': 800.0, 'max': 3500.0}, {'current': 3370.542, 'min': 800.0, 'max': 3500.0}, {'current': 3299.42, 'min': 800.0, 'max': 3500.0}, {'current': 3370.281, 'min': 800.0, 'max': 3500.0}, {'current': 3370.203, 'min': 800.0, 'max': 3500.0}, {'current': 3317.65, 'min': 800.0, 'max': 3500.0}, {'current': 3369.942, 'min': 800.0, 'max': 3500.0}, {'current': 3369.756, 'min': 800.0, 'max': 3500.0}, {'current': 3369.683, 'min': 800.0, 'max': 3500.0}, {'current': 3369.498, 'min': 800.0, 'max': 3500.0}, {'current': 3369.425, 'min': 800.0, 'max': 3500.0}, {'current': 3359.827, 'min': 800.0, 'max': 3500.0}, {'current': 3369.167, 'min': 800.0, 'max': 3500.0}, {'current': 3368.989, 'min': 800.0, 'max': 3500.0}, {'current': 3368.913, 'min': 800.0, 'max': 3500.0}, {'current': 3368.716, 'min': 800.0, 'max': 3500.0}, {'current': 3368.645, 'min': 800.0, 'max': 3500.0}, {'current': 3368.466, 'min': 800.0, 'max': 3500.0}, {'current': 3368.391, 'min': 800.0, 'max': 3500.0}, {'current': 3368.213, 'min': 800.0, 'max': 3500.0}, {'current': 3368.143, 'min': 800.0, 'max': 3500.0}, {'current': 3367.963, 'min': 800.0, 'max': 3500.0}, {'current': 3367.894, 'min': 800.0, 'max': 3500.0}, {'current': 3367.715, 'min': 800.0, 'max': 3500.0}, {'current': 3367.652, 'min': 800.0, 'max': 3500.0}, {'current': 3367.474, 'min': 800.0, 'max': 3500.0}], 'disk': {'total': 5910.498512268066, 'used': 20.82528305053711}, 'gpu': 'NVIDIA RTX A6000', 'gpu_count': 10, 'gpu_devices': [{'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}], 'memory': {'total': 1007.5168151855469}}
+2023-10-17 12:29:47,097 INFO    HandlerThread:169042 [system_monitor.py:probe():214] Finished collecting system info
+2023-10-17 12:29:47,097 INFO    HandlerThread:169042 [system_monitor.py:probe():217] Publishing system info
+2023-10-17 12:29:47,097 DEBUG   HandlerThread:169042 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-10-17 12:29:47,103 DEBUG   HandlerThread:169042 [system_info.py:_save_pip():67] Saving pip packages done
+2023-10-17 12:29:47,104 DEBUG   HandlerThread:169042 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-10-17 12:29:47,554 INFO    Thread-13 :169042 [dir_watcher.py:_on_file_created():278] file/dir created: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/conda-environment.yaml
+2023-10-17 12:29:47,554 INFO    Thread-13 :169042 [dir_watcher.py:_on_file_created():278] file/dir created: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/requirements.txt
+2023-10-17 12:30:45,531 DEBUG   SystemMonitor:169042 [system_monitor.py:_start():161] Starting system metrics aggregation loop
+2023-10-17 12:31:08,613 INFO    Thread-13 :169042 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/conda-environment.yaml
+2023-10-17 12:31:08,766 DEBUG   HandlerThread:169042 [system_info.py:_save_conda():86] Saving conda packages done
+2023-10-17 12:31:08,793 INFO    HandlerThread:169042 [system_monitor.py:probe():219] Finished publishing system info
+2023-10-17 12:31:08,799 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,806 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:08,806 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,807 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:08,808 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,821 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:08,821 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,821 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: poll_exit
+2023-10-17 12:31:08,821 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,822 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:08,822 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,822 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:08,822 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:08,822 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:08,808 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 12:31:08,993 DEBUG   SenderThread:169042 [sender.py:send():336] send: telemetry
+2023-10-17 12:31:08,993 DEBUG   SenderThread:169042 [sender.py:send():336] send: stats
+2023-10-17 12:31:09,042 DEBUG   SenderThread:169042 [sender.py:send():336] send: exit
+2023-10-17 12:31:09,042 INFO    SenderThread:169042 [sender.py:send_exit():559] handling exit code: 255
+2023-10-17 12:31:09,054 INFO    SenderThread:169042 [sender.py:send_exit():561] handling runtime: 83
+2023-10-17 12:31:09,069 INFO    SenderThread:169042 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2023-10-17 12:31:09,069 INFO    SenderThread:169042 [sender.py:send_exit():567] send defer
+2023-10-17 12:31:09,081 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: poll_exit
+2023-10-17 12:31:09,081 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:31:09,094 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 0
+2023-10-17 12:31:09,082 DEBUG   SenderThread:169042 [sender.py:send():336] send: files
+2023-10-17 12:31:09,094 INFO    SenderThread:169042 [sender.py:_save_file():1332] saving file wandb-metadata.json with policy now
+2023-10-17 12:31:09,106 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:31:09,119 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 0
+2023-10-17 12:31:09,119 INFO    SenderThread:169042 [sender.py:transition_state():587] send defer: 1
+2023-10-17 12:31:09,119 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:31:09,132 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 1
+2023-10-17 12:31:09,132 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:31:09,135 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 1
+2023-10-17 12:31:09,135 INFO    SenderThread:169042 [sender.py:transition_state():587] send defer: 2
+2023-10-17 12:31:09,135 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:31:09,135 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 2
+2023-10-17 12:31:09,135 INFO    HandlerThread:169042 [system_monitor.py:finish():193] Stopping system monitor
+2023-10-17 12:31:09,156 DEBUG   SystemMonitor:169042 [system_monitor.py:_start():168] Finished system metrics aggregation loop
+2023-10-17 12:31:09,156 DEBUG   SystemMonitor:169042 [system_monitor.py:_start():172] Publishing last batch of metrics
+2023-10-17 12:31:09,157 INFO    HandlerThread:169042 [interfaces.py:finish():199] Joined cpu monitor
+2023-10-17 12:31:09,165 INFO    HandlerThread:169042 [interfaces.py:finish():199] Joined disk monitor
+2023-10-17 12:31:09,509 INFO    wandb-upload_0:169042 [upload_job.py:push():138] Uploaded file /tmp/tmpkvim7ws2wandb/fadrxqn5-wandb-metadata.json
+2023-10-17 12:31:09,605 INFO    Thread-13 :169042 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/wandb-summary.json
+2023-10-17 12:31:09,605 INFO    Thread-13 :169042 [dir_watcher.py:_on_file_created():278] file/dir created: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/wandb-metadata.json
+2023-10-17 12:31:09,605 INFO    Thread-13 :169042 [dir_watcher.py:_on_file_created():278] file/dir created: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/output.log
+2023-10-17 12:31:11,606 INFO    Thread-13 :169042 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/output.log
+2023-10-17 12:31:15,616 INFO    Thread-13 :169042 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/config.yaml
+2023-10-17 12:31:58,408 INFO    HandlerThread:169042 [interfaces.py:finish():199] Joined gpu monitor
+2023-10-17 12:31:58,412 INFO    HandlerThread:169042 [interfaces.py:finish():199] Joined memory monitor
+2023-10-17 12:31:58,412 INFO    HandlerThread:169042 [interfaces.py:finish():199] Joined network monitor
+2023-10-17 12:31:58,412 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:58,412 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:58,412 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:58,412 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:58,412 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:58,412 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:58,413 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:58,413 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:58,413 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:58,413 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:58,413 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:58,413 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:58,413 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:58,413 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:58,413 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:58,413 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:58,413 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:58,413 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:58,413 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:31:58,413 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:58,414 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:31:58,426 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 2
+2023-10-17 12:31:58,426 INFO    SenderThread:169042 [sender.py:transition_state():587] send defer: 3
+2023-10-17 12:31:58,426 DEBUG   SenderThread:169042 [sender.py:send():336] send: stats
+2023-10-17 12:31:58,427 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:31:58,427 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 3
+2023-10-17 12:31:58,428 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:31:58,441 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 3
+2023-10-17 12:31:58,441 INFO    SenderThread:169042 [sender.py:transition_state():587] send defer: 4
+2023-10-17 12:31:58,441 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:31:58,441 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 4
+2023-10-17 12:31:58,442 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:31:58,454 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 4
+2023-10-17 12:31:58,454 INFO    SenderThread:169042 [sender.py:transition_state():587] send defer: 5
+2023-10-17 12:31:58,454 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:31:58,454 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 5
+2023-10-17 12:31:58,455 DEBUG   SenderThread:169042 [sender.py:send():336] send: summary
+2023-10-17 12:31:58,481 INFO    SenderThread:169042 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2023-10-17 12:31:58,482 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:31:58,482 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 5
+2023-10-17 12:31:58,482 INFO    SenderThread:169042 [sender.py:transition_state():587] send defer: 6
+2023-10-17 12:31:58,482 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:31:58,482 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 6
+2023-10-17 12:31:58,483 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:31:58,494 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 6
+2023-10-17 12:31:58,494 INFO    SenderThread:169042 [sender.py:transition_state():587] send defer: 7
+2023-10-17 12:31:58,495 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 12:31:58,507 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:31:58,507 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 7
+2023-10-17 12:31:58,508 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:31:58,520 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 7
+2023-10-17 12:31:58,852 INFO    Thread-13 :169042 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/wandb-summary.json
+2023-10-17 12:31:59,146 INFO    SenderThread:169042 [sender.py:transition_state():587] send defer: 8
+2023-10-17 12:31:59,147 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:31:59,159 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 8
+2023-10-17 12:31:59,172 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:31:59,172 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 8
+2023-10-17 12:31:59,187 INFO    SenderThread:169042 [sender.py:transition_state():587] send defer: 9
+2023-10-17 12:31:59,187 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:31:59,199 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 9
+2023-10-17 12:31:59,187 DEBUG   SenderThread:169042 [sender.py:send():336] send: artifact
+2023-10-17 12:31:59,648 INFO    SenderThread:169042 [sender.py:send_artifact():1428] sent artifact job-https___github.com_EvanSamaa_Gaze_project.git_training_training_2023_Oct.py - {'id': 'QXJ0aWZhY3Q6NjA3OTk0OTUz', 'digest': '54a6c05e807242d68409a6183a273c7f', 'state': 'COMMITTED', 'aliases': [{'artifactCollectionName': 'job-https___github.com_EvanSamaa_Gaze_project.git_training_training_2023_Oct.py', 'alias': 'latest'}, {'artifactCollectionName': 'job-https___github.com_EvanSamaa_Gaze_project.git_training_training_2023_Oct.py', 'alias': 'v0'}], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjEwNzQ5NDQ1NQ==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NjA3OTk0OTUz', 'versionIndex': 0}}, 'version': 'v0'}
+2023-10-17 12:31:59,648 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:31:59,661 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 9
+2023-10-17 12:31:59,661 INFO    SenderThread:169042 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-10-17 12:31:59,853 INFO    Thread-13 :169042 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/output.log
+2023-10-17 12:31:59,853 INFO    SenderThread:169042 [dir_watcher.py:finish():395] scan: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files
+2023-10-17 12:31:59,867 INFO    SenderThread:169042 [dir_watcher.py:finish():409] scan save: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/requirements.txt requirements.txt
+2023-10-17 12:31:59,880 INFO    SenderThread:169042 [dir_watcher.py:finish():409] scan save: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/wandb-summary.json wandb-summary.json
+2023-10-17 12:31:59,893 INFO    SenderThread:169042 [dir_watcher.py:finish():409] scan save: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/wandb-metadata.json wandb-metadata.json
+2023-10-17 12:31:59,893 INFO    SenderThread:169042 [dir_watcher.py:finish():409] scan save: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/output.log output.log
+2023-10-17 12:31:59,897 INFO    SenderThread:169042 [dir_watcher.py:finish():409] scan save: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/conda-environment.yaml conda-environment.yaml
+2023-10-17 12:31:59,971 INFO    SenderThread:169042 [dir_watcher.py:finish():409] scan save: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/config.yaml config.yaml
+2023-10-17 12:31:59,971 INFO    SenderThread:169042 [sender.py:transition_state():587] send defer: 10
+2023-10-17 12:31:59,972 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:31:59,984 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 10
+2023-10-17 12:31:59,984 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:31:59,985 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 10
+2023-10-17 12:31:59,985 INFO    SenderThread:169042 [file_pusher.py:finish():164] shutting down file pusher
+2023-10-17 12:32:00,243 INFO    wandb-upload_0:169042 [upload_job.py:push():138] Uploaded file /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/requirements.txt
+2023-10-17 12:32:00,348 INFO    wandb-upload_1:169042 [upload_job.py:push():138] Uploaded file /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/wandb-summary.json
+2023-10-17 12:32:00,400 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 12:32:00,423 INFO    wandb-upload_3:169042 [upload_job.py:push():138] Uploaded file /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/conda-environment.yaml
+2023-10-17 12:32:00,450 INFO    wandb-upload_2:169042 [upload_job.py:push():138] Uploaded file /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/output.log
+2023-10-17 12:32:00,482 INFO    wandb-upload_4:169042 [upload_job.py:push():138] Uploaded file /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/files/config.yaml
+2023-10-17 12:32:00,682 INFO    Thread-12 (_thread_body):169042 [sender.py:transition_state():587] send defer: 11
+2023-10-17 12:32:00,683 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:32:00,695 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 11
+2023-10-17 12:32:00,695 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:32:00,696 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 11
+2023-10-17 12:32:00,696 INFO    SenderThread:169042 [file_pusher.py:join():169] waiting for file pusher
+2023-10-17 12:32:00,696 INFO    SenderThread:169042 [sender.py:transition_state():587] send defer: 12
+2023-10-17 12:32:00,696 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:32:00,708 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 12
+2023-10-17 12:32:00,709 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:32:00,709 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 12
+2023-10-17 12:32:00,996 INFO    SenderThread:169042 [sender.py:transition_state():587] send defer: 13
+2023-10-17 12:32:00,997 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:32:01,024 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 13
+2023-10-17 12:32:01,037 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:32:01,050 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 13
+2023-10-17 12:32:01,050 INFO    SenderThread:169042 [sender.py:transition_state():587] send defer: 14
+2023-10-17 12:32:01,050 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 12:32:01,050 INFO    HandlerThread:169042 [handler.py:handle_request_defer():170] handle defer: 14
+2023-10-17 12:32:01,051 DEBUG   SenderThread:169042 [sender.py:send():336] send: final
+2023-10-17 12:32:01,064 DEBUG   SenderThread:169042 [sender.py:send():336] send: footer
+2023-10-17 12:32:01,064 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: defer
+2023-10-17 12:32:01,064 INFO    SenderThread:169042 [sender.py:send_request_defer():583] handle sender defer: 14
+2023-10-17 12:32:01,067 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: poll_exit
+2023-10-17 12:32:01,083 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: server_info
+2023-10-17 12:32:01,084 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: get_summary
+2023-10-17 12:32:01,084 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: sampled_history
+2023-10-17 12:32:01,084 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: poll_exit
+2023-10-17 12:32:01,100 DEBUG   SenderThread:169042 [sender.py:send_request():363] send_request: server_info
+2023-10-17 12:32:01,215 INFO    MainThread:169042 [wandb_run.py:_footer_history_summary_info():3422] rendering history
+2023-10-17 12:32:01,215 INFO    MainThread:169042 [wandb_run.py:_footer_history_summary_info():3454] rendering summary
+2023-10-17 12:32:01,216 INFO    MainThread:169042 [wandb_run.py:_footer_sync_info():3380] logging synced files
+2023-10-17 12:32:01,217 DEBUG   HandlerThread:169042 [handler.py:handle_request():144] handle_request: shutdown
+2023-10-17 12:32:01,228 INFO    HandlerThread:169042 [handler.py:finish():842] shutting down handler
+2023-10-17 12:32:02,084 INFO    WriterThread:169042 [datastore.py:close():298] close: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_122944-7f919r51/run-7f919r51.wandb
+2023-10-17 12:32:02,216 INFO    SenderThread:169042 [sender.py:finish():1504] shutting down sender
+2023-10-17 12:32:02,216 INFO    SenderThread:169042 [file_pusher.py:finish():164] shutting down file pusher
+2023-10-17 12:32:02,216 INFO    SenderThread:169042 [file_pusher.py:join():169] waiting for file pusher

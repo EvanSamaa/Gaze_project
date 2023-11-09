@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 274, in <module>
+    train_model_with_vel(model, config, train_dataloader, valid_dataloader, run_obj, "sentence_and_words_with_vel_2023_Oct_prevent_overfitting_Oct10_13_19")
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 149, in train_model_with_vel
+    pred = model(X)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 87, in forward
+    x1_windowed = self.concate_frames(x1)
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 63, in concate_frames
+    padding_front = torch.zeros([input_feature.shape[0], self.frames_ahead, input_feature.shape[2]]).to(self.device)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1614, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'SentenceBaseline_GazePredictionModel' object has no attribute 'device'
+Traceback (most recent call last):
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 274, in <module>
+    train_model_with_vel(model, config, train_dataloader, valid_dataloader, run_obj, "sentence_and_words_with_vel_2023_Oct_prevent_overfitting_Oct10_13_19")
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 149, in train_model_with_vel
+    pred = model(X)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 87, in forward
+    x1_windowed = self.concate_frames(x1)
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 63, in concate_frames
+    padding_front = torch.zeros([input_feature.shape[0], self.frames_ahead, input_feature.shape[2]]).to(self.device)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1614, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'SentenceBaseline_GazePredictionModel' object has no attribute 'device'

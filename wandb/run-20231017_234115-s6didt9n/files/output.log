@@ -1,0 +1,30 @@
+Epoch 1, mean: 0.9221176505088806, std: 0.26801788806915283
+training L: 0.504473795116271
+validation L:0.33404776271335046
+Epoch 2, mean: 0.9025882482528687, std: 0.29655250906944275
+training L: 0.5265610144849648
+validation L:0.40338370251559047
+/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/numpy/core/fromnumeric.py:3432: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/numpy/core/_methods.py:190: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+Traceback (most recent call last):
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 276, in <module>
+    train_model_with_vel(model, config, train_dataloader, valid_dataloader, run_obj, "sentence_and_words_with_vel_2023_Oct_prevent_overfitting")
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 157, in train_model_with_vel
+    loss.backward()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/autograd/__init__.py", line 200, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 276, in <module>
+    train_model_with_vel(model, config, train_dataloader, valid_dataloader, run_obj, "sentence_and_words_with_vel_2023_Oct_prevent_overfitting")
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 157, in train_model_with_vel
+    loss.backward()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/autograd/__init__.py", line 200, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
