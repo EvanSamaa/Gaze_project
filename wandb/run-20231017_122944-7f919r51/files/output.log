@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct.py", line 667, in <module>
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct.py", line 510, in train_model_with_vel
+    model.to(device)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1145, in to
+    return self._apply(convert)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/nn/modules/module.py", line 797, in _apply
+    module._apply(fn)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/nn/modules/rnn.py", line 202, in _apply
+    self._init_flat_weights()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/nn/modules/rnn.py", line 139, in _init_flat_weights
+    self.flatten_parameters()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/nn/modules/rnn.py", line 190, in flatten_parameters
+    torch._cudnn_rnn_flatten_weight(
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct.py", line 667, in <module>
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct.py", line 510, in train_model_with_vel
+    model.to(device)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1145, in to
+    return self._apply(convert)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/nn/modules/module.py", line 797, in _apply
+    module._apply(fn)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/nn/modules/rnn.py", line 202, in _apply
+    self._init_flat_weights()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/nn/modules/rnn.py", line 139, in _init_flat_weights
+    self.flatten_parameters()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/nn/modules/rnn.py", line 190, in flatten_parameters
+    torch._cudnn_rnn_flatten_weight(
+KeyboardInterrupt

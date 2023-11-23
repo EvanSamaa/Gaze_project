@@ -1,0 +1,102 @@
+Epoch 1, mean: 1.0, std: 0.0
+training L: 0.45232120488398664
+validation L:0.3061358232077121
+Epoch 2, mean: 1.0, std: 0.0
+training L: 0.4448829324212882
+validation L:0.31475746546844624
+/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/numpy/core/fromnumeric.py:3432: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/numpy/core/_methods.py:190: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+Epoch 3, mean: 1.0, std: 0.0
+training L: 0.44390811195147983
+validation L:0.307801774817912
+Epoch 4, mean: 1.0, std: 0.0
+training L: 0.42960892928335326
+validation L:0.3623037129006359
+Epoch 5, mean: 1.0, std: 0.0
+training L: 0.43661747685012237
+validation L:0.31207445768085873
+Epoch 6, mean: 1.0, std: 0.0
+training L: 0.4116029302198706
+validation L:0.30591456388319027
+Epoch 7, mean: 1.0, std: 0.0
+training L: 0.4306784539341489
+validation L:0.3251583627603431
+Epoch 8, mean: 1.0, std: 0.0
+training L: 0.42850979740565054
+validation L:0.3099352213536665, model have not improved for 1 iterations
+Epoch 9, mean: 1.0, std: 0.0
+training L: 0.42059630324493175
+validation L:0.31394263922578963, model have not improved for 2 iterations
+Epoch 10, mean: 1.0, std: 0.0
+training L: 0.43602979249851415
+validation L:0.3196998042412184, model have not improved for 3 iterations
+Epoch 11, mean: 1.0, std: 0.0
+training L: 0.4133116744088669
+validation L:0.3062477734617358, model have not improved for 4 iterations
+Epoch 12, mean: 1.0, std: 0.0
+training L: 0.4397146560567587
+validation L:0.3110477044907169, model have not improved for 5 iterations
+Epoch 13, mean: 1.0, std: 0.0
+training L: 0.44405857917482106
+validation L:0.30847005575043834, model have not improved for 6 iterations
+Epoch 14, mean: 1.0, std: 0.0
+training L: 0.43836927757619254
+validation L:0.31092056045781774, model have not improved for 7 iterations
+Epoch 15, mean: 1.0, std: 0.0
+training L: 0.4393871198179869
+validation L:0.30668494202552704, model have not improved for 8 iterations
+Epoch 16, mean: 1.0, std: 0.0
+training L: 0.4323683097727543
+validation L:0.31371527807746724
+Traceback (most recent call last):
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 275, in <module>
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 141, in train_model_with_vel
+    for _, (X, [Y, Y_vel]) in enumerate(train_data):
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 634, in __next__
+    data = self._next_data()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 678, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    return self.collate_fn(data)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 264, in default_collate
+    return collate(batch, collate_fn_map=default_collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 142, in collate
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 142, in <listcomp>
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 119, in collate
+    return collate_fn_map[elem_type](batch, collate_fn_map=collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 171, in collate_numpy_array_fn
+    return collate([torch.as_tensor(b) for b in batch], collate_fn_map=collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 119, in collate
+    return collate_fn_map[elem_type](batch, collate_fn_map=collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 162, in collate_tensor_fn
+    return torch.stack(batch, 0, out=out)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 275, in <module>
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 141, in train_model_with_vel
+    for _, (X, [Y, Y_vel]) in enumerate(train_data):
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 634, in __next__
+    data = self._next_data()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 678, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    return self.collate_fn(data)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 264, in default_collate
+    return collate(batch, collate_fn_map=default_collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 142, in collate
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 142, in <listcomp>
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 119, in collate
+    return collate_fn_map[elem_type](batch, collate_fn_map=collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 171, in collate_numpy_array_fn
+    return collate([torch.as_tensor(b) for b in batch], collate_fn_map=collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 119, in collate
+    return collate_fn_map[elem_type](batch, collate_fn_map=collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 162, in collate_tensor_fn
+    return torch.stack(batch, 0, out=out)
+KeyboardInterrupt

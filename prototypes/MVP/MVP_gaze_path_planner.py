@@ -201,8 +201,13 @@ class Responsive_planner_Differnet_Targets:
                             distance_to_patch = (distance_to_patch - normalized_object_positions)
                             distance_to_patch = np.sqrt(np.square(distance_to_patch).sum(axis=1))
                             # compute distance-weighted patch value rho
-                            rho = self.values[index] * np.exp(-self.kappa * distance_to_patch * np.minimum(1, 1 / aversion_time))
-                            new_patch = random.choices(list(range(0, rho.shape[0])),  weights=rho * not_looked_at_mask)[0]
+                            if aversion_time == 0:
+                                aversion_time = 1E-9
+                            rho = self.values[index] * np.exp(-self.kappa * distance_to_patch * np.maximum(np.minimum(1, 1 / aversion_time), 20))
+                            if np.sum(rho * not_looked_at_mask) == 0:
+                                new_patch = np.argmax(look_at_mask)
+                            else:
+                                new_patch = random.choices(list(range(0, rho.shape[0])),  weights=rho * not_looked_at_mask)[0]
                             current_target = new_patch
                             output_target.append(current_target)
                             output_t.append(t)

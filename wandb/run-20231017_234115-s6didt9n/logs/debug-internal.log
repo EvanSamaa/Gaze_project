@@ -1,0 +1,365 @@
+2023-10-17 23:41:15,295 INFO    StreamThr :1301826 [internal.py:wandb_internal():87] W&B internal server running at pid: 1301826, started at: 2023-10-17 23:41:15.291411
+2023-10-17 23:41:15,297 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status
+2023-10-17 23:41:15,297 INFO    WriterThread:1301826 [datastore.py:open_for_write():85] open: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/run-s6didt9n.wandb
+2023-10-17 23:41:15,306 DEBUG   SenderThread:1301826 [sender.py:send():336] send: header
+2023-10-17 23:41:15,309 DEBUG   SenderThread:1301826 [sender.py:send():336] send: run
+2023-10-17 23:41:15,538 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: check_version
+2023-10-17 23:41:15,617 INFO    SenderThread:1301826 [dir_watcher.py:__init__():219] watching files in: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files
+2023-10-17 23:41:15,617 INFO    SenderThread:1301826 [sender.py:_start_run_threads():1078] run started: s6didt9n with start time 1697600475.291516
+2023-10-17 23:41:15,617 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: summary_record
+2023-10-17 23:41:15,633 INFO    SenderThread:1301826 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2023-10-17 23:41:15,633 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: check_version
+2023-10-17 23:41:15,721 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: run_start
+2023-10-17 23:41:15,726 DEBUG   HandlerThread:1301826 [system_info.py:__init__():31] System info init
+2023-10-17 23:41:15,726 DEBUG   HandlerThread:1301826 [system_info.py:__init__():46] System info init done
+2023-10-17 23:41:15,726 INFO    HandlerThread:1301826 [system_monitor.py:start():183] Starting system monitor
+2023-10-17 23:41:15,737 INFO    SystemMonitor:1301826 [system_monitor.py:_start():147] Starting system asset monitoring threads
+2023-10-17 23:41:15,737 INFO    HandlerThread:1301826 [system_monitor.py:probe():204] Collecting system info
+2023-10-17 23:41:15,761 INFO    SystemMonitor:1301826 [interfaces.py:start():187] Started cpu monitoring
+2023-10-17 23:41:15,785 INFO    SystemMonitor:1301826 [interfaces.py:start():187] Started disk monitoring
+2023-10-17 23:41:15,809 INFO    SystemMonitor:1301826 [interfaces.py:start():187] Started gpu monitoring
+2023-10-17 23:41:15,817 DEBUG   HandlerThread:1301826 [system_info.py:probe():195] Probing system
+2023-10-17 23:41:15,818 INFO    SystemMonitor:1301826 [interfaces.py:start():187] Started memory monitoring
+2023-10-17 23:41:15,848 DEBUG   HandlerThread:1301826 [system_info.py:_probe_git():180] Probing git
+2023-10-17 23:41:15,873 INFO    SystemMonitor:1301826 [interfaces.py:start():187] Started network monitoring
+2023-10-17 23:41:15,905 DEBUG   HandlerThread:1301826 [system_info.py:_probe_git():188] Probing git done
+2023-10-17 23:41:15,905 DEBUG   HandlerThread:1301826 [system_info.py:probe():240] Probing system done
+2023-10-17 23:41:15,905 DEBUG   HandlerThread:1301826 [system_monitor.py:probe():213] {'os': 'Linux-5.15.0-84-generic-x86_64-with-glibc2.35', 'python': '3.10.10', 'heartbeatAt': '2023-10-18T03:41:15.821636', 'startedAt': '2023-10-18T03:41:15.161208', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py', 'codePath': 'training/training_2023_Oct_prevent_overfit_smaller_model.py', 'git': {'remote': 'https://github.com/EvanSamaa/Gaze_project.git', 'commit': '4be53c570168543b6dcccbbdc3d45aaa7421cb8c'}, 'email': 'evan12345pan@hotmail.com', 'root': '/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project', 'host': 'achilles', 'username': 'evanpan', 'executable': '/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/bin/python', 'cpu_count': 28, 'cpu_count_logical': 28, 'cpu_freq': {'current': 2599.9999285714284, 'min': 1000.0, 'max': 3200.0}, 'cpu_freq_per_core': [{'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2599.999, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2599.999, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2600.0, 'min': 1000.0, 'max': 3200.0}], 'disk': {'total': 914.6905212402344, 'used': 44.47735595703125}, 'gpu': 'NVIDIA TITAN RTX', 'gpu_count': 2, 'gpu_devices': [{'name': 'NVIDIA TITAN RTX', 'memory_total': 25387073536}, {'name': 'NVIDIA TITAN RTX', 'memory_total': 25396838400}], 'memory': {'total': 376.5290718078613}}
+2023-10-17 23:41:15,917 INFO    HandlerThread:1301826 [system_monitor.py:probe():214] Finished collecting system info
+2023-10-17 23:41:15,917 INFO    HandlerThread:1301826 [system_monitor.py:probe():217] Publishing system info
+2023-10-17 23:41:15,917 DEBUG   HandlerThread:1301826 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-10-17 23:41:15,922 DEBUG   HandlerThread:1301826 [system_info.py:_save_pip():67] Saving pip packages done
+2023-10-17 23:41:15,922 DEBUG   HandlerThread:1301826 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-10-17 23:41:16,604 INFO    Thread-13 :1301826 [dir_watcher.py:_on_file_created():278] file/dir created: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/wandb-summary.json
+2023-10-17 23:41:16,604 INFO    Thread-13 :1301826 [dir_watcher.py:_on_file_created():278] file/dir created: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/conda-environment.yaml
+2023-10-17 23:41:16,604 INFO    Thread-13 :1301826 [dir_watcher.py:_on_file_created():278] file/dir created: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/requirements.txt
+2023-10-17 23:41:33,614 INFO    Thread-13 :1301826 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/conda-environment.yaml
+2023-10-17 23:41:33,801 DEBUG   HandlerThread:1301826 [system_info.py:_save_conda():86] Saving conda packages done
+2023-10-17 23:41:33,817 INFO    HandlerThread:1301826 [system_monitor.py:probe():219] Finished publishing system info
+2023-10-17 23:41:33,821 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:41:33,831 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 23:41:33,831 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:41:33,831 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 23:41:33,843 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:41:33,843 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-17 23:41:33,843 DEBUG   SenderThread:1301826 [sender.py:send():336] send: files
+2023-10-17 23:41:33,844 INFO    SenderThread:1301826 [sender.py:_save_file():1332] saving file wandb-metadata.json with policy now
+2023-10-17 23:41:33,844 DEBUG   SenderThread:1301826 [sender.py:send():336] send: telemetry
+2023-10-17 23:41:33,862 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:41:33,868 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:41:34,249 INFO    wandb-upload_0:1301826 [upload_job.py:push():138] Uploaded file /tmp/tmpx3q5977uwandb/fyxq778z-wandb-metadata.json
+2023-10-17 23:41:34,615 INFO    Thread-13 :1301826 [dir_watcher.py:_on_file_created():278] file/dir created: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/wandb-metadata.json
+2023-10-17 23:41:36,036 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:41:41,037 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:41:46,061 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:41:46,623 INFO    Thread-13 :1301826 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/config.yaml
+2023-10-17 23:41:48,832 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:41:48,833 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:41:52,040 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:41:57,041 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:42:02,041 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:42:03,831 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:42:03,831 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:42:07,930 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:42:12,931 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:42:15,873 DEBUG   SystemMonitor:1301826 [system_monitor.py:_start():161] Starting system metrics aggregation loop
+2023-10-17 23:42:15,874 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:42:18,832 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:42:18,833 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:42:18,833 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:42:24,033 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:42:29,034 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:42:33,831 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:42:33,831 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:42:34,923 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:42:39,924 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:42:44,924 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:42:45,875 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:42:48,831 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:42:48,832 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:42:49,990 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:42:54,991 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:42:59,991 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:43:03,832 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:43:03,832 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:43:05,925 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:43:10,926 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:43:15,876 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:43:16,876 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:43:18,833 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:43:18,833 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:43:22,011 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:43:27,012 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:43:32,013 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:43:33,832 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:43:33,833 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:43:37,952 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:43:42,958 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:43:45,877 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:43:48,832 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:43:48,833 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:43:48,833 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:43:53,969 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:43:58,970 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:44:03,832 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:44:03,833 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:44:04,006 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:44:09,007 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:44:14,008 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:44:15,877 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:44:18,833 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:44:18,833 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:44:19,989 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:44:24,990 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:44:29,997 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:44:33,833 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:44:33,833 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:44:35,934 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:44:40,935 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:44:45,878 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:44:46,879 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:44:48,833 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:44:48,833 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:44:51,986 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:44:56,126 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-17 23:44:56,128 DEBUG   SenderThread:1301826 [sender.py:send():336] send: history
+2023-10-17 23:44:56,141 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: summary_record
+2023-10-17 23:44:56,157 INFO    SenderThread:1301826 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2023-10-17 23:44:56,767 INFO    Thread-13 :1301826 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/wandb-summary.json
+2023-10-17 23:44:56,767 INFO    Thread-13 :1301826 [dir_watcher.py:_on_file_created():278] file/dir created: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/output.log
+2023-10-17 23:44:57,260 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:44:58,768 INFO    Thread-13 :1301826 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/output.log
+2023-10-17 23:45:02,261 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:45:03,833 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:45:03,833 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:45:07,980 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:45:12,981 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:45:15,879 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:45:18,834 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:45:18,834 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:45:18,847 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:45:23,946 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:45:28,947 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:45:33,834 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:45:33,834 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:45:34,006 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:45:39,007 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:45:44,007 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:45:45,879 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:45:48,834 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:45:48,834 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:45:50,004 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:45:55,005 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:46:00,005 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:46:03,834 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:46:03,835 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:46:05,014 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:46:10,014 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:46:15,015 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:46:15,880 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:46:18,834 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:46:18,835 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:46:20,961 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:46:25,961 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:46:30,962 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:46:33,834 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:46:33,835 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:46:36,013 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:46:41,013 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:46:45,881 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:46:46,881 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:46:48,835 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:46:48,835 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:46:52,064 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:46:57,065 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:47:02,065 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:47:03,835 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:47:03,835 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:47:08,007 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:47:13,008 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:47:15,897 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:47:18,898 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:47:19,004 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:47:19,005 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:47:24,184 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:47:29,185 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:47:34,004 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:47:34,005 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:47:35,122 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:47:40,123 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:47:45,123 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:47:45,893 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:47:49,005 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:47:49,006 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:47:50,129 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:47:55,130 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:48:00,130 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:48:04,005 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:48:04,006 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:48:05,187 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:48:08,990 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-17 23:48:08,992 DEBUG   SenderThread:1301826 [sender.py:send():336] send: history
+2023-10-17 23:48:09,004 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: summary_record
+2023-10-17 23:48:09,019 INFO    SenderThread:1301826 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2023-10-17 23:48:09,879 INFO    Thread-13 :1301826 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/wandb-summary.json
+2023-10-17 23:48:10,880 INFO    Thread-13 :1301826 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/output.log
+2023-10-17 23:48:11,118 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:48:11,881 INFO    Thread-13 :1301826 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/output.log
+2023-10-17 23:48:15,884 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:48:16,885 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:48:19,005 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:48:19,006 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:48:22,134 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:48:27,135 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:48:32,141 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:48:34,005 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:48:34,006 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:48:38,131 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:48:43,132 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:48:45,886 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:48:48,886 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:48:49,006 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:48:49,006 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:48:54,130 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:48:59,131 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:49:04,006 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:49:04,006 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:49:05,076 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:49:10,076 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:49:15,077 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:49:15,901 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:49:19,006 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-17 23:49:19,007 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: stop_status
+2023-10-17 23:49:20,112 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:49:25,113 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:49:27,172 DEBUG   SenderThread:1301826 [sender.py:send():336] send: exit
+2023-10-17 23:49:27,172 INFO    SenderThread:1301826 [sender.py:send_exit():559] handling exit code: 255
+2023-10-17 23:49:27,172 INFO    SenderThread:1301826 [sender.py:send_exit():561] handling runtime: 491
+2023-10-17 23:49:27,203 INFO    SenderThread:1301826 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2023-10-17 23:49:27,203 INFO    SenderThread:1301826 [sender.py:send_exit():567] send defer
+2023-10-17 23:49:27,203 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:27,216 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 0
+2023-10-17 23:49:27,216 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:27,229 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 0
+2023-10-17 23:49:27,229 INFO    SenderThread:1301826 [sender.py:transition_state():587] send defer: 1
+2023-10-17 23:49:27,229 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:27,241 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 1
+2023-10-17 23:49:27,241 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:27,253 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 1
+2023-10-17 23:49:27,253 INFO    SenderThread:1301826 [sender.py:transition_state():587] send defer: 2
+2023-10-17 23:49:27,253 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:27,254 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 2
+2023-10-17 23:49:27,266 INFO    HandlerThread:1301826 [system_monitor.py:finish():193] Stopping system monitor
+2023-10-17 23:49:27,267 DEBUG   SystemMonitor:1301826 [system_monitor.py:_start():168] Finished system metrics aggregation loop
+2023-10-17 23:49:27,278 DEBUG   SystemMonitor:1301826 [system_monitor.py:_start():172] Publishing last batch of metrics
+2023-10-17 23:49:27,267 INFO    HandlerThread:1301826 [interfaces.py:finish():199] Joined cpu monitor
+2023-10-17 23:49:27,292 INFO    HandlerThread:1301826 [interfaces.py:finish():199] Joined disk monitor
+2023-10-17 23:49:27,455 INFO    HandlerThread:1301826 [interfaces.py:finish():199] Joined gpu monitor
+2023-10-17 23:49:27,455 INFO    HandlerThread:1301826 [interfaces.py:finish():199] Joined memory monitor
+2023-10-17 23:49:27,472 INFO    HandlerThread:1301826 [interfaces.py:finish():199] Joined network monitor
+2023-10-17 23:49:27,473 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:27,473 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 2
+2023-10-17 23:49:27,492 INFO    SenderThread:1301826 [sender.py:transition_state():587] send defer: 3
+2023-10-17 23:49:27,492 DEBUG   SenderThread:1301826 [sender.py:send():336] send: stats
+2023-10-17 23:49:27,493 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:27,495 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 3
+2023-10-17 23:49:27,495 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:27,497 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 3
+2023-10-17 23:49:27,497 INFO    SenderThread:1301826 [sender.py:transition_state():587] send defer: 4
+2023-10-17 23:49:27,497 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:27,498 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 4
+2023-10-17 23:49:27,498 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:27,500 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 4
+2023-10-17 23:49:27,500 INFO    SenderThread:1301826 [sender.py:transition_state():587] send defer: 5
+2023-10-17 23:49:27,500 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:27,500 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 5
+2023-10-17 23:49:27,500 DEBUG   SenderThread:1301826 [sender.py:send():336] send: summary
+2023-10-17 23:49:27,527 INFO    SenderThread:1301826 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2023-10-17 23:49:27,527 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:27,540 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 5
+2023-10-17 23:49:27,540 INFO    SenderThread:1301826 [sender.py:transition_state():587] send defer: 6
+2023-10-17 23:49:27,540 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:27,540 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 6
+2023-10-17 23:49:27,540 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:27,553 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 6
+2023-10-17 23:49:27,553 INFO    SenderThread:1301826 [sender.py:transition_state():587] send defer: 7
+2023-10-17 23:49:27,553 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: status_report
+2023-10-17 23:49:27,553 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:27,555 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 7
+2023-10-17 23:49:27,555 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:27,568 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 7
+2023-10-17 23:49:27,925 INFO    Thread-13 :1301826 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/wandb-summary.json
+2023-10-17 23:49:28,172 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: poll_exit
+2023-10-17 23:49:29,209 INFO    SenderThread:1301826 [sender.py:transition_state():587] send defer: 8
+2023-10-17 23:49:29,209 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: poll_exit
+2023-10-17 23:49:29,209 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:29,222 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 8
+2023-10-17 23:49:29,224 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:29,224 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 8
+2023-10-17 23:49:29,291 INFO    SenderThread:1301826 [sender.py:transition_state():587] send defer: 9
+2023-10-17 23:49:29,292 DEBUG   SenderThread:1301826 [sender.py:send():336] send: artifact
+2023-10-17 23:49:29,292 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:29,317 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 9
+2023-10-17 23:49:29,926 INFO    Thread-13 :1301826 [dir_watcher.py:_on_file_modified():295] file/dir modified: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/output.log
+2023-10-17 23:49:30,009 INFO    wandb-upload_0:1301826 [upload_job.py:push():96] Uploaded file /u8/c/evanpan/.local/share/wandb/artifacts/staging/tmp_cf37o63
+2023-10-17 23:49:30,011 INFO    wandb-upload_1:1301826 [upload_job.py:push():96] Uploaded file /u8/c/evanpan/.local/share/wandb/artifacts/staging/tmpjhhx6rq2
+2023-10-17 23:49:30,884 INFO    SenderThread:1301826 [sender.py:send_artifact():1428] sent artifact job-https___github.com_EvanSamaa_Gaze_project.git_training_training_2023_Oct_prevent_overfit_smaller_model.py - {'id': 'QXJ0aWZhY3Q6NjA4NDM0NTMz', 'digest': 'ef09616f3851a7e8c4fdb7a055972392', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjEwNzYzNTMyOQ==', 'latestArtifact': None}, 'version': 'latest'}
+2023-10-17 23:49:30,885 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:30,885 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 9
+2023-10-17 23:49:30,897 INFO    SenderThread:1301826 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-10-17 23:49:30,927 INFO    SenderThread:1301826 [dir_watcher.py:finish():395] scan: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files
+2023-10-17 23:49:30,927 INFO    SenderThread:1301826 [dir_watcher.py:finish():409] scan save: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/requirements.txt requirements.txt
+2023-10-17 23:49:30,939 INFO    SenderThread:1301826 [dir_watcher.py:finish():409] scan save: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/wandb-summary.json wandb-summary.json
+2023-10-17 23:49:30,940 INFO    SenderThread:1301826 [dir_watcher.py:finish():409] scan save: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/wandb-metadata.json wandb-metadata.json
+2023-10-17 23:49:30,953 INFO    SenderThread:1301826 [dir_watcher.py:finish():409] scan save: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/output.log output.log
+2023-10-17 23:49:30,953 INFO    SenderThread:1301826 [dir_watcher.py:finish():409] scan save: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/conda-environment.yaml conda-environment.yaml
+2023-10-17 23:49:30,953 INFO    SenderThread:1301826 [dir_watcher.py:finish():409] scan save: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/config.yaml config.yaml
+2023-10-17 23:49:30,965 INFO    SenderThread:1301826 [sender.py:transition_state():587] send defer: 10
+2023-10-17 23:49:30,965 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:30,978 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 10
+2023-10-17 23:49:30,978 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:30,980 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 10
+2023-10-17 23:49:30,980 INFO    SenderThread:1301826 [file_pusher.py:finish():164] shutting down file pusher
+2023-10-17 23:49:31,229 INFO    wandb-upload_1:1301826 [upload_job.py:push():138] Uploaded file /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/wandb-summary.json
+2023-10-17 23:49:31,299 INFO    wandb-upload_0:1301826 [upload_job.py:push():138] Uploaded file /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/requirements.txt
+2023-10-17 23:49:31,344 INFO    wandb-upload_3:1301826 [upload_job.py:push():138] Uploaded file /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/conda-environment.yaml
+2023-10-17 23:49:31,392 INFO    wandb-upload_4:1301826 [upload_job.py:push():138] Uploaded file /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/config.yaml
+2023-10-17 23:49:31,493 INFO    wandb-upload_2:1301826 [upload_job.py:push():138] Uploaded file /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/files/output.log
+2023-10-17 23:49:31,694 INFO    Thread-12 (_thread_body):1301826 [sender.py:transition_state():587] send defer: 11
+2023-10-17 23:49:31,694 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:31,707 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 11
+2023-10-17 23:49:31,707 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:31,720 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 11
+2023-10-17 23:49:31,720 INFO    SenderThread:1301826 [file_pusher.py:join():169] waiting for file pusher
+2023-10-17 23:49:31,720 INFO    SenderThread:1301826 [sender.py:transition_state():587] send defer: 12
+2023-10-17 23:49:31,720 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:31,722 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 12
+2023-10-17 23:49:31,722 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:31,724 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 12
+2023-10-17 23:49:31,975 INFO    SenderThread:1301826 [sender.py:transition_state():587] send defer: 13
+2023-10-17 23:49:31,976 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:31,988 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 13
+2023-10-17 23:49:31,992 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:32,005 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 13
+2023-10-17 23:49:32,027 INFO    SenderThread:1301826 [sender.py:transition_state():587] send defer: 14
+2023-10-17 23:49:32,039 DEBUG   SenderThread:1301826 [sender.py:send():336] send: final
+2023-10-17 23:49:32,039 DEBUG   SenderThread:1301826 [sender.py:send():336] send: footer
+2023-10-17 23:49:32,039 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: defer
+2023-10-17 23:49:32,041 INFO    HandlerThread:1301826 [handler.py:handle_request_defer():170] handle defer: 14
+2023-10-17 23:49:32,041 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: defer
+2023-10-17 23:49:32,043 INFO    SenderThread:1301826 [sender.py:send_request_defer():583] handle sender defer: 14
+2023-10-17 23:49:32,044 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: poll_exit
+2023-10-17 23:49:32,056 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: server_info
+2023-10-17 23:49:32,056 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: get_summary
+2023-10-17 23:49:32,056 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: sampled_history
+2023-10-17 23:49:32,056 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: poll_exit
+2023-10-17 23:49:32,060 DEBUG   SenderThread:1301826 [sender.py:send_request():363] send_request: server_info
+2023-10-17 23:49:32,120 INFO    MainThread:1301826 [wandb_run.py:_footer_history_summary_info():3422] rendering history
+2023-10-17 23:49:32,120 INFO    MainThread:1301826 [wandb_run.py:_footer_history_summary_info():3454] rendering summary
+2023-10-17 23:49:32,132 INFO    MainThread:1301826 [wandb_run.py:_footer_sync_info():3380] logging synced files
+2023-10-17 23:49:32,132 DEBUG   HandlerThread:1301826 [handler.py:handle_request():144] handle_request: shutdown
+2023-10-17 23:49:32,145 INFO    HandlerThread:1301826 [handler.py:finish():842] shutting down handler
+2023-10-17 23:49:33,056 INFO    WriterThread:1301826 [datastore.py:close():298] close: /nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/wandb/run-20231017_234115-s6didt9n/run-s6didt9n.wandb
+2023-10-17 23:49:33,120 INFO    SenderThread:1301826 [sender.py:finish():1504] shutting down sender
+2023-10-17 23:49:33,120 INFO    SenderThread:1301826 [file_pusher.py:finish():164] shutting down file pusher
+2023-10-17 23:49:33,120 INFO    SenderThread:1301826 [file_pusher.py:join():169] waiting for file pusher

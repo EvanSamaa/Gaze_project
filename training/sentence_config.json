@@ -18,7 +18,7 @@
     "checkpoint_name":"",
     "checkpoint_path":"",
     "batch_size": 256,
-    "learning_rate": 0.001,
+    "learning_rate": 0.01,
     "dropout": 0.1,
     "epochs": 1000,
     "device": "gpu",

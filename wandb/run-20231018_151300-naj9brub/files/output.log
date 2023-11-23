@@ -1,0 +1,449 @@
+Epoch 1, mean: 0.8560000658035278, std: 0.35179403424263
+training L: 0.542319531022457
+validation L:0.48395559122235116
+/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/numpy/core/fromnumeric.py:3432: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/numpy/core/_methods.py:190: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+Epoch 2, mean: 0.8440000414848328, std: 0.3635832369327545
+training L: 0.5710465629878494
+validation L:0.4371548068492972
+Epoch 3, mean: 0.6680000424385071, std: 0.47187569737434387
+training L: 0.5878989392193855
+validation L:0.52285777682015
+Epoch 4, mean: 0.5879999995231628, std: 0.4931824505329132
+training L: 0.601347017073038
+validation L:0.5136595799282874
+Epoch 5, mean: 0.5720000267028809, std: 0.49578142166137695
+training L: 0.6149941949248553
+validation L:0.5066446782939908
+Epoch 6, mean: 0.6800000071525574, std: 0.46741190552711487
+training L: 0.6298544713564012
+validation L:0.5101044255305245
+Epoch 7, mean: 0.6080000400543213, std: 0.48917603492736816
+training L: 0.640971379904242
+validation L:0.5005021276398471
+Epoch 8, mean: 0.6240000128746033, std: 0.48535171151161194
+training L: 0.6532921582480827
+validation L:0.5138312166846374
+Epoch 9, mean: 0.64000004529953, std: 0.480962872505188
+training L: 0.6620150521030211
+validation L:0.492855349731447, model have not improved for 1 iterations
+Epoch 10, mean: 0.6320000290870667, std: 0.48322877287864685
+training L: 0.6708111064770473
+validation L:0.512833535049669
+Epoch 11, mean: 0.6320000290870667, std: 0.48322877287864685
+training L: 0.6823758258796171
+validation L:0.5198584728157946
+Epoch 12, mean: 0.5640000104904175, std: 0.4968818426132202
+training L: 0.6927395341054493
+validation L:0.5276820049138806
+Epoch 13, mean: 0.6160000562667847, std: 0.4873335361480713
+training L: 0.7050546170713344
+validation L:0.520435913008177
+Epoch 14, mean: 0.628000020980835, std: 0.4843079745769501
+training L: 0.7083568227968583
+validation L:0.5280993169497228
+Epoch 15, mean: 0.6080000400543213, std: 0.4891760051250458
+training L: 0.7249636446510598
+validation L:0.5248108399217865
+Epoch 16, mean: 0.6600000262260437, std: 0.4746590554714203
+training L: 0.7287015049465781
+validation L:0.5163747649066113, model have not improved for 1 iterations
+Epoch 17, mean: 0.5960000157356262, std: 0.4916818141937256
+training L: 0.7375819947672223
+validation L:0.5263327688745241
+Epoch 18, mean: 0.5960000157356262, std: 0.4916818141937256
+training L: 0.7448736882097615
+validation L:0.52335986579416, model have not improved for 1 iterations
+Epoch 19, mean: 0.5879999995231628, std: 0.4931824207305908
+training L: 0.7555590074418744
+validation L:0.5334504346686476
+Epoch 20, mean: 0.5879999995231628, std: 0.4931824505329132
+training L: 0.7604588324065717
+validation L:0.5344073515689064
+Epoch 21, mean: 0.6440000534057617, std: 0.47977572679519653
+training L: 0.7686751024061167
+validation L:0.5174888662717154, model have not improved for 1 iterations
+Epoch 22, mean: 0.5680000185966492, std: 0.496348112821579
+training L: 0.7791953450339039
+validation L:0.5279911612742333
+Epoch 23, mean: 0.6000000238418579, std: 0.49088069796562195
+training L: 0.7809690333086408
+validation L:0.533135716574585
+Epoch 24, mean: 0.5920000076293945, std: 0.49244898557662964
+training L: 0.7899259540898874
+validation L:0.5263524673388845, model have not improved for 1 iterations
+Epoch 25, mean: 0.6040000319480896, std: 0.4900454878807068
+training L: 0.7958330634719382
+validation L:0.5381030716745472
+Epoch 26, mean: 0.5800000429153442, std: 0.49454858899116516
+training L: 0.802197438321123
+validation L:0.5247003778085516, model have not improved for 1 iterations
+Epoch 27, mean: 0.5600000023841858, std: 0.4973827302455902
+training L: 0.8092836422774643
+validation L:0.5196243682427025, model have not improved for 2 iterations
+Epoch 28, mean: 0.5800000429153442, std: 0.49454858899116516
+training L: 0.8098033722048029
+validation L:0.523977366241526, model have not improved for 3 iterations
+Epoch 29, mean: 0.5640000104904175, std: 0.4968818426132202
+training L: 0.8182530334725198
+validation L:0.5231702931462547, model have not improved for 4 iterations
+Epoch 30, mean: 0.6000000238418579, std: 0.49088072776794434
+training L: 0.8197517832535984
+validation L:0.52832373698777
+Epoch 31, mean: 0.5720000267028809, std: 0.49578139185905457
+training L: 0.8298260385430335
+validation L:0.5386881423022293
+Epoch 32, mean: 0.612000048160553, std: 0.488272100687027
+training L: 0.8311377034753659
+validation L:0.5209286568050024, model have not improved for 1 iterations
+Epoch 33, mean: 0.5960000157356262, std: 0.4916818141937256
+training L: 0.8390529802969378
+validation L:0.5308493268074727
+Epoch 34, mean: 0.64000004529953, std: 0.480962872505188
+training L: 0.8409319377452441
+validation L:0.5437151603752256
+Epoch 35, mean: 0.5520000457763672, std: 0.4982862174510956
+training L: 0.8454776395894281
+validation L:0.5328973141996403
+Epoch 36, mean: 0.5680000185966492, std: 0.496348112821579
+training L: 0.8477937929736501
+validation L:0.5347206767791584
+Epoch 37, mean: 0.5640000104904175, std: 0.4968818426132202
+training L: 0.8534234470508711
+validation L:0.5295843374742332, model have not improved for 1 iterations
+Epoch 38, mean: 0.5960000157356262, std: 0.4916818141937256
+training L: 0.8537370471981393
+validation L:0.5313348168457328, model have not improved for 2 iterations
+Epoch 39, mean: 0.6760000586509705, std: 0.46893882751464844
+training L: 0.8624186801234799
+validation L:0.536150247252093
+Epoch 40, mean: 0.612000048160553, std: 0.488272100687027
+training L: 0.8641106499839815
+validation L:0.5282978088600708, model have not improved for 1 iterations
+Epoch 41, mean: 0.6040000319480896, std: 0.4900454878807068
+training L: 0.8678275113488166
+validation L:0.5295040409608411, model have not improved for 2 iterations
+Epoch 42, mean: 0.6240000128746033, std: 0.48535168170928955
+training L: 0.8691651567757704
+validation L:0.5337176118421874
+Epoch 43, mean: 0.5800000429153442, std: 0.49454858899116516
+training L: 0.875605755976696
+validation L:0.5377834566291636
+Epoch 44, mean: 0.6480000019073486, std: 0.4785520136356354
+training L: 0.8790543682009165
+validation L:0.5366549278771536
+Epoch 45, mean: 0.5640000104904175, std: 0.4968818426132202
+training L: 0.879879501284845
+validation L:0.5443044577311942
+Epoch 46, mean: 0.5920000076293945, std: 0.492449015378952
+training L: 0.8851962811729183
+validation L:0.5335597479736275
+Epoch 47, mean: 0.5320000052452087, std: 0.49997588992118835
+training L: 0.8861892704452471
+validation L:0.5304593357201814, model have not improved for 1 iterations
+Epoch 48, mean: 0.527999997138977, std: 0.5002168416976929
+training L: 0.8901472409338644
+validation L:0.5248169982401655, model have not improved for 2 iterations
+Epoch 49, mean: 0.6000000238418579, std: 0.49088069796562195
+training L: 0.8883722758221773
+validation L:0.5298800885862325, model have not improved for 3 iterations
+Epoch 50, mean: 0.5720000267028809, std: 0.49578142166137695
+training L: 0.8914891901691804
+validation L:0.5302043647437444, model have not improved for 4 iterations
+Epoch 51, mean: 0.6000000238418579, std: 0.49088069796562195
+training L: 0.896592155356733
+validation L:0.5407145161201059
+Epoch 52, mean: 0.64000004529953, std: 0.480962872505188
+training L: 0.8991440555674157
+validation L:0.529007287079062, model have not improved for 1 iterations
+Epoch 53, mean: 0.5640000104904175, std: 0.4968818426132202
+training L: 0.9009811638651717
+validation L:0.5320405630122458
+Epoch 54, mean: 0.5720000267028809, std: 0.49578139185905457
+training L: 0.8940971067681556
+validation L:0.540556762754218
+Epoch 55, mean: 0.5560000538825989, std: 0.49785080552101135
+training L: 0.9009254089134371
+validation L:0.5469343410996008
+Epoch 56, mean: 0.6080000400543213, std: 0.4891760051250458
+training L: 0.907162077054911
+validation L:0.5429374321631534
+Epoch 57, mean: 0.5040000081062317, std: 0.5009869933128357
+training L: 0.9079174551436011
+validation L:0.536957489289906, model have not improved for 1 iterations
+Epoch 58, mean: 0.6040000319480896, std: 0.4900454878807068
+training L: 0.8966960559508084
+validation L:0.5247624284930557, model have not improved for 2 iterations
+Epoch 59, mean: 0.6440000534057617, std: 0.47977572679519653
+training L: 0.911265045015216
+validation L:0.5350518182068562, model have not improved for 3 iterations
+Epoch 60, mean: 0.6240000128746033, std: 0.48535171151161194
+training L: 0.915193136986294
+validation L:0.5363727571044362, model have not improved for 4 iterations
+Epoch 61, mean: 0.5560000538825989, std: 0.49785080552101135
+training L: 0.9139181031964261
+validation L:0.5202505816100021, model have not improved for 5 iterations
+Epoch 62, mean: 0.656000018119812, std: 0.4759939908981323
+training L: 0.9149431623951736
+validation L:0.5330059459289274, model have not improved for 6 iterations
+Epoch 63, mean: 0.5760000348091125, std: 0.4951815903186798
+training L: 0.912854804900578
+validation L:0.5467552406233079
+Epoch 64, mean: 0.5920000076293945, std: 0.492449015378952
+training L: 0.9133875085294529
+validation L:0.5392061292880348
+Epoch 65, mean: 0.6160000562667847, std: 0.4873335361480713
+training L: 0.9159367661195138
+validation L:0.5315098647228852, model have not improved for 1 iterations
+Epoch 66, mean: 0.6240000128746033, std: 0.48535171151161194
+training L: 0.9182140100720274
+validation L:0.5398707632657971
+Epoch 67, mean: 0.6440000534057617, std: 0.47977572679519653
+training L: 0.923228485042768
+validation L:0.528925600723208, model have not improved for 1 iterations
+Epoch 68, mean: 0.6240000128746033, std: 0.48535171151161194
+training L: 0.9279492676771819
+validation L:0.5403574116406463
+Epoch 69, mean: 0.527999997138977, std: 0.5002168416976929
+training L: 0.924282566390663
+validation L:0.5298685714517383, model have not improved for 1 iterations
+Epoch 70, mean: 0.6000000238418579, std: 0.49088069796562195
+training L: 0.9252997612685501
+validation L:0.5162168189576173, model have not improved for 2 iterations
+Epoch 71, mean: 0.5840000510215759, std: 0.49388226866722107
+training L: 0.926491223696973
+validation L:0.524358279267986, model have not improved for 3 iterations
+Epoch 72, mean: 0.5440000295639038, std: 0.4990593492984772
+training L: 0.92474681279075
+validation L:0.5396455686808228
+Epoch 73, mean: 0.64000004529953, std: 0.480962872505188
+training L: 0.9296853542091521
+validation L:0.525278530312149, model have not improved for 1 iterations
+Epoch 74, mean: 0.6240000128746033, std: 0.48535171151161194
+training L: 0.9298458772093892
+validation L:0.539331449381543
+Epoch 75, mean: 0.6520000100135803, std: 0.4772915542125702
+training L: 0.927532722344384
+validation L:0.5297459643383365
+Epoch 76, mean: 0.6360000371932983, std: 0.4821138083934784
+training L: 0.9310158245459533
+validation L:0.5166602705742385, model have not improved for 1 iterations
+Epoch 77, mean: 0.492000013589859, std: 0.500938892364502
+training L: 0.9276599953892017
+validation L:0.5223442700293042, model have not improved for 2 iterations
+Epoch 78, mean: 0.6160000562667847, std: 0.4873335361480713
+training L: 0.9275987711971273
+validation L:0.5352145821509325
+Epoch 79, mean: 0.5760000348091125, std: 0.4951816201210022
+training L: 0.932632459717254
+validation L:0.530221602078867
+Epoch 80, mean: 0.612000048160553, std: 0.488272100687027
+training L: 0.9377715765596513
+validation L:0.5379584485124561
+Epoch 81, mean: 0.5360000133514404, std: 0.4997027516365051
+training L: 0.9397013788813049
+validation L:0.5217554697486766, model have not improved for 1 iterations
+Epoch 82, mean: 0.6040000319480896, std: 0.4900454878807068
+training L: 0.9349436037386698
+validation L:0.5323850953183152
+Epoch 83, mean: 0.5400000214576721, std: 0.4993972182273865
+training L: 0.9388924412015082
+validation L:0.5177606785509079, model have not improved for 1 iterations
+Epoch 84, mean: 0.6720000505447388, std: 0.47042661905288696
+training L: 0.9410224915027702
+validation L:0.544674150526547
+Epoch 85, mean: 0.6520000100135803, std: 0.4772915542125702
+training L: 0.9375119004302742
+validation L:0.541212763475263
+Epoch 86, mean: 0.6600000262260437, std: 0.4746590554714203
+training L: 0.9389310699173022
+validation L:0.5299295960871245, model have not improved for 1 iterations
+Epoch 87, mean: 0.46000000834465027, std: 0.49939724802970886
+training L: 0.9282548500749801
+validation L:0.5341558037506388
+Epoch 88, mean: 0.6480000019073486, std: 0.4785520136356354
+training L: 0.9282540630232273
+validation L:0.5352973387065674
+Epoch 89, mean: 0.6160000562667847, std: 0.4873335361480713
+training L: 0.93755569619077
+validation L:0.5367646665435493
+Epoch 90, mean: 0.5840000510215759, std: 0.49388226866722107
+training L: 0.9467268912073709
+validation L:0.5274170496008387, model have not improved for 1 iterations
+Epoch 91, mean: 0.6160000562667847, std: 0.4873335361480713
+training L: 0.9463082750583092
+validation L:0.5341671619241232, model have not improved for 2 iterations
+Epoch 92, mean: 0.5440000295639038, std: 0.4990593492984772
+training L: 0.9416268013045574
+validation L:0.5300735569997937, model have not improved for 3 iterations
+Epoch 93, mean: 0.7080000042915344, std: 0.45559442043304443
+training L: 0.9447979579650331
+validation L:0.5354286260802195
+Epoch 94, mean: 0.6160000562667847, std: 0.4873335361480713
+training L: 0.9489768255039597
+validation L:0.5418303865163172
+Epoch 95, mean: 0.5760000348091125, std: 0.4951815903186798
+training L: 0.9457280746985794
+validation L:0.5207283616324895, model have not improved for 1 iterations
+Epoch 96, mean: 0.6680000424385071, std: 0.47187569737434387
+training L: 0.9394767901472691
+validation L:0.5413422108601691
+Epoch 97, mean: 0.5800000429153442, std: 0.49454858899116516
+training L: 0.9469981238382272
+validation L:0.5328983217557265
+Epoch 98, mean: 0.6480000019073486, std: 0.4785520136356354
+training L: 0.9524743661330161
+validation L:0.5299302880564474, model have not improved for 1 iterations
+Epoch 99, mean: 0.656000018119812, std: 0.47599396109580994
+training L: 0.951407592988628
+validation L:0.5235244130476817, model have not improved for 2 iterations
+Epoch 100, mean: 0.45600003004074097, std: 0.49905937910079956
+training L: 0.9456519631991923
+validation L:0.5322675007188487, model have not improved for 3 iterations
+Epoch 101, mean: 0.5160000324249268, std: 0.5007464289665222
+training L: 0.945472461933026
+validation L:0.5244823802343336, model have not improved for 4 iterations
+Epoch 102, mean: 0.656000018119812, std: 0.4759939908981323
+training L: 0.9469738445022743
+validation L:0.5334705655810028
+Epoch 103, mean: 0.6160000562667847, std: 0.4873335361480713
+training L: 0.9516023818392427
+validation L:0.5366162420589831
+Epoch 104, mean: 0.6880000233650208, std: 0.4642392098903656
+training L: 0.9489272252873857
+validation L:0.5342639350909286
+Epoch 105, mean: 0.6480000019073486, std: 0.4785520136356354
+training L: 0.9522897500553995
+validation L:0.527256524819229, model have not improved for 1 iterations
+Epoch 106, mean: 0.46800002455711365, std: 0.49997588992118835
+training L: 0.9551223691523166
+validation L:0.5291374772439245, model have not improved for 2 iterations
+Epoch 107, mean: 0.656000018119812, std: 0.4759939908981323
+training L: 0.9471394865696598
+validation L:0.5299446795147144, model have not improved for 3 iterations
+Epoch 108, mean: 0.5120000243186951, std: 0.500858724117279
+training L: 0.956659803657816
+validation L:0.5398040540990277
+Epoch 109, mean: 0.7160000205039978, std: 0.4518413841724396
+training L: 0.9489243499439046
+validation L:0.5377514755637843
+Epoch 110, mean: 0.7080000042915344, std: 0.45559442043304443
+training L: 0.9519701080969468
+validation L:0.5376397499668734
+Epoch 111, mean: 0.5, std: 0.5010030269622803
+training L: 0.9539131972764648
+validation L:0.5359661226512542
+Epoch 112, mean: 0.5920000076293945, std: 0.492449015378952
+training L: 0.9542383397596139
+validation L:0.5307102181075195, model have not improved for 1 iterations
+Epoch 113, mean: 0.4960000216960907, std: 0.5009869933128357
+training L: 0.9579229102956359
+validation L:0.5339567024732664, model have not improved for 2 iterations
+Epoch 114, mean: 0.5480000376701355, std: 0.49868905544281006
+training L: 0.9568792301740336
+validation L:0.5355083064272238, model have not improved for 3 iterations
+Epoch 115, mean: 0.6760000586509705, std: 0.46893882751464844
+training L: 0.9602741498249707
+validation L:0.5304921227122636, model have not improved for 4 iterations
+Epoch 116, mean: 0.656000018119812, std: 0.4759939908981323
+training L: 0.9549876714669806
+validation L:0.5340094764200003, model have not improved for 5 iterations
+Epoch 117, mean: 0.5400000214576721, std: 0.4993972182273865
+training L: 0.9584417806473117
+validation L:0.5453633520704974
+Epoch 118, mean: 0.6440000534057617, std: 0.47977572679519653
+training L: 0.956484862605561
+validation L:0.5446891925694639
+Epoch 119, mean: 0.6240000128746033, std: 0.48535171151161194
+training L: 0.9511789652980341
+validation L:0.5392719003973159
+Epoch 120, mean: 0.6800000071525574, std: 0.46741190552711487
+training L: 0.9604564726452415
+validation L:0.5313352925440816, model have not improved for 1 iterations
+Epoch 121, mean: 0.64000004529953, std: 0.4809629023075104
+training L: 0.9579710436989031
+validation L:0.5302052536680469, model have not improved for 2 iterations
+Epoch 122, mean: 0.6880000233650208, std: 0.464239239692688
+training L: 0.9534124288465066
+validation L:0.5347105790650911, model have not improved for 3 iterations
+Epoch 123, mean: 0.5080000162124634, std: 0.500938892364502
+training L: 0.9596442079459176
+validation L:0.5363740957507903, model have not improved for 4 iterations
+Epoch 124, mean: 0.6680000424385071, std: 0.47187569737434387
+training L: 0.9639643623032517
+validation L:0.539251703796671
+Epoch 125, mean: 0.5840000510215759, std: 0.49388226866722107
+training L: 0.9642066298330568
+validation L:0.542147133617853
+Epoch 126, mean: 0.6680000424385071, std: 0.47187569737434387
+training L: 0.9575763925156322
+validation L:0.5445042666348433
+Epoch 127, mean: 0.6960000395774841, std: 0.4609053432941437
+training L: 0.9634316473982715
+validation L:0.5472123962667591
+Epoch 128, mean: 0.6040000319480896, std: 0.4900454878807068
+training L: 0.9637387291105382
+validation L:0.5365556009174044, model have not improved for 1 iterations
+Epoch 129, mean: 0.6640000343322754, std: 0.47328639030456543
+training L: 0.9638709023158899
+validation L:0.5403931580696185, model have not improved for 2 iterations
+Epoch 130, mean: 0.5160000324249268, std: 0.5007464289665222
+training L: 0.962918101714073
+validation L:0.5325480514023726, model have not improved for 3 iterations
+Epoch 131, mean: 0.5240000486373901, std: 0.5004255175590515
+training L: 0.9621717527475807
+validation L:0.5261167166947408, model have not improved for 4 iterations
+Traceback (most recent call last):
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 276, in <module>
+    train_model_with_vel(model, device, config, train_dataloader, valid_dataloader, run_obj, "sentence_and_words_with_vel_2023_Oct_prevent_overfitting_larger_model_Oct10_13_19")
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 141, in train_model_with_vel
+    for _, (X, [Y, Y_vel]) in enumerate(train_data):
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 634, in __next__
+    data = self._next_data()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 678, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    return self.collate_fn(data)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 264, in default_collate
+    return collate(batch, collate_fn_map=default_collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 142, in collate
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 142, in <listcomp>
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 119, in collate
+    return collate_fn_map[elem_type](batch, collate_fn_map=collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 171, in collate_numpy_array_fn
+    return collate([torch.as_tensor(b) for b in batch], collate_fn_map=collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 119, in collate
+    return collate_fn_map[elem_type](batch, collate_fn_map=collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 162, in collate_tensor_fn
+    return torch.stack(batch, 0, out=out)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 276, in <module>
+    train_model_with_vel(model, device, config, train_dataloader, valid_dataloader, run_obj, "sentence_and_words_with_vel_2023_Oct_prevent_overfitting_larger_model_Oct10_13_19")
+  File "/nfs/artemis.dgpsrv/ondemand27/evanpan/Gaze_project/training/training_2023_Oct_prevent_overfit_smaller_model.py", line 141, in train_model_with_vel
+    for _, (X, [Y, Y_vel]) in enumerate(train_data):
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 634, in __next__
+    data = self._next_data()
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 678, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    return self.collate_fn(data)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 264, in default_collate
+    return collate(batch, collate_fn_map=default_collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 142, in collate
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 142, in <listcomp>
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 119, in collate
+    return collate_fn_map[elem_type](batch, collate_fn_map=collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 171, in collate_numpy_array_fn
+    return collate([torch.as_tensor(b) for b in batch], collate_fn_map=collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 119, in collate
+    return collate_fn_map[elem_type](batch, collate_fn_map=collate_fn_map)
+  File "/scratch/ondemand27/evanpan/conda_env/.conda/envs/jaligaze/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 162, in collate_tensor_fn
+    return torch.stack(batch, 0, out=out)
+KeyboardInterrupt
